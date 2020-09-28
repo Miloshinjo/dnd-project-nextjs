@@ -1,0 +1,33 @@
+.selectContainer {
+  @apply relative mt-2;
+}
+
+.select {
+  @apply block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight;
+}
+
+.select:focus {
+  @apply bg-white border-gray-500 outline-none;
+}
+
+.label {
+  @apply text-sm font-medium;
+}
+
+.chevronContainer {
+  @apply pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700;
+}
+
+.chevron {
+  @apply fill-current h-4 w-4;
+}
+
+.error {
+  @apply text-xs text-orange-600;
+}
+
+@screen sm {
+  .select {
+    @apply text-sm leading-5;
+  }
+}

@@ -1,0 +1,31 @@
+.deleteButton {
+  @apply relative flex justify-center leading-5 rounded-md text-red-900 transition duration-150 ease-in-out;
+}
+
+.deleteButton:hover {
+  @apply;
+}
+
+.deleteButton:focus {
+  @apply outline-none border-red-700 shadow-outline;
+}
+
+.deleteButton:active {
+  @apply bg-red-700;
+}
+
+.disabled {
+  @apply opacity-50;
+}
+
+.disabled:active {
+  @apply bg-red-900;
+}
+
+.disabled:hover {
+  @apply bg-red-900;
+}
+
+.disabled:focus {
+  @apply bg-red-900;
+}

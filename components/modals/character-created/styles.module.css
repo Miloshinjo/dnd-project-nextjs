@@ -1,0 +1,26 @@
+.container {
+  @apply p-4;
+}
+.spellLearntLink {
+  @apply px-2 border bg-gray-800 text-white rounded font-medium mt-4 py-1;
+}
+
+.spellLearntLinkFlat {
+  @apply px-2 py-1;
+}
+
+.title {
+  @apply text-xl font-semibold;
+}
+
+.name {
+  @apply text-2xl mt-2 font-bold;
+}
+
+.raceKlass {
+  @apply opacity-75;
+}
+
+.links {
+  @apply flex flex-col;
+}

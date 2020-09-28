@@ -1,0 +1,40 @@
+.container {
+  @apply mt-auto border-t-2 py-2 px-4 flex fixed bottom-0 z-10 bg-white w-full;
+}
+
+.navLink {
+  @apply mx-2 flex flex-col items-center w-full text-gray-500;
+}
+
+.navLinkActive {
+  @apply text-gray-900;
+}
+
+.navLinkText {
+  @apply text-xs font-medium;
+}
+
+@screen md {
+  .container {
+    @apply right-0 border-t-0 absolute inline-flex mt-0 max-w-xs w-auto h-auto items-center bg-gray-900 rounded-lg;
+    top: 0;
+    right: 0;
+    bottom: auto;
+  }
+
+  .navLink {
+    @apply my-2 opacity-75;
+  }
+
+  .navLinkIcon {
+    @apply hidden;
+  }
+
+  .navLinkActive {
+    @apply opacity-100 text-white;
+  }
+
+  .navLinkText {
+    @apply text-sm font-medium;
+  }
+}

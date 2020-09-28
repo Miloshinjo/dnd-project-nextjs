@@ -1,0 +1,19 @@
+query Spell($id: ID!) {
+  spell(id: $id) {
+    id
+    name
+    level
+    description
+    klasses
+    concentration
+    ritual
+    duration
+    castingTime
+    range
+    components
+    school
+    attackSave
+    damageEffect
+    material
+  }
+}

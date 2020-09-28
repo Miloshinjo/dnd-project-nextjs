@@ -1,0 +1,52 @@
+query Character($id: ID!) {
+  character(id: $id) {
+    id
+    name
+    level
+    race
+    hitPoints
+    maxHitPoints
+    armorClass
+    gold
+    alignment
+    inspiration
+    strength
+    dexterity
+    constitution
+    intelligence
+    wisdom
+    charisma
+    speed
+    spellSlots
+    klass {
+      id
+      name
+      hitDie
+      spellCastingModifier
+    }
+    subclass {
+      id
+      name
+      spellCastingModifier
+    }
+    skills {
+      id
+      name
+      ability
+    }
+    spells {
+      id
+      name
+      level
+      concentration
+      ritual
+    }
+    preparedSpells {
+      id
+      name
+      level
+      concentration
+      ritual
+    }
+  }
+}

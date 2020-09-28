@@ -1,0 +1,6 @@
+mutation Charisma($id: ID!, $charisma: Int!) {
+  updateCharacter(character: { id: $id, charisma: $charisma }) {
+    id
+    charisma
+  }
+}

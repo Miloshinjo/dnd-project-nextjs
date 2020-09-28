@@ -1,0 +1,19 @@
+query Spells($klassName: String) {
+  spells(klassName: $klassName) {
+    id
+    name
+    level
+    description
+    klasses
+    concentration
+    ritual
+    duration
+    castingTime
+    range
+    components
+    school
+    attackSave
+    damageEffect
+    material
+  }
+}

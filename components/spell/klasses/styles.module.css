@@ -1,0 +1,11 @@
+.container {
+  @apply flex flex-wrap mt-2;
+}
+
+.klass {
+  @apply capitalize rounded text-sm opacity-75;
+}
+
+.klass:not(:last-child) {
+  @apply mr-2;
+}

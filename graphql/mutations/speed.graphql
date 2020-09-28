@@ -1,0 +1,6 @@
+mutation Speed($id: ID!, $speed: Int!) {
+  updateCharacter(character: { id: $id, speed: $speed }) {
+    id
+    speed
+  }
+}

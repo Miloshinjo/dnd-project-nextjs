@@ -1,0 +1,6 @@
+mutation MaxHitPoints($id: ID!, $maxHitPoints: Int!) {
+  updateCharacter(character: { id: $id, maxHitPoints: $maxHitPoints }) {
+    id
+    maxHitPoints
+  }
+}

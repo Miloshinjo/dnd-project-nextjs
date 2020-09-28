@@ -1,0 +1,6 @@
+mutation Strength($id: ID!, $strength: Int!) {
+  updateCharacter(character: { id: $id, strength: $strength }) {
+    id
+    strength
+  }
+}

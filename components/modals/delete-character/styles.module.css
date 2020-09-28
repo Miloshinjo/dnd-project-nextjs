@@ -1,0 +1,10 @@
+.container {
+  @apply p-4 text-left;
+}
+
+.title {
+  @apply text-xl font-extrabold mb-2;
+}
+
+.message {
+}

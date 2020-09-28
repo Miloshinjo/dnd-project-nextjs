@@ -1,0 +1,11 @@
+.container {
+  @apply flex items-center mb-4;
+}
+
+.badge {
+  @apply text-xs bg-gray-300 font-semibold rounded px-1 inline-flex;
+}
+
+.badge:not(:last-child) {
+  @apply mr-2;
+}

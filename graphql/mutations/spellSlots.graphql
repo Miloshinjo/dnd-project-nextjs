@@ -1,0 +1,6 @@
+mutation SpellSlots($id: ID!, $spellSlots: String!) {
+  updateCharacter(character: { id: $id, spellSlots: $spellSlots }) {
+    id
+    spellSlots
+  }
+}

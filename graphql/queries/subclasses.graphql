@@ -1,0 +1,6 @@
+query Subclasses($klassName: String!) {
+  subclasses(klassName: $klassName) {
+    id
+    name
+  }
+}

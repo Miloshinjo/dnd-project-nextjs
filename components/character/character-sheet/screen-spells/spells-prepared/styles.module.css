@@ -1,0 +1,7 @@
+.container {
+  @apply border;
+}
+
+.prepareSpellsButton {
+  @apply flex items-center text-xs border-b;
+}

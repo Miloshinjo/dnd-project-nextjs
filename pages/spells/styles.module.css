@@ -1,0 +1,39 @@
+.container {
+  @apply pb-16;
+}
+
+.contentContainer {
+  @apply p-4;
+}
+
+.pageTitle {
+  @apply tracking-tighter mb-4;
+}
+
+.searchContainer {
+  @apply mb-4 flex flex-col;
+}
+
+.searchInput {
+  @apply p-2 border-2 border-gray-300 rounded-lg;
+}
+
+.searchInput:focus {
+  @apply outline-none border-gray-500;
+}
+
+.spellsContainer {
+  @apply flex flex-col;
+}
+
+.spellCardContainer {
+  @apply p-2 border-b flex items-center justify-between;
+}
+
+.spellName {
+  @apply text-lg font-semibold;
+}
+
+.spellLevel {
+  @apply text-xs px-1;
+}

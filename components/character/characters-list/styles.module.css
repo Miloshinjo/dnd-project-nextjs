@@ -1,0 +1,25 @@
+.addCharaterButton {
+  @apply text-gray-700 flex items-center p-4;
+}
+
+.fetchingContainer {
+  @apply m-8;
+}
+
+.createCharacterButton {
+  @apply bg-gray-800 text-white mt-4 py-2 flex justify-center w-full rounded cursor-pointer;
+}
+
+@screen md {
+  .container {
+    @apply flex items-center flex-wrap;
+  }
+
+  .createCharacterButton {
+    @apply mt-0 py-2 flex h-12 w-12 ml-4 justify-center items-center shadow-lg;
+  }
+
+  .createCharacterButton:hover {
+    @apply shadow-xl transition duration-200;
+  }
+}

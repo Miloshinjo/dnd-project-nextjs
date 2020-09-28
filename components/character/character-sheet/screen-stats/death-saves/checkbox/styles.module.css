@@ -1,0 +1,7 @@
+.label {
+  @apply bg-white shadow-inner rounded border flex justify-center items-center p-1;
+}
+
+.label:not(:last-child) {
+  @apply mr-1;
+}

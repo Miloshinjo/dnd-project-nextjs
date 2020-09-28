@@ -1,0 +1,9 @@
+mutation AddSubclass($id: ID!, $subclassId: ID!) {
+  addSubclass(character: { id: $id, subclassId: $subclassId }) {
+    id
+    subclass {
+      id
+      name
+    }
+  }
+}

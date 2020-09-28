@@ -1,0 +1,27 @@
+.container {
+  @apply border;
+}
+
+.slotsEditButton {
+  @apply flex items-center text-xs border-b;
+}
+
+.slotsEditButtonActive {
+  @apply flex items-center text-xs border-b;
+}
+
+.slotLevelContainer {
+  @apply flex mb-3;
+}
+
+.removeSlotButton {
+  @apply mr-4 text-gray-400;
+}
+
+.slotLevelText {
+  @apply text-2xl font-semibold text-right w-5;
+}
+
+.spellSlotButton {
+  @apply border w-8 h-8 flex items-center justify-center mx-1 mb-1 rounded bg-white shadow-inner;
+}

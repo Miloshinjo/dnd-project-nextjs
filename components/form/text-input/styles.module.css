@@ -1,0 +1,19 @@
+.input {
+  @apply appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 text-gray-900;
+}
+
+.input:focus {
+  @apply outline-none shadow-outline z-10;
+}
+
+.input::placeholder {
+  @apply text-gray-500;
+}
+
+.label {
+  @apply text-sm font-medium;
+}
+
+.error {
+  @apply text-xs text-orange-600;
+}

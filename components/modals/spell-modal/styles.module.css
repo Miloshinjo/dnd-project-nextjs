@@ -1,0 +1,42 @@
+.container {
+}
+
+.header {
+  @apply flex justify-between bg-gray-900 text-white p-1;
+}
+
+.headerTitle {
+  @apply text-left flex items-center;
+}
+
+.heading {
+  @apply text-sm font-semibold ml-2 capitalize;
+}
+
+.close {
+  @apply text-gray-300;
+}
+
+.spellName {
+  @apply text-xl font-bold leading-tight;
+}
+
+.spellSchool {
+  @apply opacity-50 text-sm capitalize mb-4;
+}
+
+.spellInfoContainer {
+  @apply grid grid-cols-2 my-4 gap-y-2 w-full text-left;
+}
+
+.spellInfo {
+  @apply flex flex-col;
+}
+
+.spellInfoLabel {
+  @apply text-xs opacity-50;
+}
+
+.spellInfoValue {
+  @apply text-sm font-semibold;
+}

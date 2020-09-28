@@ -1,0 +1,33 @@
+.container {
+  @apply bg-gray-900 text-white px-4 pb-2 flex justify-between w-full flex-col items-start;
+}
+
+@screen md {
+  .container {
+    @apply pt-4 rounded-t-lg;
+  }
+}
+
+.imgNameKlass {
+  @apply flex items-center mb-2;
+}
+
+.klassLogo {
+  @apply h-10 w-10 mr-4 relative;
+}
+
+.characterName {
+  @apply text-2xl font-extrabold tracking-tight mr-2;
+}
+
+.characterRaceKlass {
+  @apply text-sm font-medium text-gray-300 leading-tight;
+}
+
+.characterLevel {
+  @apply text-white font-medium ml-1 flex items-center;
+}
+
+.bottomContainer {
+  @apply flex justify-between w-full items-center mt-2;
+}

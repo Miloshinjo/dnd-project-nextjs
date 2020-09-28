@@ -1,0 +1,6 @@
+mutation Intelligence($id: ID!, $intelligence: Int!) {
+  updateCharacter(character: { id: $id, intelligence: $intelligence }) {
+    id
+    intelligence
+  }
+}

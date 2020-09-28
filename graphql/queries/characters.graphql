@@ -1,0 +1,21 @@
+query Characters {
+  characters {
+    id
+    name
+    level
+    race
+    klass {
+      id
+      name
+      spellCastingModifier
+    }
+    subclass {
+      id
+      name
+      spellCastingModifier
+    }
+    spells {
+      id
+    }
+  }
+}

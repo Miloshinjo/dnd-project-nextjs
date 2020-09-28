@@ -1,0 +1,43 @@
+.container {
+  @apply mt-auto border-t fixed bottom-0 left-0 z-10 bg-gray-900 text-white w-full shadow-2xl;
+}
+
+.levelsFiltersContainer {
+  @apply flex flex-wrap;
+}
+
+.levelsFiltersContainer > *:not(:last-child) {
+  @apply mr-1;
+}
+
+.levelFilter {
+  @apply px-2 border font-medium text-sm opacity-75 rounded;
+}
+
+.levelFilterSelected {
+  @apply px-2 border text-sm font-medium bg-gray-100 text-gray-900 rounded;
+}
+
+.schoolsFiltersContainer {
+  @apply grid grid-cols-3 gap-1;
+}
+
+.schoolFilter {
+  @apply px-2 border font-medium text-sm opacity-75 rounded;
+}
+
+.schoolFilterSelected {
+  @apply px-2 border text-sm font-medium bg-gray-100 text-gray-900 rounded;
+}
+
+.klassesFiltersContainer {
+  @apply grid grid-cols-3 gap-1;
+}
+
+.klassFilter {
+  @apply px-2 border font-medium text-sm opacity-75 rounded;
+}
+
+.klassFilterSelected {
+  @apply px-2 border text-sm font-medium bg-gray-100 text-gray-900 rounded;
+}

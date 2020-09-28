@@ -1,0 +1,15 @@
+.container {
+  @apply flex items-baseline;
+}
+
+.fullWidth {
+  @apply justify-between w-full;
+}
+
+.label {
+  @apply text-xs font-semibold;
+}
+
+.value {
+  @apply font-bold ml-1;
+}

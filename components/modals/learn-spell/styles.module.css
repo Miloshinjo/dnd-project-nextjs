@@ -1,0 +1,46 @@
+.container {
+}
+
+.listContainer {
+  @apply p-4;
+}
+
+.characterCard {
+  @apply cursor-pointer flex p-2 shadow rounded items-center w-full;
+}
+
+.characterCard:not(:last-child) {
+  @apply mb-2;
+}
+
+.spellLearnt {
+  @apply flex p-2 w-full flex-col items-center text-gray-900;
+}
+
+.spellLearntHeading {
+  @apply mt-2;
+}
+
+.spellLearntLink {
+  @apply px-2 border bg-gray-800 text-white rounded font-medium py-1 mt-4;
+}
+
+.spellLearntLinkFlat {
+  @apply px-2 py-1;
+}
+
+.header {
+  @apply flex justify-between bg-gray-800 text-white rounded-t p-2;
+}
+
+.headerTitle {
+  @apply text-left flex items-center;
+}
+
+.heading {
+  @apply text-sm font-semibold ml-2 capitalize;
+}
+
+.close {
+  @apply text-gray-300;
+}

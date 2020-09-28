@@ -1,0 +1,28 @@
+.description {
+  @apply text-sm text-left mb-4;
+}
+
+.description > p {
+  @apply mb-2;
+}
+
+.description ul {
+  list-style-type: disc;
+  @apply ml-4;
+}
+
+.description li {
+  @apply mb-2;
+}
+
+.description table {
+  @apply bg-white my-6 overflow-x-auto;
+}
+
+.description th {
+  @apply p-4;
+}
+
+.description td {
+  @apply p-4;
+}

@@ -1,0 +1,35 @@
+.container {
+}
+
+@screen lg {
+  .container {
+  }
+}
+
+.header {
+  @apply flex justify-between bg-gray-900 text-white rounded-t p-2;
+}
+
+.headerTitle {
+  @apply text-left flex items-center;
+}
+
+.heading {
+  @apply text-sm font-semibold ml-2;
+}
+
+.close {
+  @apply text-gray-300;
+}
+
+.formContainer {
+  @apply px-4 py-2;
+}
+
+.submitContainer {
+  @apply flex mt-2;
+}
+
+.form {
+  @apply flex flex-col text-left;
+}

@@ -1,0 +1,21 @@
+.nav {
+  @apply hidden;
+}
+
+@screen md {
+  .nav {
+    @apply flex ml-auto;
+  }
+}
+
+.navLink {
+  @apply text-white font-medium;
+}
+
+.navLink:not(:last-child) {
+  @apply mr-2;
+}
+
+.navLinkActive {
+  @apply underline;
+}

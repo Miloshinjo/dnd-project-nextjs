@@ -1,0 +1,6 @@
+mutation Dexterity($id: ID!, $dexterity: Int!) {
+  updateCharacter(character: { id: $id, dexterity: $dexterity }) {
+    id
+    dexterity
+  }
+}

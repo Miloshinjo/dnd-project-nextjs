@@ -1,0 +1,38 @@
+.abilityScores {
+  @apply flex flex-col py-2;
+}
+
+.abilityScoreContainer {
+  @apply grid;
+  grid-template-columns: min-content 30% 14% 1fr 1fr;
+}
+
+.abilityScoreContainer:not(:last-child) {
+  @apply mb-2 border-b border-gray-300 pb-1;
+}
+
+.abilityScoreIcon {
+  @apply mr-2 text-white bg-gray-800 rounded-full p-1;
+}
+
+.abilityScoreTitle {
+  @apply text-sm flex capitalize w-1/3;
+}
+
+.abilityScoreValue {
+  @apply font-bold flex justify-end;
+}
+
+.abilityScoreM {
+  @apply flex justify-end items-start font-black;
+}
+
+.abilityScoreSave {
+  @apply flex justify-end items-start font-bold;
+}
+
+.miniLabel {
+  @apply text-gray-600 font-semibold uppercase;
+  font-size: 8px;
+  padding-right: 2px;
+}

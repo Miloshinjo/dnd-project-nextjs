@@ -1,0 +1,24 @@
+mutation CreateCharacter(
+  $name: String!
+  $race: String!
+  $alignment: String!
+  $klassId: ID!
+) {
+  createCharacter(
+    character: {
+      name: $name
+      race: $race
+      alignment: $alignment
+      klassId: $klassId
+    }
+  ) {
+    id
+    name
+    race
+    alignment
+    klass {
+      id
+      name
+    }
+  }
+}

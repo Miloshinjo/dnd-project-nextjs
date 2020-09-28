@@ -1,0 +1,7 @@
+.container {
+  @apply flex flex-col h-full;
+}
+
+.header {
+  @apply grid grid-cols-3 border-b px-6 py-4;
+}

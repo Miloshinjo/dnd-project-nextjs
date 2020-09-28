@@ -1,0 +1,6 @@
+mutation HitPoints($id: ID!, $hitPoints: Int!) {
+  updateCharacter(character: { id: $id, hitPoints: $hitPoints }) {
+    id
+    hitPoints
+  }
+}

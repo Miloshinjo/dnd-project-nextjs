@@ -1,0 +1,22 @@
+.container {
+}
+
+.heading {
+  @apply text-center text-sm font-medium text-gray-600;
+}
+
+.saveCountersContainer {
+  @apply grid grid-cols-2;
+}
+
+.saveCounterContainer {
+  @apply inline-flex flex-col items-center;
+}
+
+.saveCounts {
+  @apply flex;
+}
+
+.saveCounterTitle {
+  @apply text-sm font-medium mb-1;
+}

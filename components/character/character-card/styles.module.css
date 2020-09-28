@@ -1,0 +1,41 @@
+.container {
+  @apply cursor-pointer flex p-2 items-center bg-white my-2 rounded;
+}
+
+@screen md {
+  .container {
+    @apply shadow-lg p-4 mr-2;
+  }
+
+  .container:hover {
+    @apply shadow-xl transition duration-200;
+  }
+}
+
+.levelContainer {
+  @apply flex flex-col items-center px-4;
+  display: none;
+}
+
+.levelValue {
+  @apply text-lg font-bold;
+}
+.levelLabel {
+  @apply text-xs opacity-50 font-medium;
+}
+
+.klassLogoContainer {
+  @apply w-10 h-10 rounded-full flex p-2 bg-gray-800 shadow-inner;
+}
+
+.infoContainer {
+  @apply flex flex-col pr-4 pl-4;
+}
+
+.name {
+  @apply font-bold text-xl;
+}
+
+.raceKlass {
+  @apply opacity-50 text-xs;
+}

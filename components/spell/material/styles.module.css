@@ -1,0 +1,7 @@
+.container {
+  @apply text-xs text-left flex flex-col py-2 border-t border-b w-full;
+}
+
+.title {
+  @apply opacity-50;
+}

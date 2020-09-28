@@ -1,0 +1,295 @@
+[
+  {
+    "name": "Barbarian",
+    "description": "A fierce warrior of primitive background who can enter a battle rage.",
+    "hitDie": "d12",
+    "hitPointsAt1st": "12 + Constitution modifier",
+    "primaryAbility": ["strength"],
+    "savingThrows": ["strength", "constitution"],
+    "armor": ["light", "medium", "shields"],
+    "weapons": ["simple", "martial"],
+    "skills": [
+      "animal handling",
+      "athletics",
+      "intimidation",
+      "nature",
+      "perception",
+      "survival"
+    ],
+    "proficientSkillsAt1st": 2
+  },
+  {
+    "name": "Bard",
+    "description": "An inspiring magician whose power echoes the music of creation.",
+    "hitDie": "d8",
+    "hitPointsAt1st": "8 + Constitution modifier",
+    "primaryAbility": ["charisma"],
+    "savingThrows": ["dexterity", "charisma"],
+    "armor": ["light"],
+    "weapons": [
+      "simple",
+      "hand crossbows",
+      "longswords",
+      "rapiers",
+      "shortswords"
+    ],
+    "tools": "Three musical instruments of choice",
+    "skills": [
+      "athletics",
+      "acrobatics",
+      "sleight of hand",
+      "stealth",
+      "arcana",
+      "history",
+      "investigation",
+      "nature",
+      "religion",
+      "animal handling",
+      "insight",
+      "medicine",
+      "perception",
+      "survival",
+      "deception",
+      "intimidation",
+      "performance",
+      "persuasion"
+    ],
+    "proficientSkillsAt1st": 3,
+    "spellCastingModifier": "charisma"
+  },
+  {
+    "name": "Cleric",
+    "description": "A priestly champion who wields diving magic in service of a higher power.",
+    "hitDie": "d8",
+    "hitPointsAt1st": "8 + Constitution modifier",
+    "primaryAbility": ["wisdom"],
+    "savingThrows": ["wisdom", "charisma"],
+    "armor": ["light", "medium", "shields"],
+    "weapons": ["simple"],
+    "skills": ["history", "religion", "insight", "medicine", "persuasion"],
+    "proficientSkillsAt1st": 2,
+    "spellCastingModifier": "wisdom"
+  },
+  {
+    "name": "Druid",
+    "description": "A priest of the Old Faith, wielding the powers of nature and adopting animal forms.",
+    "hitDie": "d8",
+    "hitPointsAt1st": "8 + Constitution modifier",
+    "primaryAbility": ["wisdom"],
+    "savingThrows": ["intelligence", "wisdom"],
+    "armor": ["light", "medium", "shields"],
+    "weapons": [
+      "clubs",
+      "daggers",
+      "darts",
+      "javelins",
+      "maces",
+      "quarterstaffs",
+      "scimitars",
+      "sickles",
+      "slings",
+      "spears"
+    ],
+    "tools": "Herbalism kit",
+    "skills": [
+      "arcana",
+      "animal handling",
+      "insight",
+      "medicine",
+      "nature",
+      "perception",
+      "religion",
+      "survival"
+    ],
+    "proficientSkillsAt1st": 2,
+    "spellCastingModifier": "wisdom"
+  },
+  {
+    "name": "Fighter",
+    "description": "A master of martial combat, skilled with variety of weapons and armor.",
+    "hitDie": "d10",
+    "hitPointsAt1st": "10 + Constitution modifier",
+    "primaryAbility": ["strength", "dexterity"],
+    "savingThrows": ["strength", "constitution"],
+    "armor": ["all armor", "shields"],
+    "weapons": ["simple", "martial"],
+    "tools": "Herbalism kit",
+    "skills": [
+      "acrobatics",
+      "athletics",
+      "animal handling",
+      "history",
+      "insight",
+      "intimidation",
+      "perception",
+      "survival"
+    ],
+    "proficientSkillsAt1st": 2
+  },
+  {
+    "name": "Monk",
+    "description": "A master of martial arts, harnessing the power of the body in pursuit of physical and spiritual perfection.",
+    "hitDie": "d8",
+    "hitPointsAt1st": "8 + Constitution modifier",
+    "primaryAbility": ["dexterity", "wisdom"],
+    "savingThrows": ["strength", "dexterity"],
+    "armor": ["none"],
+    "weapons": ["simple", "shortswords"],
+    "tools": "One type of artisan tools or one musical instrument",
+    "skills": [
+      "acrobatics",
+      "athletics",
+      "history",
+      "insight",
+      "religion",
+      "stealth"
+    ],
+    "proficientSkillsAt1st": 2
+  },
+  {
+    "name": "Paladin",
+    "description": "A holy warrior bound to a sacred oath.",
+    "hitDie": "d10",
+    "hitPointsAt1st": "10 + Constitution modifier",
+    "primaryAbility": ["strength", "charisma"],
+    "savingThrows": ["wisdom", "charisma"],
+    "armor": ["all armor", "shields"],
+    "weapons": ["simple", "martial"],
+    "skills": [
+      "athletics",
+      "insight",
+      "intimidation",
+      "medicine",
+      "persuasion",
+      "religion"
+    ],
+    "proficientSkillsAt1st": 2,
+    "spellCastingModifier": "charisma"
+  },
+  {
+    "name": "Ranger",
+    "description": "A warrior who combats threats on the edges of civilization.",
+    "hitDie": "d10",
+    "hitPointsAt1st": "10 + Constitution modifier",
+    "primaryAbility": ["dexterity", "wisdom"],
+    "savingThrows": ["strength", "dexterity"],
+    "armor": ["light", "medium", "shields"],
+    "weapons": ["simple", "martial"],
+    "skills": [
+      "animal handling",
+      "athletics",
+      "insight",
+      "investigation",
+      "nature",
+      "perception",
+      "stealth",
+      "survival"
+    ],
+    "proficientSkillsAt1st": 3,
+    "spellCastingModifier": "wisdom"
+  },
+  {
+    "name": "Rogue",
+    "description": "A scoundrel who uses stealth and trickery to overcome obstacles and enemies.",
+    "hitDie": "d8",
+    "hitPointsAt1st": "8 + Constitution modifier",
+    "primaryAbility": ["dexterity"],
+    "savingThrows": ["dexterity", "intelligence"],
+    "armor": ["light"],
+    "weapons": [
+      "simple",
+      "hand crossbows",
+      "longswords",
+      "rapiers",
+      "shortswords"
+    ],
+    "tools": "Thieves' tools",
+    "skills": [
+      "acrobatics",
+      "athletics",
+      "deception",
+      "insight",
+      "intimidation",
+      "investigation",
+      "perception",
+      "performance",
+      "persuasion",
+      "sleight of hand",
+      "stealth"
+    ],
+    "proficientSkillsAt1st": 4
+  },
+  {
+    "name": "Sorcerer",
+    "description": "A spellcaster who draws on inherent magic from a gift or bloodline.",
+    "hitDie": "d6",
+    "hitPointsAt1st": "6 + Constitution modifier",
+    "primaryAbility": ["charisma"],
+    "savingThrows": ["constitution", "charisma"],
+    "armor": ["none"],
+    "weapons": [
+      "daggers",
+      "darts",
+      "slings",
+      "quarterstaffs",
+      "light crossbows"
+    ],
+    "skills": [
+      "arcana",
+      "deception",
+      "insight",
+      "intimidation",
+      "persuasion",
+      "religion"
+    ],
+    "proficientSkillsAt1st": 2,
+    "spellCastingModifier": "charisma"
+  },
+  {
+    "name": "Warlock",
+    "description": "A wielder of magic that is derived from a bargain with an extraplanetar entity.",
+    "hitDie": "d10",
+    "hitPointsAt1st": "8 + Constitution modifier",
+    "primaryAbility": ["charisma"],
+    "savingThrows": ["wisdom", "charisma"],
+    "armor": ["light"],
+    "weapons": ["simple"],
+    "skills": [
+      "arcana",
+      "deception",
+      "history",
+      "intimidation",
+      "investigation",
+      "nature",
+      "religion"
+    ],
+    "proficientSkillsAt1st": 2,
+    "spellCastingModifier": "charisma"
+  },
+  {
+    "name": "Wizard",
+    "description": "A scholarly magic-user capable of manipulating the structures of reality.",
+    "hitDie": "d6",
+    "hitPointsAt1st": "6 + Constitution modifier",
+    "primaryAbility": ["intelligence"],
+    "savingThrows": ["intelligence", "wisdom"],
+    "armor": ["none"],
+    "weapons": [
+      "daggers",
+      "darts",
+      "slings",
+      "quarterstaffs",
+      "light crossbows"
+    ],
+    "skills": [
+      "arcana",
+      "history",
+      "insight",
+      "investigation",
+      "medicine",
+      "religion"
+    ],
+    "proficientSkillsAt1st": 2,
+    "spellCastingModifier": "intelligence"
+  }
+]

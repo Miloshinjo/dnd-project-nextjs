@@ -1,0 +1,23 @@
+.container {
+  @apply grid grid-cols-3 my-4 gap-4;
+}
+
+.spellInfo {
+  @apply flex flex-col items-start;
+}
+
+.spellInfoLabel {
+  @apply text-xs opacity-50;
+}
+
+.spellInfoValueComponents {
+  @apply flex;
+}
+
+.spellInfoComponentsIcon {
+  @apply mr-2 text-gray-800 text-lg flex justify-center;
+}
+
+.spellInfoValue {
+  @apply text-sm font-semibold whitespace-no-wrap;
+}

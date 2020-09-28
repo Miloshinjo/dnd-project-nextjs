@@ -1,0 +1,10 @@
+mutation ForgetSpell($id: ID!, $spellId: ID!) {
+  forgetSpell(character: { id: $id, spellId: $spellId }) {
+    id
+    name
+    spells {
+      id
+      name
+    }
+  }
+}

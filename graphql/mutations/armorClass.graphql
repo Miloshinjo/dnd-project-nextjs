@@ -1,0 +1,6 @@
+mutation ArmorClass($id: ID!, $armorClass: Int!) {
+  updateCharacter(character: { id: $id, armorClass: $armorClass }) {
+    id
+    armorClass
+  }
+}

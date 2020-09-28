@@ -1,0 +1,6 @@
+mutation Level($id: ID!, $level: Int!) {
+  updateCharacter(character: { id: $id, level: $level }) {
+    id
+    level
+  }
+}

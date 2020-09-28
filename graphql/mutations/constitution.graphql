@@ -1,0 +1,6 @@
+mutation Constitution($id: ID!, $constitution: Int!) {
+  updateCharacter(character: { id: $id, constitution: $constitution }) {
+    id
+    constitution
+  }
+}

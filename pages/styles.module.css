@@ -1,0 +1,55 @@
+.container {
+  @apply flex flex-col flex-1;
+}
+
+.header {
+  @apply flex p-4 items-center justify-between;
+}
+
+.contentContainer {
+  @apply p-6 flex flex-col justify-center h-full pt-32;
+}
+
+.title {
+  @apply uppercase text-lg;
+}
+
+.titleMain {
+  @apply capitalize text-3xl font-black;
+}
+
+.title2 {
+  @apply text-sm uppercase font-semibold mb-2;
+}
+
+.list {
+  @apply flex flex-col;
+}
+
+.listItem {
+  @apply text-sm;
+}
+
+.paragraph {
+  @apply mt-2;
+}
+
+.aboutParagraph {
+  @apply mt-2 text-sm;
+}
+
+.section {
+  @apply py-8 border-b;
+}
+
+.logo {
+  @apply h-10 w-10 mb-4;
+}
+
+.loginLink {
+  @apply px-2 py-1 border-gray-900 border font-semibold rounded-md;
+}
+
+.signupLink {
+  @apply underline;
+}

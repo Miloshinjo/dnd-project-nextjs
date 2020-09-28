@@ -1,0 +1,6 @@
+mutation Wisdom($id: ID!, $wisdom: Int!) {
+  updateCharacter(character: { id: $id, wisdom: $wisdom }) {
+    id
+    wisdom
+  }
+}

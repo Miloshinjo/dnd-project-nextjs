@@ -1,0 +1,21 @@
+.container {
+  @apply flex justify-center items-center px-4;
+}
+
+.input {
+  @apply font-bold text-2xl w-16 px-1 shadow-inner;
+}
+
+.input:focus {
+  @apply outline-none;
+}
+
+.input::placeholder {
+  @apply text-gray-500;
+}
+
+@screen sm {
+  .input {
+    @apply text-sm leading-5;
+  }
+}

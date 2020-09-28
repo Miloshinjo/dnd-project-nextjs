@@ -1,0 +1,31 @@
+.container {
+  @apply flex flex-col p-6 justify-center;
+}
+
+.skillContainer {
+  @apply flex items-center mb-1 px-2 justify-between border border-transparent;
+}
+
+.skillContainerProficient {
+  @apply flex items-center mb-1 px-2 justify-between border;
+}
+
+.ability {
+  @apply text-xs font-medium;
+}
+
+.infoWrapperProficient {
+  @apply flex items-center bg-red-400;
+}
+
+.infoWrapper {
+  @apply flex items-center;
+}
+
+.name {
+  @apply mr-4 font-semibold text-sm;
+}
+
+.value {
+  @apply font-semibold;
+}
