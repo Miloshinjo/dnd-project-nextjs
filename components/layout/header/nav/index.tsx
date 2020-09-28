@@ -2,19 +2,15 @@ import Link from 'next/link'
 import { destroyCookie } from 'nookies'
 import { useRouter } from 'next/router'
 
-import { useClient } from '../../../../context/urqlClient'
-
 import styles from './styles.module.css'
 
 const Nav: React.FC = () => {
   const router = useRouter()
 
-  const { resetClient } = useClient()
-
   const signOut = () => {
     destroyCookie(null, 'jwt', { path: '/' })
     router.push('/')
-    resetClient()
+    router.reload()
   }
 
   return (

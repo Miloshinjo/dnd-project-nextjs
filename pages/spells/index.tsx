@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, useCallback, useReducer } from 'react'
-import makeClient from '../../utils/makeUrqlClient'
+import { client } from '../_app'
 import Link from 'next/link'
 
 import { Spell } from '../../generated/graphql'
@@ -24,8 +24,6 @@ export const SpellsQuery = `
 `
 
 export const getSpells = async () => {
-  const client = makeClient()
-
   const result = await client.query(SpellsQuery).toPromise()
 
   if (!result || result.error) {

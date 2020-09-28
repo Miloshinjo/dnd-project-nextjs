@@ -2,7 +2,7 @@ import { NextPage } from 'next'
 import { GiQuillInk } from 'react-icons/gi'
 
 import { getSpells } from '../index'
-import makeClient from '../../../utils/makeUrqlClient'
+import { client } from '../../../pages/_app'
 import { Spell } from '../../../generated/graphql'
 import AppLayout from '../../../components/layouts/app-layout'
 import { useModal } from '../../../context/modal'
@@ -103,8 +103,6 @@ const SpellPage: NextPage<Props> = ({ spell }) => {
 }
 
 export const getSpell = async (id: Spell['id']) => {
-  const client = makeClient()
-
   const result = await client.query(SpellQuery, { id }).toPromise()
 
   if (!result || result.error) {

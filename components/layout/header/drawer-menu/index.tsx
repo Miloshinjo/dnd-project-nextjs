@@ -5,7 +5,6 @@ import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
 
 import { useMeQuery } from '../../../../generated/graphql'
-import { useClient } from '../../../../context/urqlClient'
 
 import { drawerVariants } from './animaiton'
 import styles from './styles.module.css'
@@ -13,7 +12,6 @@ import styles from './styles.module.css'
 const DrawerMenu: React.FC = () => {
   const router = useRouter()
   const [isOpen, setIsOpen] = useState<boolean>(false)
-  const { resetClient } = useClient()
 
   const closeDrawer = () => {
     setIsOpen(false)
@@ -22,7 +20,7 @@ const DrawerMenu: React.FC = () => {
   const signOut = () => {
     destroyCookie(null, 'jwt', { path: '/' })
     router.push('/')
-    resetClient()
+    router.reload()
   }
 
   const [me] = useMeQuery()

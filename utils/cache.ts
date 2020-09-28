@@ -4,7 +4,6 @@ import {
   CharacterDocument,
   DeleteCharacterMutationVariables,
   SkillsDocument,
-  SpellDocument,
 } from '../generated/graphql'
 
 function betterUpdateQuery<Result, Query>(
