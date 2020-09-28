@@ -7,7 +7,7 @@ const isDev = process.env.NODE_ENV !== 'production'
 
 const url = isDev
   ? 'http://localhost:3000/api/graphql'
-  : 'https://dnd-armory.herokuapp.com/api/graphql'
+  : 'https://dnd-project-nextjs.vercel.app/api/graphql'
 
 import '../styles/index.css'
 
