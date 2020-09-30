@@ -8,8 +8,6 @@ const permissions = shield({
     '*': allow,
   },
   Mutation: {
-    login: not(rules.isAuthenticatedUser),
-    signup: not(rules.isAuthenticatedUser),
     createCharacter: rules.isAuthenticatedUser,
     updateCharacter: rules.isCharacterOwner,
     deleteCharacter: rules.isCharacterOwner,

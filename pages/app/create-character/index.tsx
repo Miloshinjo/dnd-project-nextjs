@@ -1,4 +1,6 @@
-import { GiQuill } from 'react-icons/gi'
+import { useSession } from 'next-auth/client'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
 import makeClient from '../../../utils/makeUrqlClient'
 import AppLayout from '../../../components/layouts/app-layout'
@@ -35,6 +37,19 @@ type Props = {
 }
 
 const CreateCharacter: React.FC<Props> = ({ klasses = [] }) => {
+  const [session, loading] = useSession()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (!session && !loading) {
+      router.push('/')
+    }
+  }, [session, loading])
+
+  if (loading) return null
+
+  if (!loading && !session) return <p>Logging you out...</p>
+
   return (
     <AppLayout title="Character Creation">
       <SubHeader text1="Create your">

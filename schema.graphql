@@ -2,11 +2,6 @@
 ### Do not make changes to this file directly
 
 
-type AuthPayload {
-  token: String!
-  user: User!
-}
-
 type Character {
   alignment: String!
   armorClass: Int!
@@ -15,11 +10,11 @@ type Character {
   dexterity: Int!
   gold: Int
   hitPoints: Int!
-  id: String!
+  id: Int!
   inspiration: Boolean!
   intelligence: Int!
   klass: Klass!
-  klassId: String!
+  klassId: Int!
   level: Int!
   maxHitPoints: Int!
   name: String!
@@ -31,9 +26,9 @@ type Character {
   spellSlots: String
   strength: Int!
   subclass: SubClass
-  subclassId: String
+  subclassId: Int
   user: User!
-  userId: String!
+  userId: Int!
   wisdom: Int!
 }
 
@@ -84,7 +79,7 @@ input CharacterUpdateInput {
 }
 
 input CharacterWhereUniqueInput {
-  id: String
+  id: Int
 }
 
 type Klass {
@@ -92,7 +87,7 @@ type Klass {
   description: String!
   hitDie: String!
   hitPointsAt1st: String!
-  id: String!
+  id: Int!
   name: String!
   primaryAbility: [String!]!
   proficientSkillsAt1st: Int!
@@ -110,9 +105,7 @@ type Mutation {
   deleteCharacter(character: CharacterDeleteInput): Character
   forgetSpell(character: CharacterEditSpellInput): Character!
   learnSpell(character: CharacterEditSpellInput): Character!
-  login(email: String!, password: String!): AuthPayload!
   prepareSpell(character: CharacterEditSpellInput): Character!
-  signup(user: UserCreateInput): AuthPayload!
   unprepareSpell(character: CharacterEditSpellInput): Character!
   updateCharacter(character: CharacterUpdateInput): Character!
 }
@@ -131,12 +124,12 @@ type Query {
 
 type Skill {
   ability: String!
-  id: String!
+  id: Int!
   name: String!
 }
 
 input SkillWhereUniqueInput {
-  id: String
+  id: Int
   name: String
 }
 
@@ -149,7 +142,7 @@ type Spell {
   damageEffect: String!
   description: String!
   duration: String!
-  id: String!
+  id: Int!
   klasses: String!
   level: Int!
   material: String
@@ -160,35 +153,28 @@ type Spell {
 }
 
 input SpellWhereUniqueInput {
-  id: String
+  id: Int
   name: String
 }
 
 type SubClass {
   description: String!
-  id: String!
+  id: Int!
   klass: Klass!
-  klassId: String!
+  klassId: Int!
   name: String!
   source: String!
   spellCastingModifier: String
 }
 
 input SubClassWhereUniqueInput {
-  id: String
+  id: Int
   name: String
 }
 
 type User {
   characters(after: CharacterWhereUniqueInput, before: CharacterWhereUniqueInput, first: Int, last: Int): [Character!]!
-  email: String!
-  id: String!
-  username: String!
-}
-
-input UserCreateInput {
-  email: String!
-  password: String!
-  passwordConfirm: String!
-  username: String!
+  email: String
+  id: Int!
+  name: String
 }

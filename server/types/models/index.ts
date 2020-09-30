@@ -1,4 +1,3 @@
-export * from './AuthPayload'
 export * from './User'
 export * from './Spell'
 export * from './Klass'

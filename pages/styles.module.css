@@ -1,13 +1,9 @@
 .container {
-  @apply flex flex-col flex-1;
-}
-
-.header {
-  @apply flex p-4 items-center justify-between;
+  @apply flex flex-col flex-1 items-center justify-center h-screen;
 }
 
 .contentContainer {
-  @apply p-6 flex flex-col justify-center h-full pt-32;
+  @apply p-6 flex flex-col justify-center h-full;
 }
 
 .title {
@@ -19,37 +15,20 @@
 }
 
 .title2 {
-  @apply text-sm uppercase font-semibold mb-2;
+  @apply text-xs uppercase font-semibold mb-2;
 }
 
-.list {
-  @apply flex flex-col;
+.loginButton {
+  @apply px-4 py-2 font-semibold rounded-md mt-6 bg-red-900 text-white self-start;
 }
 
-.listItem {
-  @apply text-sm;
-}
+@screen md {
+  .container {
+    @apply items-center justify-center h-screen bg-gray-900;
+  }
 
-.paragraph {
-  @apply mt-2;
-}
-
-.aboutParagraph {
-  @apply mt-2 text-sm;
-}
-
-.section {
-  @apply py-8 border-b;
-}
-
-.logo {
-  @apply h-10 w-10 mb-4;
-}
-
-.loginLink {
-  @apply px-2 py-1 border-gray-900 border font-semibold rounded-md;
-}
-
-.signupLink {
-  @apply underline;
+  .contentContainer {
+    @apply w-1/3 shadow-lg pt-0 p-12 bg-white rounded-lg;
+    height: min-content;
+  }
 }

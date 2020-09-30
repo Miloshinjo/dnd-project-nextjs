@@ -2,9 +2,6 @@
   @apply mb-2 text-sm font-medium text-gray-600 whitespace-no-wrap;
 }
 
-@screen md {
-}
-
 .header {
   @apply flex justify-between pb-2 mb-4;
 }

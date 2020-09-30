@@ -130,7 +130,7 @@ export const getStaticPaths = async () => {
 
   return {
     paths: spells.map(({ id }) => ({
-      params: { spellId: id },
+      params: { spellId: `${id}` },
     })),
     fallback: true,
   }

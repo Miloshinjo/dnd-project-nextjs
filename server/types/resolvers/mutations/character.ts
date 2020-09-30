@@ -1,5 +1,6 @@
 import { mutationField } from '@nexus/schema'
 
+import { getUserId } from '../../../utils/helpers'
 import errors from '../../../utils/errors'
 import { handleError } from '../../../utils/helpers'
 
@@ -8,10 +9,12 @@ export const createCharacter = mutationField('createCharacter', {
   args: {
     character: 'CharacterCreateInput',
   },
-  async resolve(_parent, { character }, { prisma, userId }) {
+  async resolve(_parent, { character }, { prisma, req }) {
     if (!character) {
       return handleError(errors.serverError)
     }
+
+    const userId = await getUserId(req)
 
     try {
       const { klassId, ...restCharacter } = character
@@ -20,7 +23,7 @@ export const createCharacter = mutationField('createCharacter', {
         data: {
           ...restCharacter,
           user: { connect: { id: userId } },
-          klass: { connect: { id: klassId } },
+          klass: { connect: { id: Number(klassId) } },
         },
       })
 
@@ -38,37 +41,35 @@ export const updateCharacter = mutationField('updateCharacter', {
     character: 'CharacterUpdateInput',
   },
   async resolve(_parent, { character }, { prisma }) {
+    console.log({ character })
+
     if (!character) {
       return handleError(errors.serverError)
     }
 
     try {
-      const { klassId, skillId, ...restCharacter } = character
-
-      if (!character) {
-        return handleError(errors.serverError)
-      }
+      const { klassId, skillId, id, ...restCharacter } = character
 
       if (skillId) {
         const skills = await prisma.character
           .findOne({
             where: {
-              id: character.id,
+              id: Number(id),
             },
           })
           .skills()
 
-        const targetSkill = skills.find((skill) => skill.id === skillId)
+        const targetSkill = skills.find((skill) => skill.id === Number(skillId))
 
         const action = targetSkill ? 'disconnect' : 'connect'
 
         const updatedCharacter = await prisma.character.update({
           where: {
-            id: character.id,
+            id: Number(id),
           },
           data: {
             ...restCharacter,
-            skills: { [action]: { id: skillId } },
+            skills: { [action]: { id: Number(skillId) } },
           },
         })
 
@@ -78,11 +79,11 @@ export const updateCharacter = mutationField('updateCharacter', {
       if (klassId) {
         const updatedCharacter = await prisma.character.update({
           where: {
-            id: character.id,
+            id: Number(id),
           },
           data: {
             ...restCharacter,
-            klass: { connect: { id: klassId } },
+            klass: { connect: { id: Number(klassId) } },
           },
         })
 
@@ -91,7 +92,7 @@ export const updateCharacter = mutationField('updateCharacter', {
 
       const updatedCharacter = await prisma.character.update({
         where: {
-          id: character.id,
+          id: Number(id),
         },
         data: restCharacter,
       })
@@ -117,7 +118,7 @@ export const deleteCharacter = mutationField('deleteCharacter', {
 
     return prisma.character.delete({
       where: {
-        id: character.id,
+        id: Number(character.id),
       },
     })
   },
@@ -136,10 +137,10 @@ export const learnSpell = mutationField('learnSpell', {
     try {
       const updatedCharacter = await prisma.character.update({
         where: {
-          id: character.id,
+          id: Number(character.id),
         },
         data: {
-          spells: { connect: { id: character.spellId } },
+          spells: { connect: { id: Number(character.spellId) } },
         },
       })
 
@@ -164,10 +165,10 @@ export const forgetSpell = mutationField('forgetSpell', {
     try {
       const updatedCharacter = await prisma.character.update({
         where: {
-          id: character.id,
+          id: Number(character.id),
         },
         data: {
-          spells: { disconnect: { id: character.spellId } },
+          spells: { disconnect: { id: Number(character.spellId) } },
         },
       })
 
@@ -192,10 +193,10 @@ export const prepareSpell = mutationField('prepareSpell', {
     try {
       const updatedCharacter = await prisma.character.update({
         where: {
-          id: character.id,
+          id: Number(character.id),
         },
         data: {
-          preparedSpells: { connect: { id: character.spellId } },
+          preparedSpells: { connect: { id: Number(character.spellId) } },
         },
       })
 
@@ -220,10 +221,10 @@ export const unprepareSpell = mutationField('unprepareSpell', {
     try {
       const updatedCharacter = await prisma.character.update({
         where: {
-          id: character.id,
+          id: Number(character.id),
         },
         data: {
-          preparedSpells: { disconnect: { id: character.spellId } },
+          preparedSpells: { disconnect: { id: Number(character.spellId) } },
         },
       })
 
@@ -248,10 +249,10 @@ export const addSubclass = mutationField('addSubclass', {
     try {
       const updatedCharacter = await prisma.character.update({
         where: {
-          id: character.id,
+          id: Number(character.id),
         },
         data: {
-          subclass: { connect: { id: character.subclassId } },
+          subclass: { connect: { id: Number(character.subclassId) } },
         },
       })
 

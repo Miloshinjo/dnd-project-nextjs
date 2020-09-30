@@ -29,8 +29,14 @@ const alignments: Array<Alignment> = [
 type FormValues = {
   name: string
   race: string
-  klassId: string
-  alignment: Alignment
+  klassId: {
+    label: string
+    value: string
+  }
+  alignment: {
+    label: string
+    value: string
+  }
 }
 
 type Props = {
@@ -51,9 +57,8 @@ const CreateCharacterForm: React.FC<Props> = ({ klasses }) => {
   const onSubmit = ({ name, race, klassId, alignment }: FormValues) => {
     setServerError('')
 
-    // TODO: fix this for the love of god :)
-    const klassIdReal = (klassId as any).value
-    const alignmentReal = (alignment as any).value
+    const klassIdReal = klassId.value
+    const alignmentReal = alignment.value
 
     createCharacter({
       name,

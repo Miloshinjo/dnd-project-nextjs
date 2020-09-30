@@ -44,7 +44,7 @@ export const spell = queryField('spell', {
   resolve: async (parent, { id }, { prisma }) => {
     try {
       const spell = await prisma.spell.findOne({
-        where: { id },
+        where: { id: Number(id) },
       })
       return spell
     } catch (err) {

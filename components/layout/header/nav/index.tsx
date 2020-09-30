@@ -1,17 +1,12 @@
 import Link from 'next/link'
 import { destroyCookie } from 'nookies'
 import { useRouter } from 'next/router'
+import { signOut } from 'next-auth/client'
 
 import styles from './styles.module.css'
 
 const Nav: React.FC = () => {
   const router = useRouter()
-
-  const signOut = () => {
-    destroyCookie(null, 'jwt', { path: '/' })
-    router.push('/')
-    router.reload()
-  }
 
   return (
     <nav className={styles.nav}>
@@ -33,7 +28,12 @@ const Nav: React.FC = () => {
           Spells
         </a>
       </Link>
-      <button className={styles.navLink} onClick={signOut}>
+      <button
+        className={styles.navLink}
+        onClick={() => {
+          signOut()
+        }}
+      >
         Sign out
       </button>
     </nav>

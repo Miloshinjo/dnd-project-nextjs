@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import Link from 'next/link'
-import { destroyCookie } from 'nookies'
 import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
+import { signOut } from 'next-auth/client'
 
 import { useMeQuery } from '../../../../generated/graphql'
 
@@ -15,12 +15,6 @@ const DrawerMenu: React.FC = () => {
 
   const closeDrawer = () => {
     setIsOpen(false)
-  }
-
-  const signOut = () => {
-    destroyCookie(null, 'jwt', { path: '/' })
-    router.push('/')
-    router.reload()
   }
 
   const [me] = useMeQuery()
@@ -52,7 +46,7 @@ const DrawerMenu: React.FC = () => {
           </button>
         </div>
         <div className={styles.contentContainer}>
-          <div className={styles.username}>{me.data?.me?.username}</div>
+          <div className={styles.username}>{me.data?.me?.name}</div>
           <Link href="/app">
             <a
               className={`${styles.link} ${
@@ -74,7 +68,12 @@ const DrawerMenu: React.FC = () => {
               </a>
             </Link>
           </div>
-          <button className={styles.link} onClick={signOut}>
+          <button
+            className={styles.link}
+            onClick={() => {
+              signOut()
+            }}
+          >
             Sign out
           </button>
         </div>

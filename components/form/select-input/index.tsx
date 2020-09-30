@@ -58,6 +58,7 @@ const SelectInput: React.FC<Props> = ({
           name={name}
           control={control}
           rules={{ required: true }}
+          defaultValue={null}
           value={value}
           onBlur={(event) => event.preventDefault()}
         />

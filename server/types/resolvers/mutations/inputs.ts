@@ -1,23 +1,5 @@
 import { inputObjectType } from '@nexus/schema'
 
-export const UserInputType = inputObjectType({
-  name: 'UserCreateInput',
-  definition: (t) => {
-    t.string('email', {
-      required: true,
-    })
-    t.string('password', {
-      required: true,
-    })
-    t.string('passwordConfirm', {
-      required: true,
-    })
-    t.string('username', {
-      required: true,
-    })
-  },
-})
-
 export const CharacterInputType = inputObjectType({
   name: 'CharacterCreateInput',
   definition: (t) => {

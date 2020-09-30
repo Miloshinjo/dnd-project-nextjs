@@ -12,13 +12,6 @@ export type Scalars = {
   Float: number;
 };
 
-export type UserCreateInput = {
-  email: Scalars['String'];
-  password: Scalars['String'];
-  passwordConfirm: Scalars['String'];
-  username: Scalars['String'];
-};
-
 export type CharacterCreateInput = {
   name: Scalars['String'];
   klassId: Scalars['ID'];
@@ -73,9 +66,9 @@ export type AuthPayload = {
 
 export type User = {
   __typename?: 'User';
-  id: Scalars['String'];
-  email: Scalars['String'];
-  username: Scalars['String'];
+  id: Scalars['Int'];
+  name?: Maybe<Scalars['String']>;
+  email?: Maybe<Scalars['String']>;
   characters: Array<Character>;
 };
 
@@ -89,7 +82,7 @@ export type UserCharactersArgs = {
 
 export type Spell = {
   __typename?: 'Spell';
-  id: Scalars['String'];
+  id: Scalars['Int'];
   attackSave: Scalars['String'];
   castingTime: Scalars['String'];
   klasses: Scalars['String'];
@@ -117,7 +110,7 @@ export type SpellCharactersArgs = {
 
 export type Klass = {
   __typename?: 'Klass';
-  id: Scalars['String'];
+  id: Scalars['Int'];
   name: Scalars['String'];
   description: Scalars['String'];
   hitDie: Scalars['String'];
@@ -143,29 +136,29 @@ export type KlassSubClassesArgs = {
 
 export type SubClass = {
   __typename?: 'SubClass';
-  id: Scalars['String'];
+  id: Scalars['Int'];
   name: Scalars['String'];
   description: Scalars['String'];
   spellCastingModifier?: Maybe<Scalars['String']>;
-  klassId: Scalars['String'];
+  klassId: Scalars['Int'];
   klass: Klass;
   source: Scalars['String'];
 };
 
 export type Skill = {
   __typename?: 'Skill';
-  id: Scalars['String'];
+  id: Scalars['Int'];
   name: Scalars['String'];
   ability: Scalars['String'];
 };
 
 export type Character = {
   __typename?: 'Character';
-  id: Scalars['String'];
+  id: Scalars['Int'];
   name: Scalars['String'];
   level: Scalars['Int'];
   race: Scalars['String'];
-  klassId: Scalars['String'];
+  klassId: Scalars['Int'];
   klass: Klass;
   alignment: Scalars['String'];
   armorClass: Scalars['Int'];
@@ -179,13 +172,13 @@ export type Character = {
   intelligence: Scalars['Int'];
   wisdom: Scalars['Int'];
   charisma: Scalars['Int'];
-  userId: Scalars['String'];
+  userId: Scalars['Int'];
   user: User;
   spells: Array<Spell>;
   preparedSpells: Array<Spell>;
   skills: Array<Skill>;
   subclass?: Maybe<SubClass>;
-  subclassId?: Maybe<Scalars['String']>;
+  subclassId?: Maybe<Scalars['Int']>;
   spellSlots?: Maybe<Scalars['String']>;
   speed: Scalars['Int'];
 };
@@ -215,21 +208,21 @@ export type CharacterSkillsArgs = {
 };
 
 export type CharacterWhereUniqueInput = {
-  id?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['Int']>;
 };
 
 export type SubClassWhereUniqueInput = {
-  id?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
 };
 
 export type SpellWhereUniqueInput = {
-  id?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
 };
 
 export type SkillWhereUniqueInput = {
-  id?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
 };
 
@@ -273,8 +266,6 @@ export type QuerySubclassesArgs = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  signup: AuthPayload;
-  login: AuthPayload;
   createCharacter: Character;
   updateCharacter: Character;
   deleteCharacter?: Maybe<Character>;
@@ -283,17 +274,6 @@ export type Mutation = {
   prepareSpell: Character;
   unprepareSpell: Character;
   addSubclass: Character;
-};
-
-
-export type MutationSignupArgs = {
-  user?: Maybe<UserCreateInput>;
-};
-
-
-export type MutationLoginArgs = {
-  email: Scalars['String'];
-  password: Scalars['String'];
 };
 
 
@@ -521,24 +501,6 @@ export type LevelMutation = (
   ) }
 );
 
-export type LoginMutationVariables = Exact<{
-  email: Scalars['String'];
-  password: Scalars['String'];
-}>;
-
-
-export type LoginMutation = (
-  { __typename?: 'Mutation' }
-  & { login: (
-    { __typename?: 'AuthPayload' }
-    & Pick<AuthPayload, 'token'>
-    & { user: (
-      { __typename?: 'User' }
-      & Pick<User, 'username'>
-    ) }
-  ) }
-);
-
 export type MaxHitPointsMutationVariables = Exact<{
   id: Scalars['ID'];
   maxHitPoints: Scalars['Int'];
@@ -568,26 +530,6 @@ export type PrepareSpellMutation = (
       { __typename?: 'Spell' }
       & Pick<Spell, 'id' | 'name'>
     )> }
-  ) }
-);
-
-export type SignupMutationVariables = Exact<{
-  email: Scalars['String'];
-  password: Scalars['String'];
-  passwordConfirm: Scalars['String'];
-  username: Scalars['String'];
-}>;
-
-
-export type SignupMutation = (
-  { __typename?: 'Mutation' }
-  & { signup: (
-    { __typename?: 'AuthPayload' }
-    & Pick<AuthPayload, 'token'>
-    & { user: (
-      { __typename?: 'User' }
-      & Pick<User, 'username'>
-    ) }
   ) }
 );
 
@@ -740,7 +682,7 @@ export type MeQuery = (
   { __typename?: 'Query' }
   & { me: (
     { __typename?: 'User' }
-    & Pick<User, 'id' | 'email' | 'username'>
+    & Pick<User, 'id' | 'name' | 'email'>
   ) }
 );
 
@@ -956,20 +898,6 @@ export const LevelDocument = gql`
 export function useLevelMutation() {
   return Urql.useMutation<LevelMutation, LevelMutationVariables>(LevelDocument);
 };
-export const LoginDocument = gql`
-    mutation Login($email: String!, $password: String!) {
-  login(email: $email, password: $password) {
-    user {
-      username
-    }
-    token
-  }
-}
-    `;
-
-export function useLoginMutation() {
-  return Urql.useMutation<LoginMutation, LoginMutationVariables>(LoginDocument);
-};
 export const MaxHitPointsDocument = gql`
     mutation MaxHitPoints($id: ID!, $maxHitPoints: Int!) {
   updateCharacter(character: {id: $id, maxHitPoints: $maxHitPoints}) {
@@ -997,20 +925,6 @@ export const PrepareSpellDocument = gql`
 
 export function usePrepareSpellMutation() {
   return Urql.useMutation<PrepareSpellMutation, PrepareSpellMutationVariables>(PrepareSpellDocument);
-};
-export const SignupDocument = gql`
-    mutation Signup($email: String!, $password: String!, $passwordConfirm: String!, $username: String!) {
-  signup(user: {email: $email, password: $password, passwordConfirm: $passwordConfirm, username: $username}) {
-    user {
-      username
-    }
-    token
-  }
-}
-    `;
-
-export function useSignupMutation() {
-  return Urql.useMutation<SignupMutation, SignupMutationVariables>(SignupDocument);
 };
 export const SkillDocument = gql`
     mutation Skill($id: ID!, $skillId: ID!) {
@@ -1180,8 +1094,8 @@ export const MeDocument = gql`
     query Me {
   me {
     id
+    name
     email
-    username
   }
 }
     `;

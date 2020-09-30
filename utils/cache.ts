@@ -45,7 +45,7 @@ const cache = cacheExchange({
         // make this better
         const { character } = cache.readQuery({
           query: CharacterDocument,
-          variables: { id },
+          variables: { id: `${id}` },
         })
 
         const { skills } = character as any
@@ -85,7 +85,7 @@ const cache = cacheExchange({
 
       const { character } = cache.readQuery({
         query: CharacterDocument,
-        variables: { id },
+        variables: { id: `${id}` },
       })
 
       const { spells, name } = character as any
@@ -102,7 +102,7 @@ const cache = cacheExchange({
 
       const { character } = cache.readQuery({
         query: CharacterDocument,
-        variables: { id },
+        variables: { id: `${id}` },
       })
 
       const { preparedSpells, name } = character as any
@@ -119,7 +119,7 @@ const cache = cacheExchange({
 
       const { character } = cache.readQuery({
         query: CharacterDocument,
-        variables: { id },
+        variables: { id: `${id}` },
       })
 
       const { preparedSpells, name } = character as any

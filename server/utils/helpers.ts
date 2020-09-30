@@ -1,8 +1,6 @@
-import jwt from 'jsonwebtoken'
+import { getSession } from 'next-auth/client'
 
 import { ApolloError } from 'apollo-server-express'
-
-import { JWT_SECRET, tokens } from './constants'
 
 const handleError = (error: ApolloError): any => {
   // add any other logging mechanism here e.g. Sentry
@@ -10,14 +8,10 @@ const handleError = (error: ApolloError): any => {
   return error
 }
 
-const generateAccessToken = (userId: number): string => {
-  return jwt.sign(
-    { userId, type: tokens.access.name, timestamp: Date.now() },
-    JWT_SECRET as string,
-    {
-      expiresIn: tokens.access.expiry,
-    }
-  )
+const getUserId = async (req): Promise<number | undefined> => {
+  const session = await getSession({ req })
+
+  return (session?.user as any)?.id
 }
 
-export { handleError, generateAccessToken }
+export { handleError, getUserId }

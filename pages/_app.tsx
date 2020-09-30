@@ -1,5 +1,11 @@
 import { AppProps } from 'next/app'
-import { Provider, createClient, dedupExchange, fetchExchange } from 'urql'
+import {
+  Provider as UrqlProvider,
+  createClient,
+  dedupExchange,
+  fetchExchange,
+} from 'urql'
+import { Provider as SessionProvider } from 'next-auth/client'
 
 import cache from '../utils/cache'
 
@@ -13,19 +19,16 @@ import '../styles/index.css'
 
 export const client = createClient({
   url,
-  fetchOptions: () => {
-    return {
-      credentials: 'same-origin',
-    }
-  },
   exchanges: [dedupExchange, cache, fetchExchange],
 })
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Provider value={client}>
-      <Component {...pageProps} />
-    </Provider>
+    <UrqlProvider value={client}>
+      <SessionProvider session={pageProps.session}>
+        <Component {...pageProps} />
+      </SessionProvider>
+    </UrqlProvider>
   )
 }
 

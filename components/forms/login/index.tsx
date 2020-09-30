@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import Router from 'next/router'
 
-import { saveToken } from '../../../utils/token'
 import SubmitButton from '../../form/submit-button'
 import TextInput from '../../form/text-input'
 
@@ -33,7 +32,6 @@ const LoginForm: React.FC = () => {
         return
       }
 
-      saveToken(result?.data?.login?.token)
       Router.push('/app')
     })
   }

@@ -30,7 +30,7 @@ export const klass = queryField('klass', {
   resolve: async (parent, { id }, { prisma }) => {
     try {
       const klass = await prisma.klass.findOne({
-        where: { id },
+        where: { id: Number(id) },
       })
       return klass
     } catch (err) {

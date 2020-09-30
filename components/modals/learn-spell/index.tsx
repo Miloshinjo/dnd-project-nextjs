@@ -113,7 +113,10 @@ const LearnSpell: React.FC<Props> = ({ spellId }) => {
                 key={character.id}
                 type="button"
                 onClick={async () => {
-                  const result = await learnSpell({ id: character.id, spellId })
+                  const result = await learnSpell({
+                    id: `${character.id}`,
+                    spellId: `${spellId}`,
+                  })
 
                   if (result.error) {
                     console.log('An error occured')
@@ -121,7 +124,7 @@ const LearnSpell: React.FC<Props> = ({ spellId }) => {
                   }
                 }}
               >
-                <div className="w-8 h-8 rounded-full flex p-1 mr-2">
+                <div className="w-8 h-8 rounded-full flex p-1 mr-2 bg-gray-800">
                   <img
                     src={`/images/classes/${character.klass.name.toLowerCase()}.png`}
                     alt="class name"

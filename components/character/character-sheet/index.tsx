@@ -22,7 +22,7 @@ type Props = {
 }
 
 const CharacterSheet: React.FC<Props> = ({ id }) => {
-  const [characterResult] = useCharacterQuery({ variables: { id } })
+  const [characterResult] = useCharacterQuery({ variables: { id: `${id}` } })
   const [skillsResult] = useSkillsQuery()
 
   const getActiveKey = (): ActiveKey => {
@@ -34,7 +34,7 @@ const CharacterSheet: React.FC<Props> = ({ id }) => {
 
     if (!characterId || !activeKey) return 'stats'
 
-    if (id === characterId) {
+    if (id === Number(characterId)) {
       return activeKey as ActiveKey
     } else {
       return 'stats'

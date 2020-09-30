@@ -1,18 +1,20 @@
 import fs from 'fs'
 import { PrismaClient } from '@prisma/client'
 
+console.log(process.cwd())
+
 const spells = JSON.parse(
-  fs.readFileSync(`${__dirname}/../__seed__/spells.json`, 'utf-8')
+  fs.readFileSync(`${process.cwd()}/server/__seed__/spells.json`, 'utf-8'),
 )
 const klasses = JSON.parse(
-  fs.readFileSync(`${__dirname}/../__seed__/klasses.json`, 'utf-8')
+  fs.readFileSync(`${process.cwd()}/server/__seed__/klasses.json`, 'utf-8'),
 )
 
 const subclasses = JSON.parse(
-  fs.readFileSync(`${__dirname}/../__seed__/subclasses.json`, 'utf-8')
+  fs.readFileSync(`${process.cwd()}/server/__seed__/subclasses.json`, 'utf-8'),
 )
 const skills = JSON.parse(
-  fs.readFileSync(`${__dirname}/../__seed__/skills.json`, 'utf-8')
+  fs.readFileSync(`${process.cwd()}/server/__seed__/skills.json`, 'utf-8'),
 )
 
 const seedSpells = async (prisma: PrismaClient): Promise<void> => {
@@ -110,7 +112,7 @@ const updateSubclassByKlass = (
   klassName: string,
   prisma: any,
   subclass: any,
-  klasses: any
+  klasses: any,
 ) => {
   return prisma.subClass.upsert({
     create: {
