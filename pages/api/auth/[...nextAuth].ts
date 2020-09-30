@@ -10,10 +10,6 @@ const options = {
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
     }),
-    // Providers.Twitter({
-    //   clientId: process.env.GOOGLE_ID,
-    //   clientSecret: process.env.GOOGLE_SECRET,
-    // }),
     // Providers.Email({
     //   server: {
     //     host: process.env.SMTP_HOST,
