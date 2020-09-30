@@ -1,7 +1,6 @@
 import { PrismaClient } from '@prisma/client'
-import { Request } from 'apollo-server-express'
 
-import { seedSpells, seedKlasses, seedSkills, seedSubclasses } from './seed'
+// import { seedSpells, seedKlasses, seedSkills, seedSubclasses } from './seed'
 
 export interface Context {
   prisma: PrismaClient

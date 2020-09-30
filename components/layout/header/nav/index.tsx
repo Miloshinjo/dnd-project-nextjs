@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { destroyCookie } from 'nookies'
 import { useRouter } from 'next/router'
 import { signOut } from 'next-auth/client'
 
@@ -31,7 +30,12 @@ const Nav: React.FC = () => {
       <button
         className={styles.navLink}
         onClick={() => {
-          signOut()
+          signOut({
+            callbackUrl:
+              process.env.NODE_ENV === 'production'
+                ? 'https://dnd-project-nextjs.vercel.app/'
+                : 'http://localhost:3000/',
+          })
         }}
       >
         Sign out
