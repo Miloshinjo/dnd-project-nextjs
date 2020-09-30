@@ -41,8 +41,6 @@ export const updateCharacter = mutationField('updateCharacter', {
     character: 'CharacterUpdateInput',
   },
   async resolve(_parent, { character }, { prisma }) {
-    console.log({ character })
-
     if (!character) {
       return handleError(errors.serverError)
     }

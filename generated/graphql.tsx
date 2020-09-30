@@ -1,1180 +1,1208 @@
-import gql from 'graphql-tag';
-import * as Urql from 'urql';
-export type Maybe<T> = T | null;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+import gql from 'graphql-tag'
+import * as Urql from 'urql'
+export type Maybe<T> = T | null
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K]
+}
+export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: string;
-  String: string;
-  Boolean: boolean;
-  Int: number;
-  Float: number;
-};
+  ID: string
+  String: string
+  Boolean: boolean
+  Int: number
+  Float: number
+}
 
 export type CharacterCreateInput = {
-  name: Scalars['String'];
-  klassId: Scalars['ID'];
-  race: Scalars['String'];
-  alignment: Scalars['String'];
-};
+  name: Scalars['String']
+  klassId: Scalars['ID']
+  race: Scalars['String']
+  alignment: Scalars['String']
+}
 
 export type CharacterUpdateInput = {
-  id: Scalars['ID'];
-  klassId?: Maybe<Scalars['ID']>;
-  skillId?: Maybe<Scalars['ID']>;
-  subclassId?: Maybe<Scalars['ID']>;
-  spellId?: Maybe<Scalars['ID']>;
-  name?: Maybe<Scalars['String']>;
-  level?: Maybe<Scalars['Int']>;
-  race?: Maybe<Scalars['String']>;
-  alignment?: Maybe<Scalars['String']>;
-  armorClass?: Maybe<Scalars['Int']>;
-  maxHitPoints?: Maybe<Scalars['Int']>;
-  hitPoints?: Maybe<Scalars['Int']>;
-  gold?: Maybe<Scalars['Int']>;
-  inspiration?: Maybe<Scalars['Boolean']>;
-  strength?: Maybe<Scalars['Int']>;
-  dexterity?: Maybe<Scalars['Int']>;
-  constitution?: Maybe<Scalars['Int']>;
-  intelligence?: Maybe<Scalars['Int']>;
-  wisdom?: Maybe<Scalars['Int']>;
-  charisma?: Maybe<Scalars['Int']>;
-  speed?: Maybe<Scalars['Int']>;
-  spellSlots?: Maybe<Scalars['String']>;
-};
+  id: Scalars['ID']
+  klassId?: Maybe<Scalars['ID']>
+  skillId?: Maybe<Scalars['ID']>
+  subclassId?: Maybe<Scalars['ID']>
+  spellId?: Maybe<Scalars['ID']>
+  name?: Maybe<Scalars['String']>
+  level?: Maybe<Scalars['Int']>
+  race?: Maybe<Scalars['String']>
+  alignment?: Maybe<Scalars['String']>
+  armorClass?: Maybe<Scalars['Int']>
+  maxHitPoints?: Maybe<Scalars['Int']>
+  hitPoints?: Maybe<Scalars['Int']>
+  gold?: Maybe<Scalars['Int']>
+  inspiration?: Maybe<Scalars['Boolean']>
+  strength?: Maybe<Scalars['Int']>
+  dexterity?: Maybe<Scalars['Int']>
+  constitution?: Maybe<Scalars['Int']>
+  intelligence?: Maybe<Scalars['Int']>
+  wisdom?: Maybe<Scalars['Int']>
+  charisma?: Maybe<Scalars['Int']>
+  speed?: Maybe<Scalars['Int']>
+  spellSlots?: Maybe<Scalars['String']>
+}
 
 export type CharacterEditSpellInput = {
-  id: Scalars['ID'];
-  spellId: Scalars['ID'];
-};
+  id: Scalars['ID']
+  spellId: Scalars['ID']
+}
 
 export type CharacterDeleteInput = {
-  id: Scalars['ID'];
-};
+  id: Scalars['ID']
+}
 
 export type CharacterAddSubclassInputType = {
-  id: Scalars['ID'];
-  subclassId: Scalars['ID'];
-};
+  id: Scalars['ID']
+  subclassId: Scalars['ID']
+}
 
 export type AuthPayload = {
-  __typename?: 'AuthPayload';
-  token: Scalars['String'];
-  user: User;
-};
+  __typename?: 'AuthPayload'
+  token: Scalars['String']
+  user: User
+}
 
 export type User = {
-  __typename?: 'User';
-  id: Scalars['Int'];
-  name?: Maybe<Scalars['String']>;
-  email?: Maybe<Scalars['String']>;
-  characters: Array<Character>;
-};
-
+  __typename?: 'User'
+  id: Scalars['Int']
+  name?: Maybe<Scalars['String']>
+  email?: Maybe<Scalars['String']>
+  characters: Array<Character>
+}
 
 export type UserCharactersArgs = {
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<CharacterWhereUniqueInput>;
-  after?: Maybe<CharacterWhereUniqueInput>;
-};
+  first?: Maybe<Scalars['Int']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<CharacterWhereUniqueInput>
+  after?: Maybe<CharacterWhereUniqueInput>
+}
 
 export type Spell = {
-  __typename?: 'Spell';
-  id: Scalars['Int'];
-  attackSave: Scalars['String'];
-  castingTime: Scalars['String'];
-  klasses: Scalars['String'];
-  components: Scalars['String'];
-  concentration: Scalars['Boolean'];
-  damageEffect: Scalars['String'];
-  description: Scalars['String'];
-  duration: Scalars['String'];
-  level: Scalars['Int'];
-  name: Scalars['String'];
-  range: Scalars['String'];
-  ritual: Scalars['Boolean'];
-  school: Scalars['String'];
-  material?: Maybe<Scalars['String']>;
-  characters: Array<Character>;
-};
-
+  __typename?: 'Spell'
+  id: Scalars['Int']
+  attackSave: Scalars['String']
+  castingTime: Scalars['String']
+  klasses: Scalars['String']
+  components: Scalars['String']
+  concentration: Scalars['Boolean']
+  damageEffect: Scalars['String']
+  description: Scalars['String']
+  duration: Scalars['String']
+  level: Scalars['Int']
+  name: Scalars['String']
+  range: Scalars['String']
+  ritual: Scalars['Boolean']
+  school: Scalars['String']
+  material?: Maybe<Scalars['String']>
+  characters: Array<Character>
+}
 
 export type SpellCharactersArgs = {
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<CharacterWhereUniqueInput>;
-  after?: Maybe<CharacterWhereUniqueInput>;
-};
+  first?: Maybe<Scalars['Int']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<CharacterWhereUniqueInput>
+  after?: Maybe<CharacterWhereUniqueInput>
+}
 
 export type Klass = {
-  __typename?: 'Klass';
-  id: Scalars['Int'];
-  name: Scalars['String'];
-  description: Scalars['String'];
-  hitDie: Scalars['String'];
-  hitPointsAt1st: Scalars['String'];
-  primaryAbility: Array<Scalars['String']>;
-  savingThrows: Array<Scalars['String']>;
-  armor: Array<Scalars['String']>;
-  weapons: Array<Scalars['String']>;
-  tools?: Maybe<Scalars['String']>;
-  skills: Array<Scalars['String']>;
-  spellCastingModifier?: Maybe<Scalars['String']>;
-  proficientSkillsAt1st: Scalars['Int'];
-  subClasses: Array<SubClass>;
-};
-
+  __typename?: 'Klass'
+  id: Scalars['Int']
+  name: Scalars['String']
+  description: Scalars['String']
+  hitDie: Scalars['String']
+  hitPointsAt1st: Scalars['String']
+  primaryAbility: Array<Scalars['String']>
+  savingThrows: Array<Scalars['String']>
+  armor: Array<Scalars['String']>
+  weapons: Array<Scalars['String']>
+  tools?: Maybe<Scalars['String']>
+  skills: Array<Scalars['String']>
+  spellCastingModifier?: Maybe<Scalars['String']>
+  proficientSkillsAt1st: Scalars['Int']
+  subClasses: Array<SubClass>
+}
 
 export type KlassSubClassesArgs = {
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<SubClassWhereUniqueInput>;
-  after?: Maybe<SubClassWhereUniqueInput>;
-};
+  first?: Maybe<Scalars['Int']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<SubClassWhereUniqueInput>
+  after?: Maybe<SubClassWhereUniqueInput>
+}
 
 export type SubClass = {
-  __typename?: 'SubClass';
-  id: Scalars['Int'];
-  name: Scalars['String'];
-  description: Scalars['String'];
-  spellCastingModifier?: Maybe<Scalars['String']>;
-  klassId: Scalars['Int'];
-  klass: Klass;
-  source: Scalars['String'];
-};
+  __typename?: 'SubClass'
+  id: Scalars['Int']
+  name: Scalars['String']
+  description: Scalars['String']
+  spellCastingModifier?: Maybe<Scalars['String']>
+  klassId: Scalars['Int']
+  klass: Klass
+  source: Scalars['String']
+}
 
 export type Skill = {
-  __typename?: 'Skill';
-  id: Scalars['Int'];
-  name: Scalars['String'];
-  ability: Scalars['String'];
-};
+  __typename?: 'Skill'
+  id: Scalars['Int']
+  name: Scalars['String']
+  ability: Scalars['String']
+}
 
 export type Character = {
-  __typename?: 'Character';
-  id: Scalars['Int'];
-  name: Scalars['String'];
-  level: Scalars['Int'];
-  race: Scalars['String'];
-  klassId: Scalars['Int'];
-  klass: Klass;
-  alignment: Scalars['String'];
-  armorClass: Scalars['Int'];
-  hitPoints: Scalars['Int'];
-  maxHitPoints: Scalars['Int'];
-  gold?: Maybe<Scalars['Int']>;
-  inspiration: Scalars['Boolean'];
-  strength: Scalars['Int'];
-  dexterity: Scalars['Int'];
-  constitution: Scalars['Int'];
-  intelligence: Scalars['Int'];
-  wisdom: Scalars['Int'];
-  charisma: Scalars['Int'];
-  userId: Scalars['Int'];
-  user: User;
-  spells: Array<Spell>;
-  preparedSpells: Array<Spell>;
-  skills: Array<Skill>;
-  subclass?: Maybe<SubClass>;
-  subclassId?: Maybe<Scalars['Int']>;
-  spellSlots?: Maybe<Scalars['String']>;
-  speed: Scalars['Int'];
-};
-
+  __typename?: 'Character'
+  id: Scalars['Int']
+  name: Scalars['String']
+  level: Scalars['Int']
+  race: Scalars['String']
+  klassId: Scalars['Int']
+  klass: Klass
+  alignment: Scalars['String']
+  armorClass: Scalars['Int']
+  hitPoints: Scalars['Int']
+  maxHitPoints: Scalars['Int']
+  gold?: Maybe<Scalars['Int']>
+  inspiration: Scalars['Boolean']
+  strength: Scalars['Int']
+  dexterity: Scalars['Int']
+  constitution: Scalars['Int']
+  intelligence: Scalars['Int']
+  wisdom: Scalars['Int']
+  charisma: Scalars['Int']
+  userId: Scalars['Int']
+  user: User
+  spells: Array<Spell>
+  preparedSpells: Array<Spell>
+  skills: Array<Skill>
+  subclass?: Maybe<SubClass>
+  subclassId?: Maybe<Scalars['Int']>
+  spellSlots?: Maybe<Scalars['String']>
+  speed: Scalars['Int']
+}
 
 export type CharacterSpellsArgs = {
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<SpellWhereUniqueInput>;
-  after?: Maybe<SpellWhereUniqueInput>;
-};
-
+  first?: Maybe<Scalars['Int']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<SpellWhereUniqueInput>
+  after?: Maybe<SpellWhereUniqueInput>
+}
 
 export type CharacterPreparedSpellsArgs = {
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<SpellWhereUniqueInput>;
-  after?: Maybe<SpellWhereUniqueInput>;
-};
-
+  first?: Maybe<Scalars['Int']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<SpellWhereUniqueInput>
+  after?: Maybe<SpellWhereUniqueInput>
+}
 
 export type CharacterSkillsArgs = {
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<SkillWhereUniqueInput>;
-  after?: Maybe<SkillWhereUniqueInput>;
-};
+  first?: Maybe<Scalars['Int']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<SkillWhereUniqueInput>
+  after?: Maybe<SkillWhereUniqueInput>
+}
 
 export type CharacterWhereUniqueInput = {
-  id?: Maybe<Scalars['Int']>;
-};
+  id?: Maybe<Scalars['Int']>
+}
 
 export type SubClassWhereUniqueInput = {
-  id?: Maybe<Scalars['Int']>;
-  name?: Maybe<Scalars['String']>;
-};
+  id?: Maybe<Scalars['Int']>
+  name?: Maybe<Scalars['String']>
+}
 
 export type SpellWhereUniqueInput = {
-  id?: Maybe<Scalars['Int']>;
-  name?: Maybe<Scalars['String']>;
-};
+  id?: Maybe<Scalars['Int']>
+  name?: Maybe<Scalars['String']>
+}
 
 export type SkillWhereUniqueInput = {
-  id?: Maybe<Scalars['Int']>;
-  name?: Maybe<Scalars['String']>;
-};
+  id?: Maybe<Scalars['Int']>
+  name?: Maybe<Scalars['String']>
+}
 
 export type Query = {
-  __typename?: 'Query';
-  spells: Array<Spell>;
-  spell: Spell;
-  characters: Array<Character>;
-  character: Character;
-  klasses: Array<Klass>;
-  klass: Klass;
-  me: User;
-  skills: Array<Skill>;
-  subclasses: Array<SubClass>;
-};
-
+  __typename?: 'Query'
+  spells: Array<Spell>
+  spell: Spell
+  characters: Array<Character>
+  character: Character
+  klasses: Array<Klass>
+  klass: Klass
+  me: User
+  skills: Array<Skill>
+  subclasses: Array<SubClass>
+}
 
 export type QuerySpellsArgs = {
-  klassName?: Maybe<Scalars['String']>;
-};
-
+  klassName?: Maybe<Scalars['String']>
+}
 
 export type QuerySpellArgs = {
-  id?: Maybe<Scalars['ID']>;
-};
-
+  id?: Maybe<Scalars['ID']>
+}
 
 export type QueryCharacterArgs = {
-  id?: Maybe<Scalars['ID']>;
-};
-
+  id?: Maybe<Scalars['ID']>
+}
 
 export type QueryKlassArgs = {
-  id?: Maybe<Scalars['ID']>;
-};
-
+  id?: Maybe<Scalars['ID']>
+}
 
 export type QuerySubclassesArgs = {
-  klassName: Scalars['String'];
-};
+  klassName: Scalars['String']
+}
 
 export type Mutation = {
-  __typename?: 'Mutation';
-  createCharacter: Character;
-  updateCharacter: Character;
-  deleteCharacter?: Maybe<Character>;
-  learnSpell: Character;
-  forgetSpell: Character;
-  prepareSpell: Character;
-  unprepareSpell: Character;
-  addSubclass: Character;
-};
-
+  __typename?: 'Mutation'
+  createCharacter: Character
+  updateCharacter: Character
+  deleteCharacter?: Maybe<Character>
+  learnSpell: Character
+  forgetSpell: Character
+  prepareSpell: Character
+  unprepareSpell: Character
+  addSubclass: Character
+}
 
 export type MutationCreateCharacterArgs = {
-  character?: Maybe<CharacterCreateInput>;
-};
-
+  character?: Maybe<CharacterCreateInput>
+}
 
 export type MutationUpdateCharacterArgs = {
-  character?: Maybe<CharacterUpdateInput>;
-};
-
+  character?: Maybe<CharacterUpdateInput>
+}
 
 export type MutationDeleteCharacterArgs = {
-  character?: Maybe<CharacterDeleteInput>;
-};
-
+  character?: Maybe<CharacterDeleteInput>
+}
 
 export type MutationLearnSpellArgs = {
-  character?: Maybe<CharacterEditSpellInput>;
-};
-
+  character?: Maybe<CharacterEditSpellInput>
+}
 
 export type MutationForgetSpellArgs = {
-  character?: Maybe<CharacterEditSpellInput>;
-};
-
+  character?: Maybe<CharacterEditSpellInput>
+}
 
 export type MutationPrepareSpellArgs = {
-  character?: Maybe<CharacterEditSpellInput>;
-};
-
+  character?: Maybe<CharacterEditSpellInput>
+}
 
 export type MutationUnprepareSpellArgs = {
-  character?: Maybe<CharacterEditSpellInput>;
-};
-
+  character?: Maybe<CharacterEditSpellInput>
+}
 
 export type MutationAddSubclassArgs = {
-  character?: Maybe<CharacterAddSubclassInputType>;
-};
+  character?: Maybe<CharacterAddSubclassInputType>
+}
 
 export type AddSubclassMutationVariables = Exact<{
-  id: Scalars['ID'];
-  subclassId: Scalars['ID'];
-}>;
+  id: Scalars['ID']
+  subclassId: Scalars['ID']
+}>
 
-
-export type AddSubclassMutation = (
-  { __typename?: 'Mutation' }
-  & { addSubclass: (
-    { __typename?: 'Character' }
-    & Pick<Character, 'id'>
-    & { subclass?: Maybe<(
-      { __typename?: 'SubClass' }
-      & Pick<SubClass, 'id' | 'name'>
-    )> }
-  ) }
-);
+export type AddSubclassMutation = { __typename?: 'Mutation' } & {
+  addSubclass: { __typename?: 'Character' } & Pick<Character, 'id'> & {
+      subclass?: Maybe<
+        { __typename?: 'SubClass' } & Pick<SubClass, 'id' | 'name'>
+      >
+    }
+}
 
 export type ArmorClassMutationVariables = Exact<{
-  id: Scalars['ID'];
-  armorClass: Scalars['Int'];
-}>;
+  id: Scalars['ID']
+  armorClass: Scalars['Int']
+}>
 
-
-export type ArmorClassMutation = (
-  { __typename?: 'Mutation' }
-  & { updateCharacter: (
-    { __typename?: 'Character' }
-    & Pick<Character, 'id' | 'armorClass'>
-  ) }
-);
+export type ArmorClassMutation = { __typename?: 'Mutation' } & {
+  updateCharacter: { __typename?: 'Character' } & Pick<
+    Character,
+    'id' | 'armorClass'
+  >
+}
 
 export type CharismaMutationVariables = Exact<{
-  id: Scalars['ID'];
-  charisma: Scalars['Int'];
-}>;
+  id: Scalars['ID']
+  charisma: Scalars['Int']
+}>
 
-
-export type CharismaMutation = (
-  { __typename?: 'Mutation' }
-  & { updateCharacter: (
-    { __typename?: 'Character' }
-    & Pick<Character, 'id' | 'charisma'>
-  ) }
-);
+export type CharismaMutation = { __typename?: 'Mutation' } & {
+  updateCharacter: { __typename?: 'Character' } & Pick<
+    Character,
+    'id' | 'charisma'
+  >
+}
 
 export type ConstitutionMutationVariables = Exact<{
-  id: Scalars['ID'];
-  constitution: Scalars['Int'];
-}>;
+  id: Scalars['ID']
+  constitution: Scalars['Int']
+}>
 
-
-export type ConstitutionMutation = (
-  { __typename?: 'Mutation' }
-  & { updateCharacter: (
-    { __typename?: 'Character' }
-    & Pick<Character, 'id' | 'constitution'>
-  ) }
-);
+export type ConstitutionMutation = { __typename?: 'Mutation' } & {
+  updateCharacter: { __typename?: 'Character' } & Pick<
+    Character,
+    'id' | 'constitution'
+  >
+}
 
 export type CreateCharacterMutationVariables = Exact<{
-  name: Scalars['String'];
-  race: Scalars['String'];
-  alignment: Scalars['String'];
-  klassId: Scalars['ID'];
-}>;
+  name: Scalars['String']
+  race: Scalars['String']
+  alignment: Scalars['String']
+  klassId: Scalars['ID']
+}>
 
-
-export type CreateCharacterMutation = (
-  { __typename?: 'Mutation' }
-  & { createCharacter: (
-    { __typename?: 'Character' }
-    & Pick<Character, 'id' | 'name' | 'race' | 'alignment'>
-    & { klass: (
-      { __typename?: 'Klass' }
-      & Pick<Klass, 'id' | 'name'>
-    ) }
-  ) }
-);
+export type CreateCharacterMutation = { __typename?: 'Mutation' } & {
+  createCharacter: { __typename?: 'Character' } & Pick<
+    Character,
+    'id' | 'name' | 'race' | 'alignment'
+  > & { klass: { __typename?: 'Klass' } & Pick<Klass, 'id' | 'name'> }
+}
 
 export type DeleteCharacterMutationVariables = Exact<{
-  id: Scalars['ID'];
-}>;
+  id: Scalars['ID']
+}>
 
-
-export type DeleteCharacterMutation = (
-  { __typename?: 'Mutation' }
-  & { deleteCharacter?: Maybe<(
-    { __typename?: 'Character' }
-    & Pick<Character, 'id' | 'name'>
-  )> }
-);
+export type DeleteCharacterMutation = { __typename?: 'Mutation' } & {
+  deleteCharacter?: Maybe<
+    { __typename?: 'Character' } & Pick<Character, 'id' | 'name'>
+  >
+}
 
 export type DexterityMutationVariables = Exact<{
-  id: Scalars['ID'];
-  dexterity: Scalars['Int'];
-}>;
+  id: Scalars['ID']
+  dexterity: Scalars['Int']
+}>
 
-
-export type DexterityMutation = (
-  { __typename?: 'Mutation' }
-  & { updateCharacter: (
-    { __typename?: 'Character' }
-    & Pick<Character, 'id' | 'dexterity'>
-  ) }
-);
+export type DexterityMutation = { __typename?: 'Mutation' } & {
+  updateCharacter: { __typename?: 'Character' } & Pick<
+    Character,
+    'id' | 'dexterity'
+  >
+}
 
 export type ForgetSpellMutationVariables = Exact<{
-  id: Scalars['ID'];
-  spellId: Scalars['ID'];
-}>;
+  id: Scalars['ID']
+  spellId: Scalars['ID']
+}>
 
-
-export type ForgetSpellMutation = (
-  { __typename?: 'Mutation' }
-  & { forgetSpell: (
-    { __typename?: 'Character' }
-    & Pick<Character, 'id' | 'name'>
-    & { spells: Array<(
-      { __typename?: 'Spell' }
-      & Pick<Spell, 'id' | 'name'>
-    )> }
-  ) }
-);
+export type ForgetSpellMutation = { __typename?: 'Mutation' } & {
+  forgetSpell: { __typename?: 'Character' } & Pick<Character, 'id' | 'name'> & {
+      spells: Array<{ __typename?: 'Spell' } & Pick<Spell, 'id' | 'name'>>
+    }
+}
 
 export type HitPointsMutationVariables = Exact<{
-  id: Scalars['ID'];
-  hitPoints: Scalars['Int'];
-}>;
+  id: Scalars['ID']
+  hitPoints: Scalars['Int']
+}>
 
-
-export type HitPointsMutation = (
-  { __typename?: 'Mutation' }
-  & { updateCharacter: (
-    { __typename?: 'Character' }
-    & Pick<Character, 'id' | 'hitPoints'>
-  ) }
-);
+export type HitPointsMutation = { __typename?: 'Mutation' } & {
+  updateCharacter: { __typename?: 'Character' } & Pick<
+    Character,
+    'id' | 'hitPoints'
+  >
+}
 
 export type IntelligenceMutationVariables = Exact<{
-  id: Scalars['ID'];
-  intelligence: Scalars['Int'];
-}>;
+  id: Scalars['ID']
+  intelligence: Scalars['Int']
+}>
 
-
-export type IntelligenceMutation = (
-  { __typename?: 'Mutation' }
-  & { updateCharacter: (
-    { __typename?: 'Character' }
-    & Pick<Character, 'id' | 'intelligence'>
-  ) }
-);
+export type IntelligenceMutation = { __typename?: 'Mutation' } & {
+  updateCharacter: { __typename?: 'Character' } & Pick<
+    Character,
+    'id' | 'intelligence'
+  >
+}
 
 export type LearnSpellMutationVariables = Exact<{
-  id: Scalars['ID'];
-  spellId: Scalars['ID'];
-}>;
+  id: Scalars['ID']
+  spellId: Scalars['ID']
+}>
 
-
-export type LearnSpellMutation = (
-  { __typename?: 'Mutation' }
-  & { learnSpell: (
-    { __typename?: 'Character' }
-    & Pick<Character, 'id' | 'name'>
-    & { spells: Array<(
-      { __typename?: 'Spell' }
-      & Pick<Spell, 'id' | 'name'>
-    )> }
-  ) }
-);
+export type LearnSpellMutation = { __typename?: 'Mutation' } & {
+  learnSpell: { __typename?: 'Character' } & Pick<Character, 'id' | 'name'> & {
+      spells: Array<{ __typename?: 'Spell' } & Pick<Spell, 'id' | 'name'>>
+    }
+}
 
 export type LevelMutationVariables = Exact<{
-  id: Scalars['ID'];
-  level: Scalars['Int'];
-}>;
+  id: Scalars['ID']
+  level: Scalars['Int']
+}>
 
-
-export type LevelMutation = (
-  { __typename?: 'Mutation' }
-  & { updateCharacter: (
-    { __typename?: 'Character' }
-    & Pick<Character, 'id' | 'level'>
-  ) }
-);
+export type LevelMutation = { __typename?: 'Mutation' } & {
+  updateCharacter: { __typename?: 'Character' } & Pick<
+    Character,
+    'id' | 'level'
+  >
+}
 
 export type MaxHitPointsMutationVariables = Exact<{
-  id: Scalars['ID'];
-  maxHitPoints: Scalars['Int'];
-}>;
+  id: Scalars['ID']
+  maxHitPoints: Scalars['Int']
+}>
 
-
-export type MaxHitPointsMutation = (
-  { __typename?: 'Mutation' }
-  & { updateCharacter: (
-    { __typename?: 'Character' }
-    & Pick<Character, 'id' | 'maxHitPoints'>
-  ) }
-);
+export type MaxHitPointsMutation = { __typename?: 'Mutation' } & {
+  updateCharacter: { __typename?: 'Character' } & Pick<
+    Character,
+    'id' | 'maxHitPoints'
+  >
+}
 
 export type PrepareSpellMutationVariables = Exact<{
-  id: Scalars['ID'];
-  spellId: Scalars['ID'];
-}>;
+  id: Scalars['ID']
+  spellId: Scalars['ID']
+}>
 
-
-export type PrepareSpellMutation = (
-  { __typename?: 'Mutation' }
-  & { prepareSpell: (
-    { __typename?: 'Character' }
-    & Pick<Character, 'id' | 'name'>
-    & { preparedSpells: Array<(
-      { __typename?: 'Spell' }
-      & Pick<Spell, 'id' | 'name'>
-    )> }
-  ) }
-);
+export type PrepareSpellMutation = { __typename?: 'Mutation' } & {
+  prepareSpell: { __typename?: 'Character' } & Pick<
+    Character,
+    'id' | 'name'
+  > & {
+      preparedSpells: Array<
+        { __typename?: 'Spell' } & Pick<Spell, 'id' | 'name'>
+      >
+    }
+}
 
 export type SkillMutationVariables = Exact<{
-  id: Scalars['ID'];
-  skillId: Scalars['ID'];
-}>;
+  id: Scalars['ID']
+  skillId: Scalars['ID']
+}>
 
-
-export type SkillMutation = (
-  { __typename?: 'Mutation' }
-  & { updateCharacter: (
-    { __typename?: 'Character' }
-    & Pick<Character, 'id'>
-    & { skills: Array<(
-      { __typename?: 'Skill' }
-      & Pick<Skill, 'id' | 'name'>
-    )> }
-  ) }
-);
+export type SkillMutation = { __typename?: 'Mutation' } & {
+  updateCharacter: { __typename?: 'Character' } & Pick<Character, 'id'> & {
+      skills: Array<{ __typename?: 'Skill' } & Pick<Skill, 'id' | 'name'>>
+    }
+}
 
 export type SpeedMutationVariables = Exact<{
-  id: Scalars['ID'];
-  speed: Scalars['Int'];
-}>;
+  id: Scalars['ID']
+  speed: Scalars['Int']
+}>
 
-
-export type SpeedMutation = (
-  { __typename?: 'Mutation' }
-  & { updateCharacter: (
-    { __typename?: 'Character' }
-    & Pick<Character, 'id' | 'speed'>
-  ) }
-);
+export type SpeedMutation = { __typename?: 'Mutation' } & {
+  updateCharacter: { __typename?: 'Character' } & Pick<
+    Character,
+    'id' | 'speed'
+  >
+}
 
 export type SpellSlotsMutationVariables = Exact<{
-  id: Scalars['ID'];
-  spellSlots: Scalars['String'];
-}>;
+  id: Scalars['ID']
+  spellSlots: Scalars['String']
+}>
 
-
-export type SpellSlotsMutation = (
-  { __typename?: 'Mutation' }
-  & { updateCharacter: (
-    { __typename?: 'Character' }
-    & Pick<Character, 'id' | 'spellSlots'>
-  ) }
-);
+export type SpellSlotsMutation = { __typename?: 'Mutation' } & {
+  updateCharacter: { __typename?: 'Character' } & Pick<
+    Character,
+    'id' | 'spellSlots'
+  >
+}
 
 export type StrengthMutationVariables = Exact<{
-  id: Scalars['ID'];
-  strength: Scalars['Int'];
-}>;
+  id: Scalars['ID']
+  strength: Scalars['Int']
+}>
 
-
-export type StrengthMutation = (
-  { __typename?: 'Mutation' }
-  & { updateCharacter: (
-    { __typename?: 'Character' }
-    & Pick<Character, 'id' | 'strength'>
-  ) }
-);
+export type StrengthMutation = { __typename?: 'Mutation' } & {
+  updateCharacter: { __typename?: 'Character' } & Pick<
+    Character,
+    'id' | 'strength'
+  >
+}
 
 export type UnprepareSpellMutationVariables = Exact<{
-  id: Scalars['ID'];
-  spellId: Scalars['ID'];
-}>;
+  id: Scalars['ID']
+  spellId: Scalars['ID']
+}>
 
-
-export type UnprepareSpellMutation = (
-  { __typename?: 'Mutation' }
-  & { unprepareSpell: (
-    { __typename?: 'Character' }
-    & Pick<Character, 'id' | 'name'>
-    & { preparedSpells: Array<(
-      { __typename?: 'Spell' }
-      & Pick<Spell, 'id' | 'name'>
-    )> }
-  ) }
-);
+export type UnprepareSpellMutation = { __typename?: 'Mutation' } & {
+  unprepareSpell: { __typename?: 'Character' } & Pick<
+    Character,
+    'id' | 'name'
+  > & {
+      preparedSpells: Array<
+        { __typename?: 'Spell' } & Pick<Spell, 'id' | 'name'>
+      >
+    }
+}
 
 export type WisdomMutationVariables = Exact<{
-  id: Scalars['ID'];
-  wisdom: Scalars['Int'];
-}>;
+  id: Scalars['ID']
+  wisdom: Scalars['Int']
+}>
 
-
-export type WisdomMutation = (
-  { __typename?: 'Mutation' }
-  & { updateCharacter: (
-    { __typename?: 'Character' }
-    & Pick<Character, 'id' | 'wisdom'>
-  ) }
-);
+export type WisdomMutation = { __typename?: 'Mutation' } & {
+  updateCharacter: { __typename?: 'Character' } & Pick<
+    Character,
+    'id' | 'wisdom'
+  >
+}
 
 export type CharacterQueryVariables = Exact<{
-  id: Scalars['ID'];
-}>;
+  id: Scalars['ID']
+}>
 
+export type CharacterQuery = { __typename?: 'Query' } & {
+  character: { __typename?: 'Character' } & Pick<
+    Character,
+    | 'id'
+    | 'name'
+    | 'level'
+    | 'race'
+    | 'hitPoints'
+    | 'maxHitPoints'
+    | 'armorClass'
+    | 'gold'
+    | 'alignment'
+    | 'inspiration'
+    | 'strength'
+    | 'dexterity'
+    | 'constitution'
+    | 'intelligence'
+    | 'wisdom'
+    | 'charisma'
+    | 'speed'
+    | 'spellSlots'
+  > & {
+      klass: { __typename?: 'Klass' } & Pick<
+        Klass,
+        'id' | 'name' | 'hitDie' | 'spellCastingModifier'
+      >
+      subclass?: Maybe<
+        { __typename?: 'SubClass' } & Pick<
+          SubClass,
+          'id' | 'name' | 'spellCastingModifier'
+        >
+      >
+      skills: Array<
+        { __typename?: 'Skill' } & Pick<Skill, 'id' | 'name' | 'ability'>
+      >
+      spells: Array<
+        { __typename?: 'Spell' } & Pick<
+          Spell,
+          'id' | 'name' | 'level' | 'concentration' | 'ritual'
+        >
+      >
+      preparedSpells: Array<
+        { __typename?: 'Spell' } & Pick<
+          Spell,
+          'id' | 'name' | 'level' | 'concentration' | 'ritual'
+        >
+      >
+    }
+}
 
-export type CharacterQuery = (
-  { __typename?: 'Query' }
-  & { character: (
-    { __typename?: 'Character' }
-    & Pick<Character, 'id' | 'name' | 'level' | 'race' | 'hitPoints' | 'maxHitPoints' | 'armorClass' | 'gold' | 'alignment' | 'inspiration' | 'strength' | 'dexterity' | 'constitution' | 'intelligence' | 'wisdom' | 'charisma' | 'speed' | 'spellSlots'>
-    & { klass: (
-      { __typename?: 'Klass' }
-      & Pick<Klass, 'id' | 'name' | 'hitDie' | 'spellCastingModifier'>
-    ), subclass?: Maybe<(
-      { __typename?: 'SubClass' }
-      & Pick<SubClass, 'id' | 'name' | 'spellCastingModifier'>
-    )>, skills: Array<(
-      { __typename?: 'Skill' }
-      & Pick<Skill, 'id' | 'name' | 'ability'>
-    )>, spells: Array<(
-      { __typename?: 'Spell' }
-      & Pick<Spell, 'id' | 'name' | 'level' | 'concentration' | 'ritual'>
-    )>, preparedSpells: Array<(
-      { __typename?: 'Spell' }
-      & Pick<Spell, 'id' | 'name' | 'level' | 'concentration' | 'ritual'>
-    )> }
-  ) }
-);
+export type CharactersQueryVariables = Exact<{ [key: string]: never }>
 
-export type CharactersQueryVariables = Exact<{ [key: string]: never; }>;
+export type CharactersQuery = { __typename?: 'Query' } & {
+  characters: Array<
+    { __typename?: 'Character' } & Pick<
+      Character,
+      'id' | 'name' | 'level' | 'race'
+    > & {
+        klass: { __typename?: 'Klass' } & Pick<
+          Klass,
+          'id' | 'name' | 'spellCastingModifier'
+        >
+        subclass?: Maybe<
+          { __typename?: 'SubClass' } & Pick<
+            SubClass,
+            'id' | 'name' | 'spellCastingModifier'
+          >
+        >
+        spells: Array<{ __typename?: 'Spell' } & Pick<Spell, 'id'>>
+      }
+  >
+}
 
+export type MeQueryVariables = Exact<{ [key: string]: never }>
 
-export type CharactersQuery = (
-  { __typename?: 'Query' }
-  & { characters: Array<(
-    { __typename?: 'Character' }
-    & Pick<Character, 'id' | 'name' | 'level' | 'race'>
-    & { klass: (
-      { __typename?: 'Klass' }
-      & Pick<Klass, 'id' | 'name' | 'spellCastingModifier'>
-    ), subclass?: Maybe<(
-      { __typename?: 'SubClass' }
-      & Pick<SubClass, 'id' | 'name' | 'spellCastingModifier'>
-    )>, spells: Array<(
-      { __typename?: 'Spell' }
-      & Pick<Spell, 'id'>
-    )> }
-  )> }
-);
+export type MeQuery = { __typename?: 'Query' } & {
+  me: { __typename?: 'User' } & Pick<User, 'id' | 'name' | 'email'>
+}
 
-export type MeQueryVariables = Exact<{ [key: string]: never; }>;
+export type SkillsQueryVariables = Exact<{ [key: string]: never }>
 
-
-export type MeQuery = (
-  { __typename?: 'Query' }
-  & { me: (
-    { __typename?: 'User' }
-    & Pick<User, 'id' | 'name' | 'email'>
-  ) }
-);
-
-export type SkillsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type SkillsQuery = (
-  { __typename?: 'Query' }
-  & { skills: Array<(
-    { __typename?: 'Skill' }
-    & Pick<Skill, 'id' | 'name' | 'ability'>
-  )> }
-);
+export type SkillsQuery = { __typename?: 'Query' } & {
+  skills: Array<
+    { __typename?: 'Skill' } & Pick<Skill, 'id' | 'name' | 'ability'>
+  >
+}
 
 export type SpellQueryVariables = Exact<{
-  id: Scalars['ID'];
-}>;
+  id: Scalars['ID']
+}>
 
-
-export type SpellQuery = (
-  { __typename?: 'Query' }
-  & { spell: (
-    { __typename?: 'Spell' }
-    & Pick<Spell, 'id' | 'name' | 'level' | 'description' | 'klasses' | 'concentration' | 'ritual' | 'duration' | 'castingTime' | 'range' | 'components' | 'school' | 'attackSave' | 'damageEffect' | 'material'>
-  ) }
-);
+export type SpellQuery = { __typename?: 'Query' } & {
+  spell: { __typename?: 'Spell' } & Pick<
+    Spell,
+    | 'id'
+    | 'name'
+    | 'level'
+    | 'description'
+    | 'klasses'
+    | 'concentration'
+    | 'ritual'
+    | 'duration'
+    | 'castingTime'
+    | 'range'
+    | 'components'
+    | 'school'
+    | 'attackSave'
+    | 'damageEffect'
+    | 'material'
+  >
+}
 
 export type SpellsQueryVariables = Exact<{
-  klassName?: Maybe<Scalars['String']>;
-}>;
+  klassName?: Maybe<Scalars['String']>
+}>
 
-
-export type SpellsQuery = (
-  { __typename?: 'Query' }
-  & { spells: Array<(
-    { __typename?: 'Spell' }
-    & Pick<Spell, 'id' | 'name' | 'level' | 'description' | 'klasses' | 'concentration' | 'ritual' | 'duration' | 'castingTime' | 'range' | 'components' | 'school' | 'attackSave' | 'damageEffect' | 'material'>
-  )> }
-);
+export type SpellsQuery = { __typename?: 'Query' } & {
+  spells: Array<
+    { __typename?: 'Spell' } & Pick<
+      Spell,
+      | 'id'
+      | 'name'
+      | 'level'
+      | 'description'
+      | 'klasses'
+      | 'concentration'
+      | 'ritual'
+      | 'duration'
+      | 'castingTime'
+      | 'range'
+      | 'components'
+      | 'school'
+      | 'attackSave'
+      | 'damageEffect'
+      | 'material'
+    >
+  >
+}
 
 export type SubclassesQueryVariables = Exact<{
-  klassName: Scalars['String'];
-}>;
+  klassName: Scalars['String']
+}>
 
-
-export type SubclassesQuery = (
-  { __typename?: 'Query' }
-  & { subclasses: Array<(
-    { __typename?: 'SubClass' }
-    & Pick<SubClass, 'id' | 'name'>
-  )> }
-);
-
+export type SubclassesQuery = { __typename?: 'Query' } & {
+  subclasses: Array<{ __typename?: 'SubClass' } & Pick<SubClass, 'id' | 'name'>>
+}
 
 export const AddSubclassDocument = gql`
-    mutation AddSubclass($id: ID!, $subclassId: ID!) {
-  addSubclass(character: {id: $id, subclassId: $subclassId}) {
-    id
-    subclass {
+  mutation AddSubclass($id: ID!, $subclassId: ID!) {
+    addSubclass(character: { id: $id, subclassId: $subclassId }) {
       id
-      name
+      subclass {
+        id
+        name
+      }
     }
   }
-}
-    `;
+`
 
 export function useAddSubclassMutation() {
-  return Urql.useMutation<AddSubclassMutation, AddSubclassMutationVariables>(AddSubclassDocument);
-};
-export const ArmorClassDocument = gql`
-    mutation ArmorClass($id: ID!, $armorClass: Int!) {
-  updateCharacter(character: {id: $id, armorClass: $armorClass}) {
-    id
-    armorClass
-  }
+  return Urql.useMutation<AddSubclassMutation, AddSubclassMutationVariables>(
+    AddSubclassDocument,
+  )
 }
-    `;
+export const ArmorClassDocument = gql`
+  mutation ArmorClass($id: ID!, $armorClass: Int!) {
+    updateCharacter(character: { id: $id, armorClass: $armorClass }) {
+      id
+      armorClass
+    }
+  }
+`
 
 export function useArmorClassMutation() {
-  return Urql.useMutation<ArmorClassMutation, ArmorClassMutationVariables>(ArmorClassDocument);
-};
-export const CharismaDocument = gql`
-    mutation Charisma($id: ID!, $charisma: Int!) {
-  updateCharacter(character: {id: $id, charisma: $charisma}) {
-    id
-    charisma
-  }
+  return Urql.useMutation<ArmorClassMutation, ArmorClassMutationVariables>(
+    ArmorClassDocument,
+  )
 }
-    `;
+export const CharismaDocument = gql`
+  mutation Charisma($id: ID!, $charisma: Int!) {
+    updateCharacter(character: { id: $id, charisma: $charisma }) {
+      id
+      charisma
+    }
+  }
+`
 
 export function useCharismaMutation() {
-  return Urql.useMutation<CharismaMutation, CharismaMutationVariables>(CharismaDocument);
-};
-export const ConstitutionDocument = gql`
-    mutation Constitution($id: ID!, $constitution: Int!) {
-  updateCharacter(character: {id: $id, constitution: $constitution}) {
-    id
-    constitution
-  }
+  return Urql.useMutation<CharismaMutation, CharismaMutationVariables>(
+    CharismaDocument,
+  )
 }
-    `;
+export const ConstitutionDocument = gql`
+  mutation Constitution($id: ID!, $constitution: Int!) {
+    updateCharacter(character: { id: $id, constitution: $constitution }) {
+      id
+      constitution
+    }
+  }
+`
 
 export function useConstitutionMutation() {
-  return Urql.useMutation<ConstitutionMutation, ConstitutionMutationVariables>(ConstitutionDocument);
-};
+  return Urql.useMutation<ConstitutionMutation, ConstitutionMutationVariables>(
+    ConstitutionDocument,
+  )
+}
 export const CreateCharacterDocument = gql`
-    mutation CreateCharacter($name: String!, $race: String!, $alignment: String!, $klassId: ID!) {
-  createCharacter(character: {name: $name, race: $race, alignment: $alignment, klassId: $klassId}) {
-    id
-    name
-    race
-    alignment
-    klass {
+  mutation CreateCharacter(
+    $name: String!
+    $race: String!
+    $alignment: String!
+    $klassId: ID!
+  ) {
+    createCharacter(
+      character: {
+        name: $name
+        race: $race
+        alignment: $alignment
+        klassId: $klassId
+      }
+    ) {
       id
       name
+      race
+      alignment
+      klass {
+        id
+        name
+      }
     }
   }
-}
-    `;
+`
 
 export function useCreateCharacterMutation() {
-  return Urql.useMutation<CreateCharacterMutation, CreateCharacterMutationVariables>(CreateCharacterDocument);
-};
-export const DeleteCharacterDocument = gql`
-    mutation DeleteCharacter($id: ID!) {
-  deleteCharacter(character: {id: $id}) {
-    id
-    name
-  }
+  return Urql.useMutation<
+    CreateCharacterMutation,
+    CreateCharacterMutationVariables
+  >(CreateCharacterDocument)
 }
-    `;
+export const DeleteCharacterDocument = gql`
+  mutation DeleteCharacter($id: ID!) {
+    deleteCharacter(character: { id: $id }) {
+      id
+      name
+    }
+  }
+`
 
 export function useDeleteCharacterMutation() {
-  return Urql.useMutation<DeleteCharacterMutation, DeleteCharacterMutationVariables>(DeleteCharacterDocument);
-};
-export const DexterityDocument = gql`
-    mutation Dexterity($id: ID!, $dexterity: Int!) {
-  updateCharacter(character: {id: $id, dexterity: $dexterity}) {
-    id
-    dexterity
-  }
+  return Urql.useMutation<
+    DeleteCharacterMutation,
+    DeleteCharacterMutationVariables
+  >(DeleteCharacterDocument)
 }
-    `;
+export const DexterityDocument = gql`
+  mutation Dexterity($id: ID!, $dexterity: Int!) {
+    updateCharacter(character: { id: $id, dexterity: $dexterity }) {
+      id
+      dexterity
+    }
+  }
+`
 
 export function useDexterityMutation() {
-  return Urql.useMutation<DexterityMutation, DexterityMutationVariables>(DexterityDocument);
-};
+  return Urql.useMutation<DexterityMutation, DexterityMutationVariables>(
+    DexterityDocument,
+  )
+}
 export const ForgetSpellDocument = gql`
-    mutation ForgetSpell($id: ID!, $spellId: ID!) {
-  forgetSpell(character: {id: $id, spellId: $spellId}) {
-    id
-    name
-    spells {
+  mutation ForgetSpell($id: ID!, $spellId: ID!) {
+    forgetSpell(character: { id: $id, spellId: $spellId }) {
       id
       name
+      spells {
+        id
+        name
+      }
     }
   }
-}
-    `;
+`
 
 export function useForgetSpellMutation() {
-  return Urql.useMutation<ForgetSpellMutation, ForgetSpellMutationVariables>(ForgetSpellDocument);
-};
-export const HitPointsDocument = gql`
-    mutation HitPoints($id: ID!, $hitPoints: Int!) {
-  updateCharacter(character: {id: $id, hitPoints: $hitPoints}) {
-    id
-    hitPoints
-  }
+  return Urql.useMutation<ForgetSpellMutation, ForgetSpellMutationVariables>(
+    ForgetSpellDocument,
+  )
 }
-    `;
+export const HitPointsDocument = gql`
+  mutation HitPoints($id: ID!, $hitPoints: Int!) {
+    updateCharacter(character: { id: $id, hitPoints: $hitPoints }) {
+      id
+      hitPoints
+    }
+  }
+`
 
 export function useHitPointsMutation() {
-  return Urql.useMutation<HitPointsMutation, HitPointsMutationVariables>(HitPointsDocument);
-};
-export const IntelligenceDocument = gql`
-    mutation Intelligence($id: ID!, $intelligence: Int!) {
-  updateCharacter(character: {id: $id, intelligence: $intelligence}) {
-    id
-    intelligence
-  }
+  return Urql.useMutation<HitPointsMutation, HitPointsMutationVariables>(
+    HitPointsDocument,
+  )
 }
-    `;
+export const IntelligenceDocument = gql`
+  mutation Intelligence($id: ID!, $intelligence: Int!) {
+    updateCharacter(character: { id: $id, intelligence: $intelligence }) {
+      id
+      intelligence
+    }
+  }
+`
 
 export function useIntelligenceMutation() {
-  return Urql.useMutation<IntelligenceMutation, IntelligenceMutationVariables>(IntelligenceDocument);
-};
+  return Urql.useMutation<IntelligenceMutation, IntelligenceMutationVariables>(
+    IntelligenceDocument,
+  )
+}
 export const LearnSpellDocument = gql`
-    mutation LearnSpell($id: ID!, $spellId: ID!) {
-  learnSpell(character: {id: $id, spellId: $spellId}) {
-    id
-    name
-    spells {
+  mutation LearnSpell($id: ID!, $spellId: ID!) {
+    learnSpell(character: { id: $id, spellId: $spellId }) {
       id
       name
+      spells {
+        id
+        name
+      }
     }
   }
-}
-    `;
+`
 
 export function useLearnSpellMutation() {
-  return Urql.useMutation<LearnSpellMutation, LearnSpellMutationVariables>(LearnSpellDocument);
-};
-export const LevelDocument = gql`
-    mutation Level($id: ID!, $level: Int!) {
-  updateCharacter(character: {id: $id, level: $level}) {
-    id
-    level
-  }
+  return Urql.useMutation<LearnSpellMutation, LearnSpellMutationVariables>(
+    LearnSpellDocument,
+  )
 }
-    `;
+export const LevelDocument = gql`
+  mutation Level($id: ID!, $level: Int!) {
+    updateCharacter(character: { id: $id, level: $level }) {
+      id
+      level
+    }
+  }
+`
 
 export function useLevelMutation() {
-  return Urql.useMutation<LevelMutation, LevelMutationVariables>(LevelDocument);
-};
-export const MaxHitPointsDocument = gql`
-    mutation MaxHitPoints($id: ID!, $maxHitPoints: Int!) {
-  updateCharacter(character: {id: $id, maxHitPoints: $maxHitPoints}) {
-    id
-    maxHitPoints
-  }
+  return Urql.useMutation<LevelMutation, LevelMutationVariables>(LevelDocument)
 }
-    `;
+export const MaxHitPointsDocument = gql`
+  mutation MaxHitPoints($id: ID!, $maxHitPoints: Int!) {
+    updateCharacter(character: { id: $id, maxHitPoints: $maxHitPoints }) {
+      id
+      maxHitPoints
+    }
+  }
+`
 
 export function useMaxHitPointsMutation() {
-  return Urql.useMutation<MaxHitPointsMutation, MaxHitPointsMutationVariables>(MaxHitPointsDocument);
-};
+  return Urql.useMutation<MaxHitPointsMutation, MaxHitPointsMutationVariables>(
+    MaxHitPointsDocument,
+  )
+}
 export const PrepareSpellDocument = gql`
-    mutation PrepareSpell($id: ID!, $spellId: ID!) {
-  prepareSpell(character: {id: $id, spellId: $spellId}) {
-    id
-    name
-    preparedSpells {
+  mutation PrepareSpell($id: ID!, $spellId: ID!) {
+    prepareSpell(character: { id: $id, spellId: $spellId }) {
       id
       name
+      preparedSpells {
+        id
+        name
+      }
     }
   }
-}
-    `;
+`
 
 export function usePrepareSpellMutation() {
-  return Urql.useMutation<PrepareSpellMutation, PrepareSpellMutationVariables>(PrepareSpellDocument);
-};
+  return Urql.useMutation<PrepareSpellMutation, PrepareSpellMutationVariables>(
+    PrepareSpellDocument,
+  )
+}
 export const SkillDocument = gql`
-    mutation Skill($id: ID!, $skillId: ID!) {
-  updateCharacter(character: {id: $id, skillId: $skillId}) {
-    id
-    skills {
+  mutation Skill($id: ID!, $skillId: ID!) {
+    updateCharacter(character: { id: $id, skillId: $skillId }) {
       id
-      name
+      skills {
+        id
+        name
+      }
     }
   }
-}
-    `;
+`
 
 export function useSkillMutation() {
-  return Urql.useMutation<SkillMutation, SkillMutationVariables>(SkillDocument);
-};
-export const SpeedDocument = gql`
-    mutation Speed($id: ID!, $speed: Int!) {
-  updateCharacter(character: {id: $id, speed: $speed}) {
-    id
-    speed
-  }
+  return Urql.useMutation<SkillMutation, SkillMutationVariables>(SkillDocument)
 }
-    `;
+export const SpeedDocument = gql`
+  mutation Speed($id: Int!, $speed: Int!) {
+    updateCharacter(character: { id: $id, speed: $speed }) {
+      id
+      speed
+    }
+  }
+`
 
 export function useSpeedMutation() {
-  return Urql.useMutation<SpeedMutation, SpeedMutationVariables>(SpeedDocument);
-};
-export const SpellSlotsDocument = gql`
-    mutation SpellSlots($id: ID!, $spellSlots: String!) {
-  updateCharacter(character: {id: $id, spellSlots: $spellSlots}) {
-    id
-    spellSlots
-  }
+  return Urql.useMutation<SpeedMutation, SpeedMutationVariables>(SpeedDocument)
 }
-    `;
+export const SpellSlotsDocument = gql`
+  mutation SpellSlots($id: ID!, $spellSlots: String!) {
+    updateCharacter(character: { id: $id, spellSlots: $spellSlots }) {
+      id
+      spellSlots
+    }
+  }
+`
 
 export function useSpellSlotsMutation() {
-  return Urql.useMutation<SpellSlotsMutation, SpellSlotsMutationVariables>(SpellSlotsDocument);
-};
-export const StrengthDocument = gql`
-    mutation Strength($id: ID!, $strength: Int!) {
-  updateCharacter(character: {id: $id, strength: $strength}) {
-    id
-    strength
-  }
+  return Urql.useMutation<SpellSlotsMutation, SpellSlotsMutationVariables>(
+    SpellSlotsDocument,
+  )
 }
-    `;
+export const StrengthDocument = gql`
+  mutation Strength($id: ID!, $strength: Int!) {
+    updateCharacter(character: { id: $id, strength: $strength }) {
+      id
+      strength
+    }
+  }
+`
 
 export function useStrengthMutation() {
-  return Urql.useMutation<StrengthMutation, StrengthMutationVariables>(StrengthDocument);
-};
+  return Urql.useMutation<StrengthMutation, StrengthMutationVariables>(
+    StrengthDocument,
+  )
+}
 export const UnprepareSpellDocument = gql`
-    mutation UnprepareSpell($id: ID!, $spellId: ID!) {
-  unprepareSpell(character: {id: $id, spellId: $spellId}) {
-    id
-    name
-    preparedSpells {
+  mutation UnprepareSpell($id: ID!, $spellId: ID!) {
+    unprepareSpell(character: { id: $id, spellId: $spellId }) {
       id
       name
+      preparedSpells {
+        id
+        name
+      }
     }
   }
-}
-    `;
+`
 
 export function useUnprepareSpellMutation() {
-  return Urql.useMutation<UnprepareSpellMutation, UnprepareSpellMutationVariables>(UnprepareSpellDocument);
-};
-export const WisdomDocument = gql`
-    mutation Wisdom($id: ID!, $wisdom: Int!) {
-  updateCharacter(character: {id: $id, wisdom: $wisdom}) {
-    id
-    wisdom
-  }
+  return Urql.useMutation<
+    UnprepareSpellMutation,
+    UnprepareSpellMutationVariables
+  >(UnprepareSpellDocument)
 }
-    `;
+export const WisdomDocument = gql`
+  mutation Wisdom($id: ID!, $wisdom: Int!) {
+    updateCharacter(character: { id: $id, wisdom: $wisdom }) {
+      id
+      wisdom
+    }
+  }
+`
 
 export function useWisdomMutation() {
-  return Urql.useMutation<WisdomMutation, WisdomMutationVariables>(WisdomDocument);
-};
+  return Urql.useMutation<WisdomMutation, WisdomMutationVariables>(
+    WisdomDocument,
+  )
+}
 export const CharacterDocument = gql`
-    query Character($id: ID!) {
-  character(id: $id) {
-    id
-    name
-    level
-    race
-    hitPoints
-    maxHitPoints
-    armorClass
-    gold
-    alignment
-    inspiration
-    strength
-    dexterity
-    constitution
-    intelligence
-    wisdom
-    charisma
-    speed
-    spellSlots
-    klass {
+  query Character($id: ID!) {
+    character(id: $id) {
       id
       name
-      hitDie
-      spellCastingModifier
+      level
+      race
+      hitPoints
+      maxHitPoints
+      armorClass
+      gold
+      alignment
+      inspiration
+      strength
+      dexterity
+      constitution
+      intelligence
+      wisdom
+      charisma
+      speed
+      spellSlots
+      klass {
+        id
+        name
+        hitDie
+        spellCastingModifier
+      }
+      subclass {
+        id
+        name
+        spellCastingModifier
+      }
+      skills {
+        id
+        name
+        ability
+      }
+      spells {
+        id
+        name
+        level
+        concentration
+        ritual
+      }
+      preparedSpells {
+        id
+        name
+        level
+        concentration
+        ritual
+      }
     }
-    subclass {
+  }
+`
+
+export function useCharacterQuery(
+  options: Omit<Urql.UseQueryArgs<CharacterQueryVariables>, 'query'> = {},
+) {
+  return Urql.useQuery<CharacterQuery>({ query: CharacterDocument, ...options })
+}
+export const CharactersDocument = gql`
+  query Characters {
+    characters {
       id
       name
-      spellCastingModifier
+      level
+      race
+      klass {
+        id
+        name
+        spellCastingModifier
+      }
+      subclass {
+        id
+        name
+        spellCastingModifier
+      }
+      spells {
+        id
+      }
     }
+  }
+`
+
+export function useCharactersQuery(
+  options: Omit<Urql.UseQueryArgs<CharactersQueryVariables>, 'query'> = {},
+) {
+  return Urql.useQuery<CharactersQuery>({
+    query: CharactersDocument,
+    ...options,
+  })
+}
+export const MeDocument = gql`
+  query Me {
+    me {
+      id
+      name
+      email
+    }
+  }
+`
+
+export function useMeQuery(
+  options: Omit<Urql.UseQueryArgs<MeQueryVariables>, 'query'> = {},
+) {
+  return Urql.useQuery<MeQuery>({ query: MeDocument, ...options })
+}
+export const SkillsDocument = gql`
+  query Skills {
     skills {
       id
       name
       ability
     }
-    spells {
-      id
-      name
-      level
-      concentration
-      ritual
-    }
-    preparedSpells {
-      id
-      name
-      level
-      concentration
-      ritual
-    }
   }
-}
-    `;
+`
 
-export function useCharacterQuery(options: Omit<Urql.UseQueryArgs<CharacterQueryVariables>, 'query'> = {}) {
-  return Urql.useQuery<CharacterQuery>({ query: CharacterDocument, ...options });
-};
-export const CharactersDocument = gql`
-    query Characters {
-  characters {
-    id
-    name
-    level
-    race
-    klass {
-      id
-      name
-      spellCastingModifier
-    }
-    subclass {
-      id
-      name
-      spellCastingModifier
-    }
-    spells {
-      id
-    }
-  }
+export function useSkillsQuery(
+  options: Omit<Urql.UseQueryArgs<SkillsQueryVariables>, 'query'> = {},
+) {
+  return Urql.useQuery<SkillsQuery>({ query: SkillsDocument, ...options })
 }
-    `;
-
-export function useCharactersQuery(options: Omit<Urql.UseQueryArgs<CharactersQueryVariables>, 'query'> = {}) {
-  return Urql.useQuery<CharactersQuery>({ query: CharactersDocument, ...options });
-};
-export const MeDocument = gql`
-    query Me {
-  me {
-    id
-    name
-    email
-  }
-}
-    `;
-
-export function useMeQuery(options: Omit<Urql.UseQueryArgs<MeQueryVariables>, 'query'> = {}) {
-  return Urql.useQuery<MeQuery>({ query: MeDocument, ...options });
-};
-export const SkillsDocument = gql`
-    query Skills {
-  skills {
-    id
-    name
-    ability
-  }
-}
-    `;
-
-export function useSkillsQuery(options: Omit<Urql.UseQueryArgs<SkillsQueryVariables>, 'query'> = {}) {
-  return Urql.useQuery<SkillsQuery>({ query: SkillsDocument, ...options });
-};
 export const SpellDocument = gql`
-    query Spell($id: ID!) {
-  spell(id: $id) {
-    id
-    name
-    level
-    description
-    klasses
-    concentration
-    ritual
-    duration
-    castingTime
-    range
-    components
-    school
-    attackSave
-    damageEffect
-    material
+  query Spell($id: ID!) {
+    spell(id: $id) {
+      id
+      name
+      level
+      description
+      klasses
+      concentration
+      ritual
+      duration
+      castingTime
+      range
+      components
+      school
+      attackSave
+      damageEffect
+      material
+    }
   }
-}
-    `;
+`
 
-export function useSpellQuery(options: Omit<Urql.UseQueryArgs<SpellQueryVariables>, 'query'> = {}) {
-  return Urql.useQuery<SpellQuery>({ query: SpellDocument, ...options });
-};
+export function useSpellQuery(
+  options: Omit<Urql.UseQueryArgs<SpellQueryVariables>, 'query'> = {},
+) {
+  return Urql.useQuery<SpellQuery>({ query: SpellDocument, ...options })
+}
 export const SpellsDocument = gql`
-    query Spells($klassName: String) {
-  spells(klassName: $klassName) {
-    id
-    name
-    level
-    description
-    klasses
-    concentration
-    ritual
-    duration
-    castingTime
-    range
-    components
-    school
-    attackSave
-    damageEffect
-    material
+  query Spells($klassName: String) {
+    spells(klassName: $klassName) {
+      id
+      name
+      level
+      description
+      klasses
+      concentration
+      ritual
+      duration
+      castingTime
+      range
+      components
+      school
+      attackSave
+      damageEffect
+      material
+    }
   }
-}
-    `;
+`
 
-export function useSpellsQuery(options: Omit<Urql.UseQueryArgs<SpellsQueryVariables>, 'query'> = {}) {
-  return Urql.useQuery<SpellsQuery>({ query: SpellsDocument, ...options });
-};
+export function useSpellsQuery(
+  options: Omit<Urql.UseQueryArgs<SpellsQueryVariables>, 'query'> = {},
+) {
+  return Urql.useQuery<SpellsQuery>({ query: SpellsDocument, ...options })
+}
 export const SubclassesDocument = gql`
-    query Subclasses($klassName: String!) {
-  subclasses(klassName: $klassName) {
-    id
-    name
+  query Subclasses($klassName: String!) {
+    subclasses(klassName: $klassName) {
+      id
+      name
+    }
   }
-}
-    `;
+`
 
-export function useSubclassesQuery(options: Omit<Urql.UseQueryArgs<SubclassesQueryVariables>, 'query'> = {}) {
-  return Urql.useQuery<SubclassesQuery>({ query: SubclassesDocument, ...options });
-};
+export function useSubclassesQuery(
+  options: Omit<Urql.UseQueryArgs<SubclassesQueryVariables>, 'query'> = {},
+) {
+  return Urql.useQuery<SubclassesQuery>({
+    query: SubclassesDocument,
+    ...options,
+  })
+}

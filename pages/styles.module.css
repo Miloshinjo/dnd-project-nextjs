@@ -24,7 +24,7 @@
 
 @screen md {
   .container {
-    @apply items-center justify-center h-screen bg-gray-900;
+    @apply items-center justify-center h-screen bg-gray-200;
   }
 
   .contentContainer {

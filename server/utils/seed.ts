@@ -1,8 +1,6 @@
 import fs from 'fs'
 import { PrismaClient } from '@prisma/client'
 
-console.log(process.cwd())
-
 const spells = JSON.parse(
   fs.readFileSync(`${process.cwd()}/server/__seed__/spells.json`, 'utf-8'),
 )
