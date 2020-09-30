@@ -3,7 +3,7 @@ import {
   UserInputError,
   ApolloError,
   ForbiddenError,
-} from 'apollo-server-express'
+} from 'apollo-server-micro'
 
 const errors = {
   serverError: new ApolloError('Something went wrong!'),

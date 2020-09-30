@@ -1,6 +1,6 @@
 import { getSession } from 'next-auth/client'
 
-import { ApolloError } from 'apollo-server-express'
+import { ApolloError } from 'apollo-server-micro'
 
 const handleError = (error: ApolloError): any => {
   // add any other logging mechanism here e.g. Sentry
