@@ -34,7 +34,7 @@ type Props = {
   klasses: Array<Klass>
 }
 
-const CreateCharacter: React.FC<Props> = ({ klasses = [] }) => {
+const CreateCharacter: React.FC<Props> = ({ klasses }) => {
   const [session, loading] = useSession()
   const router = useRouter()
 
@@ -47,6 +47,10 @@ const CreateCharacter: React.FC<Props> = ({ klasses = [] }) => {
   if (loading) return null
 
   if (!loading && !session) return <p>Logging you out...</p>
+
+  if (!klasses) {
+    return null
+  }
 
   return (
     <AppLayout title="Character Creation">

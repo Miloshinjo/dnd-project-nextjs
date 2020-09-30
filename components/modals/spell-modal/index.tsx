@@ -1,7 +1,6 @@
 import { Spell, useSpellQuery } from '../../../generated/graphql'
 
 import Loader from '../../layout/loader'
-import { useModal } from '../../../context/modal'
 import SpellDescription from '../../../components/spell/description'
 import SpellInfo from '../../../components/spell/info'
 import SpellConcentrationRitual from '../../../components/spell/concentration-ritual'
@@ -15,11 +14,9 @@ type Props = {
   spellName: Spell['name']
 }
 
-const SpellModal: React.FC<Props> = ({ spellId, spellName }) => {
-  const { closeModal } = useModal()
-
+const SpellModal: React.FC<Props> = ({ spellId }) => {
   const [result] = useSpellQuery({
-    variables: { id: spellId },
+    variables: { id: `${spellId}` },
   })
 
   if (result.fetching) {

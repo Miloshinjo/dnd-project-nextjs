@@ -44,7 +44,14 @@ const Home = () => {
           <button
             className={styles.loginButton}
             type="button"
-            onClick={() => signIn()}
+            onClick={() =>
+              signIn(null, {
+                callbackUrl:
+                  process.env.NODE_ENV === 'production'
+                    ? 'https://dnd-project-nextjs.vercel.app/app'
+                    : 'http://localhost:3000/app',
+              })
+            }
           >
             Sign In
           </button>

@@ -8,11 +8,6 @@ import createContext from '../../server/utils/context'
 const apolloServer = new ApolloServer({
   schema: applyMiddleware(schema, permissions),
   context: createContext,
-  // playground: {
-  //   settings: {
-  //     'request.credentials': 'same-origin',
-  //   },
-  // },
 })
 
 export const config = {
