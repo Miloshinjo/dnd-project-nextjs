@@ -15,7 +15,7 @@
 }
 
 .infoWrapperProficient {
-  @apply flex items-center bg-red-400;
+  @apply flex items-center;
 }
 
 .infoWrapper {
