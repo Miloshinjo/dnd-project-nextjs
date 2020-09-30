@@ -71,12 +71,7 @@ const DrawerMenu: React.FC = () => {
           <button
             className={styles.link}
             onClick={() => {
-              signOut({
-                callbackUrl:
-                  process.env.NODE_ENV === 'production'
-                    ? 'https://dnd-project-nextjs.vercel.app/'
-                    : 'http://localhost:3000/',
-              })
+              signOut()
             }}
           >
             Sign out
