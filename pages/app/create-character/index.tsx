@@ -2,11 +2,11 @@ import { useSession } from 'next-auth/client'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
-import makeClient from '../../../utils/makeUrqlClient'
 import AppLayout from '../../../components/layouts/app-layout'
 import CreateCharacterForm from '../../../components/forms/create-character'
 import SubHeader from '../../../components/layout/sub-header'
 import { Klass } from '../../../generated/graphql'
+import { client } from '../../../pages/_app'
 
 import styles from './styles.module.css'
 
@@ -20,8 +20,6 @@ const KlassesQuery = `
 `
 
 export const getKlasses = async () => {
-  const client = makeClient()
-
   const result = await client.query(KlassesQuery).toPromise()
 
   if (!result || result.error) {
