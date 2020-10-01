@@ -16,7 +16,7 @@ module.exports = {
       colors: {
         barbarian: '#FF7D01',
         bard: '#E6CC80',
-        cleric: '#FFFFFF',
+        cleric: '#C0C0C0',
         druid: '#FF7D0A',
         fighter: '#C79C6E',
         monk: '#00FF96',

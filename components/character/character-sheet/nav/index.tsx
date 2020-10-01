@@ -44,45 +44,6 @@ type Props = {
   klass: string
 }
 
-const iconVariants = {
-  active: {
-    scale: 0.5,
-    color: '#1a202c',
-    originY: 0,
-    transition: {
-      type: 'tween',
-      duration: 0.5,
-    },
-  },
-  inactive: {
-    color: '#CBD5E0',
-    scale: 1,
-    transition: {
-      type: 'tween',
-      duration: 0.5,
-    },
-  },
-}
-
-const textVariants = {
-  inactive: {
-    opacity: 0,
-    y: -10,
-    transition: {
-      type: 'tween',
-      duration: 0.2,
-    },
-  },
-  active: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: 'tween',
-      duration: 0.4,
-    },
-  },
-}
-
 const buttonVariants = {
   inactive: {
     scale: 1,

@@ -1,16 +1,33 @@
-.spellCardContainer {
-  @apply p-2 flex items-center justify-between bg-white cursor-pointer border-t-4 border-gray-900 shadow;
+.container {
+  @apply flex flex-col border rounded;
+}
+
+.button {
+  @apply px-4 py-2 flex items-center justify-between bg-white cursor-pointer;
 }
 
 .spellName {
-  @apply text-lg font-semibold;
+  @apply text-lg font-extrabold;
+}
+
+.spellSchool {
+  @apply text-sm font-medium opacity-50;
 }
 
 .spellLevel {
-  @apply text-xs px-1;
+  @apply text-sm font-bold opacity-50 text-red-900;
+}
+
+.bottomPart {
+  @apply bg-white p-4 pt-2;
+}
+
+.description p {
+  @apply my-2;
 }
 
 @screen md {
-  .spellCardContainer {
+  .container {
+    @apply shadow-md;
   }
 }

@@ -34,9 +34,8 @@ const options = {
     },
   },
   pages: {
-    signIn: '/auth/email-signin',
+    signIn: '/signin',
   },
-  debug: true,
 }
 
 const authHandler: NextApiHandler = (req, res) =>

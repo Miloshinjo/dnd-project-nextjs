@@ -1,0 +1,63 @@
+.container {
+  @apply h-screen flex items-center justify-center flex-col;
+}
+
+.contentContainer {
+  @apply bg-gray-100 p-6 rounded-lg w-full;
+}
+
+.headingPrimary {
+  @apply font-black text-3xl;
+}
+
+.headingSecondary {
+  @apply text-lg mb-8 text-center;
+}
+
+.emailForm {
+  @apply flex flex-col;
+}
+
+.emailInput {
+  @apply appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 text-gray-900 mt-1;
+}
+
+.emailInput:focus {
+  @apply outline-none shadow-outline z-10;
+}
+
+.emailInput::placeholder {
+  @apply text-gray-500;
+}
+
+.emailLabel {
+  @apply text-sm font-medium mb-4;
+}
+
+@screen sm {
+  .contentContainer {
+    @apply bg-white shadow-lg p-10 rounded-lg w-2/3;
+  }
+
+  .headingPrimary {
+    @apply mb-8;
+  }
+}
+
+@screen md {
+  .contentContainer {
+    @apply bg-white shadow-lg rounded-lg w-1/2;
+  }
+}
+
+@screen lg {
+  .contentContainer {
+    @apply bg-white shadow-lg rounded-lg w-1/3;
+  }
+}
+
+@screen xl {
+  .contentContainer {
+    @apply bg-white shadow-lg rounded-lg w-1/5;
+  }
+}

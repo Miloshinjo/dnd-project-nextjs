@@ -8,7 +8,10 @@ const Klasses: React.FC<Props> = ({ klasses }) => (
   <div className={styles.container}>
     {klasses.split(',').map((klass) => {
       return (
-        <div key={klass} className={styles.klass}>
+        <div
+          key={klass}
+          className={`${styles.klass} text-${klass.toLowerCase()}`}
+        >
           {klass}
         </div>
       )

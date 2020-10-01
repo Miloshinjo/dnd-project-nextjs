@@ -16,6 +16,15 @@ export const SpellsQuery = `
       level
       school
       klasses
+      description
+      concentration
+      ritual
+      castingTime
+      duration
+      range
+      components
+      attackSave
+      damageEffect
     }
   }
 `

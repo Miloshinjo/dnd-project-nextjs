@@ -19,12 +19,12 @@
 }
 
 .loginButton {
-  @apply px-4 py-2 font-semibold rounded-md mt-6 bg-red-900 text-white self-start;
+  @apply px-4 py-2 font-semibold rounded-md mt-6 bg-gray-900 text-white self-start;
 }
 
 @screen md {
   .container {
-    @apply items-center justify-center h-screen bg-gray-200;
+    @apply items-center justify-center h-screen bg-gray-100;
   }
 
   .contentContainer {

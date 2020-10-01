@@ -5,7 +5,6 @@ import TextInput from '../../form/text-input'
 import SelectInput from '../../form/select-input'
 import { Klass } from '../../../generated/graphql'
 import { useModal } from '../../../context/modal'
-import Select from 'react-select'
 
 import { useCreateCharacterMutation } from '../../../generated/graphql'
 import validations from './validations'

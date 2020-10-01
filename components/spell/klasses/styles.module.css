@@ -3,7 +3,7 @@
 }
 
 .klass {
-  @apply capitalize rounded text-sm opacity-75;
+  @apply capitalize rounded text-sm font-medium;
 }
 
 .klass:not(:last-child) {

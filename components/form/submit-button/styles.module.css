@@ -3,7 +3,7 @@
 }
 
 .button:hover {
-  @apply bg-gray-500;
+  @apply bg-gray-800;
 }
 
 .button:focus {

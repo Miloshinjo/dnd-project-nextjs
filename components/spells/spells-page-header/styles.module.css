@@ -1,9 +1,9 @@
-.spellsHeader {
-  @apply bg-gray-900 text-white px-4 py-2 grid grid-cols-5 gap-x-4;
+.container {
+  @apply bg-gray-900 text-white px-4 py-2;
 }
 
 .searchContainer {
-  @apply mb-4 flex flex-col w-full mr-32;
+  @apply flex py-1;
 }
 
 .searchInput {
