@@ -1,9 +1,9 @@
 .container {
-  @apply flex flex-col border rounded;
+  @apply flex flex-col rounded bg-white;
 }
 
 .button {
-  @apply px-4 py-2 flex items-center justify-between bg-white cursor-pointer;
+  @apply px-4 py-2 flex items-center justify-between  cursor-pointer;
 }
 
 .spellName {
@@ -19,7 +19,7 @@
 }
 
 .bottomPart {
-  @apply bg-white p-4 pt-2;
+  @apply p-4 pt-2;
 }
 
 .description p {
