@@ -9,13 +9,9 @@ import { Provider as SessionProvider } from 'next-auth/client'
 
 import cache from '../utils/cache'
 
-const isDev = process.env.NODE_ENV !== 'production'
-
-const url = isDev
-  ? 'http://localhost:3000/api/graphql'
-  : 'https://dnd-project-nextjs.vercel.app/api/graphql'
-
 import '../styles/index.css'
+
+const url = process.env.NEXT_PUBLIC_GRAPHQL_URL
 
 export const client = createClient({
   url,
