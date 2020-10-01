@@ -35,11 +35,11 @@ const Home = () => {
         <div className={styles.contentContainer}>
           <h1 className={styles.title}>
             Welcome to <br />{' '}
-            <span className={styles.titleMain}>Session Assistant</span>{' '}
+            <span className={styles.titleMain}>Simulacrum</span>{' '}
           </h1>
           <p className={styles.paragraph}>
-            Helps you manage and save your 5th edition dungeons and dragons
-            characters. Sign in to continue. <br />
+            App that helps you manage and save your 5th edition dungeons and
+            dragons characters. Sign in to continue. <br />
           </p>
           <button
             className={styles.loginButton}

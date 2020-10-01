@@ -1,7 +1,8 @@
 import { useState, Dispatch, SetStateAction } from 'react'
 import { motion } from 'framer-motion'
 import { FiChevronUp } from 'react-icons/fi'
-import { actionTypes } from '../../../pages/spells'
+
+import actionTypes from '../../../utils/constants/actionTypes'
 
 import styles from './styles.module.css'
 

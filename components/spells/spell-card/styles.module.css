@@ -1,0 +1,16 @@
+.spellCardContainer {
+  @apply p-2 flex items-center justify-between bg-white cursor-pointer border-t-4 border-gray-900 shadow;
+}
+
+.spellName {
+  @apply text-lg font-semibold;
+}
+
+.spellLevel {
+  @apply text-xs px-1;
+}
+
+@screen md {
+  .spellCardContainer {
+  }
+}

@@ -36,11 +36,11 @@
   @apply bg-white text-center shadow-md relative;
   height: 100vh;
   width: 90%;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 
 .drawerCloseButton {
-  @apply fixed p-1 bg-white rounded;
+  @apply fixed p-1  bg-white rounded;
   bottom: 2.5rem;
   z-index: 1000;
 }

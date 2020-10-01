@@ -23,17 +23,23 @@
 }
 
 .spellsContainer {
-  @apply flex flex-col;
+  @apply grid grid-cols-1 gap-x-10 gap-y-4;
 }
 
-.spellCardContainer {
-  @apply p-2 border-b flex items-center justify-between;
+@screen sm {
+  .spellsContainer {
+    @apply grid-cols-2;
+  }
 }
 
-.spellName {
-  @apply text-lg font-semibold;
+@screen md {
+  .spellsContainer {
+    @apply grid-cols-3;
+  }
 }
 
-.spellLevel {
-  @apply text-xs px-1;
+@screen lg {
+  .spellsContainer {
+    @apply grid-cols-4;
+  }
 }
