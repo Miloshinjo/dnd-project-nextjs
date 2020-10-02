@@ -48,7 +48,7 @@ const Home = () => {
               signIn(null, {
                 callbackUrl:
                   process.env.NODE_ENV === 'production'
-                    ? 'https://dnd-project-nextjs.vercel.app/app'
+                    ? 'https://simulacrum.rocks/app'
                     : 'http://localhost:3000/app',
               })
             }

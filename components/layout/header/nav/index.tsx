@@ -33,7 +33,7 @@ const Nav: React.FC = () => {
           signOut({
             callbackUrl:
               process.env.NODE_ENV === 'production'
-                ? 'https://dnd-project-nextjs.vercel.app/'
+                ? 'https://simulacrum.rocks/'
                 : 'http://localhost:3000/',
           })
         }}
