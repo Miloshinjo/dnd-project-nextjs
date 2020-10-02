@@ -16,6 +16,7 @@ export const SpellsQuery = `
       level
       school
       klasses
+      material
       description
       concentration
       ritual

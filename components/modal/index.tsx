@@ -92,10 +92,10 @@ const Modal: React.FC = ({ children }) => {
         <AnimatePresence exitBeforeEnter onExitComplete={closeModal}>
           {modal && (
             <ClientOnlyPortal selector="#modal">
-              <ComeInRight>
+              <ComeInTop>
                 {renderModal(modal)}
                 {children}
-              </ComeInRight>
+              </ComeInTop>
             </ClientOnlyPortal>
           )}
         </AnimatePresence>
@@ -107,16 +107,16 @@ export { Modal as default }
 
 const backdropVariants = { visible: { opacity: 1 }, hidden: { opacity: 0 } }
 
-const rightModalVariants = {
-  hidden: { x: '100vw', opacity: 0 },
+const topModalVariants = {
+  hidden: { y: '-200px', opacity: 0, transition: { duration: 0.4 } },
   visible: {
-    x: 0,
+    y: 0,
     opacity: 1,
-    transition: { delay: 0.1 },
+    transition: { duration: 0.3 },
   },
 }
 
-const ComeInRight: React.FC = ({ children }) => {
+const ComeInTop: React.FC = ({ children }) => {
   return (
     <motion.div
       className={styles.backdrop}
@@ -125,7 +125,7 @@ const ComeInRight: React.FC = ({ children }) => {
       animate="visible"
       exit="hidden"
     >
-      <motion.div className={styles.modal} variants={rightModalVariants}>
+      <motion.div className={styles.modal} variants={topModalVariants}>
         {children}
       </motion.div>
     </motion.div>

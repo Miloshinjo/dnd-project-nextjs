@@ -1,19 +1,17 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { signOut } from 'next-auth/client'
-
-import { useMeQuery } from '../../../generated/graphql'
+import { signOut, useSession } from 'next-auth/client'
 
 import styles from './styles.module.css'
 
 const DrawerMenu: React.FC = () => {
   const router = useRouter()
 
-  const [meResult] = useMeQuery()
+  const [session] = useSession()
 
-  const email = meResult?.data?.me?.email
-  const name = meResult?.data?.me?.name
-  const image = meResult?.data?.me?.image
+  const email = session?.user?.email
+  const name = session?.user?.name
+  const image = session?.user?.image
 
   return (
     <div className={styles.drawer}>

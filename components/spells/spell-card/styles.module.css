@@ -1,5 +1,5 @@
 .container {
-  @apply flex flex-col rounded bg-white;
+  @apply flex flex-col rounded bg-white border;
 }
 
 .button {
