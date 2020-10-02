@@ -162,6 +162,7 @@ export interface NexusGenRootTypes {
   User: { // root type
     email?: string | null; // String
     id: number; // Int!
+    image?: string | null; // String
     name?: string | null; // String
   }
 }
@@ -286,6 +287,7 @@ export interface NexusGenFieldTypes {
     characters: NexusGenRootTypes['Character'][]; // [Character!]!
     email: string | null; // String
     id: number; // Int!
+    image: string | null; // String
     name: string | null; // String
   }
 }

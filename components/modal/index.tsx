@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { BsArrowReturnLeft } from 'react-icons/bs'
+import { IoMdClose } from 'react-icons/io'
 
 import { useModal, ModalType } from '../../context/modal'
 import UpdateNumberValue from '../modals/update-number-value'
@@ -8,9 +8,11 @@ import CharacterCreated from '../modals/character-created'
 import DeleteCharacter from '../modals/delete-character'
 import LearnSpell from '../modals/learn-spell'
 import SpellModal from '../modals/spell-modal'
+import MobileDrawerModal from '../modals/mobile-drawer'
 import ClientOnlyPortal from '../../utils/clientOnlyPortal'
 
 import styles from './styles.module.css'
+import React from 'react'
 
 const Modal: React.FC = ({ children }) => {
   const { modal, closeModal } = useModal()
@@ -62,6 +64,8 @@ const Modal: React.FC = ({ children }) => {
             spellName={modal.props.spellName}
           />
         )
+      case 'mobileDrawer':
+        return <MobileDrawerModal />
       default:
         return null
     }
@@ -69,6 +73,7 @@ const Modal: React.FC = ({ children }) => {
 
   switch (modal?.type) {
     case 'spell':
+    case 'mobileDrawer':
       return (
         <AnimatePresence exitBeforeEnter onExitComplete={closeModal}>
           {modal && (
@@ -136,15 +141,6 @@ const drawerModalVariants = {
   },
 }
 
-const drawerCloseButtonVariants = {
-  hidden: { x: '-150vw', opacity: 0 },
-  visible: {
-    x: '38vw',
-    opacity: 1,
-    transition: { delay: 0.2, type: 'tween' },
-  },
-}
-
 const ComeInDrawer: React.FC = ({ children }) => {
   const { closeModal } = useModal()
 
@@ -157,15 +153,19 @@ const ComeInDrawer: React.FC = ({ children }) => {
       exit="hidden"
     >
       <motion.div className={styles.modalDrawer} variants={drawerModalVariants}>
+        <div className={styles.drawerCloseContainer}>
+          <button
+            type="button"
+            className={styles.drawerCloseButton}
+            onClick={() => {
+              closeModal()
+            }}
+          >
+            <IoMdClose size={25} />
+          </button>
+        </div>
+
         {children}
-        <motion.button
-          type="button"
-          className={styles.drawerCloseButton}
-          onClick={closeModal}
-          variants={drawerCloseButtonVariants}
-        >
-          <BsArrowReturnLeft size={30} />
-        </motion.button>
       </motion.div>
     </motion.div>
   )

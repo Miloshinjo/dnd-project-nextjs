@@ -1,10 +1,6 @@
 .container {
 }
 
-.header {
-  @apply flex justify-between bg-gray-900 text-white p-1;
-}
-
 .headerTitle {
   @apply text-left flex items-center;
 }

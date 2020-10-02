@@ -176,5 +176,6 @@ type User {
   characters(after: CharacterWhereUniqueInput, before: CharacterWhereUniqueInput, first: Int, last: Int): [Character!]!
   email: String
   id: Int!
+  image: String
   name: String
 }

@@ -9,11 +9,10 @@ export const me = queryField('me', {
     try {
       const userId = await getUserId(req)
 
-      console.log(me)
-
       const user = await prisma.user.findOne({
         where: { id: userId },
       })
+
       return user
     } catch (err) {
       console.log(err)

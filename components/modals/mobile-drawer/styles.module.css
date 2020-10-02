@@ -1,0 +1,27 @@
+.drawer {
+  @apply h-full w-full;
+}
+
+.userProfile {
+  @apply w-full flex  text-left px-6 py-12;
+}
+
+.username {
+  @apply font-bold w-full;
+}
+
+.section {
+  @apply border-b w-full pb-2;
+}
+
+.sectionHeader {
+  @apply px-6 text-xs text-red-900 font-bold mt-4 uppercase mb-2 text-left;
+}
+
+.link {
+  @apply font-semibold px-6 py-2 flex w-full items-center;
+}
+
+.activeLink {
+  @apply bg-gray-200;
+}

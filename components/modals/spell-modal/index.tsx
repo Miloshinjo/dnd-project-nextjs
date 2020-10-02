@@ -34,31 +34,27 @@ const SpellModal: React.FC<Props> = ({ spellId }) => {
 
   const { spell } = result.data
   return (
-    <>
-      <div className={styles.container}>
-        <div className={styles.header} />
-
-        <div className="flex flex-col p-4 items-start">
-          <h2 className={styles.spellName}>{spell.name}</h2>
-          <h3 className={styles.spellSchool}>{spell.school}</h3>
-          <SpellConcentrationRitual
-            concentration={spell.concentration}
-            ritual={spell.ritual}
-          />
-          <SpellInfo
-            attackSave={spell.attackSave}
-            castingTime={spell.castingTime}
-            components={spell.components}
-            damageEffect={spell.damageEffect}
-            duration={spell.duration}
-            range={spell.range}
-          />
-          <SpellDescription description={spell.description} />
-          <SpellMaterial material={spell.material} />
-          <SpellKlasses klasses={spell.klasses} />
-        </div>
+    <div className={styles.container}>
+      <div className="flex flex-col p-4 items-start">
+        <h2 className={styles.spellName}>{spell.name}</h2>
+        <h3 className={styles.spellSchool}>{spell.school}</h3>
+        <SpellConcentrationRitual
+          concentration={spell.concentration}
+          ritual={spell.ritual}
+        />
+        <SpellInfo
+          attackSave={spell.attackSave}
+          castingTime={spell.castingTime}
+          components={spell.components}
+          damageEffect={spell.damageEffect}
+          duration={spell.duration}
+          range={spell.range}
+        />
+        <SpellDescription description={spell.description} />
+        <SpellMaterial material={spell.material} />
+        <SpellKlasses klasses={spell.klasses} />
       </div>
-    </>
+    </div>
   )
 }
 
