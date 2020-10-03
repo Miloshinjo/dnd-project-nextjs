@@ -14,7 +14,7 @@
 }
 
 .spellLearnt {
-  @apply flex p-2 w-full flex-col items-center text-gray-900;
+  @apply flex p-2 w-full flex-col items-center text-gray-900 pb-4;
 }
 
 .spellLearntHeading {

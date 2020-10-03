@@ -14,7 +14,7 @@
 }
 
 .spellName {
-  @apply text-xl font-bold leading-tight;
+  @apply text-xl leading-tight font-extrabold;
 }
 
 .spellSchool {

@@ -3,23 +3,15 @@
 }
 
 .contentContainer {
-  @apply p-6 flex flex-col justify-center h-full;
+  @apply p-6 flex flex-col justify-center items-center h-full text-center;
 }
 
-.title {
-  @apply uppercase text-lg;
+.logoImage {
+  @apply w-56 h-56;
 }
 
-.titleMain {
-  @apply capitalize text-3xl font-black;
-}
-
-.title2 {
-  @apply text-xs uppercase font-semibold mb-2;
-}
-
-.loginButton {
-  @apply px-4 py-2 font-semibold rounded-md mt-6 bg-gray-900 text-white self-start;
+.signinButton {
+  @apply px-16 py-2 font-semibold text-lg mt-6 bg-primary-600 text-white;
 }
 
 @screen md {
@@ -28,7 +20,7 @@
   }
 
   .contentContainer {
-    @apply w-1/2 shadow-lg pt-0 p-12 bg-white rounded-lg;
+    @apply w-1/2 pt-0 p-12;
     height: min-content;
   }
 }

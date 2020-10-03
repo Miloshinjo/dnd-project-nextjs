@@ -14,6 +14,9 @@ module.exports = {
     },
     extend: {
       colors: {
+        primary: {
+          600: '#3182CE',
+        },
         barbarian: '#FF7D01',
         bard: '#E6CC80',
         cleric: '#C0C0C0',

@@ -81,10 +81,7 @@ const LearnSpell: React.FC<Props> = ({ spellId }) => {
             has learned a new spell!
           </h4>
           <Link href={`/app/${learnSpellResult.data.learnSpell.id}`}>
-            <a className={styles.spellLearntLink}>Back to character</a>
-          </Link>
-          <Link href={`/spells`}>
-            <a className={styles.spellLearntLinkFlat}>Back to spells</a>
+            <a className={styles.spellLearntLink}>Go to character</a>
           </Link>
         </div>
       ) : (

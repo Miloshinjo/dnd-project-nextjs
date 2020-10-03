@@ -33,16 +33,13 @@ const Home = () => {
       </Head>
       <div className={styles.container}>
         <div className={styles.contentContainer}>
-          <h1 className={styles.title}>
-            Welcome to <br />{' '}
-            <span className={styles.titleMain}>Simulacrum</span>{' '}
-          </h1>
+          <img src="/images/logo.svg" alt="LOGO" className={styles.logoImage} />
           <p className={styles.paragraph}>
             App that helps you manage and save your 5th edition dungeons and
             dragons characters. Sign in to continue. <br />
           </p>
           <button
-            className={styles.loginButton}
+            className={styles.signinButton}
             type="button"
             onClick={() =>
               signIn(null, {
