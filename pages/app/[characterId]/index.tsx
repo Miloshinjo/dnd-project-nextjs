@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 
 import AppLayout from '../../../components/layouts/app-layout'
 import CharacterSheet from '../../../components/character/character-sheet'
+import LoadingPage from '../../../components/layout/loading-page'
 
 const CharacterPage: NextPage = () => {
   const router = useRouter()
@@ -17,11 +18,9 @@ const CharacterPage: NextPage = () => {
     }
   }, [session, loading])
 
-  if (loading) return null
+  if (loading) return <LoadingPage />
 
   if (!loading && !session) return <p>Logging you out...</p>
-
-  if (!characterId) return null
 
   return (
     <AppLayout title="Character Sheet">

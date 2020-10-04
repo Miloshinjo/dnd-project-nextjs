@@ -10,10 +10,6 @@
   @apply w-56 h-56;
 }
 
-.signinButton {
-  @apply px-16 py-2 font-semibold text-lg mt-6 bg-primary-600 text-white;
-}
-
 @screen md {
   .container {
     @apply items-center justify-center h-screen bg-gray-100;

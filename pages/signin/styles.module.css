@@ -31,7 +31,24 @@
 }
 
 .emailLabel {
-  @apply text-sm font-medium mb-4;
+  @apply text-sm font-medium;
+}
+
+.logoImage {
+  @apply w-56 h-56;
+}
+
+.divider {
+  @apply flex justify-center items-center my-4;
+}
+
+.dividerText {
+  @apply mx-4 font-medium text-gray-900 opacity-50;
+}
+
+.dividerLine {
+  @apply block w-full bg-gray-900 opacity-50 rounded;
+  height: 1px;
 }
 
 @screen sm {
@@ -46,18 +63,12 @@
 
 @screen md {
   .contentContainer {
-    @apply bg-white shadow-lg rounded-lg w-1/2;
+    @apply rounded-lg w-1/2;
   }
 }
 
 @screen lg {
   .contentContainer {
-    @apply bg-white shadow-lg rounded-lg w-1/3;
-  }
-}
-
-@screen xl {
-  .contentContainer {
-    @apply bg-white shadow-lg rounded-lg w-1/5;
+    @apply rounded-lg w-1/3;
   }
 }

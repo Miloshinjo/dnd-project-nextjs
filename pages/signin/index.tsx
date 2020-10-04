@@ -1,13 +1,16 @@
 import React from 'react'
-import { csrfToken } from 'next-auth/client'
+import { csrfToken, providers, signIn } from 'next-auth/client'
+import { FaGithub, FaGoogle } from 'react-icons/fa'
 
-import SubmitButton from '../../components/form/submit-button'
+import ButtonPrimary from '../../components/buttons/primary'
+import ButtonOauth from '../../components/buttons/oauth'
 import styles from './styles.module.css'
 
-export default function SignIn({ csrfToken }) {
+export default function SignIn({ csrfToken, providers }) {
   return (
     <div className={styles.container}>
-      <h1 className={styles.headingPrimary}>Simulacrum</h1>
+      <img src="/images/logo.svg" alt="LOGO" className={styles.logoImage} />
+
       <div className={styles.contentContainer}>
         <div>
           <h2 className={styles.headingSecondary}>Sign in to your account</h2>
@@ -27,8 +30,33 @@ export default function SignIn({ csrfToken }) {
               className={styles.emailInput}
             />
           </label>
-          <SubmitButton text="Sign in with email" loading={false} />
+          <ButtonPrimary type="submit" additionalStyles="mt-2">
+            Sign in with email
+          </ButtonPrimary>
         </form>
+
+        <div className={styles.divider}>
+          <span className={styles.dividerLine}></span>
+          <span className={styles.dividerText}>Or</span>
+          <span className={styles.dividerLine}></span>
+        </div>
+
+        <div className="flex justify-center gap-x-4">
+          <ButtonOauth
+            oauthClientId={providers.google.id}
+            icon={<FaGoogle color="#3182CE" size={20} />}
+            oauthClientTitle={'Google'}
+          />
+          <ButtonOauth
+            oauthClientId={providers.github.id}
+            icon={<FaGithub color="#3182CE" size={20} />}
+            oauthClientTitle={'Github'}
+          />
+        </div>
+        <p className="text-xs text-center mt-8">
+          Note that signing up in two different ways will create two different
+          accounts.
+        </p>
       </div>
     </div>
   )
@@ -37,5 +65,6 @@ export default function SignIn({ csrfToken }) {
 SignIn.getInitialProps = async (context) => {
   return {
     csrfToken: await csrfToken(context),
+    providers: await (providers as any)(context),
   }
 }

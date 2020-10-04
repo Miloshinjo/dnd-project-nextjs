@@ -12,6 +12,7 @@ const Header: React.FC<Props> = ({ title }) => {
     <header className={styles.header}>
       <DrawerMenu />
       <Nav />
+      <img src="/images/mini_logo.svg" className="h-full" />
     </header>
   )
 }

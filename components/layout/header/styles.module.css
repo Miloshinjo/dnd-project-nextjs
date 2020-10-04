@@ -1,3 +1,10 @@
 .header {
-  @apply bg-gray-900 px-4 h-12 flex items-center fixed z-20 w-full;
+  @apply bg-gray-900 px-4 h-16 flex items-center fixed justify-between z-20 w-full py-3;
+}
+
+@screen md {
+  .header {
+    @apply bg-gray-100;
+    flex-direction: row-reverse;
+  }
 }

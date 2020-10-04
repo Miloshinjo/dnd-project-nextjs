@@ -1,0 +1,7 @@
+.button {
+  @apply flex items-center border border-primary-600 px-2 py-1 justify-center font-medium;
+}
+
+.title {
+  @apply ml-1;
+}

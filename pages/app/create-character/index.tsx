@@ -7,6 +7,7 @@ import CreateCharacterForm from '../../../components/forms/create-character'
 import SubHeader from '../../../components/layout/sub-header'
 import { Klass } from '../../../generated/graphql'
 import { client } from '../../../pages/_app'
+import LoadingPage from '../../../components/layout/loading-page'
 
 import styles from './styles.module.css'
 
@@ -44,7 +45,7 @@ const CreateCharacter: React.FC<Props> = ({ klasses }) => {
     }
   }, [session, loading])
 
-  if (loading) return null
+  if (loading) return <LoadingPage />
 
   if (!loading && !session) return <p>Logging you out...</p>
 

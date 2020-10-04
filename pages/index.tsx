@@ -2,6 +2,8 @@ import { useEffect } from 'react'
 import Head from 'next/head'
 import { signIn, useSession } from 'next-auth/client'
 import { useRouter } from 'next/router'
+import ButtonPrimary from '../components/buttons/primary'
+import LoadingPage from '../components/layout/loading-page'
 
 import styles from './styles.module.css'
 
@@ -15,7 +17,7 @@ const Home = () => {
     }
   }, [session, loading])
 
-  if (loading) return null
+  if (loading) return <LoadingPage />
 
   return (
     <>
@@ -38,9 +40,8 @@ const Home = () => {
             App that helps you manage and save your 5th edition dungeons and
             dragons characters. Sign in to continue. <br />
           </p>
-          <button
-            className={styles.signinButton}
-            type="button"
+          <ButtonPrimary
+            additionalStyles="mt-6"
             onClick={() =>
               signIn(null, {
                 callbackUrl:
@@ -51,7 +52,7 @@ const Home = () => {
             }
           >
             Sign In
-          </button>
+          </ButtonPrimary>
         </div>
       </div>
     </>
