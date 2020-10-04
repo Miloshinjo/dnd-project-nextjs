@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 
-// import { seedSpells, seedKlasses, seedSkills, seedSubclasses } from './seed'
+import { seedSpells, seedKlasses, seedSkills, seedSubclasses } from './seed'
 
 export interface Context {
   prisma: PrismaClient
@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === 'production') {
 // seedSpells(prisma)
 // seedSkills(prisma)
 // seedKlasses(prisma)
-// seedSubclasses(prisma)
+seedSubclasses(prisma)
 
 const createContext = (ctx: any): Context => {
   return {

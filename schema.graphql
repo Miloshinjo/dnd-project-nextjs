@@ -158,7 +158,6 @@ input SpellWhereUniqueInput {
 }
 
 type SubClass {
-  description: String!
   id: Int!
   klass: Klass!
   klassId: Int!

@@ -3,8 +3,7 @@
 }
 
 .abilityScoreContainer {
-  @apply grid;
-  grid-template-columns: min-content 30% 14% 1fr 1fr;
+  @apply flex justify-between;
 }
 
 .abilityScoreContainer:not(:last-child) {
@@ -16,7 +15,7 @@
 }
 
 .abilityScoreTitle {
-  @apply text-sm flex capitalize w-1/3;
+  @apply text-sm flex capitalize;
 }
 
 .abilityScoreValue {
@@ -24,7 +23,7 @@
 }
 
 .abilityScoreM {
-  @apply flex justify-end items-start font-black;
+  @apply flex justify-end items-start font-bold mr-8;
 }
 
 .abilityScoreSave {

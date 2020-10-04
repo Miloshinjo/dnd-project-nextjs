@@ -5,7 +5,6 @@ export const SubClass = objectType({
   definition(t) {
     t.model.id()
     t.model.name()
-    t.model.description()
     t.model.spellCastingModifier()
     t.model.klassId()
     t.model.klass()

@@ -152,7 +152,6 @@ export interface NexusGenRootTypes {
     school: string; // String!
   }
   SubClass: { // root type
-    description: string; // String!
     id: number; // Int!
     klassId: number; // Int!
     name: string; // String!
@@ -275,7 +274,6 @@ export interface NexusGenFieldTypes {
     school: string; // String!
   }
   SubClass: { // field return type
-    description: string; // String!
     id: number; // Int!
     klass: NexusGenRootTypes['Klass']; // Klass!
     klassId: number; // Int!

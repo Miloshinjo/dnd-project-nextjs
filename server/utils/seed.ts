@@ -165,9 +165,39 @@ const seedSubclasses = async (prisma: PrismaClient): Promise<void> => {
           return updateSubclassByKlass('Cleric', prisma, subclass, klasses)
         case 'Way of the Drunken Master':
         case 'Way of the Four Elements':
+        case 'Way of the Long Death':
+        case 'Way of the Open Hand':
+        case 'Way of the Kensei':
+        case 'Way of Shadow':
+        case 'Way of the Sun Soul':
           return updateSubclassByKlass('Monk', prisma, subclass, klasses)
+        case 'Wild Magic':
+        case 'Shadow Magic':
+        case 'Draconic Bloodline':
+        case 'Divine Soul':
+        case 'Storm Sorcery':
         case 'Phoenix':
           return updateSubclassByKlass('Sorcerer', prisma, subclass, klasses)
+        case 'Bladesinging':
+        case 'Chronurgy':
+        case 'Graviturgy':
+        case 'Abjuration':
+        case 'Conjuration':
+        case 'Divination':
+        case 'Enchantment':
+        case 'Evocation':
+        case 'Illusion':
+        case 'Necromancy':
+        case 'Transmutation':
+        case 'War Magic':
+          return updateSubclassByKlass('Wizard', prisma, subclass, klasses)
+        case 'College of Eloquence':
+        case 'College of Glamour':
+        case 'College of Lore':
+        case 'College of Swords':
+        case 'College of Valor':
+        case 'College of Whispers':
+          return updateSubclassByKlass('Bard', prisma, subclass, klasses)
         default:
           return null
       }
