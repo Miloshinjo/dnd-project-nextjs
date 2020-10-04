@@ -7,7 +7,7 @@
 }
 
 .avatarContainer {
-  @apply shadow-inner w-16 h-16 border rounded-full overflow-hidden;
+  @apply shadow-inner w-16 h-16 border border-primary-600 rounded-full overflow-hidden;
 }
 
 .avatarImage {
@@ -15,7 +15,7 @@
 }
 
 .username {
-  @apply font-bold w-full text-lg;
+  @apply font-medium w-full mt-2;
 }
 
 .section {
