@@ -1,5 +1,5 @@
 .container {
-  @apply mt-auto border-t fixed bottom-0 left-0 z-10 bg-gray-900 text-white w-full shadow-2xl;
+  @apply mt-auto fixed bottom-0 left-0 z-10 text-gray-900 w-full shadow-xl;
 }
 
 .levelsFiltersContainer {

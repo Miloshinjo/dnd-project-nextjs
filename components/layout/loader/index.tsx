@@ -29,7 +29,7 @@ const Loader: React.FC<Props> = ({ color = 'dark', size = 24 }) => {
     <>
       <motion.div variants={loaderVariants} animate="animationOne">
         <FaDiceD20
-          color={color === 'dark' ? '#3182CE' : '#ffffff'}
+          color={color === 'dark' ? '#2A4365' : '#ffffff'}
           size={size}
         />
       </motion.div>

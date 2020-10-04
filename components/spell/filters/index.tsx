@@ -17,21 +17,10 @@ type Props = {
 }
 
 const filtersVariants = {
-  open: { y: 0, transition: { type: 'tween', fade: 'fadeIn', duration: 0.1 } },
+  open: { y: 0, transition: {} },
   closed: {
-    y: 310,
-    transition: { type: 'tween', fade: 'fadeOut', duration: 0.1 },
-  },
-}
-
-const arrowVariants = {
-  open: {
-    rotate: '-180deg',
-    transition: { type: 'tween', duration: 0.3 },
-  },
-  closed: {
-    rotate: 0,
-    transition: { type: 'tween', duration: 0.3 },
+    y: 305,
+    transition: {},
   },
 }
 
@@ -110,21 +99,15 @@ const Filters: React.FC<Props> = ({
       animate={open ? 'open' : 'closed'}
     >
       <button
-        className="mb-4 flex justify-between items-center w-full h-8 px-4"
+        className="flex justify-between items-center h-8 px-4 bg-white border-t w-24 text-center"
         onClick={() => {
           setOpen(!open)
         }}
       >
-        <h4 className="text-sm font-bold">Filters</h4>
-        <motion.span
-          variants={arrowVariants}
-          animate={open ? 'open' : 'closed'}
-        >
-          <FiChevronUp size={20} />
-        </motion.span>
+        Filters
       </button>
 
-      <div className="flex pb-4 px-4 flex-col">
+      <div className="flex pb-4 px-4 flex-col bg-white">
         <h3 className="text-xs  mb-2">Level</h3>
         <div className={styles.levelsFiltersContainer}>
           {spellLevels.map((level) => {
@@ -144,7 +127,7 @@ const Filters: React.FC<Props> = ({
           })}
         </div>
       </div>
-      <div className="flex pb-4 px-4 flex-col">
+      <div className="flex pb-4 px-4 flex-col bg-white">
         <h3 className="text-xs mb-2">Spell School</h3>
         <div className={styles.schoolsFiltersContainer}>
           {spellSchools.map((school) => {
@@ -164,7 +147,7 @@ const Filters: React.FC<Props> = ({
           })}
         </div>
       </div>
-      <div className="flex pb-4 px-4 flex-col">
+      <div className="flex pb-4 px-4 flex-col bg-white">
         <h3 className="text-xs mb-2">Class</h3>
         <div className={styles.klassesFiltersContainer}>
           {spellKlasses.map((klass) => {

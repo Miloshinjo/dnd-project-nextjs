@@ -19,8 +19,6 @@ const SpellModal: React.FC<Props> = ({ spellId }) => {
     variables: { id: `${spellId}` },
   })
 
-  console.log({ result })
-
   if (result.fetching) {
     return (
       <div className="m-8">

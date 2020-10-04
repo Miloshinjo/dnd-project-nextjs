@@ -15,7 +15,7 @@
 }
 
 .spellLevel {
-  @apply text-sm font-bold opacity-50 text-red-900;
+  @apply text-sm font-bold opacity-50 text-primary-900;
 }
 
 .bottomPart {
