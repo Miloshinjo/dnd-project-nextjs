@@ -1,13 +1,9 @@
-.addCharaterButton {
-  @apply text-gray-700 flex items-center p-4;
-}
-
 .fetchingContainer {
   @apply m-8;
 }
 
 .createCharacterButton {
-  @apply bg-gray-800 text-white mt-4 py-2 flex justify-center w-full rounded cursor-pointer;
+  @apply bg-primary-600 text-white mt-4 py-2 flex justify-center w-full rounded cursor-pointer;
 }
 
 @screen md {

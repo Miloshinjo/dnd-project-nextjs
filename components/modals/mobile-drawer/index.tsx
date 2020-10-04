@@ -18,6 +18,16 @@ const DrawerMenu: React.FC = () => {
   return (
     <div className={styles.drawer}>
       <div className={styles.userProfile}>
+        {image && (
+          <div className={styles.avatarContainer}>
+            <img
+              src={image}
+              alt="profile image"
+              className={styles.avatarImage}
+            />
+          </div>
+        )}
+
         <div className={styles.username}>{name || email}</div>
       </div>
       <nav className="w-full">

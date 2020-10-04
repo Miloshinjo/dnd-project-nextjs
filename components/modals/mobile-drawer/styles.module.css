@@ -3,11 +3,19 @@
 }
 
 .userProfile {
-  @apply w-full flex  text-left px-6 py-12;
+  @apply w-full flex flex-col items-start text-left px-6 pb-12;
+}
+
+.avatarContainer {
+  @apply shadow-inner w-16 h-16 border rounded-full overflow-hidden;
+}
+
+.avatarImage {
+  @apply block w-full h-full;
 }
 
 .username {
-  @apply font-bold w-full;
+  @apply font-bold w-full text-lg;
 }
 
 .section {

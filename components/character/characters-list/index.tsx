@@ -32,7 +32,7 @@ const CharactersList = () => {
   if (result.fetching) {
     return (
       <div className={styles.fetchingContainer}>
-        <Loader size={8} />
+        <Loader />
       </div>
     )
   }

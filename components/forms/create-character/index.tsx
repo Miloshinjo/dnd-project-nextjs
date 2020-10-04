@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import SubmitButton from '../../form/submit-button'
+import ButtonPrimary from '../../buttons/primary'
 import TextInput from '../../form/text-input'
 import SelectInput from '../../form/select-input'
 import { Klass } from '../../../generated/graphql'
@@ -44,7 +44,7 @@ type Props = {
 
 const CreateCharacterForm: React.FC<Props> = ({ klasses }) => {
   const [serverError, setServerError] = useState<string>('')
-  const [createCharacterResult, createCharacter] = useCreateCharacterMutation()
+  const [, createCharacter] = useCreateCharacterMutation()
   const { openModal } = useModal()
 
   const { register, handleSubmit, errors, control, setValue, watch } = useForm<
@@ -121,10 +121,7 @@ const CreateCharacterForm: React.FC<Props> = ({ klasses }) => {
           value: klass.id,
         }))}
       />
-      <SubmitButton
-        text="Create your character"
-        loading={createCharacterResult.fetching}
-      />
+      <ButtonPrimary type="submit">Create your character</ButtonPrimary>
       {serverError && <p className={styles.errorText}>{serverError}</p>}
     </form>
   )
