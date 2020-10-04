@@ -56,7 +56,7 @@ const CreateCharacter: React.FC<Props> = ({ klasses }) => {
   return (
     <AppLayout title="Character Creation">
       <SubHeader text1="Create your">
-        <span className="text-red-600">character</span>!
+        <span className="text-primary-600">character</span>!
       </SubHeader>
       <div className={styles.container}>
         <div className={styles.contentContainer}>

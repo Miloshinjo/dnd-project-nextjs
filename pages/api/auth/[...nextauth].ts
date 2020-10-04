@@ -6,10 +6,10 @@ import { prisma } from '../../../server/utils/context'
 
 const options = {
   providers: [
-    Providers.Google({
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
-    }),
+    // Providers.Google({
+    //   clientId: process.env.GOOGLE_ID,
+    //   clientSecret: process.env.GOOGLE_SECRET,
+    // }),
     Providers.GitHub({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
@@ -33,7 +33,9 @@ const options = {
   secret: process.env.SECRET,
   callbacks: {
     session: async (session, user) => {
+      console.log({ user })
       session.user.id = user.id
+
       return Promise.resolve(session)
     },
   },
