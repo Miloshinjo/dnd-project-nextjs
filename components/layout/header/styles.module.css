@@ -4,7 +4,6 @@
 
 @screen md {
   .header {
-    @apply bg-gray-100;
     flex-direction: row-reverse;
   }
 }
