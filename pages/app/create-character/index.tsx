@@ -45,13 +45,13 @@ const CreateCharacter: React.FC<Props> = ({ klasses }) => {
     }
   }, [session, loading])
 
-  if (loading) return <LoadingPage />
-
-  if (!loading && !session) return <p>Logging you out...</p>
-
   if (!klasses) {
     return null
   }
+
+  if (loading) return <LoadingPage />
+
+  if (!loading && !session) return <p>Logging you out...</p>
 
   return (
     <AppLayout title="Character Creation">
