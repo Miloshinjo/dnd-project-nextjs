@@ -166,6 +166,8 @@ const seedSubclasses = async (prisma: PrismaClient): Promise<void> => {
         case 'Way of the Drunken Master':
         case 'Way of the Four Elements':
           return updateSubclassByKlass('Monk', prisma, subclass, klasses)
+        case 'Phoenix':
+          return updateSubclassByKlass('Sorcerer', prisma, subclass, klasses)
         default:
           return null
       }
