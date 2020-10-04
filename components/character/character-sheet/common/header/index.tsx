@@ -3,6 +3,7 @@ import { useLevelMutation } from '../../../../../generated/graphql'
 import { CharacterUI } from '../../../../../models/character'
 import { useModal } from '../../../../../context/modal'
 import HitPoints from './hit-points'
+import ArcaneWard from './arcane-ward'
 
 import styles from './styles.module.css'
 
@@ -69,11 +70,20 @@ const CharacterHeader: React.FC<Props> = ({ character }) => {
             Level {character.level}
           </button>
         </div>
-        <HitPoints
-          characterId={character.id}
-          hitPoints={character.hitPoints}
-          maxHitPoints={character.maxHitPoints}
-        />
+        <div className={styles.hpContainer}>
+          <HitPoints
+            characterId={character.id}
+            hitPoints={character.hitPoints}
+            maxHitPoints={character.maxHitPoints}
+          />
+          {character?.subclass?.name === 'Abjuration' && (
+            <ArcaneWard
+              characterId={character.id}
+              arcaneWard={character.arcaneWard}
+              arcaneWardMax={character.arcaneWardMax}
+            />
+          )}
+        </div>
       </div>
     </div>
   )

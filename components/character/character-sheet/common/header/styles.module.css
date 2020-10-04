@@ -2,12 +2,6 @@
   @apply bg-gray-900 text-white px-4 pb-2 flex justify-between w-full flex-col items-start;
 }
 
-@screen md {
-  .container {
-    @apply pt-4 rounded-t-lg;
-  }
-}
-
 .imgNameKlass {
   @apply flex items-center mb-2;
 }
@@ -28,6 +22,20 @@
   @apply text-white font-medium ml-1 flex items-center;
 }
 
+.hpContainer {
+  @apply h-full flex flex-col w-1/2 ml-auto;
+}
+
 .bottomContainer {
   @apply flex justify-between w-full items-center mt-2;
+}
+
+@screen md {
+  .container {
+    @apply pt-4 rounded-t-lg;
+  }
+
+  .hpContainer {
+    @apply w-1/3;
+  }
 }

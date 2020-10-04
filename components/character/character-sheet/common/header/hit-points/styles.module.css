@@ -1,11 +1,5 @@
 .container {
-  @apply h-full flex flex-col items-end w-1/2 ml-auto;
-}
-
-@screen md {
-  .container {
-    @apply w-1/3;
-  }
+  @apply items-end;
 }
 
 .hitPointsContainer {
@@ -13,7 +7,7 @@
 }
 
 .hitPointsLabel {
-  @apply text-xs font-semibold text-gray-400;
+  @apply text-xs font-semibold text-gray-400 w-8;
 }
 
 .hitPoints {

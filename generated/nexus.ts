@@ -38,6 +38,8 @@ export interface NexusGenInputs {
   }
   CharacterUpdateInput: { // input type
     alignment?: string | null; // String
+    arcaneWard?: number | null; // Int
+    arcaneWardMax?: number | null; // Int
     armorClass?: number | null; // Int
     charisma?: number | null; // Int
     constitution?: number | null; // Int
@@ -91,6 +93,8 @@ export interface NexusGenScalars {
 export interface NexusGenRootTypes {
   Character: { // root type
     alignment: string; // String!
+    arcaneWard?: number | null; // Int
+    arcaneWardMax?: number | null; // Int
     armorClass: number; // Int!
     charisma: number; // Int!
     constitution: number; // Int!
@@ -186,6 +190,8 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
 export interface NexusGenFieldTypes {
   Character: { // field return type
     alignment: string; // String!
+    arcaneWard: number | null; // Int
+    arcaneWardMax: number | null; // Int
     armorClass: number; // Int!
     charisma: number; // Int!
     constitution: number; // Int!

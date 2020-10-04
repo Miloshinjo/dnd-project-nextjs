@@ -4,6 +4,8 @@
 
 type Character {
   alignment: String!
+  arcaneWard: Int
+  arcaneWardMax: Int
   armorClass: Int!
   charisma: Int!
   constitution: Int!
@@ -55,6 +57,8 @@ input CharacterEditSpellInput {
 
 input CharacterUpdateInput {
   alignment: String
+  arcaneWard: Int
+  arcaneWardMax: Int
   armorClass: Int
   charisma: Int
   constitution: Int

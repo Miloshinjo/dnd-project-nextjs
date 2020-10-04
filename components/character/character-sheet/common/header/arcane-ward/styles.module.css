@@ -1,0 +1,27 @@
+.container {
+  @apply items-end;
+}
+
+.arcaneWardContainer {
+  @apply flex items-center w-full;
+}
+
+.arcaneWardLabel {
+  @apply text-gray-400 w-8;
+}
+
+.arcaneWard {
+  @apply font-bold flex items-center;
+}
+
+.maxArcaneWard {
+  @apply font-bold;
+}
+
+.arcaneWardBar {
+  @apply bg-gray-100 h-2 w-full shadow-inner overflow-hidden mx-2 rounded-sm;
+}
+
+.arcaneWardBarInner {
+  @apply w-full h-full flex;
+}

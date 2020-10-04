@@ -1,0 +1,19 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "arcaneWard",
+      "type": "Int",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "arcaneWardMax",
+      "type": "Int",
+      "arity": "Optional"
+    }
+  ]
+}

@@ -30,5 +30,7 @@ export const Character = objectType({
     t.model.subclassId()
     t.model.spellSlots()
     t.model.speed()
+    t.model.arcaneWard()
+    t.model.arcaneWardMax()
   },
 })

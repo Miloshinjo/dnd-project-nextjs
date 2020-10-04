@@ -1,0 +1,6 @@
+mutation ArcaneWardMax($id: ID!, $arcaneWardMax: Int!) {
+  updateCharacter(character: { id: $id, arcaneWardMax: $arcaneWardMax }) {
+    id
+    arcaneWardMax
+  }
+}

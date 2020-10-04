@@ -1,0 +1,6 @@
+mutation ArcaneWard($id: ID!, $arcaneWard: Int!) {
+  updateCharacter(character: { id: $id, arcaneWard: $arcaneWard }) {
+    id
+    arcaneWard
+  }
+}

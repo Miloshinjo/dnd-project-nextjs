@@ -23,11 +23,11 @@
 }
 
 .abilityScoreM {
-  @apply flex justify-end items-start font-bold mr-8;
+  @apply flex justify-end items-start font-bold;
 }
 
 .abilityScoreSave {
-  @apply flex justify-end items-start font-bold;
+  @apply flex justify-end items-start font-bold w-20;
 }
 
 .miniLabel {

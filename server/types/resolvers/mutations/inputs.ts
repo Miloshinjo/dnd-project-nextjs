@@ -43,6 +43,8 @@ export const CharacterUpdateInputType = inputObjectType({
     t.int('charisma')
     t.int('speed')
     t.string('spellSlots')
+    t.int('arcaneWard')
+    t.int('arcaneWardMax')
   },
 })
 
