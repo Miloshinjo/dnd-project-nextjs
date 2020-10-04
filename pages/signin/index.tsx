@@ -1,6 +1,6 @@
 import React from 'react'
-import { csrfToken, providers, signIn } from 'next-auth/client'
-import { FaGithub, FaGoogle } from 'react-icons/fa'
+import { csrfToken, providers } from 'next-auth/client'
+import { FaGithub, FaGoogle, FaDiscord } from 'react-icons/fa'
 
 import ButtonPrimary from '../../components/buttons/primary'
 import ButtonOauth from '../../components/buttons/oauth'
@@ -15,7 +15,7 @@ export default function SignIn({ csrfToken, providers }) {
         <div>
           <h2 className={styles.headingSecondary}>Sign in to your account</h2>
         </div>
-        <form
+        {/* <form
           method="post"
           action="/api/auth/signin/email"
           className={styles.emailForm}
@@ -39,7 +39,7 @@ export default function SignIn({ csrfToken, providers }) {
           <span className={styles.dividerLine}></span>
           <span className={styles.dividerText}>Or</span>
           <span className={styles.dividerLine}></span>
-        </div>
+        </div> */}
 
         <div className="flex justify-center gap-x-4">
           {/* <ButtonOauth
@@ -48,14 +48,19 @@ export default function SignIn({ csrfToken, providers }) {
             oauthClientTitle={'Google'}
           /> */}
           <ButtonOauth
+            oauthClientId={providers.discord.id}
+            icon={<FaDiscord color="#3182CE" size={20} />}
+            oauthClientTitle={'Discord'}
+          />
+          {/* <ButtonOauth
             oauthClientId={providers.github.id}
             icon={<FaGithub color="#3182CE" size={20} />}
             oauthClientTitle={'Github'}
-          />
+          /> */}
         </div>
         <p className="text-xs text-center mt-8">
-          Note that signing up in two different ways will create two different
-          accounts.
+          At the moment, we only support sign in with Discord. Others are in the
+          works.
         </p>
       </div>
     </div>

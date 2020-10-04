@@ -2,7 +2,9 @@ import { NextApiHandler } from 'next'
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
 import Adapters from 'next-auth/adapters'
-import { prisma } from '../../../server/utils/context'
+import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient()
 
 const options = {
   providers: [
@@ -10,21 +12,25 @@ const options = {
     //   clientId: process.env.GOOGLE_ID,
     //   clientSecret: process.env.GOOGLE_SECRET,
     // }),
-    Providers.GitHub({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
+    Providers.Discord({
+      clientId: process.env.DISCORD_ID,
+      clientSecret: process.env.DISCORD_SECRET,
     }),
-    Providers.Email({
-      server: {
-        host: process.env.SMTP_HOST,
-        port: Number(process.env.SMTP_PORT),
-        auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASSWORD,
-        },
-      },
-      from: process.env.SMTP_FROM,
-    }),
+    // Providers.GitHub({
+    //   clientId: process.env.GITHUB_ID,
+    //   clientSecret: process.env.GITHUB_SECRET,
+    // }),
+    // Providers.Email({
+    //   server: {
+    //     host: process.env.SMTP_HOST,
+    //     port: Number(process.env.SMTP_PORT),
+    //     auth: {
+    //       user: process.env.SMTP_USER,
+    //       pass: process.env.SMTP_PASSWORD,
+    //     },
+    //   },
+    //   from: process.env.SMTP_FROM,
+    // }),
   ],
   session: {
     maxAge: 30 * 24 * 60 * 60,
@@ -33,7 +39,6 @@ const options = {
   secret: process.env.SECRET,
   callbacks: {
     session: async (session, user) => {
-      console.log({ user })
       session.user.id = user.id
 
       return Promise.resolve(session)

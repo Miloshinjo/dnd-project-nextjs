@@ -8,7 +8,7 @@ export interface Context {
   userId: number
 }
 
-export let prisma
+let prisma
 
 if (process.env.NODE_ENV === 'production') {
   prisma = new PrismaClient()
