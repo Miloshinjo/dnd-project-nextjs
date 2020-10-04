@@ -42,11 +42,11 @@ export default function SignIn({ csrfToken, providers }) {
         </div>
 
         <div className="flex justify-center gap-x-4">
-          <ButtonOauth
+          {/* <ButtonOauth
             oauthClientId={providers.google.id}
             icon={<FaGoogle color="#3182CE" size={20} />}
             oauthClientTitle={'Google'}
-          />
+          /> */}
           <ButtonOauth
             oauthClientId={providers.github.id}
             icon={<FaGithub color="#3182CE" size={20} />}
