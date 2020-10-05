@@ -48,6 +48,6 @@ export type CharacterUI = {
     name: Skill['name']
     ability: Skill['ability']
   }>
-  arcaneWard: Character['arcaneWard']
-  arcaneWardMax: Character['arcaneWardMax']
+  arcaneWard?: Character['arcaneWard']
+  arcaneWardMax?: Character['arcaneWardMax']
 }

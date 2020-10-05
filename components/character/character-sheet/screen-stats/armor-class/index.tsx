@@ -1,5 +1,4 @@
-import { GiLeatherArmor } from 'react-icons/gi'
-import { Character, Klass } from '../../../../../generated/graphql'
+import { Character } from '../../../../../generated/graphql'
 import { useModal } from '../../../../../context/modal'
 import { useArmorClassMutation } from '../../../../../generated/graphql'
 

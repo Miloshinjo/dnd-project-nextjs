@@ -19,9 +19,9 @@
 }
 
 .arcaneWardBar {
-  @apply bg-gray-100 h-2 w-full shadow-inner overflow-hidden mx-2 rounded-sm;
+  @apply h-2 w-full shadow-inner overflow-hidden mx-2 rounded-sm bg-gray-100;
 }
 
 .arcaneWardBarInner {
-  @apply w-full h-full flex;
+  @apply w-full h-full flex  bg-primary-600;
 }

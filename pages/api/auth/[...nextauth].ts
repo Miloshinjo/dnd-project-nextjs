@@ -17,7 +17,6 @@ if (process.env.NODE_ENV === 'production') {
 
 const options = {
   providers: [
-    // Providers.Google({
     //   clientId: process.env.GOOGLE_ID,
     //   clientSecret: process.env.GOOGLE_SECRET,
     // }),

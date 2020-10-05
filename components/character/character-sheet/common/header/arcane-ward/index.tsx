@@ -24,16 +24,6 @@ const ArcaneWard: React.FC<Props> = ({
 
   const arcaneWardPercent = Math.round((arcaneWard / arcaneWardMax) * 100)
 
-  const getarcaneWardColor = useMemo(() => {
-    if (arcaneWardPercent < 25) {
-      return 'bg-primary-600'
-    } else if (arcaneWardPercent < 70) {
-      return 'bg-primary-600'
-    } else {
-      return 'bg-primary-600'
-    }
-  }, [arcaneWardPercent])
-
   return (
     <div className={styles.container}>
       <div className={styles.arcaneWardContainer}>
@@ -42,7 +32,7 @@ const ArcaneWard: React.FC<Props> = ({
         </div>
         <div className={styles.arcaneWardBar}>
           <div
-            className={`${styles.arcaneWardBarInner} ${getarcaneWardColor}`}
+            className={`${styles.arcaneWardBarInner}`}
             style={{
               width: `${arcaneWardPercent}%`,
             }}

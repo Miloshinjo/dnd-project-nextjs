@@ -59,8 +59,7 @@ export default function SignIn({ csrfToken, providers }) {
           /> */}
         </div>
         <p className="text-xs text-center mt-8">
-          At the moment, we only support sign in with Discord. Others are in the
-          works.
+          At the moment, for the ease of development, only Discord is enabled.
         </p>
       </div>
     </div>
