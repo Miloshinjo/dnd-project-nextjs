@@ -41,7 +41,7 @@ module.exports = {
   },
   purge: ['./**/*.tsx', './**/*.css'],
   future: {
-    purgeLayersByDefault: true,
+    // purgeLayersByDefault: true,
     removeDeprecatedGapUtilities: true,
   },
 }

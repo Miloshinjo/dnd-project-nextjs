@@ -1,4 +1,5 @@
 import { useCallback } from 'react'
+
 import { useLevelMutation } from '../../../../../generated/graphql'
 import { CharacterUI } from '../../../../../models/character'
 import { useModal } from '../../../../../context/modal'

@@ -23,5 +23,5 @@
 }
 
 .arcaneWardBarInner {
-  @apply w-full h-full flex  bg-primary-600;
+  @apply w-full h-full flex bg-primary-600;
 }

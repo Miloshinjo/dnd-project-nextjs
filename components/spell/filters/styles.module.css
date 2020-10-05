@@ -2,6 +2,11 @@
   @apply mt-auto fixed bottom-0 left-0 z-10 text-gray-900 w-full shadow-xl;
 }
 
+.filtersButton {
+  @apply flex justify-center items-center h-8 px-4 bg-white w-24 text-center border-t border-r;
+  transform: translateY(1px);
+}
+
 .levelsFiltersContainer {
   @apply flex flex-wrap;
 }

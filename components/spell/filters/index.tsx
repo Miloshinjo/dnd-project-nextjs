@@ -1,6 +1,5 @@
 import { useState, Dispatch, SetStateAction } from 'react'
 import { motion } from 'framer-motion'
-import { FiChevronUp } from 'react-icons/fi'
 
 import actionTypes from '../../../utils/constants/actionTypes'
 
@@ -19,7 +18,7 @@ type Props = {
 const filtersVariants = {
   open: { y: 0, transition: {} },
   closed: {
-    y: 305,
+    y: 310,
     transition: {},
   },
 }
@@ -99,7 +98,7 @@ const Filters: React.FC<Props> = ({
       animate={open ? 'open' : 'closed'}
     >
       <button
-        className="flex justify-between items-center h-8 px-4 bg-white border-t w-24 text-center"
+        className={styles.filtersButton}
         onClick={() => {
           setOpen(!open)
         }}
@@ -107,8 +106,8 @@ const Filters: React.FC<Props> = ({
         Filters
       </button>
 
-      <div className="flex pb-4 px-4 flex-col bg-white">
-        <h3 className="text-xs  mb-2">Level</h3>
+      <div className="flex pb-4 px-4 flex-col bg-white border-t">
+        <h3 className="text-xs my-2">Level</h3>
         <div className={styles.levelsFiltersContainer}>
           {spellLevels.map((level) => {
             return (

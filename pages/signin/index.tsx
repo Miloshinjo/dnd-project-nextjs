@@ -6,7 +6,7 @@ import ButtonPrimary from '../../components/buttons/primary'
 import ButtonOauth from '../../components/buttons/oauth'
 import styles from './styles.module.css'
 
-export default function SignIn({ csrfToken, providers }) {
+export default function SignIn({ providers }) {
   return (
     <div className={styles.container}>
       <img src="/images/logo.svg" alt="LOGO" className={styles.logoImage} />
@@ -68,7 +68,7 @@ export default function SignIn({ csrfToken, providers }) {
 
 SignIn.getInitialProps = async (context) => {
   return {
-    csrfToken: await csrfToken(context),
+    // csrfToken: await csrfToken(context),
     providers: await (providers as any)(context),
   }
 }
