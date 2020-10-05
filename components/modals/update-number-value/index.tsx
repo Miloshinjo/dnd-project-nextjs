@@ -1,5 +1,4 @@
 import React from 'react'
-import { IoIosClose } from 'react-icons/io'
 import { useForm } from 'react-hook-form'
 
 import { useModal } from '../../../context/modal'
@@ -7,8 +6,8 @@ import NumberInput from '../../form/number-input'
 import NumberInputControls from '../../form/number-input-controls'
 import PrimaryButton from '../../buttons/primary'
 import { Character } from '../../../generated/graphql'
+import ModalHeader from '../../modal/modal-header'
 
-import icons from './icons'
 import validations from './validations'
 import styles from './styles.module.css'
 
@@ -60,17 +59,7 @@ const UpdateNumberValue: React.FC<Props> = ({
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <div className={styles.headerTitle}>
-          <div className={styles.iconContainer}>{icons[type]}</div>
-
-          <h1 className={styles.heading}>{title}</h1>
-        </div>
-        <button className={styles.close} onClick={closeModal}>
-          <IoIosClose size={35} />
-        </button>
-      </div>
-
+      <ModalHeader type={type} title={title} closeModal={closeModal} />
       <div className={styles.formContainer}>
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.inputContainer}>

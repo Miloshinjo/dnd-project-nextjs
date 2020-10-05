@@ -1,0 +1,17 @@
+.header {
+  @apply flex justify-between  rounded-t p-2;
+}
+
+.headerTitle {
+  @apply text-left flex items-center;
+}
+
+.heading {
+  @apply text-lg font-semibold ml-2 capitalize;
+}
+
+.iconContainer {
+  @apply absolute opacity-75;
+  bottom: 0;
+  left: 0;
+}

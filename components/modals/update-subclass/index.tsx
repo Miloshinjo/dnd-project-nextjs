@@ -5,8 +5,9 @@ import { useForm } from 'react-hook-form'
 import { useModal } from '../../../context/modal'
 import { subclassTitle } from '../../../utils/character'
 import SelectInput from '../../form/select-input'
-import SubmitButton from '../../form/submit-button'
+import ButtonPrimary from '../../buttons/primary'
 import Loader from '../../layout/loader'
+import ModalHeader from '../../modal/modal-header'
 
 import {
   Character,
@@ -61,7 +62,7 @@ const UpdateSubclass: React.FC<Props> = ({
     const subclassId = (values.subclass as any).value
 
     const subclassResult = await addSubclass({
-      id: characterId,
+      id: `${characterId}`,
       subclassId,
     })
 
@@ -91,15 +92,11 @@ const UpdateSubclass: React.FC<Props> = ({
   if (!subclasses.length) {
     return (
       <div className={styles.container}>
-        <div className={styles.header}>
-          <div className={styles.headerTitle}>
-            {/* {icons[type]} */}
-            <h1 className={styles.heading}>{subclassTitle[klassName]}</h1>
-          </div>
-          <button className={styles.close} onClick={closeModal}>
-            <IoIosClose size={25} />
-          </button>
-        </div>
+        <ModalHeader
+          type=""
+          closeModal={closeModal}
+          title={subclassTitle[klassName]}
+        />
         <div className="p-4">
           <p className="my-2 text-left">
             {klassName} not supported yet. Working on it...
@@ -111,15 +108,11 @@ const UpdateSubclass: React.FC<Props> = ({
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <div className={styles.headerTitle}>
-          {/* {icons[type]} */}
-          <h1 className={styles.heading}>{subclassTitle[klassName]}</h1>
-        </div>
-        <button className={styles.close} onClick={closeModal}>
-          <IoIosClose size={25} />
-        </button>
-      </div>
+      <ModalHeader
+        type={klassName}
+        closeModal={closeModal}
+        title={subclassTitle[klassName]}
+      />
 
       <div className={styles.formContainer}>
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
@@ -138,7 +131,7 @@ const UpdateSubclass: React.FC<Props> = ({
           />
 
           <div className={styles.submitContainer}>
-            <SubmitButton text="Submit" loading={false} />
+            <ButtonPrimary type="submit">Set</ButtonPrimary>
           </div>
         </form>
       </div>
