@@ -3,8 +3,9 @@
 }
 
 .filtersButton {
-  @apply flex justify-center items-center h-8 px-4 bg-white w-24 text-center border-t border-r;
+  @apply flex justify-center items-center h-8 px-4 bg-gray-100 w-24 text-center border-t  border-r font-semibold;
   transform: translateY(1px);
+  border-top-right-radius: 130px;
 }
 
 .levelsFiltersContainer {
@@ -20,7 +21,7 @@
 }
 
 .levelFilterSelected {
-  @apply px-2 border text-sm font-medium bg-gray-100 text-gray-900 rounded;
+  @apply px-2 border text-sm font-medium bg-primary-900 text-white rounded;
 }
 
 .schoolsFiltersContainer {
@@ -32,7 +33,7 @@
 }
 
 .schoolFilterSelected {
-  @apply px-2 border text-sm font-medium bg-gray-100 text-gray-900 rounded;
+  @apply px-2 border text-sm font-medium bg-primary-900 text-white rounded;
 }
 
 .klassesFiltersContainer {
@@ -44,5 +45,5 @@
 }
 
 .klassFilterSelected {
-  @apply px-2 border text-sm font-medium bg-gray-100 text-gray-900 rounded;
+  @apply px-2 border text-sm font-medium  bg-primary-900 text-white rounded;
 }

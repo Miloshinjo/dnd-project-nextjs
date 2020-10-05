@@ -62,7 +62,8 @@ const UpdateNumberValue: React.FC<Props> = ({
     <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.headerTitle}>
-          {icons[type]}
+          <div className={styles.iconContainer}>{icons[type]}</div>
+
           <h1 className={styles.heading}>{title}</h1>
         </div>
         <button className={styles.close} onClick={closeModal}>

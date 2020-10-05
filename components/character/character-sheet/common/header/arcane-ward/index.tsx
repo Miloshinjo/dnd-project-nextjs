@@ -66,7 +66,7 @@ const ArcaneWard: React.FC<Props> = ({
                 props: {
                   originalValue: arcaneWardMax,
                   characterId,
-                  title: 'Arcane Ward Max',
+                  title: 'Arcane Ward Size',
                   type: 'arcaneWardMax',
                   mutation: useArcaneWardMaxMutation,
                 },
