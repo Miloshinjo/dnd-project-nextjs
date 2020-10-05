@@ -198,6 +198,40 @@ const seedSubclasses = async (prisma: PrismaClient): Promise<void> => {
         case 'College of Valor':
         case 'College of Whispers':
           return updateSubclassByKlass('Bard', prisma, subclass, klasses)
+        case 'Beastmaster':
+        case 'Gloom Stalker':
+        case 'Horizon Walker':
+        case 'Hunter':
+        case 'Monster Slayer':
+          return updateSubclassByKlass('Ranger', prisma, subclass, klasses)
+        case 'Oath of Conquest':
+        case 'Oath of Devotion':
+        case 'Oath of Redemption':
+        case 'Oath of the Ancients':
+        case 'Oath of the Crown':
+        case 'Oath of Glory':
+        case 'Oath of Vengeance':
+        case 'Oathbreaker':
+          return updateSubclassByKlass('Paladin', prisma, subclass, klasses)
+        case 'The Archfey':
+        case 'The Celestial':
+        case 'The Fiend':
+        case 'The Great Old One':
+        case 'The Undying':
+          return updateSubclassByKlass('Warlock', prisma, subclass, klasses)
+        case 'Ancestral Guardian':
+        case 'Battlerager':
+        case 'Berserker':
+        case 'Storm Herald':
+        case 'Totem Warrior':
+        case 'Zealot':
+          return updateSubclassByKlass('Barbarian', prisma, subclass, klasses)
+        case 'Circle of Dreams':
+        case 'Circle of the Land':
+        case 'Circle of the Moon':
+        case 'Circle of the Shepherd':
+        case 'Circle of Spores':
+          return updateSubclassByKlass('Druid', prisma, subclass, klasses)
         default:
           return null
       }

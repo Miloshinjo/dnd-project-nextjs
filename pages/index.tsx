@@ -53,6 +53,9 @@ const Home = () => {
           >
             Sign In
           </ButtonPrimary>
+          <div className="text-xs mt-2 absolute right-0 top-0 mr-4">
+            Version 0.1.0
+          </div>
         </div>
       </div>
     </>

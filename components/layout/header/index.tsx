@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import DrawerMenu from './drawer-menu'
 import Nav from './nav'
 
@@ -12,7 +13,9 @@ const Header: React.FC<Props> = ({ title }) => {
     <header className={styles.header}>
       <DrawerMenu />
       <Nav />
-      <img src="/images/mini_logo.svg" className="h-full" />
+      <Link href="/app">
+        <img src="/images/mini_logo.svg" className="h-full" />
+      </Link>
     </header>
   )
 }

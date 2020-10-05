@@ -232,5 +232,121 @@
   {
     "name": "College of Whispers",
     "source": "PHB"
+  },
+  {
+    "name": "Beastmaster",
+    "source": "PHB"
+  },
+  {
+    "name": "Gloom Stalker",
+    "source": "XGtE"
+  },
+  {
+    "name": "Horizon Walker",
+    "source": "XGtE"
+  },
+  {
+    "name": "Hunter",
+    "source": "PHB"
+  },
+  {
+    "name": "Monster Slayer",
+    "source": "XGtE"
+  },
+  {
+    "name": "Oath of Conquest",
+    "source": "XGtE"
+  },
+  {
+    "name": "Oath of Devotion",
+    "source": "PHB"
+  },
+  {
+    "name": "Oath of Redemption",
+    "source": "XGtE"
+  },
+  {
+    "name": "Oath of the Ancients",
+    "source": "PHB"
+  },
+  {
+    "name": "Oath of the Crown",
+    "source": "SCAG"
+  },
+  {
+    "name": "Oath of Glory",
+    "source": "MOoT"
+  },
+  {
+    "name": "Oath of Vengeance",
+    "source": "PHB"
+  },
+  {
+    "name": "Oathbreaker",
+    "source": "DMG"
+  },
+  {
+    "name": "The Archfey",
+    "source": "PHB"
+  },
+  {
+    "name": "The Celestial",
+    "source": "XGtE"
+  },
+  {
+    "name": "The Fiend",
+    "source": "PHB"
+  },
+  {
+    "name": "The Great Old One",
+    "source": "XGtE"
+  },
+  {
+    "name": "The Undying",
+    "source": "SCAG"
+  },
+  {
+    "name": "Ancestral Guardian",
+    "source": "XGtE"
+  },
+  {
+    "name": "Battlerager",
+    "source": "SCAG"
+  },
+  {
+    "name": "Berserker",
+    "source": "PHB"
+  },
+  {
+    "name": "Storm Herald",
+    "source": "XGtE"
+  },
+  {
+    "name": "Totem Warrior",
+    "source": "PHB"
+  },
+  {
+    "name": "Zealot",
+    "source": "XGtE"
+  },
+  {
+    "name": "Circle of Dreams",
+    "source": "XGtE"
+  },
+  {
+    "name": "Circle of the Land",
+    "source": "PHB"
+  },
+  {
+    "name": "Circle of the Moon",
+    "source": "PHB"
+  },
+  {
+    "name": "Circle of the Shepherd",
+    "source": "XGtE"
+  },
+  {
+    "name": "Circle of Spores",
+    "source": "GGtR"
   }
 ]
