@@ -45,7 +45,7 @@ export const CharacterUpdateInputType = inputObjectType({
     t.string('spellSlots')
     t.int('arcaneWard')
     t.int('arcaneWardMax')
-  },
+  },.t.
 })
 
 export const CharacterEditSpellInputType = inputObjectType({

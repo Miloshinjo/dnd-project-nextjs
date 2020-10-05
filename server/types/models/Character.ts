@@ -6,6 +6,8 @@ export const Character = objectType({
     t.model.id()
     t.model.name()
     t.model.level()
+    t.model.arcaneWard()
+    t.model.arcaneWardMax()
     t.model.race()
     t.model.klassId()
     t.model.klass()
@@ -30,7 +32,5 @@ export const Character = objectType({
     t.model.subclassId()
     t.model.spellSlots()
     t.model.speed()
-    t.model.arcaneWard()
-    t.model.arcaneWardMax()
   },
 })
