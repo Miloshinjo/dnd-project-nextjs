@@ -240,25 +240,25 @@ export interface NexusGenFieldTypes {
     weapons: string[]; // [String!]!
   }
   Mutation: { // field return type
-    addSubclass: NexusGenRootTypes['Character'] | null; // Character
-    createCharacter: NexusGenRootTypes['Character'] | null; // Character
+    addSubclass: NexusGenRootTypes['Character']; // Character!
+    createCharacter: NexusGenRootTypes['Character']; // Character!
     deleteCharacter: NexusGenRootTypes['Character'] | null; // Character
-    forgetSpell: NexusGenRootTypes['Character'] | null; // Character
-    learnSpell: NexusGenRootTypes['Character'] | null; // Character
-    prepareSpell: NexusGenRootTypes['Character'] | null; // Character
-    unprepareSpell: NexusGenRootTypes['Character'] | null; // Character
-    updateCharacter: NexusGenRootTypes['Character'] | null; // Character
+    forgetSpell: NexusGenRootTypes['Character']; // Character!
+    learnSpell: NexusGenRootTypes['Character']; // Character!
+    prepareSpell: NexusGenRootTypes['Character']; // Character!
+    unprepareSpell: NexusGenRootTypes['Character']; // Character!
+    updateCharacter: NexusGenRootTypes['Character']; // Character!
   }
   Query: { // field return type
-    character: NexusGenRootTypes['Character'] | null; // Character
-    characters: Array<NexusGenRootTypes['Character'] | null> | null; // [Character]
-    klass: NexusGenRootTypes['Klass'] | null; // Klass
-    klasses: Array<NexusGenRootTypes['Klass'] | null> | null; // [Klass]
-    me: NexusGenRootTypes['User'] | null; // User
-    skills: Array<NexusGenRootTypes['Skill'] | null> | null; // [Skill]
-    spell: NexusGenRootTypes['Spell'] | null; // Spell
-    spells: Array<NexusGenRootTypes['Spell'] | null> | null; // [Spell]
-    subclasses: Array<NexusGenRootTypes['SubClass'] | null> | null; // [SubClass]
+    character: NexusGenRootTypes['Character']; // Character!
+    characters: NexusGenRootTypes['Character'][]; // [Character!]!
+    klass: NexusGenRootTypes['Klass']; // Klass!
+    klasses: NexusGenRootTypes['Klass'][]; // [Klass!]!
+    me: NexusGenRootTypes['User']; // User!
+    skills: NexusGenRootTypes['Skill'][]; // [Skill!]!
+    spell: NexusGenRootTypes['Spell']; // Spell!
+    spells: NexusGenRootTypes['Spell'][]; // [Spell!]!
+    subclasses: NexusGenRootTypes['SubClass'][]; // [SubClass!]!
   }
   Skill: { // field return type
     ability: string; // String!

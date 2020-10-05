@@ -19,7 +19,7 @@
     "@types/react": "16.9.46"
   },
   "dependencies": {
-    "@nexus/schema": "^0.16.0",
+    "@nexus/schema": "^0.15.0",
     "@urql/exchange-graphcache": "^3.0.2",
     "apollo-server-micro": "^2.18.1",
     "framer-motion": "^2.7.7",
