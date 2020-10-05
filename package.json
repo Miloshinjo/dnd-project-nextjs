@@ -12,7 +12,8 @@
     "generate:graphql": "graphql-codegen --config codegen.yml",
     "generate:prisma": "prisma generate",
     "studio": "npx prisma studio",
-    "generate:nexus": "ts-node --transpile-only ./server/schema"
+    "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet",
+    "generate:nexus": "ts-node --transpile-only -P nexus.tsconfig.json server/schema"
   },
   "resolutions": {
     "@types/react": "16.9.46"

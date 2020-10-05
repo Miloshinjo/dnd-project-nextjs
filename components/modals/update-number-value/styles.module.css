@@ -7,7 +7,7 @@
 }
 
 .header {
-  @apply flex justify-between bg-gray-900 text-white rounded-t p-2;
+  @apply flex justify-between  rounded-t p-2;
 }
 
 .headerTitle {
@@ -15,11 +15,11 @@
 }
 
 .heading {
-  @apply text-sm font-semibold ml-2 capitalize;
+  @apply text-lg font-semibold ml-2 capitalize;
 }
 
 .close {
-  @apply text-gray-300;
+  @apply text-primary-600;
 }
 
 .formContainer {
@@ -29,7 +29,7 @@
   @apply flex;
 }
 .submitContainer {
-  @apply flex px-4 py-2;
+  @apply flex px-4 py-2 ml-auto;
 }
 
 .form {

@@ -5,6 +5,8 @@ import * as subclass from './subclass'
 import * as user from './user'
 import * as skill from './skill'
 
+export * from './inputs'
+
 export const Query = {
   ...spell,
   ...character,

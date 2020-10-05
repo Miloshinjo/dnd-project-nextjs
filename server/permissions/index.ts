@@ -5,6 +5,7 @@ const permissions = shield({
   Query: {
     me: rules.isAuthenticatedUser,
     characters: rules.isAuthenticatedUser,
+    character: rules.isCharacterOwner,
     '*': allow,
   },
   Mutation: {
@@ -13,6 +14,9 @@ const permissions = shield({
     deleteCharacter: rules.isCharacterOwner,
     learnSpell: rules.isCharacterOwner,
     forgetSpell: rules.isCharacterOwner,
+    addSubclass: rules.isCharacterOwner,
+    unprepareSpell: rules.isCharacterOwner,
+    prepareSpell: rules.isCharacterOwner,
   },
 })
 

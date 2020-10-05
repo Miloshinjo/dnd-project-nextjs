@@ -55,6 +55,10 @@ input CharacterEditSpellInput {
   spellId: ID!
 }
 
+input CharacterQueryInputType {
+  id: ID!
+}
+
 input CharacterUpdateInput {
   alignment: String
   arcaneWard: Int
@@ -115,7 +119,7 @@ type Mutation {
 }
 
 type Query {
-  character(id: ID): Character
+  character(character: CharacterQueryInputType): Character
   characters: [Character]
   klass(id: ID): Klass
   klasses: [Klass]

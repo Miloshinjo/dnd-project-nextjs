@@ -36,8 +36,13 @@ export interface NexusGenInputs {
     id: string; // ID!
     spellId: string; // ID!
   }
+  CharacterQueryInputType: { // input type
+    id: string; // ID!
+  }
   CharacterUpdateInput: { // input type
     alignment?: string | null; // String
+    arcaneWard?: number | null; // Int
+    arcaneWardMax?: number | null; // Int
     armorClass?: number | null; // Int
     charisma?: number | null; // Int
     constitution?: number | null; // Int
@@ -61,25 +66,19 @@ export interface NexusGenInputs {
     wisdom?: number | null; // Int
   }
   CharacterWhereUniqueInput: { // input type
-    id?: string | null; // String
+    id?: number | null; // Int
   }
   SkillWhereUniqueInput: { // input type
-    id?: string | null; // String
+    id?: number | null; // Int
     name?: string | null; // String
   }
   SpellWhereUniqueInput: { // input type
-    id?: string | null; // String
+    id?: number | null; // Int
     name?: string | null; // String
   }
   SubClassWhereUniqueInput: { // input type
-    id?: string | null; // String
+    id?: number | null; // Int
     name?: string | null; // String
-  }
-  UserCreateInput: { // input type
-    email: string; // String!
-    password: string; // String!
-    passwordConfirm: string; // String!
-    username: string; // String!
   }
 }
 
@@ -95,22 +94,20 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenRootTypes {
-  AuthPayload: { // root type
-    token: string; // String!
-    user: NexusGenRootTypes['User']; // User!
-  }
   Character: { // root type
     alignment: string; // String!
+    arcaneWard?: number | null; // Int
+    arcaneWardMax?: number | null; // Int
     armorClass: number; // Int!
     charisma: number; // Int!
     constitution: number; // Int!
     dexterity: number; // Int!
     gold?: number | null; // Int
     hitPoints: number; // Int!
-    id: string; // String!
+    id: number; // Int!
     inspiration: boolean; // Boolean!
     intelligence: number; // Int!
-    klassId: string; // String!
+    klassId: number; // Int!
     level: number; // Int!
     maxHitPoints: number; // Int!
     name: string; // String!
@@ -118,8 +115,8 @@ export interface NexusGenRootTypes {
     speed: number; // Int!
     spellSlots?: string | null; // String
     strength: number; // Int!
-    subclassId?: string | null; // String
-    userId: string; // String!
+    subclassId?: number | null; // Int
+    userId: number; // Int!
     wisdom: number; // Int!
   }
   Klass: { // root type
@@ -127,7 +124,7 @@ export interface NexusGenRootTypes {
     description: string; // String!
     hitDie: string; // String!
     hitPointsAt1st: string; // String!
-    id: string; // String!
+    id: number; // Int!
     name: string; // String!
     primaryAbility: string[]; // [String!]!
     proficientSkillsAt1st: number; // Int!
@@ -141,7 +138,7 @@ export interface NexusGenRootTypes {
   Query: {};
   Skill: { // root type
     ability: string; // String!
-    id: string; // String!
+    id: number; // Int!
     name: string; // String!
   }
   Spell: { // root type
@@ -152,7 +149,7 @@ export interface NexusGenRootTypes {
     damageEffect: string; // String!
     description: string; // String!
     duration: string; // String!
-    id: string; // String!
+    id: number; // Int!
     klasses: string; // String!
     level: number; // Int!
     material?: string | null; // String
@@ -162,17 +159,17 @@ export interface NexusGenRootTypes {
     school: string; // String!
   }
   SubClass: { // root type
-    description: string; // String!
-    id: string; // String!
-    klassId: string; // String!
+    id: number; // Int!
+    klassId: number; // Int!
     name: string; // String!
     source: string; // String!
     spellCastingModifier?: string | null; // String
   }
   User: { // root type
-    email: string; // String!
-    id: string; // String!
-    username: string; // String!
+    email?: string | null; // String
+    id: number; // Int!
+    image?: string | null; // String
+    name?: string | null; // String
   }
 }
 
@@ -181,12 +178,12 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   CharacterCreateInput: NexusGenInputs['CharacterCreateInput'];
   CharacterDeleteInput: NexusGenInputs['CharacterDeleteInput'];
   CharacterEditSpellInput: NexusGenInputs['CharacterEditSpellInput'];
+  CharacterQueryInputType: NexusGenInputs['CharacterQueryInputType'];
   CharacterUpdateInput: NexusGenInputs['CharacterUpdateInput'];
   CharacterWhereUniqueInput: NexusGenInputs['CharacterWhereUniqueInput'];
   SkillWhereUniqueInput: NexusGenInputs['SkillWhereUniqueInput'];
   SpellWhereUniqueInput: NexusGenInputs['SpellWhereUniqueInput'];
   SubClassWhereUniqueInput: NexusGenInputs['SubClassWhereUniqueInput'];
-  UserCreateInput: NexusGenInputs['UserCreateInput'];
   String: NexusGenScalars['String'];
   Int: NexusGenScalars['Int'];
   Float: NexusGenScalars['Float'];
@@ -195,23 +192,21 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
 }
 
 export interface NexusGenFieldTypes {
-  AuthPayload: { // field return type
-    token: string; // String!
-    user: NexusGenRootTypes['User']; // User!
-  }
   Character: { // field return type
     alignment: string; // String!
+    arcaneWard: number | null; // Int
+    arcaneWardMax: number | null; // Int
     armorClass: number; // Int!
     charisma: number; // Int!
     constitution: number; // Int!
     dexterity: number; // Int!
     gold: number | null; // Int
     hitPoints: number; // Int!
-    id: string; // String!
+    id: number; // Int!
     inspiration: boolean; // Boolean!
     intelligence: number; // Int!
     klass: NexusGenRootTypes['Klass']; // Klass!
-    klassId: string; // String!
+    klassId: number; // Int!
     level: number; // Int!
     maxHitPoints: number; // Int!
     name: string; // String!
@@ -223,9 +218,9 @@ export interface NexusGenFieldTypes {
     spellSlots: string | null; // String
     strength: number; // Int!
     subclass: NexusGenRootTypes['SubClass'] | null; // SubClass
-    subclassId: string | null; // String
+    subclassId: number | null; // Int
     user: NexusGenRootTypes['User']; // User!
-    userId: string; // String!
+    userId: number; // Int!
     wisdom: number; // Int!
   }
   Klass: { // field return type
@@ -233,7 +228,7 @@ export interface NexusGenFieldTypes {
     description: string; // String!
     hitDie: string; // String!
     hitPointsAt1st: string; // String!
-    id: string; // String!
+    id: number; // Int!
     name: string; // String!
     primaryAbility: string[]; // [String!]!
     proficientSkillsAt1st: number; // Int!
@@ -245,31 +240,29 @@ export interface NexusGenFieldTypes {
     weapons: string[]; // [String!]!
   }
   Mutation: { // field return type
-    addSubclass: NexusGenRootTypes['Character']; // Character!
-    createCharacter: NexusGenRootTypes['Character']; // Character!
+    addSubclass: NexusGenRootTypes['Character'] | null; // Character
+    createCharacter: NexusGenRootTypes['Character'] | null; // Character
     deleteCharacter: NexusGenRootTypes['Character'] | null; // Character
-    forgetSpell: NexusGenRootTypes['Character']; // Character!
-    learnSpell: NexusGenRootTypes['Character']; // Character!
-    login: NexusGenRootTypes['AuthPayload']; // AuthPayload!
-    prepareSpell: NexusGenRootTypes['Character']; // Character!
-    signup: NexusGenRootTypes['AuthPayload']; // AuthPayload!
-    unprepareSpell: NexusGenRootTypes['Character']; // Character!
-    updateCharacter: NexusGenRootTypes['Character']; // Character!
+    forgetSpell: NexusGenRootTypes['Character'] | null; // Character
+    learnSpell: NexusGenRootTypes['Character'] | null; // Character
+    prepareSpell: NexusGenRootTypes['Character'] | null; // Character
+    unprepareSpell: NexusGenRootTypes['Character'] | null; // Character
+    updateCharacter: NexusGenRootTypes['Character'] | null; // Character
   }
   Query: { // field return type
-    character: NexusGenRootTypes['Character']; // Character!
-    characters: NexusGenRootTypes['Character'][]; // [Character!]!
-    klass: NexusGenRootTypes['Klass']; // Klass!
-    klasses: NexusGenRootTypes['Klass'][]; // [Klass!]!
-    me: NexusGenRootTypes['User']; // User!
-    skills: NexusGenRootTypes['Skill'][]; // [Skill!]!
-    spell: NexusGenRootTypes['Spell']; // Spell!
-    spells: NexusGenRootTypes['Spell'][]; // [Spell!]!
-    subclasses: NexusGenRootTypes['SubClass'][]; // [SubClass!]!
+    character: NexusGenRootTypes['Character'] | null; // Character
+    characters: Array<NexusGenRootTypes['Character'] | null> | null; // [Character]
+    klass: NexusGenRootTypes['Klass'] | null; // Klass
+    klasses: Array<NexusGenRootTypes['Klass'] | null> | null; // [Klass]
+    me: NexusGenRootTypes['User'] | null; // User
+    skills: Array<NexusGenRootTypes['Skill'] | null> | null; // [Skill]
+    spell: NexusGenRootTypes['Spell'] | null; // Spell
+    spells: Array<NexusGenRootTypes['Spell'] | null> | null; // [Spell]
+    subclasses: Array<NexusGenRootTypes['SubClass'] | null> | null; // [SubClass]
   }
   Skill: { // field return type
     ability: string; // String!
-    id: string; // String!
+    id: number; // Int!
     name: string; // String!
   }
   Spell: { // field return type
@@ -281,7 +274,7 @@ export interface NexusGenFieldTypes {
     damageEffect: string; // String!
     description: string; // String!
     duration: string; // String!
-    id: string; // String!
+    id: number; // Int!
     klasses: string; // String!
     level: number; // Int!
     material: string | null; // String
@@ -291,19 +284,19 @@ export interface NexusGenFieldTypes {
     school: string; // String!
   }
   SubClass: { // field return type
-    description: string; // String!
-    id: string; // String!
+    id: number; // Int!
     klass: NexusGenRootTypes['Klass']; // Klass!
-    klassId: string; // String!
+    klassId: number; // Int!
     name: string; // String!
     source: string; // String!
     spellCastingModifier: string | null; // String
   }
   User: { // field return type
     characters: NexusGenRootTypes['Character'][]; // [Character!]!
-    email: string; // String!
-    id: string; // String!
-    username: string; // String!
+    email: string | null; // String
+    id: number; // Int!
+    image: string | null; // String
+    name: string | null; // String
   }
 }
 
@@ -352,15 +345,8 @@ export interface NexusGenArgTypes {
     learnSpell: { // args
       character?: NexusGenInputs['CharacterEditSpellInput'] | null; // CharacterEditSpellInput
     }
-    login: { // args
-      email: string; // String!
-      password: string; // String!
-    }
     prepareSpell: { // args
       character?: NexusGenInputs['CharacterEditSpellInput'] | null; // CharacterEditSpellInput
-    }
-    signup: { // args
-      user?: NexusGenInputs['UserCreateInput'] | null; // UserCreateInput
     }
     unprepareSpell: { // args
       character?: NexusGenInputs['CharacterEditSpellInput'] | null; // CharacterEditSpellInput
@@ -371,7 +357,7 @@ export interface NexusGenArgTypes {
   }
   Query: {
     character: { // args
-      id?: string | null; // ID
+      character?: NexusGenInputs['CharacterQueryInputType'] | null; // CharacterQueryInputType
     }
     klass: { // args
       id?: string | null; // ID
@@ -409,9 +395,9 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "AuthPayload" | "Character" | "Klass" | "Mutation" | "Query" | "Skill" | "Spell" | "SubClass" | "User";
+export type NexusGenObjectNames = "Character" | "Klass" | "Mutation" | "Query" | "Skill" | "Spell" | "SubClass" | "User";
 
-export type NexusGenInputNames = "CharacterAddSubclassInputType" | "CharacterCreateInput" | "CharacterDeleteInput" | "CharacterEditSpellInput" | "CharacterUpdateInput" | "CharacterWhereUniqueInput" | "SkillWhereUniqueInput" | "SpellWhereUniqueInput" | "SubClassWhereUniqueInput" | "UserCreateInput";
+export type NexusGenInputNames = "CharacterAddSubclassInputType" | "CharacterCreateInput" | "CharacterDeleteInput" | "CharacterEditSpellInput" | "CharacterQueryInputType" | "CharacterUpdateInput" | "CharacterWhereUniqueInput" | "SkillWhereUniqueInput" | "SpellWhereUniqueInput" | "SubClassWhereUniqueInput";
 
 export type NexusGenEnumNames = never;
 

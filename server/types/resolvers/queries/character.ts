@@ -1,4 +1,4 @@
-import { queryField, idArg } from '@nexus/schema'
+import { queryField } from '@nexus/schema'
 import { getUserId } from '../../../utils/helpers'
 
 import errors from '../../../utils/errors'
@@ -26,12 +26,12 @@ export const characters = queryField('characters', {
 export const character = queryField('character', {
   type: 'Character',
   args: {
-    id: idArg(),
+    character: 'CharacterQueryInputType',
   },
-  resolve: async (parent, { id }, { prisma }) => {
+  resolve: async (parent, { character }, { prisma }) => {
     try {
       return prisma.character.findOne({
-        where: { id: Number(id) },
+        where: { id: Number(character.id) },
       })
     } catch (err) {
       console.log(err)

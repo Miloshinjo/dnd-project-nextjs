@@ -60,6 +60,10 @@ export type CharacterAddSubclassInputType = {
   subclassId: Scalars['ID'];
 };
 
+export type CharacterQueryInputType = {
+  id: Scalars['ID'];
+};
+
 export type User = {
   __typename?: 'User';
   id: Scalars['Int'];
@@ -249,7 +253,7 @@ export type QuerySpellArgs = {
 
 
 export type QueryCharacterArgs = {
-  id?: Maybe<Scalars['ID']>;
+  character?: Maybe<CharacterQueryInputType>;
 };
 
 
@@ -1057,7 +1061,7 @@ export function useWisdomMutation() {
 };
 export const CharacterDocument = gql`
     query Character($id: ID!) {
-  character(id: $id) {
+  character(character: {id: $id}) {
     id
     name
     level

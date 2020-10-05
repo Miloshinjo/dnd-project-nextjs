@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import { useModal } from '../../../context/modal'
 import NumberInput from '../../form/number-input'
 import NumberInputControls from '../../form/number-input-controls'
-import SubmitButton from '../../form/submit-button'
+import PrimaryButton from '../../buttons/primary'
 import { Character } from '../../../generated/graphql'
 
 import icons from './icons'
@@ -66,7 +66,7 @@ const UpdateNumberValue: React.FC<Props> = ({
           <h1 className={styles.heading}>{title}</h1>
         </div>
         <button className={styles.close} onClick={closeModal}>
-          <IoIosClose size={25} />
+          <IoIosClose size={35} />
         </button>
       </div>
 
@@ -89,7 +89,7 @@ const UpdateNumberValue: React.FC<Props> = ({
           </div>
 
           <div className={styles.submitContainer}>
-            <SubmitButton text="Set" loading={false} />
+            <PrimaryButton type="submit">Set</PrimaryButton>
           </div>
         </form>
       </div>

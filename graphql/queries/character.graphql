@@ -1,5 +1,5 @@
 query Character($id: ID!) {
-  character(id: $id) {
+  character(character: { id: $id }) {
     id
     name
     level
