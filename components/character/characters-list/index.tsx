@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { FaPlus } from 'react-icons/fa'
 import Loader from '../../layout/loader'
 import CharacterCard from '../character-card'
+import CharactersListSkeleton from '../../skeletons/characters-list'
 import { Character, useCharactersQuery } from '../../../generated/graphql'
 
 import styles from './styles.module.css'
@@ -30,11 +31,7 @@ const CharactersList = () => {
   }
 
   if (result.fetching) {
-    return (
-      <div className={styles.fetchingContainer}>
-        <Loader />
-      </div>
-    )
+    return <CharactersListSkeleton />
   }
 
   return (
