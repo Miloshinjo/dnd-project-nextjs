@@ -17,7 +17,7 @@
 
 .modal {
   @apply bg-white text-center rounded shadow-md relative;
-  max-width: 250px;
+  max-width: 275px;
   width: 100%;
 }
 

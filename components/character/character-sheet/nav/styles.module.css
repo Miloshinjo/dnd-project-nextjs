@@ -7,7 +7,7 @@
 }
 
 .navLinkActive {
-  @apply text-primary-600;
+  @apply text-primary-900;
 }
 
 .navLinkText {

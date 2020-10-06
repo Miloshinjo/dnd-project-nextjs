@@ -1,5 +1,4 @@
 import React from 'react'
-import { IoIosClose } from 'react-icons/io'
 import { useForm } from 'react-hook-form'
 
 import { useModal } from '../../../context/modal'
@@ -92,11 +91,7 @@ const UpdateSubclass: React.FC<Props> = ({
   if (!subclasses.length) {
     return (
       <div className={styles.container}>
-        <ModalHeader
-          type=""
-          closeModal={closeModal}
-          title={subclassTitle[klassName]}
-        />
+        <ModalHeader type="" title={subclassTitle[klassName]} />
         <div className="p-4">
           <p className="my-2 text-left">
             {klassName} not supported yet. Working on it...
@@ -108,11 +103,7 @@ const UpdateSubclass: React.FC<Props> = ({
 
   return (
     <div className={styles.container}>
-      <ModalHeader
-        type={klassName}
-        closeModal={closeModal}
-        title={subclassTitle[klassName]}
-      />
+      <ModalHeader type={klassName} title={subclassTitle[klassName]} />
 
       <div className={styles.formContainer}>
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>

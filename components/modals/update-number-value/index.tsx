@@ -59,7 +59,7 @@ const UpdateNumberValue: React.FC<Props> = ({
 
   return (
     <div className={styles.container}>
-      <ModalHeader type={type} title={title} closeModal={closeModal} />
+      <ModalHeader type={type} title={title} />
       <div className={styles.formContainer}>
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.inputContainer}>

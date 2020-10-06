@@ -57,8 +57,8 @@ const ScreenSkills: React.FC<Props> = ({ character, skills }) => {
           >
             <div className={styles.infoWrapper}>
               <div
-                className={`w-2 h-2 rounded-full border-gray-800 border mr-2 ${
-                  isProficient ? 'bg-gray-800 ' : ''
+                className={`w-2 h-2 rounded-full border-primary-900 border mr-2 ${
+                  isProficient ? 'bg-primary-900 ' : ''
                 }`}
                 style={{ marginTop: '1px' }}
               ></div>

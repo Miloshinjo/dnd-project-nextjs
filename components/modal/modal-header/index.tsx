@@ -1,10 +1,17 @@
 import { IoIosClose } from 'react-icons/io'
 
+import { useModal } from '../../../context/modal'
 import icons from './icons'
 
 import styles from './styles.module.css'
 
-const ModalHeader = ({ type, title, closeModal }) => {
+type Props = {
+  type: string
+  title: string
+}
+
+const ModalHeader: React.FC<Props> = ({ type, title }) => {
+  const { closeModal } = useModal()
   return (
     <header className={styles.header}>
       <div className={styles.headerTitle}>

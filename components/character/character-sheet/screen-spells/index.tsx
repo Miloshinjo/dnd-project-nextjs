@@ -81,7 +81,7 @@ const ScreenSpells: React.FC<Props> = ({ character }) => {
           ).substring(0, 3)}
         />
         <StatField
-          label="Spell hit"
+          label="Spell attack"
           value={spellHit(
             abilityScoreM(
               character.subclass?.spellCastingModifier
