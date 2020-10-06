@@ -5,7 +5,7 @@ export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K]
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: string;
+  ID: number;
   String: string;
   Boolean: boolean;
   Int: number;
@@ -157,6 +157,8 @@ export type Character = {
   id: Scalars['Int'];
   name: Scalars['String'];
   level: Scalars['Int'];
+  arcaneWard?: Maybe<Scalars['Int']>;
+  arcaneWardMax?: Maybe<Scalars['Int']>;
   race: Scalars['String'];
   klassId: Scalars['Int'];
   klass: Klass;
@@ -181,8 +183,6 @@ export type Character = {
   subclassId?: Maybe<Scalars['Int']>;
   spellSlots?: Maybe<Scalars['String']>;
   speed: Scalars['Int'];
-  arcaneWard?: Maybe<Scalars['Int']>;
-  arcaneWardMax?: Maybe<Scalars['Int']>;
 };
 
 
@@ -230,15 +230,15 @@ export type SkillWhereUniqueInput = {
 
 export type Query = {
   __typename?: 'Query';
-  spells?: Maybe<Array<Maybe<Spell>>>;
-  spell?: Maybe<Spell>;
-  characters?: Maybe<Array<Maybe<Character>>>;
-  character?: Maybe<Character>;
-  klasses?: Maybe<Array<Maybe<Klass>>>;
-  klass?: Maybe<Klass>;
-  me?: Maybe<User>;
-  skills?: Maybe<Array<Maybe<Skill>>>;
-  subclasses?: Maybe<Array<Maybe<SubClass>>>;
+  spells: Array<Spell>;
+  spell: Spell;
+  characters: Array<Character>;
+  character: Character;
+  klasses: Array<Klass>;
+  klass: Klass;
+  me: User;
+  skills: Array<Skill>;
+  subclasses: Array<SubClass>;
 };
 
 
@@ -268,14 +268,14 @@ export type QuerySubclassesArgs = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  createCharacter?: Maybe<Character>;
-  updateCharacter?: Maybe<Character>;
+  createCharacter: Character;
+  updateCharacter: Character;
   deleteCharacter?: Maybe<Character>;
-  learnSpell?: Maybe<Character>;
-  forgetSpell?: Maybe<Character>;
-  prepareSpell?: Maybe<Character>;
-  unprepareSpell?: Maybe<Character>;
-  addSubclass?: Maybe<Character>;
+  learnSpell: Character;
+  forgetSpell: Character;
+  prepareSpell: Character;
+  unprepareSpell: Character;
+  addSubclass: Character;
 };
 
 
@@ -326,14 +326,14 @@ export type AddSubclassMutationVariables = Exact<{
 
 export type AddSubclassMutation = (
   { __typename?: 'Mutation' }
-  & { addSubclass?: Maybe<(
+  & { addSubclass: (
     { __typename?: 'Character' }
     & Pick<Character, 'id'>
     & { subclass?: Maybe<(
       { __typename?: 'SubClass' }
       & Pick<SubClass, 'id' | 'name'>
     )> }
-  )> }
+  ) }
 );
 
 export type ArcaneWardMutationVariables = Exact<{
@@ -344,10 +344,10 @@ export type ArcaneWardMutationVariables = Exact<{
 
 export type ArcaneWardMutation = (
   { __typename?: 'Mutation' }
-  & { updateCharacter?: Maybe<(
+  & { updateCharacter: (
     { __typename?: 'Character' }
     & Pick<Character, 'id' | 'arcaneWard'>
-  )> }
+  ) }
 );
 
 export type ArcaneWardMaxMutationVariables = Exact<{
@@ -358,10 +358,10 @@ export type ArcaneWardMaxMutationVariables = Exact<{
 
 export type ArcaneWardMaxMutation = (
   { __typename?: 'Mutation' }
-  & { updateCharacter?: Maybe<(
+  & { updateCharacter: (
     { __typename?: 'Character' }
     & Pick<Character, 'id' | 'arcaneWardMax'>
-  )> }
+  ) }
 );
 
 export type ArmorClassMutationVariables = Exact<{
@@ -372,10 +372,10 @@ export type ArmorClassMutationVariables = Exact<{
 
 export type ArmorClassMutation = (
   { __typename?: 'Mutation' }
-  & { updateCharacter?: Maybe<(
+  & { updateCharacter: (
     { __typename?: 'Character' }
     & Pick<Character, 'id' | 'armorClass'>
-  )> }
+  ) }
 );
 
 export type CharismaMutationVariables = Exact<{
@@ -386,10 +386,10 @@ export type CharismaMutationVariables = Exact<{
 
 export type CharismaMutation = (
   { __typename?: 'Mutation' }
-  & { updateCharacter?: Maybe<(
+  & { updateCharacter: (
     { __typename?: 'Character' }
     & Pick<Character, 'id' | 'charisma'>
-  )> }
+  ) }
 );
 
 export type ConstitutionMutationVariables = Exact<{
@@ -400,10 +400,10 @@ export type ConstitutionMutationVariables = Exact<{
 
 export type ConstitutionMutation = (
   { __typename?: 'Mutation' }
-  & { updateCharacter?: Maybe<(
+  & { updateCharacter: (
     { __typename?: 'Character' }
     & Pick<Character, 'id' | 'constitution'>
-  )> }
+  ) }
 );
 
 export type CreateCharacterMutationVariables = Exact<{
@@ -416,14 +416,14 @@ export type CreateCharacterMutationVariables = Exact<{
 
 export type CreateCharacterMutation = (
   { __typename?: 'Mutation' }
-  & { createCharacter?: Maybe<(
+  & { createCharacter: (
     { __typename?: 'Character' }
     & Pick<Character, 'id' | 'name' | 'race' | 'alignment'>
     & { klass: (
       { __typename?: 'Klass' }
       & Pick<Klass, 'id' | 'name'>
     ) }
-  )> }
+  ) }
 );
 
 export type DeleteCharacterMutationVariables = Exact<{
@@ -447,10 +447,10 @@ export type DexterityMutationVariables = Exact<{
 
 export type DexterityMutation = (
   { __typename?: 'Mutation' }
-  & { updateCharacter?: Maybe<(
+  & { updateCharacter: (
     { __typename?: 'Character' }
     & Pick<Character, 'id' | 'dexterity'>
-  )> }
+  ) }
 );
 
 export type ForgetSpellMutationVariables = Exact<{
@@ -461,14 +461,14 @@ export type ForgetSpellMutationVariables = Exact<{
 
 export type ForgetSpellMutation = (
   { __typename?: 'Mutation' }
-  & { forgetSpell?: Maybe<(
+  & { forgetSpell: (
     { __typename?: 'Character' }
     & Pick<Character, 'id' | 'name'>
     & { spells: Array<(
       { __typename?: 'Spell' }
       & Pick<Spell, 'id' | 'name'>
     )> }
-  )> }
+  ) }
 );
 
 export type HitPointsMutationVariables = Exact<{
@@ -479,10 +479,10 @@ export type HitPointsMutationVariables = Exact<{
 
 export type HitPointsMutation = (
   { __typename?: 'Mutation' }
-  & { updateCharacter?: Maybe<(
+  & { updateCharacter: (
     { __typename?: 'Character' }
     & Pick<Character, 'id' | 'hitPoints'>
-  )> }
+  ) }
 );
 
 export type IntelligenceMutationVariables = Exact<{
@@ -493,10 +493,10 @@ export type IntelligenceMutationVariables = Exact<{
 
 export type IntelligenceMutation = (
   { __typename?: 'Mutation' }
-  & { updateCharacter?: Maybe<(
+  & { updateCharacter: (
     { __typename?: 'Character' }
     & Pick<Character, 'id' | 'intelligence'>
-  )> }
+  ) }
 );
 
 export type LearnSpellMutationVariables = Exact<{
@@ -507,14 +507,14 @@ export type LearnSpellMutationVariables = Exact<{
 
 export type LearnSpellMutation = (
   { __typename?: 'Mutation' }
-  & { learnSpell?: Maybe<(
+  & { learnSpell: (
     { __typename?: 'Character' }
     & Pick<Character, 'id' | 'name'>
     & { spells: Array<(
       { __typename?: 'Spell' }
       & Pick<Spell, 'id' | 'name'>
     )> }
-  )> }
+  ) }
 );
 
 export type LevelMutationVariables = Exact<{
@@ -525,10 +525,10 @@ export type LevelMutationVariables = Exact<{
 
 export type LevelMutation = (
   { __typename?: 'Mutation' }
-  & { updateCharacter?: Maybe<(
+  & { updateCharacter: (
     { __typename?: 'Character' }
     & Pick<Character, 'id' | 'level'>
-  )> }
+  ) }
 );
 
 export type MaxHitPointsMutationVariables = Exact<{
@@ -539,10 +539,10 @@ export type MaxHitPointsMutationVariables = Exact<{
 
 export type MaxHitPointsMutation = (
   { __typename?: 'Mutation' }
-  & { updateCharacter?: Maybe<(
+  & { updateCharacter: (
     { __typename?: 'Character' }
     & Pick<Character, 'id' | 'maxHitPoints'>
-  )> }
+  ) }
 );
 
 export type PrepareSpellMutationVariables = Exact<{
@@ -553,14 +553,14 @@ export type PrepareSpellMutationVariables = Exact<{
 
 export type PrepareSpellMutation = (
   { __typename?: 'Mutation' }
-  & { prepareSpell?: Maybe<(
+  & { prepareSpell: (
     { __typename?: 'Character' }
     & Pick<Character, 'id' | 'name'>
     & { preparedSpells: Array<(
       { __typename?: 'Spell' }
       & Pick<Spell, 'id' | 'name'>
     )> }
-  )> }
+  ) }
 );
 
 export type SkillMutationVariables = Exact<{
@@ -571,14 +571,14 @@ export type SkillMutationVariables = Exact<{
 
 export type SkillMutation = (
   { __typename?: 'Mutation' }
-  & { updateCharacter?: Maybe<(
+  & { updateCharacter: (
     { __typename?: 'Character' }
     & Pick<Character, 'id'>
     & { skills: Array<(
       { __typename?: 'Skill' }
       & Pick<Skill, 'id' | 'name'>
     )> }
-  )> }
+  ) }
 );
 
 export type SpeedMutationVariables = Exact<{
@@ -589,10 +589,10 @@ export type SpeedMutationVariables = Exact<{
 
 export type SpeedMutation = (
   { __typename?: 'Mutation' }
-  & { updateCharacter?: Maybe<(
+  & { updateCharacter: (
     { __typename?: 'Character' }
     & Pick<Character, 'id' | 'speed'>
-  )> }
+  ) }
 );
 
 export type SpellSlotsMutationVariables = Exact<{
@@ -603,10 +603,10 @@ export type SpellSlotsMutationVariables = Exact<{
 
 export type SpellSlotsMutation = (
   { __typename?: 'Mutation' }
-  & { updateCharacter?: Maybe<(
+  & { updateCharacter: (
     { __typename?: 'Character' }
     & Pick<Character, 'id' | 'spellSlots'>
-  )> }
+  ) }
 );
 
 export type StrengthMutationVariables = Exact<{
@@ -617,10 +617,10 @@ export type StrengthMutationVariables = Exact<{
 
 export type StrengthMutation = (
   { __typename?: 'Mutation' }
-  & { updateCharacter?: Maybe<(
+  & { updateCharacter: (
     { __typename?: 'Character' }
     & Pick<Character, 'id' | 'strength'>
-  )> }
+  ) }
 );
 
 export type UnprepareSpellMutationVariables = Exact<{
@@ -631,14 +631,14 @@ export type UnprepareSpellMutationVariables = Exact<{
 
 export type UnprepareSpellMutation = (
   { __typename?: 'Mutation' }
-  & { unprepareSpell?: Maybe<(
+  & { unprepareSpell: (
     { __typename?: 'Character' }
     & Pick<Character, 'id' | 'name'>
     & { preparedSpells: Array<(
       { __typename?: 'Spell' }
       & Pick<Spell, 'id' | 'name'>
     )> }
-  )> }
+  ) }
 );
 
 export type WisdomMutationVariables = Exact<{
@@ -649,10 +649,10 @@ export type WisdomMutationVariables = Exact<{
 
 export type WisdomMutation = (
   { __typename?: 'Mutation' }
-  & { updateCharacter?: Maybe<(
+  & { updateCharacter: (
     { __typename?: 'Character' }
     & Pick<Character, 'id' | 'wisdom'>
-  )> }
+  ) }
 );
 
 export type CharacterQueryVariables = Exact<{
@@ -662,7 +662,7 @@ export type CharacterQueryVariables = Exact<{
 
 export type CharacterQuery = (
   { __typename?: 'Query' }
-  & { character?: Maybe<(
+  & { character: (
     { __typename?: 'Character' }
     & Pick<Character, 'id' | 'name' | 'level' | 'race' | 'hitPoints' | 'maxHitPoints' | 'armorClass' | 'gold' | 'alignment' | 'inspiration' | 'strength' | 'dexterity' | 'constitution' | 'intelligence' | 'wisdom' | 'charisma' | 'speed' | 'spellSlots' | 'arcaneWard' | 'arcaneWardMax'>
     & { klass: (
@@ -681,7 +681,7 @@ export type CharacterQuery = (
       { __typename?: 'Spell' }
       & Pick<Spell, 'id' | 'name' | 'level' | 'concentration' | 'ritual'>
     )> }
-  )> }
+  ) }
 );
 
 export type CharactersQueryVariables = Exact<{ [key: string]: never; }>;
@@ -689,7 +689,7 @@ export type CharactersQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type CharactersQuery = (
   { __typename?: 'Query' }
-  & { characters?: Maybe<Array<Maybe<(
+  & { characters: Array<(
     { __typename?: 'Character' }
     & Pick<Character, 'id' | 'name' | 'level' | 'race'>
     & { klass: (
@@ -702,7 +702,7 @@ export type CharactersQuery = (
       { __typename?: 'Spell' }
       & Pick<Spell, 'id'>
     )> }
-  )>>> }
+  )> }
 );
 
 export type MeQueryVariables = Exact<{ [key: string]: never; }>;
@@ -710,10 +710,10 @@ export type MeQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type MeQuery = (
   { __typename?: 'Query' }
-  & { me?: Maybe<(
+  & { me: (
     { __typename?: 'User' }
     & Pick<User, 'id' | 'name' | 'email' | 'image'>
-  )> }
+  ) }
 );
 
 export type SkillsQueryVariables = Exact<{ [key: string]: never; }>;
@@ -721,10 +721,10 @@ export type SkillsQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type SkillsQuery = (
   { __typename?: 'Query' }
-  & { skills?: Maybe<Array<Maybe<(
+  & { skills: Array<(
     { __typename?: 'Skill' }
     & Pick<Skill, 'id' | 'name' | 'ability'>
-  )>>> }
+  )> }
 );
 
 export type SpellQueryVariables = Exact<{
@@ -734,10 +734,10 @@ export type SpellQueryVariables = Exact<{
 
 export type SpellQuery = (
   { __typename?: 'Query' }
-  & { spell?: Maybe<(
+  & { spell: (
     { __typename?: 'Spell' }
     & Pick<Spell, 'id' | 'name' | 'level' | 'description' | 'klasses' | 'concentration' | 'ritual' | 'duration' | 'castingTime' | 'range' | 'components' | 'school' | 'attackSave' | 'damageEffect' | 'material'>
-  )> }
+  ) }
 );
 
 export type SpellsQueryVariables = Exact<{
@@ -747,10 +747,10 @@ export type SpellsQueryVariables = Exact<{
 
 export type SpellsQuery = (
   { __typename?: 'Query' }
-  & { spells?: Maybe<Array<Maybe<(
+  & { spells: Array<(
     { __typename?: 'Spell' }
     & Pick<Spell, 'id' | 'name' | 'level' | 'description' | 'klasses' | 'concentration' | 'ritual' | 'duration' | 'castingTime' | 'range' | 'components' | 'school' | 'attackSave' | 'damageEffect' | 'material'>
-  )>>> }
+  )> }
 );
 
 export type SubclassesQueryVariables = Exact<{
@@ -760,10 +760,10 @@ export type SubclassesQueryVariables = Exact<{
 
 export type SubclassesQuery = (
   { __typename?: 'Query' }
-  & { subclasses?: Maybe<Array<Maybe<(
+  & { subclasses: Array<(
     { __typename?: 'SubClass' }
     & Pick<SubClass, 'id' | 'name'>
-  )>>> }
+  )> }
 );
 
 

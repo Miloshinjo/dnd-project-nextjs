@@ -111,8 +111,8 @@ const LearnSpell: React.FC<Props> = ({ spellId }) => {
                 type="button"
                 onClick={async () => {
                   const result = await learnSpell({
-                    id: `${character.id}`,
-                    spellId: `${spellId}`,
+                    id: character.id,
+                    spellId,
                   })
 
                   if (result.error) {

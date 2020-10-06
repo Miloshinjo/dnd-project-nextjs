@@ -16,7 +16,7 @@ type Props = {
 
 const SpellModal: React.FC<Props> = ({ spellId }) => {
   const [result] = useSpellQuery({
-    variables: { id: `${spellId}` },
+    variables: { id: spellId },
   })
 
   if (result.fetching) {

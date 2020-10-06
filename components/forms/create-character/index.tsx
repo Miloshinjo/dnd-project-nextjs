@@ -56,7 +56,7 @@ const CreateCharacterForm: React.FC<Props> = ({ klasses }) => {
   const onSubmit = ({ name, race, klassId, alignment }: FormValues) => {
     setServerError('')
 
-    const klassIdReal = klassId.value
+    const klassIdReal = Number(klassId.value)
     const alignmentReal = alignment.value
 
     createCharacter({

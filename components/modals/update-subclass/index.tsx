@@ -61,7 +61,7 @@ const UpdateSubclass: React.FC<Props> = ({
     const subclassId = (values.subclass as any).value
 
     const subclassResult = await addSubclass({
-      id: `${characterId}`,
+      id: characterId,
       subclassId,
     })
 
