@@ -9,6 +9,8 @@ const DrawerMenu: React.FC = () => {
 
   const [session] = useSession()
 
+  console.log({ session })
+
   const email = session?.user?.email
   const name = session?.user?.name
   const image = session?.user?.image

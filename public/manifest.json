@@ -2,7 +2,7 @@
   "name": "Simulacrum",
   "shortName": "Simulacrum",
   "description": "Dungeons and Dragons management app.",
-  "theme_color": "#fff",
+  "theme_color": "#1a202c",
   "background_color": "#fff",
   "display": "standalone",
   "orientation": "portrait",

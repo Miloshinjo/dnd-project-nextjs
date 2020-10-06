@@ -2,7 +2,6 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 
 import { FaPlus } from 'react-icons/fa'
-import Loader from '../../layout/loader'
 import CharacterCard from '../character-card'
 import CharactersListSkeleton from '../../skeletons/characters-list'
 import { Character, useCharactersQuery } from '../../../generated/graphql'
