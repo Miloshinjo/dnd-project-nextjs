@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { FaPlus } from 'react-icons/fa'
 import CharacterCard from '../character-card'
 import CharactersListSkeleton from '../../skeletons/characters-list'
-import { Character, useCharactersQuery } from '../../../generated/graphql'
+import { Character, useCharactersHomeQuery } from '../../../generated/graphql'
 
 import styles from './styles.module.css'
 
@@ -21,8 +21,8 @@ const itemVariants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.4 } },
 }
 
-const CharactersList = () => {
-  const [result] = useCharactersQuery()
+const CharactersList: React.FC = () => {
+  const [result] = useCharactersHomeQuery()
 
   if (result.error) {
     console.log(result.error)
@@ -43,9 +43,12 @@ const CharactersList = () => {
       {result.data.characters.length ? (
         result.data.characters.map((character: Character) => (
           <CharacterCard
-            key={character.id}
-            character={character}
+            id={character.id}
             itemVariants={itemVariants}
+            key={character.id}
+            klass={character.klass.name}
+            name={character.name}
+            race={character.race}
           />
         ))
       ) : (

@@ -11,17 +11,17 @@ const errors = {
   unableToRegister: new UserInputError('Unable to register!'),
   invalidUser: new UserInputError('Invalid credentials'),
   passwordTooShort: new UserInputError(
-    'Password must be 8 characters or longer!'
+    'Password must be 8 characters or longer!',
   ),
   usernameTooShort: new UserInputError(
-    'Username must be 2 characters or longer!'
+    'Username must be 2 characters or longer!',
   ),
   passwordsMismatch: new UserInputError('Passwords do not match!'),
   badCharacterData: new UserInputError(
-    'Could not create charater! Check your data.'
+    'Could not create charater! Check your data.',
   ),
   forbiddenError: new ForbiddenError(
-    'You are not allowed to edit this resource'
+    'You are not allowed to edit this resource',
   ),
 }
 

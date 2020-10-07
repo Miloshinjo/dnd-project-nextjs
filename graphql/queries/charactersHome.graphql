@@ -1,0 +1,11 @@
+query CharactersHome {
+  characters {
+    id
+    name
+    race
+    klass {
+      id
+      name
+    }
+  }
+}

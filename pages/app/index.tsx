@@ -8,7 +8,7 @@ import SubHeader from '../../components/layout/sub-header'
 import CharactersList from '../../components/character/characters-list'
 import LoadingPage from '../../components/layout/loading-page'
 
-const App: NextPage<{}> = () => {
+const App: NextPage = () => {
   const [session, loading] = useSession()
   const router = useRouter()
 

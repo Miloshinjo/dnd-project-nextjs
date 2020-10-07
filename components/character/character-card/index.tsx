@@ -1,22 +1,27 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { CharacterUI } from '../../../models/character'
 import { FiChevronRight } from 'react-icons/fi'
+import { Character, Klass } from '../../../generated/graphql'
 
 import styles from './styles.module.css'
 
 type Props = {
-  character: CharacterUI
+  id: Character['id']
   itemVariants: Record<any, any>
+  klass: Klass['name']
+  name: Character['name']
+  race: Character['race']
 }
 
-const CharacterCard: React.FC<Props> = ({ character, itemVariants }) => {
+const CharacterCard: React.FC<Props> = ({
+  id,
+  race,
+  klass,
+  name,
+  itemVariants,
+}) => {
   return (
-    <Link
-      href="/app/[characterId]"
-      as={`/app/${character.id}`}
-      key={character.id}
-    >
+    <Link href="/app/[characterId]" as={`/app/${id}`} key={id}>
       <motion.div
         className={styles.container}
         variants={itemVariants}
@@ -24,19 +29,12 @@ const CharacterCard: React.FC<Props> = ({ character, itemVariants }) => {
         whileTap={{ y: '1px' }}
       >
         <div className={styles.klassLogoContainer}>
-          <img
-            src={`/images/classes/${character.klass.name.toLowerCase()}.png`}
-            alt={character.klass.name}
-          />
-        </div>
-        <div className={styles.levelContainer}>
-          <span className={styles.levelValue}>{character.level}</span>
-          <span className={styles.levelLabel}>LVL</span>
+          <img src={`/images/classes/${klass.toLowerCase()}.png`} alt={klass} />
         </div>
         <div className={styles.infoContainer}>
-          <div className={styles.name}>{character.name}</div>
+          <div className={styles.name}>{name}</div>
           <div className={styles.raceKlass}>
-            {character.race} {character.klass.name}
+            {race} {klass}
           </div>
         </div>
         <div className="ml-auto">

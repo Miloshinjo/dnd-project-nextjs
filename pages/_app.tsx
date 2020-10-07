@@ -18,7 +18,7 @@ export const client = createClient({
   exchanges: [dedupExchange, cache, fetchExchange],
 })
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <UrqlProvider value={client}>
       <SessionProvider session={pageProps.session}>

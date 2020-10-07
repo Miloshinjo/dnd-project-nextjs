@@ -11,7 +11,7 @@ class MyDocument extends Document {
             type="image/png"
             sizes="192x192"
             href="images/icons/android-icon-192x192.png"
-          ></link>
+          />
           <link
             href="images/icons/favicon-16x16.png"
             rel="icon"

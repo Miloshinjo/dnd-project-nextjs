@@ -705,6 +705,21 @@ export type CharactersQuery = (
   )> }
 );
 
+export type CharactersHomeQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type CharactersHomeQuery = (
+  { __typename?: 'Query' }
+  & { characters: Array<(
+    { __typename?: 'Character' }
+    & Pick<Character, 'id' | 'name' | 'race'>
+    & { klass: (
+      { __typename?: 'Klass' }
+      & Pick<Klass, 'id' | 'name'>
+    ) }
+  )> }
+);
+
 export type MeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1145,6 +1160,23 @@ export const CharactersDocument = gql`
 
 export function useCharactersQuery(options: Omit<Urql.UseQueryArgs<CharactersQueryVariables>, 'query'> = {}) {
   return Urql.useQuery<CharactersQuery>({ query: CharactersDocument, ...options });
+};
+export const CharactersHomeDocument = gql`
+    query CharactersHome {
+  characters {
+    id
+    name
+    race
+    klass {
+      id
+      name
+    }
+  }
+}
+    `;
+
+export function useCharactersHomeQuery(options: Omit<Urql.UseQueryArgs<CharactersHomeQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<CharactersHomeQuery>({ query: CharactersHomeDocument, ...options });
 };
 export const MeDocument = gql`
     query Me {
