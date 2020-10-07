@@ -38,7 +38,7 @@ const Cleric: React.FC<Props> = ({ character }) => {
       <SpellsKnown
         spells={character.spells}
         characterId={character.id}
-        title="Cantrips and Extra Spells"
+        title="Cantrips and Domain Spells"
       />
       <SpellsKnown
         spells={clericSpells?.spells.filter((spell) => spell.level !== 0) || []}

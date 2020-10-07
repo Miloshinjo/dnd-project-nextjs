@@ -45,11 +45,11 @@ const ScreenSettings: React.FC<Props> = ({ character }) => {
                   type: 'addSubclass',
                   props: {
                     originalValue: {
-                      id: character!.subclass.id,
-                      label: character!.subclass.name,
+                      id: character.subclass.id,
+                      label: character.subclass.name,
                     },
                     characterId: character.id,
-                    klassName: character!.klass.name,
+                    klassName: character.klass.name,
                   },
                 })
               }}
