@@ -22,7 +22,7 @@ type Props = {
   character: CharacterUI
 }
 
-const mutations: Record<AbilityScore, Function> = {
+const mutations: Record<AbilityScore, any> = {
   strength: useStrengthMutation,
   dexterity: useDexterityMutation,
   constitution: useConstitutionMutation,

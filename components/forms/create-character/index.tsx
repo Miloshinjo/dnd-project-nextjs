@@ -47,9 +47,7 @@ const CreateCharacterForm: React.FC<Props> = ({ klasses }) => {
   const [, createCharacter] = useCreateCharacterMutation()
   const { openModal } = useModal()
 
-  const { register, handleSubmit, errors, control, setValue, watch } = useForm<
-    FormValues
-  >({
+  const { register, handleSubmit, errors, control } = useForm<FormValues>({
     mode: 'onBlur',
   })
 

@@ -5,7 +5,7 @@ import styles from './styles.module.css'
 type Props = {
   currentValue: number
   defaultValue: number
-  setValue: Function
+  setValue: any
   valueType: string
 }
 

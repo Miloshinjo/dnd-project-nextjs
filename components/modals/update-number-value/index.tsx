@@ -18,7 +18,7 @@ type Props = {
   originalValue: number
   title: string
   type: string
-  mutation: Function
+  mutation: any
 }
 
 const UpdateNumberValue: React.FC<Props> = ({

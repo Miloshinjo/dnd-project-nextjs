@@ -54,11 +54,11 @@ const ScreenSettings: React.FC<Props> = ({ character }) => {
                 })
               }}
             >
-              {character!.subclass.name}
+              {character.subclass.name}
             </button>
           ) : (
             <>
-              <p className="mb-4">You didn't pick a one yet.</p>
+              <p className="mb-4">You didn&apos;t pick a one yet.</p>
               <AddButton
                 onClick={() => {
                   openModal({
@@ -69,7 +69,7 @@ const ScreenSettings: React.FC<Props> = ({ character }) => {
                         label: character?.subclass?.name,
                       },
                       characterId: character.id,
-                      klassName: character!.klass.name,
+                      klassName: character.klass.name,
                     },
                   })
                 }}

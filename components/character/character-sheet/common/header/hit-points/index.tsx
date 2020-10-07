@@ -33,7 +33,6 @@ const HitPoints: React.FC<Props> = ({
     }
   }, [hitPointsPercent])
 
-
   return (
     <div className={styles.container}>
       <div className={styles.hitPointsContainer}>
