@@ -11,15 +11,42 @@ import {
   useIntelligenceMutation,
   useWisdomMutation,
   useCharismaMutation,
+  Character,
 } from '../../../../../generated/graphql'
 import { AbilityScore } from '../../../../../models/abilityScore'
-import { CharacterUI } from '../../../../../models/character'
 
 import { useModal } from '../../../../../context/modal'
 import styles from './styles.module.css'
 
 type Props = {
-  character: CharacterUI
+  character: Pick<
+    Character,
+    | 'id'
+    | 'name'
+    | 'armorClass'
+    | 'level'
+    | 'race'
+    | 'klass'
+    | 'hitPoints'
+    | 'maxHitPoints'
+    | 'arcaneWard'
+    | 'arcaneWardMax'
+    | 'alignment'
+    | 'gold'
+    | 'inspiration'
+    | 'strength'
+    | 'dexterity'
+    | 'intelligence'
+    | 'wisdom'
+    | 'charisma'
+    | 'constitution'
+    | 'skills'
+    | 'speed'
+    | 'spellSlots'
+    | 'subclass'
+    | 'spells'
+    | 'preparedSpells'
+  >
 }
 
 const mutations: Record<AbilityScore, any> = {

@@ -2,7 +2,7 @@ import Checkbox from './checkbox'
 
 import styles from './styles.module.css'
 
-const DeathSaves = () => {
+const DeathSaves: React.FC = () => {
   return (
     <div className={styles.container}>
       <h2 className={styles.heading}>Death Saves</h2>

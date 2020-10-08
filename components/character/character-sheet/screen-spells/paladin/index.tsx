@@ -1,6 +1,8 @@
 import { useState } from 'react'
-import { CharacterUI } from '../../../../../models/character'
-import { useSpellsQuery } from '../../../../../generated/graphql'
+import {
+  useSpellsKlassQuery,
+  Character,
+} from '../../../../../generated/graphql'
 import SpellSlots from '../spell-slots'
 import SpellsKnown from '../spells-known'
 import SpellsPrepared from '../spells-prepared'
@@ -9,7 +11,34 @@ import { abilityScoreM } from '../../../../../utils/character'
 import styles from './styles.module.css'
 
 type Props = {
-  character: CharacterUI
+  character: Pick<
+    Character,
+    | 'id'
+    | 'name'
+    | 'armorClass'
+    | 'level'
+    | 'race'
+    | 'klass'
+    | 'hitPoints'
+    | 'maxHitPoints'
+    | 'arcaneWard'
+    | 'arcaneWardMax'
+    | 'alignment'
+    | 'gold'
+    | 'inspiration'
+    | 'strength'
+    | 'dexterity'
+    | 'intelligence'
+    | 'wisdom'
+    | 'charisma'
+    | 'constitution'
+    | 'skills'
+    | 'speed'
+    | 'spellSlots'
+    | 'subclass'
+    | 'spells'
+    | 'preparedSpells'
+  >
 }
 
 const Paladin: React.FC<Props> = ({ character }) => {
@@ -17,7 +46,7 @@ const Paladin: React.FC<Props> = ({ character }) => {
     ? JSON.parse(character.spellSlots)
     : []
 
-  const [{ data: paladinSpells }] = useSpellsQuery({
+  const [{ data: paladinSpells }] = useSpellsKlassQuery({
     variables: { klassName: 'paladin' },
   })
 
@@ -36,9 +65,7 @@ const Paladin: React.FC<Props> = ({ character }) => {
         }
       />
       <SpellsKnown
-        spells={
-          paladinSpells?.spells.filter((spell) => spell.level !== 0) || []
-        }
+        spells={paladinSpells?.spells.filter((spell) => spell.level !== 0)}
         characterId={character.id}
         title="Paladin Spells"
         learnControls={false}

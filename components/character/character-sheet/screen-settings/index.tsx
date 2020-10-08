@@ -1,11 +1,10 @@
-import { CharacterUI } from '../../../../models/character'
-
 import { motion } from 'framer-motion'
 
 import { subclassTitle } from '../../../../utils/character'
 import { useModal } from '../../../../context/modal'
 import DeleteButton from '../../../buttons/delete-button'
 import AddButton from '../../../buttons/add-button'
+import { Character } from '../../../../generated/graphql'
 
 import styles from './styles.module.css'
 
@@ -18,7 +17,34 @@ const screenVariants = {
 }
 
 type Props = {
-  character: CharacterUI
+  character: Pick<
+    Character,
+    | 'id'
+    | 'name'
+    | 'armorClass'
+    | 'level'
+    | 'race'
+    | 'klass'
+    | 'hitPoints'
+    | 'maxHitPoints'
+    | 'arcaneWard'
+    | 'arcaneWardMax'
+    | 'alignment'
+    | 'gold'
+    | 'inspiration'
+    | 'strength'
+    | 'dexterity'
+    | 'intelligence'
+    | 'wisdom'
+    | 'charisma'
+    | 'constitution'
+    | 'skills'
+    | 'speed'
+    | 'spellSlots'
+    | 'subclass'
+    | 'spells'
+    | 'preparedSpells'
+  >
 }
 
 const ScreenSettings: React.FC<Props> = ({ character }) => {

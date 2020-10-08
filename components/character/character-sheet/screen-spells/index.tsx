@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 import { motion } from 'framer-motion'
 
-import { CharacterUI } from '../../../../models/character'
+import { Character } from '../../../../generated/graphql'
 import {
   spellHit,
   spellSaveDc,
@@ -26,16 +26,39 @@ const screenVariants = {
 }
 
 type Props = {
-  character: CharacterUI
+  character: Pick<
+    Character,
+    | 'id'
+    | 'name'
+    | 'armorClass'
+    | 'level'
+    | 'race'
+    | 'klass'
+    | 'hitPoints'
+    | 'maxHitPoints'
+    | 'arcaneWard'
+    | 'arcaneWardMax'
+    | 'alignment'
+    | 'gold'
+    | 'inspiration'
+    | 'strength'
+    | 'dexterity'
+    | 'intelligence'
+    | 'wisdom'
+    | 'charisma'
+    | 'constitution'
+    | 'skills'
+    | 'speed'
+    | 'spellSlots'
+    | 'subclass'
+    | 'spells'
+    | 'preparedSpells'
+  >
 }
 
 const ScreenSpells: React.FC<Props> = ({ character }) => {
   const renderSpellType = useCallback(
-    (
-      klass: CharacterUI['klass'],
-      subclass: CharacterUI['subclass'],
-      character,
-    ) => {
+    (klass: Character['klass'], subclass: Character['subclass'], character) => {
       if (
         subclass?.name === 'Arcane Trickster' ||
         subclass?.name === 'Eldritch Knight'

@@ -2,7 +2,7 @@ import { useCallback } from 'react'
 import { motion } from 'framer-motion'
 
 import AbilityScores from './ability-scores'
-import { CharacterUI } from '../../../../models/character'
+import { Character } from '../../../../generated/graphql'
 import {
   proficiencyBonus,
   initiative,
@@ -20,7 +20,34 @@ import StatField from '../common/stat-field'
 import styles from './styles.module.css'
 
 type Props = {
-  character: CharacterUI
+  character: Pick<
+    Character,
+    | 'id'
+    | 'armorClass'
+    | 'name'
+    | 'level'
+    | 'race'
+    | 'klass'
+    | 'hitPoints'
+    | 'maxHitPoints'
+    | 'arcaneWard'
+    | 'arcaneWardMax'
+    | 'alignment'
+    | 'gold'
+    | 'inspiration'
+    | 'strength'
+    | 'dexterity'
+    | 'intelligence'
+    | 'wisdom'
+    | 'charisma'
+    | 'constitution'
+    | 'skills'
+    | 'speed'
+    | 'spellSlots'
+    | 'subclass'
+    | 'spells'
+    | 'preparedSpells'
+  >
 }
 
 const screenVariants = {

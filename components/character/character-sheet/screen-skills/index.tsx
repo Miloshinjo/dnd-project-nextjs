@@ -1,11 +1,9 @@
-import { CharacterUI } from '../../../../models/character'
-
 import { motion } from 'framer-motion'
 
 import {
-  useSkillsQuery,
   useSkillMutation,
   Skill,
+  Character,
 } from '../../../../generated/graphql'
 import {
   calculateSkill,
@@ -24,7 +22,34 @@ const screenVariants = {
 }
 
 type Props = {
-  character: CharacterUI
+  character: Pick<
+    Character,
+    | 'id'
+    | 'name'
+    | 'armorClass'
+    | 'level'
+    | 'race'
+    | 'klass'
+    | 'hitPoints'
+    | 'maxHitPoints'
+    | 'arcaneWard'
+    | 'arcaneWardMax'
+    | 'alignment'
+    | 'gold'
+    | 'inspiration'
+    | 'strength'
+    | 'dexterity'
+    | 'intelligence'
+    | 'wisdom'
+    | 'charisma'
+    | 'constitution'
+    | 'skills'
+    | 'speed'
+    | 'spellSlots'
+    | 'subclass'
+    | 'spells'
+    | 'preparedSpells'
+  >
   skills: Array<Skill>
 }
 

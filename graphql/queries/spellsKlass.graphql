@@ -1,0 +1,9 @@
+query SpellsKlass($klassName: String) {
+  spells(klassName: $klassName) {
+    id
+    name
+    level
+    concentration
+    ritual
+  }
+}

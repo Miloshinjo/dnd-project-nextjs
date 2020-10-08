@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import { CharacterUI } from '../../../../../models/character'
-import { useSpellsQuery } from '../../../../../generated/graphql'
+import { Character } from '../../../../../generated/graphql'
 import SpellSlots from '../spell-slots'
 import SpellsKnown from '../spells-known'
 import SpellsPrepared from '../spells-prepared'
@@ -9,9 +8,35 @@ import { abilityScoreM } from '../../../../../utils/character'
 import styles from './styles.module.css'
 
 type Props = {
-  character: CharacterUI
+  character: Pick<
+    Character,
+    | 'id'
+    | 'name'
+    | 'armorClass'
+    | 'level'
+    | 'race'
+    | 'klass'
+    | 'hitPoints'
+    | 'maxHitPoints'
+    | 'arcaneWard'
+    | 'arcaneWardMax'
+    | 'alignment'
+    | 'gold'
+    | 'inspiration'
+    | 'strength'
+    | 'dexterity'
+    | 'intelligence'
+    | 'wisdom'
+    | 'charisma'
+    | 'constitution'
+    | 'skills'
+    | 'speed'
+    | 'spellSlots'
+    | 'subclass'
+    | 'spells'
+    | 'preparedSpells'
+  >
 }
-
 const Wizard: React.FC<Props> = ({ character }) => {
   const spellSlots = character.spellSlots
     ? JSON.parse(character.spellSlots)

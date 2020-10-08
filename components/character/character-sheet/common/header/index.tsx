@@ -1,7 +1,6 @@
 import { useCallback } from 'react'
 
-import { useLevelMutation } from '../../../../../generated/graphql'
-import { CharacterUI } from '../../../../../models/character'
+import { useLevelMutation, Character } from '../../../../../generated/graphql'
 import { useModal } from '../../../../../context/modal'
 import HitPoints from './hit-points'
 import ArcaneWard from './arcane-ward'
@@ -9,7 +8,34 @@ import ArcaneWard from './arcane-ward'
 import styles from './styles.module.css'
 
 type Props = {
-  character: CharacterUI
+  character: Pick<
+    Character,
+    | 'id'
+    | 'name'
+    | 'armorClass'
+    | 'level'
+    | 'race'
+    | 'klass'
+    | 'hitPoints'
+    | 'maxHitPoints'
+    | 'arcaneWard'
+    | 'arcaneWardMax'
+    | 'alignment'
+    | 'gold'
+    | 'inspiration'
+    | 'strength'
+    | 'dexterity'
+    | 'intelligence'
+    | 'wisdom'
+    | 'charisma'
+    | 'constitution'
+    | 'skills'
+    | 'speed'
+    | 'spellSlots'
+    | 'subclass'
+    | 'spells'
+    | 'preparedSpells'
+  >
 }
 
 const CharacterHeader: React.FC<Props> = ({ character }) => {

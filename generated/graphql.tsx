@@ -755,16 +755,16 @@ export type SpellQuery = (
   ) }
 );
 
-export type SpellsQueryVariables = Exact<{
+export type SpellsKlassQueryVariables = Exact<{
   klassName?: Maybe<Scalars['String']>;
 }>;
 
 
-export type SpellsQuery = (
+export type SpellsKlassQuery = (
   { __typename?: 'Query' }
   & { spells: Array<(
     { __typename?: 'Spell' }
-    & Pick<Spell, 'id' | 'name' | 'level' | 'description' | 'klasses' | 'concentration' | 'ritual' | 'duration' | 'castingTime' | 'range' | 'components' | 'school' | 'attackSave' | 'damageEffect' | 'material'>
+    & Pick<Spell, 'id' | 'name' | 'level' | 'concentration' | 'ritual'>
   )> }
 );
 
@@ -1230,30 +1230,20 @@ export const SpellDocument = gql`
 export function useSpellQuery(options: Omit<Urql.UseQueryArgs<SpellQueryVariables>, 'query'> = {}) {
   return Urql.useQuery<SpellQuery>({ query: SpellDocument, ...options });
 };
-export const SpellsDocument = gql`
-    query Spells($klassName: String) {
+export const SpellsKlassDocument = gql`
+    query SpellsKlass($klassName: String) {
   spells(klassName: $klassName) {
     id
     name
     level
-    description
-    klasses
     concentration
     ritual
-    duration
-    castingTime
-    range
-    components
-    school
-    attackSave
-    damageEffect
-    material
   }
 }
     `;
 
-export function useSpellsQuery(options: Omit<Urql.UseQueryArgs<SpellsQueryVariables>, 'query'> = {}) {
-  return Urql.useQuery<SpellsQuery>({ query: SpellsDocument, ...options });
+export function useSpellsKlassQuery(options: Omit<Urql.UseQueryArgs<SpellsKlassQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<SpellsKlassQuery>({ query: SpellsKlassDocument, ...options });
 };
 export const SubclassesDocument = gql`
     query Subclasses($klassName: String!) {

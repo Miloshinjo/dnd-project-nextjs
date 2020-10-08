@@ -1,24 +1,22 @@
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import Link from 'next/link'
-import { IoMdClose } from 'react-icons/io'
-import { GiRead } from 'react-icons/gi'
-
-import { CharacterUI } from '../../../../../models/character'
-import { Spell } from '../../../../../generated/graphql'
-import { arrangeSpellsByLevel } from '../../../../../utils/spells'
 import {
-  useForgetSpellMutation,
+  Spell,
+  Character,
+  CharacterQuery,
   usePrepareSpellMutation,
 } from '../../../../../generated/graphql'
+import { arrangeSpellsByLevel } from '../../../../../utils/spells'
 import { useModal } from '../../../../../context/modal'
 import styles from './styles.module.css'
 
 type Props = {
-  spells: CharacterUI['spells']
-  characterId: CharacterUI['id']
+  // spells: Pick<Spell, 'id' | 'name' | 'level' | 'concentration' | 'ritual'>
+  spells: CharacterQuery['character']['spells']
+  characterId: Character['id']
   title: string
   learnControls?: boolean
-  spellsPreparedIds?: Array<CharacterUI['id']>
+  spellsPreparedIds?: Array<Spell['id']>
   spellsPrepareMode?: boolean
 }
 
@@ -32,16 +30,7 @@ const SpellsKnown: React.FC<Props> = ({
 }) => {
   const { openModal } = useModal()
 
-  const [, forgetSpell] = useForgetSpellMutation()
   const [, prepareSpell] = usePrepareSpellMutation()
-
-  const handleForgetSpell = async (spellId: Spell['id']): Promise<void> => {
-    const result = await forgetSpell({ id: characterId, spellId })
-
-    if (result.error) {
-      console.log(result.error)
-    }
-  }
 
   const handlePrepareSpell = async (spellId: Spell['id']): Promise<void> => {
     const result = await prepareSpell({ id: characterId, spellId })
@@ -51,7 +40,10 @@ const SpellsKnown: React.FC<Props> = ({
     }
   }
 
-  const spellsByLevel = useMemo(() => arrangeSpellsByLevel(spells), [spells])
+  const spellsByLevel: Pick<
+    Spell,
+    'id' | 'name' | 'level' | 'concentration' | 'ritual'
+  > = useMemo(() => arrangeSpellsByLevel(spells), [spells])
 
   return (
     <div className={styles.container}>

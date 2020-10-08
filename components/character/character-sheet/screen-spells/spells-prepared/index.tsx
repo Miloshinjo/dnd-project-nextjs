@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from 'react'
 import { IoMdClose } from 'react-icons/io'
 
-import { CharacterUI } from '../../../../../models/character'
+import { Character } from '../../../../../generated/graphql'
 
 import {
   useUnprepareSpellMutation,
@@ -12,8 +12,8 @@ import { useModal } from '../../../../../context/modal'
 import styles from './styles.module.css'
 
 type Props = {
-  characterId: CharacterUI['id']
-  spells: CharacterUI['spells']
+  characterId: Character['id']
+  spells: Character['spells']
   spellsPrepareMode: boolean
   setSpellsPrepareMode: Dispatch<SetStateAction<boolean>>
   numberOfSpellsPrepared: number

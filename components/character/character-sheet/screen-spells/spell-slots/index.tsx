@@ -3,15 +3,15 @@ import { useState, useEffect } from 'react'
 import { IoMdClose } from 'react-icons/io'
 import { FaPlus, FaMinus } from 'react-icons/fa'
 import useDebounce from '../../../../../hooks/useDebounce'
-import { useSpellSlotsMutation } from '../../../../../generated/graphql'
-import { CharacterUI } from '../../../../../models/character'
+import {
+  useSpellSlotsMutation,
+  Character,
+} from '../../../../../generated/graphql'
 
 import styles from './styles.module.css'
 
-const slotsRaw = []
-
 type Props = {
-  characterId: CharacterUI['id']
+  characterId: Character['id']
   spellSlots: Array<Array<boolean>>
 }
 
