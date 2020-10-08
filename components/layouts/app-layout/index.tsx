@@ -22,7 +22,7 @@ const Layout: React.FC<Props> = ({ children, title }) => {
 
       <div className={styles.container}>
         <Header title={title} />
-        <main className="flex-1 mt-16">{children}</main>
+        <main className={styles.main}>{children}</main>
       </div>
     </ModalProvider>
   )

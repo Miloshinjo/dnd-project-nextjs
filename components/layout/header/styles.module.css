@@ -1,5 +1,6 @@
 .header {
-  @apply bg-gray-900 px-4 h-16 flex items-center fixed justify-between z-20 w-full py-3;
+  @apply bg-gray-900 px-4 flex items-center fixed justify-between z-20 w-full py-3;
+  height: 4rem;
 }
 
 @screen md {

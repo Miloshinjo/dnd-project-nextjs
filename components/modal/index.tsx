@@ -7,8 +7,8 @@ import UpdateSelectValue from '../modals/update-subclass'
 import CharacterCreated from '../modals/character-created'
 import DeleteCharacter from '../modals/delete-character'
 import LearnSpell from '../modals/learn-spell'
-import SpellModal from '../modals/spell-modal'
 import MobileDrawerModal from '../modals/mobile-drawer'
+import SpellPageModal from '../modals/spell-page'
 import ClientOnlyPortal from '../../utils/clientOnlyPortal'
 
 import styles from './styles.module.css'
@@ -57,22 +57,21 @@ const Modal: React.FC = ({ children }) => {
             name={modal.props.name}
           />
         )
-      case 'spell':
+      case 'mobileDrawer':
+        return <MobileDrawerModal />
+      case 'spellPage':
         return (
-          <SpellModal
+          <SpellPageModal
             spellId={modal.props.spellId}
             spellName={modal.props.spellName}
           />
         )
-      case 'mobileDrawer':
-        return <MobileDrawerModal />
       default:
         return null
     }
   }
 
   switch (modal?.type) {
-    case 'spell':
     case 'mobileDrawer':
       return (
         <AnimatePresence exitBeforeEnter onExitComplete={closeModal}>
@@ -82,6 +81,20 @@ const Modal: React.FC = ({ children }) => {
                 {renderModal(modal)}
                 {children}
               </ComeInDrawer>
+            </ClientOnlyPortal>
+          )}
+        </AnimatePresence>
+      )
+
+    case 'spellPage':
+      return (
+        <AnimatePresence exitBeforeEnter onExitComplete={closeModal}>
+          {modal && (
+            <ClientOnlyPortal selector="#modal">
+              <SpellDrawer>
+                {renderModal(modal)}
+                {children}
+              </SpellDrawer>
             </ClientOnlyPortal>
           )}
         </AnimatePresence>
@@ -153,6 +166,48 @@ const ComeInDrawer: React.FC = ({ children }) => {
       exit="hidden"
     >
       <motion.div className={styles.modalDrawer} variants={drawerModalVariants}>
+        <div className={styles.drawerCloseContainer}>
+          <button
+            type="button"
+            className={styles.drawerCloseButton}
+            onClick={() => {
+              closeModal()
+            }}
+          >
+            <IoMdClose size={25} />
+          </button>
+        </div>
+
+        {children}
+      </motion.div>
+    </motion.div>
+  )
+}
+
+const drawerSpellModalVariants = {
+  hidden: { x: '100vw', opacity: 0 },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: { delay: 0.1, type: 'tween' },
+  },
+}
+
+const SpellDrawer: React.FC = ({ children }) => {
+  const { closeModal } = useModal()
+
+  return (
+    <motion.div
+      className={styles.drawerBackdrop}
+      variants={backdropVariants}
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+    >
+      <motion.div
+        className={styles.modalSpellDrawer}
+        variants={drawerSpellModalVariants}
+      >
         <div className={styles.drawerCloseContainer}>
           <button
             type="button"

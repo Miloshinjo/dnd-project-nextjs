@@ -22,7 +22,7 @@ type Props = {
 }
 
 const CharacterSheet: React.FC<Props> = ({ id }) => {
-  const [characterResult] = useCharacterQuery({ variables: { id: `${id}` } })
+  const [characterResult] = useCharacterQuery({ variables: { id } })
   const [skillsResult] = useSkillsQuery()
 
   const getActiveKey = (): ActiveKey => {

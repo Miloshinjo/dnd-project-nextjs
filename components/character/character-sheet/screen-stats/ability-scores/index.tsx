@@ -76,7 +76,7 @@ const AbilityScores: React.FC<Props> = ({ character }) => {
                       character.klass.name,
                       abilityScore,
                       abilityScoreM(character[abilityScore]),
-                      proficiencyBonus(character[abilityScore]),
+                      proficiencyBonus(character.level),
                       character.level,
                     )}
                   </div>

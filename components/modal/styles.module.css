@@ -49,3 +49,11 @@
   right: 50%;
   z-index: 1000;
 }
+
+.modalSpellDrawer {
+  @apply bg-white shadow-md relative;
+  height: calc(100vh - 4rem);
+  margin-top: auto;
+  width: 100%;
+  overflow-y: scroll;
+}

@@ -11,6 +11,7 @@ export type ModalType = {
     | 'deleteCharacter'
     | 'addSubclass'
     | 'mobileDrawer'
+    | 'spellPage'
     | null
   props: Record<string, any>
 } | null

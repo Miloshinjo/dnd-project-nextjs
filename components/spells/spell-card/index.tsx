@@ -1,6 +1,8 @@
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 import { useModal } from '../../../context/modal'
 import ConcentrationRitual from '../../spell/concentration-ritual'
+import { Spell } from '../../../generated/graphql'
 import Description from '../../spell/description'
 import Info from '../../spell/info'
 import Klasses from '../../spell/klasses'
@@ -8,8 +10,13 @@ import AddButton from '../../buttons/add-button'
 
 import styles from './styles.module.css'
 
-const SpellCard = ({ spell }) => {
+type Props = {
+  spell: Spell
+}
+
+const SpellCard: React.FC<Props> = ({ spell }) => {
   const [active, setActive] = useState(false)
+  const { query } = useRouter()
 
   const { openModal } = useModal()
 
@@ -18,7 +25,14 @@ const SpellCard = ({ spell }) => {
       <button
         type="button"
         onClick={() => {
-          setActive(!active)
+          // setActive(!active)
+          openModal({
+            type: 'spellPage',
+            props: {
+              spellId: spell.id,
+              spellName: spell.name,
+            },
+          })
         }}
         className={styles.button}
       >
@@ -49,18 +63,21 @@ const SpellCard = ({ spell }) => {
             <Description description={spell.description} />
             <Klasses klasses={spell.klasses} />
             <div className="my-4" />
-            <AddButton
-              onClick={() => {
-                openModal({
-                  type: 'learnSpell',
-                  props: {
-                    spellId: spell.id,
-                  },
-                })
-              }}
-            >
-              Add to character
-            </AddButton>
+
+            {query?.character ? (
+              <AddButton
+                onClick={() => {
+                  openModal({
+                    type: 'learnSpell',
+                    props: {
+                      spellId: spell.id,
+                    },
+                  })
+                }}
+              >
+                Add to character
+              </AddButton>
+            ) : null}
           </div>
         </div>
       )}

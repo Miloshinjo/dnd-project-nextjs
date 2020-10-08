@@ -16,16 +16,6 @@ export const SpellsQuery = `
       level
       school
       klasses
-      material
-      description
-      concentration
-      ritual
-      castingTime
-      duration
-      range
-      components
-      attackSave
-      damageEffect
     }
   }
 `
@@ -59,7 +49,6 @@ export const getStaticProps = async () => {
   const spells: Array<Spell> = await getSpells()
 
   return {
-    revalidate: 1,
     props: {
       spells,
     },

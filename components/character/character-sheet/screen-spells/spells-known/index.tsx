@@ -32,8 +32,6 @@ const SpellsKnown: React.FC<Props> = ({
 }) => {
   const { openModal } = useModal()
 
-  const [deleteSpells, setDeleteSpells] = useState<boolean>(false)
-
   const [, forgetSpell] = useForgetSpellMutation()
   const [, prepareSpell] = usePrepareSpellMutation()
 
@@ -64,20 +62,11 @@ const SpellsKnown: React.FC<Props> = ({
           </h4>
           {learnControls && (
             <div className="flex items-end flex-col">
-              <Link href="/spells">
+              <Link href={`/spells?character=${characterId}`}>
                 <button className={styles.learnSpellsButton}>
                   Learn Spells
                 </button>
               </Link>
-
-              <button
-                className={styles.learnSpellsButton}
-                onClick={() => {
-                  setDeleteSpells(!deleteSpells)
-                }}
-              >
-                Forget Spells
-              </button>
             </div>
           )}
         </div>
@@ -97,7 +86,7 @@ const SpellsKnown: React.FC<Props> = ({
                           type="button"
                           onClick={() =>
                             openModal({
-                              type: 'spell',
+                              type: 'spellPage',
                               props: {
                                 spellId: spell.id,
                                 spellName: spell.name,
@@ -131,17 +120,6 @@ const SpellsKnown: React.FC<Props> = ({
                             Prepare
                           </button>
                         )}
-                      {deleteSpells && (
-                        <button
-                          type="button"
-                          className="text-gray-600 ml-auto"
-                          onClick={() => {
-                            handleForgetSpell(spell.id)
-                          }}
-                        >
-                          <IoMdClose />
-                        </button>
-                      )}
                     </div>
                   )
                 })}

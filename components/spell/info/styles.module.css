@@ -19,5 +19,5 @@
 }
 
 .spellInfoValue {
-  @apply text-sm font-semibold whitespace-no-wrap;
+  @apply text-sm font-semibold;
 }
