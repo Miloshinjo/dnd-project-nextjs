@@ -30,6 +30,7 @@ type Props = {
   description: Spell['description']
   duration: Spell['duration']
   id: Spell['id']
+  level: Spell['level']
   klasses: Spell['klasses']
   material: Spell['material']
   name: Spell['name']
@@ -48,6 +49,7 @@ const SpellPageModal: React.FC<Props> = ({
   duration,
   id,
   klasses,
+  level,
   material,
   name,
   range,
@@ -95,7 +97,7 @@ const SpellPageModal: React.FC<Props> = ({
     return <div>Loading..</div>
   }
 
-  const { character } = characterData
+  const character = characterData?.character
 
   return (
     <div className={styles.container}>
@@ -117,7 +119,7 @@ const SpellPageModal: React.FC<Props> = ({
         <SpellDescription description={description} />
         <SpellMaterial material={material} />
         <SpellKlasses klasses={klasses} />
-        {characterData && (
+        {character && (
           <CharacterControls
             klassName={character?.klass?.name}
             subclassName={character?.subclass?.name}
@@ -125,6 +127,7 @@ const SpellPageModal: React.FC<Props> = ({
             spellId={id}
             characterName={character?.name}
             isKnownSpell={isKnownSpell}
+            spellLevel={level}
             isPreparedSpell={isPreparedSpell}
             closeAction="linkToCharacter"
           />

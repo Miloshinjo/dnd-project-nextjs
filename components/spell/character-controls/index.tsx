@@ -26,6 +26,8 @@ type Props = {
   isKnownSpell: boolean
   isPreparedSpell: boolean
   closeAction?: 'linkToCharacter' | 'closeModal'
+  spellLevel: Spell['level']
+  cannotLearn?: boolean
 }
 
 const CharacterControls: React.FC<Props> = ({
@@ -34,9 +36,11 @@ const CharacterControls: React.FC<Props> = ({
   characterName,
   subclassName,
   spellId,
+  spellLevel,
   isKnownSpell,
   isPreparedSpell,
   closeAction,
+  cannotLearn = false,
 }) => {
   const { closeModal } = useModal()
   const [learnSpellResult, learnSpell] = useLearnSpellMutation()
@@ -50,7 +54,7 @@ const CharacterControls: React.FC<Props> = ({
       case 'Druid':
       case 'Paladin':
       case 'Wizard':
-        return true && isKnownSpell
+        return true && isKnownSpell && spellLevel !== 0
       default:
         return false
     }
@@ -105,7 +109,7 @@ const CharacterControls: React.FC<Props> = ({
               />
             )
           ) : null}
-          {isKnownSpell ? (
+          {cannotLearn ? null : isKnownSpell ? (
             <SpinnerButton
               onClick={async () => {
                 const result = await forgetSpell({
@@ -141,7 +145,7 @@ const CharacterControls: React.FC<Props> = ({
             />
           )}
         </div>
-        <div className="flex items-end">
+        <div className="flex items-end text-sm">
           {closeAction === 'linkToCharacter' ? (
             <Link href={`/app/${characterId}`}>
               <a>Back to character</a>

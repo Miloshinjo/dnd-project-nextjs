@@ -33,9 +33,14 @@ const barVariants = {
 type Props = {
   spellId: Spell['id']
   characterId: Character['id']
+  cannotLearn: boolean
 }
 
-const SpellPageModal: React.FC<Props> = ({ spellId, characterId }) => {
+const SpellPageModal: React.FC<Props> = ({
+  spellId,
+  characterId,
+  cannotLearn,
+}) => {
   const [
     { data: spellData, fetching: spellFetching, error: spellError },
   ] = useSpellQuery({
@@ -156,9 +161,11 @@ const SpellPageModal: React.FC<Props> = ({ spellId, characterId }) => {
           subclassName={character?.subclass?.name}
           characterId={character?.id}
           spellId={spell.id}
+          spellLevel={spell.level}
           characterName={character?.name}
           isKnownSpell={isKnownSpell}
           isPreparedSpell={isPreparedSpell}
+          cannotLearn={cannotLearn}
         />
       </div>
     </div>

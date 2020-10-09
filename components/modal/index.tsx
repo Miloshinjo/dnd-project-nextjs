@@ -65,6 +65,7 @@ const Modal: React.FC = ({ children }) => {
           <SpellPageModal
             spellId={modal.props.spellId}
             characterId={modal.props.characterId}
+            cannotLearn={modal.props.cannotLearn}
           />
         )
       case 'spellPageStatic':
@@ -72,6 +73,7 @@ const Modal: React.FC = ({ children }) => {
           <SpellPageStaticModal
             id={modal.props.id}
             name={modal.props.name}
+            level={modal.props.level}
             attackSave={modal.props.attackSave}
             castingTime={modal.props.castingTime}
             components={modal.props.components}

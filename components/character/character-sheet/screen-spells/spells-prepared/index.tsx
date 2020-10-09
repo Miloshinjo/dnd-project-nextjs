@@ -20,9 +20,9 @@ const SpellsPrepared: React.FC<Props> = ({
   return (
     <div className={styles.container}>
       <div className="p-2">
-        <div className="flex items-center px-4 justify-between mb-4">
+        <div className="flex items-center px-4 justify-between mb-2">
           <h4 className="text-center text-sm font-medium text-gray-600">
-            Spells prepared
+            List of prepared spells
             <span className="text-xs ml-1 text-gray-500">
               ({spells.length} of {numberOfSpellsPrepared})
             </span>
@@ -52,7 +52,9 @@ const SpellsPrepared: React.FC<Props> = ({
               )
             })
           ) : (
-            <div>No spells prepared</div>
+            <div className="text-sm italic">
+              No prepared spells. Click on a spell to prepare it.
+            </div>
           )}
         </div>
       </div>

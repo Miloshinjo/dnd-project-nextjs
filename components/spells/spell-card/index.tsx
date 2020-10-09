@@ -31,6 +31,7 @@ const SpellCard: React.FC<Props> = ({ spell }) => {
               klasses: spell.klasses,
               range: spell.range,
               ritual: spell.ritual,
+              level: spell.level,
               school: spell.school,
             },
           })

@@ -49,6 +49,8 @@ const Cleric: React.FC<Props> = ({ character }) => {
     variables: { klassName: 'cleric' },
   })
 
+  console.log({ clericSpells })
+
   return (
     <div className={styles.container}>
       <SpellSlots spellSlots={spellSlots} characterId={character.id} />
@@ -60,16 +62,23 @@ const Cleric: React.FC<Props> = ({ character }) => {
         }
       />
       <SpellsKnown
-        spells={character.spells}
+        spells={character.spells.filter((spell) => spell.level === 0)}
         characterId={character.id}
-        title="Cantrips and Domain Spells"
+        title="Cantrips"
+        showSectionTitle={false}
+      />
+      <SpellsKnown
+        spells={character.spells.filter((spell) => spell.level !== 0)}
+        characterId={character.id}
+        title="Domain Spells"
+        showSectionTitle={false}
       />
       <SpellsKnown
         spells={clericSpells?.spells.filter((spell) => spell.level !== 0) || []}
         characterId={character.id}
         title="Cleric Spells"
         learnControls={false}
-        spellsPreparedIds={character.preparedSpells.map((spell) => spell.id)}
+        cannotLearn={true}
       />
     </div>
   )
