@@ -1,5 +1,5 @@
 .container {
-  @apply m-2 bg-white shadow-lg rounded py-2;
+  @apply m-2 bg-white shadow rounded py-2;
 }
 
 .manageSpellsButton {

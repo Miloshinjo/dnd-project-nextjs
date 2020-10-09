@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import {
   useSpellsKlassQuery,
   Character,
@@ -50,16 +49,12 @@ const Paladin: React.FC<Props> = ({ character }) => {
     variables: { klassName: 'paladin' },
   })
 
-  const [spellsPrepareMode, setSpellsPrepareMode] = useState<boolean>(false)
-
   return (
     <div className={styles.container}>
       <SpellSlots spellSlots={spellSlots} characterId={character.id} />
       <SpellsPrepared
         characterId={character.id}
         spells={character.preparedSpells}
-        setSpellsPrepareMode={setSpellsPrepareMode}
-        spellsPrepareMode={spellsPrepareMode}
         numberOfSpellsPrepared={
           character.level + abilityScoreM(character.charisma)
         }
@@ -69,8 +64,6 @@ const Paladin: React.FC<Props> = ({ character }) => {
         characterId={character.id}
         title="Paladin Spells"
         learnControls={false}
-        spellsPreparedIds={character.preparedSpells.map((spell) => spell.id)}
-        spellsPrepareMode={spellsPrepareMode}
       />
     </div>
   )

@@ -44,9 +44,15 @@ const SorcererType: React.FC<Props> = ({ character }) => {
     <div className={styles.container}>
       <SpellSlots spellSlots={spellSlots} characterId={character.id} />
       <SpellsKnown
-        spells={character.spells}
+        spells={character.spells.filter((spell) => spell.level === 0)}
         characterId={character.id}
-        title="Spells Known"
+        title="Cantrips"
+        showSectionTitle={false}
+      />
+      <SpellsKnown
+        spells={character.spells.filter((spell) => spell.level !== 0)}
+        characterId={character.id}
+        title="Known Spells"
       />
     </div>
   )

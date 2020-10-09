@@ -55,7 +55,7 @@ const SpellsKnown: React.FC<Props> = ({
             </div>
           )}
         </div>
-        <div className="px-4 mt-4">
+        <div className="px-4">
           {Object.keys(spellsByLevel).map((level: string) => {
             return (
               <div key={level} className="mt-4">

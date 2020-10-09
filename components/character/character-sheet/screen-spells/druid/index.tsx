@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import {
   useSpellsKlassQuery,
   Character,
@@ -49,33 +48,34 @@ const Wizard: React.FC<Props> = ({ character }) => {
     variables: { klassName: 'druid' },
   })
 
-  const [spellsPrepareMode, setSpellsPrepareMode] = useState<boolean>(false)
-
   return (
     <div className={styles.container}>
       <SpellSlots spellSlots={spellSlots} characterId={character.id} />
       <SpellsPrepared
         characterId={character.id}
         spells={character.preparedSpells}
-        setSpellsPrepareMode={setSpellsPrepareMode}
-        spellsPrepareMode={spellsPrepareMode}
         numberOfSpellsPrepared={
           character.level + abilityScoreM(character.wisdom)
         }
       />
       <SpellsKnown
-        spells={character.spells}
+        spells={character.spells.filter((spell) => spell.level === 0)}
+        characterId={character.id}
+        title="Cantrips"
+        showSectionTitle={false}
+      />
+      <SpellsKnown
+        spells={character.spells.filter((spell) => spell.level !== 0)}
         characterId={character.id}
         title="Cantrips and Extra Spells"
       />
-      <SpellsKnown
-        spells={druidSpells?.spells.filter((spell) => spell.level !== 0) || []}
-        characterId={character.id}
-        title="Druid Spells"
-        learnControls={false}
-        spellsPreparedIds={character.preparedSpells.map((spell) => spell.id)}
-        spellsPrepareMode={spellsPrepareMode}
-      />
+      <button
+        onClick={() => {
+          console.log('all druid spells')
+        }}
+      >
+        All druid spell
+      </button>
     </div>
   )
 }
