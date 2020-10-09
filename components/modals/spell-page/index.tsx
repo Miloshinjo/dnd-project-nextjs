@@ -1,5 +1,16 @@
-import { Spell, useSpellQuery } from '../../../generated/graphql'
 import { motion } from 'framer-motion'
+import {
+  Spell,
+  useSpellQuery,
+  useCharacterSpellQuery,
+  useLearnSpellMutation,
+  useForgetSpellMutation,
+  usePrepareSpellMutation,
+  useUnprepareSpellMutation,
+} from '../../../generated/graphql'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useMemo } from 'react'
 
 import Loader from '../../layout/loader'
 import SpellDescription from '../../spell/description'
@@ -31,6 +42,25 @@ const SpellPageModal: React.FC<Props> = ({ spellId }) => {
   const [result] = useSpellQuery({
     variables: { id: spellId },
   })
+
+  const [
+    { data: characterData, fetching: fetchingCharacterData, error },
+  ] = useCharacterSpellQuery({
+    variables: { id: Number(query.character) },
+    pause: !query.character,
+  })
+
+  const canPrepare = useMemo(() => {
+    switch (characterData?.character?.klass?.name) {
+      case 'Cleric':
+      case 'Druid':
+      case 'Paladin':
+      case 'Wizard':
+        return true && isKnownSpell
+      default:
+        return false
+    }
+  }, [characterData])
 
   if (result.fetching) {
     return (

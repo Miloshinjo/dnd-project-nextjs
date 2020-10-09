@@ -81,40 +81,40 @@ const cache = cacheExchange({
         ...restCharacter,
       }
     },
-    prepareSpell: (variables, cache, _) => {
-      const { id, spellId } = variables.character as any
+    // prepareSpell: (variables, cache, _) => {
+    //   const { id, spellId } = variables.character as any
 
-      const { character } = cache.readQuery({
-        query: CharacterDocument,
-        variables: { id: `${id}` },
-      })
+    //   const { character } = cache.readQuery({
+    //     query: CharacterDocument,
+    //     variables: { id: `${id}` },
+    //   })
 
-      const { preparedSpells, name } = character as any
+    //   const { preparedSpells, name } = character as any
 
-      return {
-        __typename: 'Character',
-        id,
-        name,
-        preparedSpells: [...preparedSpells],
-      }
-    },
-    unprepareSpell: (variables, cache, _) => {
-      const { id, spellId } = variables.character as any
+    //   return {
+    //     __typename: 'Character',
+    //     id,
+    //     name,
+    //     preparedSpells: [...preparedSpells],
+    //   }
+    // },
+    // unprepareSpell: (variables, cache, _) => {
+    //   const { id, spellId } = variables.character as any
 
-      const { character } = cache.readQuery({
-        query: CharacterDocument,
-        variables: { id: `${id}` },
-      })
+    //   const { character } = cache.readQuery({
+    //     query: CharacterDocument,
+    //     variables: { id: `${id}` },
+    //   })
 
-      const { preparedSpells, name } = character as any
+    //   const { preparedSpells, name } = character as any
 
-      return {
-        __typename: 'Character',
-        id,
-        name,
-        preparedSpells: preparedSpells.filter((spell) => spell.id !== spellId),
-      }
-    },
+    //   return {
+    //     __typename: 'Character',
+    //     id,
+    //     name,
+    //     preparedSpells: preparedSpells.filter((spell) => spell.id !== spellId),
+    //   }
+    // },
   },
 })
 

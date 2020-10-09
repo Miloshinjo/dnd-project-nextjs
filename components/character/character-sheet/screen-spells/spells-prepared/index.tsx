@@ -1,12 +1,7 @@
 import { Dispatch, SetStateAction } from 'react'
-import { IoMdClose } from 'react-icons/io'
 
 import { Character } from '../../../../../generated/graphql'
 
-import {
-  useUnprepareSpellMutation,
-  Spell,
-} from '../../../../../generated/graphql'
 import { useModal } from '../../../../../context/modal'
 
 import styles from './styles.module.css'
@@ -20,23 +15,12 @@ type Props = {
 }
 
 const SpellsPrepared: React.FC<Props> = ({
-  characterId,
   spells,
   spellsPrepareMode,
   setSpellsPrepareMode,
   numberOfSpellsPrepared,
 }) => {
   const { openModal } = useModal()
-
-  const [, unprepareSpell] = useUnprepareSpellMutation()
-
-  const handleUnprepareSpell = async (spellId: Spell['id']): Promise<void> => {
-    const result = await unprepareSpell({ id: characterId, spellId })
-
-    if (result.error) {
-      console.log(result.error)
-    }
-  }
 
   return (
     <div className={styles.container}>
@@ -75,15 +59,6 @@ const SpellsPrepared: React.FC<Props> = ({
                   >
                     {spell.name}
                   </button>
-                  {spellsPrepareMode && (
-                    <button
-                      type="button"
-                      className="ml-1"
-                      onClick={() => handleUnprepareSpell(spell.id)}
-                    >
-                      <IoMdClose />
-                    </button>
-                  )}
                 </div>
               )
             })

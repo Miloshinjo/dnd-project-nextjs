@@ -3,7 +3,10 @@ import {
   useCharacterSpellQuery,
   useLearnSpellMutation,
   useForgetSpellMutation,
+  usePrepareSpellMutation,
+  useUnprepareSpellMutation,
 } from '../../../generated/graphql'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useMemo } from 'react'
 
@@ -53,6 +56,8 @@ const SpellPageModal: React.FC<Props> = ({
   const { query } = useRouter()
 
   const [learnSpellResult, learnSpell] = useLearnSpellMutation()
+  const [prepareSpellResult, prepareSpell] = usePrepareSpellMutation()
+  const [unprepareSpellResult, unprepareSpell] = useUnprepareSpellMutation()
   const [forgetSpellResult, forgetSpell] = useForgetSpellMutation()
 
   const [
@@ -69,6 +74,32 @@ const SpellPageModal: React.FC<Props> = ({
       )
 
       if (knownSpellIds.includes(id)) {
+        return true
+      }
+    }
+
+    return false
+  }, [characterData])
+
+  const canPrepare = useMemo(() => {
+    switch (characterData?.character?.klass?.name) {
+      case 'Cleric':
+      case 'Druid':
+      case 'Paladin':
+      case 'Wizard':
+        return true && isKnownSpell
+      default:
+        return false
+    }
+  }, [characterData])
+
+  const isPreparedSpell = useMemo(() => {
+    if (characterData) {
+      const preparedSpellsIds = characterData.character.preparedSpells.map(
+        (spell) => spell.id,
+      )
+
+      if (preparedSpellsIds.includes(id)) {
         return true
       }
     }
@@ -116,45 +147,89 @@ const SpellPageModal: React.FC<Props> = ({
               {characterData?.character?.klass?.name}
             </span>
           </div>
-          {isKnownSpell ? (
-            <div className="flex-col inline-flex">
-              <SpinnerButton
-                onClick={async () => {
-                  const result = await forgetSpell({
-                    id: characterData?.character?.id,
-                    spellId: id,
-                  })
+          <div className="flex justify-between">
+            <div className="">
+              {canPrepare ? (
+                isPreparedSpell ? (
+                  <SpinnerButton
+                    onClick={async () => {
+                      const result = await unprepareSpell({
+                        id: characterData?.character?.id,
+                        spellId: id,
+                      })
 
-                  if (result.error) {
-                    console.log('An error occured')
-                    return
-                  }
-                }}
-                fetching={forgetSpellResult.fetching}
-                text={`Remove ${name}`}
-                textFetching={`Removing ${name}`}
-              />
+                      if (result.error) {
+                        console.log('An error occured')
+                        return
+                      }
+                    }}
+                    fetching={unprepareSpellResult.fetching}
+                    text="Unprepare"
+                    textFetching="Unpreparing"
+                  />
+                ) : (
+                  <SpinnerButton
+                    onClick={async () => {
+                      const result = await prepareSpell({
+                        id: characterData?.character?.id,
+                        spellId: id,
+                      })
+
+                      if (result.error) {
+                        console.log('An error occured')
+                        return
+                      }
+                    }}
+                    fetching={prepareSpellResult.fetching}
+                    text="Prepare"
+                    textFetching="Preparing"
+                  />
+                )
+              ) : null}
+              {isKnownSpell ? (
+                <SpinnerButton
+                  onClick={async () => {
+                    const result = await forgetSpell({
+                      id: characterData?.character?.id,
+                      spellId: id,
+                    })
+
+                    if (result.error) {
+                      console.log('An error occured')
+                      return
+                    }
+                  }}
+                  fetching={forgetSpellResult.fetching}
+                  text="Remove"
+                  textFetching="Removing"
+                />
+              ) : (
+                <SpinnerButton
+                  onClick={async () => {
+                    const result = await learnSpell({
+                      id: characterData?.character?.id,
+                      spellId: id,
+                    })
+
+                    console.log({ result })
+
+                    if (result.error) {
+                      console.log('An error occured')
+                      return
+                    }
+                  }}
+                  fetching={learnSpellResult.fetching}
+                  text="Learn"
+                  textFetching="Learning"
+                />
+              )}
             </div>
-          ) : (
-            <SpinnerButton
-              onClick={async () => {
-                const result = await learnSpell({
-                  id: characterData?.character?.id,
-                  spellId: id,
-                })
-
-                console.log({ result })
-
-                if (result.error) {
-                  console.log('An error occured')
-                  return
-                }
-              }}
-              fetching={learnSpellResult.fetching}
-              text={`Learn ${name}`}
-              textFetching={`Learning ${name}`}
-            />
-          )}
+            <div className="flex items-end">
+              <Link href={`/app/${characterData.character.id}`}>
+                <a>Back to character</a>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </div>
