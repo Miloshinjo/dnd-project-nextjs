@@ -676,7 +676,7 @@ export type CharacterQuery = (
       & Pick<Skill, 'id' | 'name' | 'ability'>
     )>, spells: Array<(
       { __typename?: 'Spell' }
-      & Pick<Spell, 'id' | 'name' | 'level' | 'concentration' | 'ritual' | 'castingTime'>
+      & Pick<Spell, 'id' | 'name' | 'level' | 'castingTime' | 'school' | 'range' | 'components'>
     )>, preparedSpells: Array<(
       { __typename?: 'Spell' }
       & Pick<Spell, 'id' | 'name' | 'level' | 'concentration' | 'ritual'>
@@ -790,7 +790,7 @@ export type SpellsKlassQuery = (
   { __typename?: 'Query' }
   & { spells: Array<(
     { __typename?: 'Spell' }
-    & Pick<Spell, 'id' | 'name' | 'level' | 'concentration' | 'ritual' | 'castingTime'>
+    & Pick<Spell, 'id' | 'name' | 'level' | 'castingTime' | 'school' | 'range' | 'components'>
   )> }
 );
 
@@ -1141,9 +1141,10 @@ export const CharacterDocument = gql`
       id
       name
       level
-      concentration
-      ritual
       castingTime
+      school
+      range
+      components
     }
     preparedSpells {
       id
@@ -1291,9 +1292,10 @@ export const SpellsKlassDocument = gql`
     id
     name
     level
-    concentration
-    ritual
     castingTime
+    school
+    range
+    components
   }
 }
     `;

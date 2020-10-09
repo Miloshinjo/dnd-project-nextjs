@@ -129,7 +129,7 @@ const SpellPageModal: React.FC<Props> = ({
             isKnownSpell={isKnownSpell}
             spellLevel={level}
             isPreparedSpell={isPreparedSpell}
-            closeAction="linkToCharacter"
+            isStaticPage
           />
         )}
       </div>

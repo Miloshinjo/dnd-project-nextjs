@@ -1,9 +1,9 @@
 .container {
-  @apply border;
+  @apply m-2 bg-white shadow-lg rounded py-2;
 }
 
-.learnSpellsButton {
-  @apply flex items-center text-xs border-b;
+.manageSpellsButton {
+  @apply flex items-center opacity-75;
 }
 
 .slotLevelContainer {
@@ -20,4 +20,32 @@
 
 .spellSlotButton {
   @apply border w-8 h-8 flex items-center justify-center mx-1 mb-1 rounded bg-white shadow-inner;
+}
+
+.spellAttributeBadge {
+  @apply ml-2 px-1 bg-primary-100 rounded font-medium;
+  font-size: 12px;
+}
+
+.spellContainer {
+  @apply mb-2 flex items-center justify-between w-full border-b pb-2 border-gray-200;
+}
+
+.spellContainer:last-child {
+  border: none;
+  margin-bottom: 0;
+}
+
+.spellTitle {
+  @apply text-left inline-flex flex-col;
+}
+
+.attributesContainer {
+  @apply inline-flex items-center;
+  font-size: 10px;
+}
+
+.spellInfoComponentsIcon {
+  @apply text-gray-800 text-lg flex justify-center;
+  margin-left: 2px;
 }

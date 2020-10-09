@@ -38,9 +38,10 @@ query Character($id: ID!) {
       id
       name
       level
-      concentration
-      ritual
       castingTime
+      school
+      range
+      components
     }
     preparedSpells {
       id

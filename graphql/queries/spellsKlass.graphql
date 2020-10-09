@@ -3,8 +3,9 @@ query SpellsKlass($klassName: String) {
     id
     name
     level
-    concentration
-    ritual
     castingTime
+    school
+    range
+    components
   }
 }

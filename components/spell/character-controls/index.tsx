@@ -25,7 +25,7 @@ type Props = {
   subclassName: SubClass['name'] | null
   isKnownSpell: boolean
   isPreparedSpell: boolean
-  closeAction?: 'linkToCharacter' | 'closeModal'
+  isStaticPage?: boolean
   spellLevel: Spell['level']
   cannotLearn?: boolean
 }
@@ -39,7 +39,7 @@ const CharacterControls: React.FC<Props> = ({
   spellLevel,
   isKnownSpell,
   isPreparedSpell,
-  closeAction,
+  isStaticPage = false,
   cannotLearn = false,
 }) => {
   const { closeModal } = useModal()
@@ -53,6 +53,7 @@ const CharacterControls: React.FC<Props> = ({
       case 'Cleric':
       case 'Druid':
       case 'Paladin':
+        return true && spellLevel !== 0
       case 'Wizard':
         return true && isKnownSpell && spellLevel !== 0
       default:
@@ -123,8 +124,8 @@ const CharacterControls: React.FC<Props> = ({
                 }
               }}
               fetching={forgetSpellResult.fetching}
-              text="Remove"
-              textFetching="Removing"
+              text="Unlearn"
+              textFetching="Unlearning"
             />
           ) : (
             <SpinnerButton
@@ -145,11 +146,21 @@ const CharacterControls: React.FC<Props> = ({
             />
           )}
         </div>
-        <div className="flex items-end text-sm">
-          {closeAction === 'linkToCharacter' ? (
-            <Link href={`/app/${characterId}`}>
-              <a>Back to character</a>
-            </Link>
+        <div className="flex items-end flex-col text-sm">
+          {isStaticPage ? (
+            <div className="flex flex-col items-end">
+              <Link href={`/app/${characterId}`}>
+                <a>Back to character</a>
+              </Link>
+              <button
+                type="button"
+                onClick={() => {
+                  closeModal()
+                }}
+              >
+                Back
+              </button>
+            </div>
           ) : (
             <button
               type="button"

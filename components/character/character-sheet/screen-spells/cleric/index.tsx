@@ -49,8 +49,6 @@ const Cleric: React.FC<Props> = ({ character }) => {
     variables: { klassName: 'cleric' },
   })
 
-  console.log({ clericSpells })
-
   return (
     <div className={styles.container}>
       <SpellSlots spellSlots={spellSlots} characterId={character.id} />
