@@ -19,7 +19,7 @@
 }
 
 .fetchingContainer {
-  @apply mx-auto flex h-full items-center justify-center;
+  @apply mx-auto flex h-screen items-center justify-center;
 }
 
 .screensContainer {

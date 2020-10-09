@@ -40,40 +40,7 @@ const cache = cacheExchange({
   },
   optimistic: {
     updateCharacter: (variables, cache, info) => {
-      const { id, skillId, ...restCharacter } = variables.character as any
-
-      if (skillId) {
-        // make this better
-        const { character } = cache.readQuery({
-          query: CharacterDocument,
-          variables: { id: `${id}` },
-        })
-
-        const { skills } = character as any
-
-        const skillsData = cache.readQuery({ query: SkillsDocument })
-
-        const allSkills: any = skillsData.skills
-
-        const isMatch = skills.find((skill) => skill.id === skillId)
-
-        if (isMatch) {
-          return {
-            __typename: 'Character',
-            id,
-            skills: skills.filter((skill) => skill.id !== skillId),
-          }
-        } else {
-          return {
-            __typename: 'Character',
-            id,
-            skills: [
-              ...skills,
-              allSkills.find((skill) => skill.id === skillId),
-            ],
-          }
-        }
-      }
+      const { id, ...restCharacter } = variables.character as any
 
       return {
         __typename: 'Character',
@@ -81,40 +48,6 @@ const cache = cacheExchange({
         ...restCharacter,
       }
     },
-    // prepareSpell: (variables, cache, _) => {
-    //   const { id, spellId } = variables.character as any
-
-    //   const { character } = cache.readQuery({
-    //     query: CharacterDocument,
-    //     variables: { id: `${id}` },
-    //   })
-
-    //   const { preparedSpells, name } = character as any
-
-    //   return {
-    //     __typename: 'Character',
-    //     id,
-    //     name,
-    //     preparedSpells: [...preparedSpells],
-    //   }
-    // },
-    // unprepareSpell: (variables, cache, _) => {
-    //   const { id, spellId } = variables.character as any
-
-    //   const { character } = cache.readQuery({
-    //     query: CharacterDocument,
-    //     variables: { id: `${id}` },
-    //   })
-
-    //   const { preparedSpells, name } = character as any
-
-    //   return {
-    //     __typename: 'Character',
-    //     id,
-    //     name,
-    //     preparedSpells: preparedSpells.filter((spell) => spell.id !== spellId),
-    //   }
-    // },
   },
 })
 
