@@ -12,7 +12,6 @@ import {
 import { arrangeSpellsByLevel } from '../../../../../utils/spells'
 import { useModal } from '../../../../../context/modal'
 
-import { formatCastingTimes } from '../../../../../utils/formatters'
 import styles from './styles.module.css'
 
 type Props = {
