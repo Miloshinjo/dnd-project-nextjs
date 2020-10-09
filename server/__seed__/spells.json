@@ -1667,7 +1667,7 @@
   {
     "name": "Snare",
     "level": 1,
-    "castingTime": "1 Minuet",
+    "castingTime": "1 Minute",
     "range": "Touch",
     "components": "s,m",
     "material": "30 feet of cord or rope, which is consumed by the spell",

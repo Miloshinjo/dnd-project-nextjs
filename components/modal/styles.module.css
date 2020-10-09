@@ -44,7 +44,7 @@
 }
 
 .drawerCloseButton {
-  @apply p-1  bg-white rounded;
+  @apply p-1;
   bottom: 2.5rem;
   right: 50%;
   z-index: 1000;

@@ -684,6 +684,32 @@ export type CharacterQuery = (
   ) }
 );
 
+export type CharacterSpellQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type CharacterSpellQuery = (
+  { __typename?: 'Query' }
+  & { character: (
+    { __typename?: 'Character' }
+    & Pick<Character, 'id' | 'name'>
+    & { klass: (
+      { __typename?: 'Klass' }
+      & Pick<Klass, 'id' | 'name'>
+    ), subclass?: Maybe<(
+      { __typename?: 'SubClass' }
+      & Pick<SubClass, 'id' | 'name'>
+    )>, spells: Array<(
+      { __typename?: 'Spell' }
+      & Pick<Spell, 'id' | 'name'>
+    )>, preparedSpells: Array<(
+      { __typename?: 'Spell' }
+      & Pick<Spell, 'id' | 'name'>
+    )> }
+  ) }
+);
+
 export type CharactersQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1133,6 +1159,34 @@ export const CharacterDocument = gql`
 
 export function useCharacterQuery(options: Omit<Urql.UseQueryArgs<CharacterQueryVariables>, 'query'> = {}) {
   return Urql.useQuery<CharacterQuery>({ query: CharacterDocument, ...options });
+};
+export const CharacterSpellDocument = gql`
+    query CharacterSpell($id: ID!) {
+  character(character: {id: $id}) {
+    id
+    name
+    klass {
+      id
+      name
+    }
+    subclass {
+      id
+      name
+    }
+    spells {
+      id
+      name
+    }
+    preparedSpells {
+      id
+      name
+    }
+  }
+}
+    `;
+
+export function useCharacterSpellQuery(options: Omit<Urql.UseQueryArgs<CharacterSpellQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<CharacterSpellQuery>({ query: CharacterSpellDocument, ...options });
 };
 export const CharactersDocument = gql`
     query Characters {

@@ -16,11 +16,23 @@ export const SpellsQuery = `
       level
       school
       klasses
+      attackSave
+      castingTime
+      components
+      concentration
+      damageEffect
+      description
+      duration
+      material
+      range
+      name
+      ritual
+      school
     }
   }
 `
 
-export const getSpells = async () => {
+export const getSpells = async (): Promise<Array<Spell>> => {
   const result = await client.query(SpellsQuery).toPromise()
 
   if (!result || result.error) {
@@ -45,7 +57,11 @@ const Spells: NextPage<Props> = ({ spells = [] }) => {
   )
 }
 
-export const getStaticProps = async () => {
+export const getStaticProps = async (): Promise<{
+  props: {
+    spells: Spell[]
+  }
+}> => {
   const spells: Array<Spell> = await getSpells()
 
   return {

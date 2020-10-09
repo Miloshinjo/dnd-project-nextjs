@@ -12,6 +12,7 @@ export type ModalType = {
     | 'addSubclass'
     | 'mobileDrawer'
     | 'spellPage'
+    | 'spellPageStatic'
     | null
   props: Record<string, any>
 } | null

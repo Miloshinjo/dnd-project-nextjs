@@ -1,7 +1,8 @@
 import { useState, useEffect, useMemo, useCallback } from 'react'
+
 import SpellsPageHeader from '../../spells/spells-page-header'
 
-import { Spell } from '../../../generated/graphql'
+import { Spell, useCharacterSpellQuery } from '../../../generated/graphql'
 import { useFilters } from '../../../context/filters'
 import actionTypes from '../../../utils/constants/actionTypes'
 import SubHeader from '../../layout/sub-header'

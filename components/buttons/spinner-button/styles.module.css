@@ -1,0 +1,36 @@
+.button {
+  @apply font-bold flex items-center relative;
+}
+
+.buttonActive {
+  cursor: not-allowed;
+}
+
+.buttonActive .text {
+  @apply mr-8;
+}
+
+.buttonActive .loader {
+  opacity: 1;
+  animation: spin 0.2s linear infinite;
+}
+
+.text {
+  transition: margin-right 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.loader {
+  @apply w-4 h-4 ml-2;
+  position: absolute;
+  right: 0.5rem;
+  border-left: 2px solid #000;
+  border-top: 2px solid #000;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

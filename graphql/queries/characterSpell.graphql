@@ -1,0 +1,22 @@
+query CharacterSpell($id: ID!) {
+  character(character: { id: $id }) {
+    id
+    name
+    klass {
+      id
+      name
+    }
+    subclass {
+      id
+      name
+    }
+    spells {
+      id
+      name
+    }
+    preparedSpells {
+      id
+      name
+    }
+  }
+}

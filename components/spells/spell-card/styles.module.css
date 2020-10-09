@@ -1,13 +1,13 @@
 .container {
-  @apply flex flex-col rounded bg-white border;
+  @apply flex flex-col rounded;
 }
 
 .button {
-  @apply px-4 py-2 flex items-center justify-between  cursor-pointer;
+  @apply py-2 flex items-center justify-between  cursor-pointer;
 }
 
 .spellName {
-  @apply text-lg font-extrabold;
+  @apply text-lg font-semibold;
 }
 
 .spellSchool {
@@ -28,6 +28,5 @@
 
 @screen md {
   .container {
-    @apply shadow-md;
   }
 }

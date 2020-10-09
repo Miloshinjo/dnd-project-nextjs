@@ -1,12 +1,19 @@
-import { Spell, useSpellQuery } from '../../../generated/graphql'
-import { motion } from 'framer-motion'
+import {
+  Spell,
+  useCharacterSpellQuery,
+  useLearnSpellMutation,
+  useForgetSpellMutation,
+} from '../../../generated/graphql'
+import { useRouter } from 'next/router'
+import { useMemo } from 'react'
 
 import SpellDescription from '../../spell/description'
 import SpellInfo from '../../spell/info'
 import SpellConcentrationRitual from '../../spell/concentration-ritual'
 import SpellMaterial from '../../spell/material'
-import SpellPageSkeleton from '../../skeletons/spell-page'
 import SpellKlasses from '../../spell/klasses'
+import SpinnerButton from '../../buttons/spinner-button'
+import icons from './icons'
 
 import styles from './styles.module.css'
 
@@ -43,6 +50,36 @@ const SpellPageModal: React.FC<Props> = ({
   ritual,
   school,
 }) => {
+  const { query } = useRouter()
+
+  const [learnSpellResult, learnSpell] = useLearnSpellMutation()
+  const [forgetSpellResult, forgetSpell] = useForgetSpellMutation()
+
+  const [
+    { data: characterData, fetching: fetchingCharacterData, error },
+  ] = useCharacterSpellQuery({
+    variables: { id: Number(query.character) },
+    pause: !query.character,
+  })
+
+  const isKnownSpell = useMemo(() => {
+    if (characterData) {
+      const knownSpellIds = characterData.character.spells.map(
+        (spell) => spell.id,
+      )
+
+      if (knownSpellIds.includes(id)) {
+        return true
+      }
+    }
+
+    return false
+  }, [characterData])
+
+  if (fetchingCharacterData) {
+    return <div>Loading..</div>
+  }
+
   return (
     <div className={styles.container}>
       <div className="flex flex-col p-4 items-start">
@@ -63,6 +100,62 @@ const SpellPageModal: React.FC<Props> = ({
         <SpellDescription description={description} />
         <SpellMaterial material={material} />
         <SpellKlasses klasses={klasses} />
+        <div className="p-4 rounded bg-white shadow-lg w-full relative mt-4">
+          {characterData?.character?.klass?.name && (
+            <div className={styles.iconContainer}>
+              {icons[characterData?.character?.klass?.name]}
+            </div>
+          )}
+
+          <div className="flex flex-col mb-6">
+            <span className="font-semibold">
+              {characterData?.character?.name}
+            </span>
+            <span className="opacity-50 text-sm">
+              {characterData?.character?.subclass?.name}{' '}
+              {characterData?.character?.klass?.name}
+            </span>
+          </div>
+          {isKnownSpell ? (
+            <div className="flex-col inline-flex">
+              <SpinnerButton
+                onClick={async () => {
+                  const result = await forgetSpell({
+                    id: characterData?.character?.id,
+                    spellId: id,
+                  })
+
+                  if (result.error) {
+                    console.log('An error occured')
+                    return
+                  }
+                }}
+                fetching={forgetSpellResult.fetching}
+                text={`Remove ${name}`}
+                textFetching={`Removing ${name}`}
+              />
+            </div>
+          ) : (
+            <SpinnerButton
+              onClick={async () => {
+                const result = await learnSpell({
+                  id: characterData?.character?.id,
+                  spellId: id,
+                })
+
+                console.log({ result })
+
+                if (result.error) {
+                  console.log('An error occured')
+                  return
+                }
+              }}
+              fetching={learnSpellResult.fetching}
+              text={`Learn ${name}`}
+              textFetching={`Learning ${name}`}
+            />
+          )}
+        </div>
       </div>
     </div>
   )

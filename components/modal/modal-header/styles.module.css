@@ -10,6 +10,10 @@
   @apply text-lg font-semibold ml-2 capitalize;
 }
 
+.closeModal {
+  background-color: transparent !important;
+}
+
 .iconContainer {
   @apply absolute opacity-75;
   bottom: 0;

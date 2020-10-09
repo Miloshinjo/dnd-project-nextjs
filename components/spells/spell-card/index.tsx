@@ -1,12 +1,5 @@
-import { useState } from 'react'
-import { useRouter } from 'next/router'
 import { useModal } from '../../../context/modal'
-import ConcentrationRitual from '../../spell/concentration-ritual'
 import { Spell } from '../../../generated/graphql'
-import Description from '../../spell/description'
-import Info from '../../spell/info'
-import Klasses from '../../spell/klasses'
-import AddButton from '../../buttons/add-button'
 
 import styles from './styles.module.css'
 
@@ -15,9 +8,6 @@ type Props = {
 }
 
 const SpellCard: React.FC<Props> = ({ spell }) => {
-  const [active, setActive] = useState(false)
-  const { query } = useRouter()
-
   const { openModal } = useModal()
 
   return (
@@ -25,12 +15,23 @@ const SpellCard: React.FC<Props> = ({ spell }) => {
       <button
         type="button"
         onClick={() => {
-          // setActive(!active)
           openModal({
-            type: 'spellPage',
+            type: 'spellPageStatic',
             props: {
-              spellId: spell.id,
-              spellName: spell.name,
+              id: spell.id,
+              name: spell.name,
+              attackSave: spell.attackSave,
+              castingTime: spell.castingTime,
+              components: spell.components,
+              material: spell.material,
+              concentration: spell.concentration,
+              damageEffect: spell.damageEffect,
+              description: spell.description,
+              duration: spell.duration,
+              klasses: spell.klasses,
+              range: spell.range,
+              ritual: spell.ritual,
+              school: spell.school,
             },
           })
         }}
@@ -44,43 +45,6 @@ const SpellCard: React.FC<Props> = ({ spell }) => {
           {spell.level === 0 ? <span>Cantrip</span> : `Level ${spell.level}`}
         </div>
       </button>
-
-      {active && (
-        <div className={styles.bottomPart}>
-          <div>
-            <ConcentrationRitual
-              concentration={spell.concentration}
-              ritual={spell.ritual}
-            />
-            <Info
-              castingTime={spell.castingTime}
-              duration={spell.duration}
-              range={spell.range}
-              components={spell.components}
-              attackSave={spell.attackSave}
-              damageEffect={spell.damageEffect}
-            />
-            <Description description={spell.description} />
-            <Klasses klasses={spell.klasses} />
-            <div className="my-4" />
-
-            {query?.character ? (
-              <AddButton
-                onClick={() => {
-                  openModal({
-                    type: 'learnSpell',
-                    props: {
-                      spellId: spell.id,
-                    },
-                  })
-                }}
-              >
-                Add to character
-              </AddButton>
-            ) : null}
-          </div>
-        </div>
-      )}
     </div>
   )
 }

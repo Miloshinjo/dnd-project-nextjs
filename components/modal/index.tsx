@@ -9,6 +9,7 @@ import DeleteCharacter from '../modals/delete-character'
 import LearnSpell from '../modals/learn-spell'
 import MobileDrawerModal from '../modals/mobile-drawer'
 import SpellPageModal from '../modals/spell-page'
+import SpellPageStaticModal from '../modals/spell-page-static'
 import ClientOnlyPortal from '../../utils/clientOnlyPortal'
 
 import styles from './styles.module.css'
@@ -66,6 +67,25 @@ const Modal: React.FC = ({ children }) => {
             spellName={modal.props.spellName}
           />
         )
+      case 'spellPageStatic':
+        return (
+          <SpellPageStaticModal
+            id={modal.props.id}
+            name={modal.props.name}
+            attackSave={modal.props.attackSave}
+            castingTime={modal.props.castingTime}
+            components={modal.props.components}
+            material={modal.props.material}
+            concentration={modal.props.concentration}
+            damageEffect={modal.props.damageEffect}
+            description={modal.props.description}
+            duration={modal.props.duration}
+            klasses={modal.props.klasses}
+            range={modal.props.range}
+            ritual={modal.props.ritual}
+            school={modal.props.school}
+          />
+        )
       default:
         return null
     }
@@ -87,6 +107,7 @@ const Modal: React.FC = ({ children }) => {
       )
 
     case 'spellPage':
+    case 'spellPageStatic':
       return (
         <AnimatePresence exitBeforeEnter onExitComplete={closeModal}>
           {modal && (

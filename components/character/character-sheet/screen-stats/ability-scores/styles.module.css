@@ -19,7 +19,7 @@
 }
 
 .abilityScoreValue {
-  @apply font-bold flex justify-end;
+  @apply font-bold flex justify-start;
 }
 
 .abilityScoreM {

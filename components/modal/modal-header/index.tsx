@@ -18,7 +18,7 @@ const ModalHeader: React.FC<Props> = ({ type, title }) => {
         <div className={styles.iconContainer}>{icons[type]}</div>
         <h1 className={styles.heading}>{title}</h1>
       </div>
-      <button onClick={closeModal}>
+      <button onClick={closeModal} className={styles.closeModal}>
         <IoIosClose size={35} />
       </button>
     </header>

@@ -2,6 +2,7 @@ import { cacheExchange, QueryInput, Cache } from '@urql/exchange-graphcache'
 
 import {
   CharacterDocument,
+  CharacterSpellDocument,
   DeleteCharacterMutationVariables,
   SkillsDocument,
 } from '../generated/graphql'
@@ -78,23 +79,6 @@ const cache = cacheExchange({
         __typename: 'Character',
         id,
         ...restCharacter,
-      }
-    },
-    forgetSpell: (variables, cache, _) => {
-      const { id, spellId } = variables.character as any
-
-      const { character } = cache.readQuery({
-        query: CharacterDocument,
-        variables: { id: `${id}` },
-      })
-
-      const { spells, name } = character as any
-
-      return {
-        __typename: 'Character',
-        id,
-        name,
-        spells: spells.filter((spell) => spell.id !== spellId),
       }
     },
     prepareSpell: (variables, cache, _) => {
