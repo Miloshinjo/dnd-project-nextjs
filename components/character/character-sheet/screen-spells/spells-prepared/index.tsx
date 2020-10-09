@@ -1,5 +1,3 @@
-import { Dispatch, SetStateAction } from 'react'
-
 import { Character } from '../../../../../generated/graphql'
 
 import { useModal } from '../../../../../context/modal'
@@ -9,15 +7,12 @@ import styles from './styles.module.css'
 type Props = {
   characterId: Character['id']
   spells: Character['spells']
-  spellsPrepareMode: boolean
-  setSpellsPrepareMode: Dispatch<SetStateAction<boolean>>
   numberOfSpellsPrepared: number
 }
 
 const SpellsPrepared: React.FC<Props> = ({
+  characterId,
   spells,
-  spellsPrepareMode,
-  setSpellsPrepareMode,
   numberOfSpellsPrepared,
 }) => {
   const { openModal } = useModal()
@@ -32,12 +27,6 @@ const SpellsPrepared: React.FC<Props> = ({
               ({spells.length} of {numberOfSpellsPrepared})
             </span>
           </h4>
-          <button
-            className={styles.prepareSpellsButton}
-            onClick={() => setSpellsPrepareMode(!spellsPrepareMode)}
-          >
-            Prepare Spells
-          </button>
         </div>
         <div className="px-4 flex flex-wrap">
           {spells.length ? (
@@ -49,10 +38,10 @@ const SpellsPrepared: React.FC<Props> = ({
                     className="px-2 text-sm bg-white shadow-inner border"
                     onClick={() =>
                       openModal({
-                        type: 'spell',
+                        type: 'spellPage',
                         props: {
                           spellId: spell.id,
-                          spellName: spell.name,
+                          characterId,
                         },
                       })
                     }

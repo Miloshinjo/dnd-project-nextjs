@@ -81,7 +81,7 @@ const SpellsKnown: React.FC<Props> = ({
                               type: 'spellPage',
                               props: {
                                 spellId: spell.id,
-                                spellName: spell.name,
+                                characterId,
                               },
                             })
                           }

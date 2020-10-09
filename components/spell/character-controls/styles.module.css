@@ -1,0 +1,9 @@
+.container {
+  @apply p-4 rounded bg-white shadow-lg w-full relative mt-4;
+}
+
+.iconContainer {
+  @apply absolute opacity-75;
+  top: 10px;
+  right: 0;
+}

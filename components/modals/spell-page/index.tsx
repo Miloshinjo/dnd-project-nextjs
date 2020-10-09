@@ -1,16 +1,12 @@
+import { useMemo } from 'react'
 import { motion } from 'framer-motion'
 import {
   Spell,
+  Klass,
+  Character,
   useSpellQuery,
   useCharacterSpellQuery,
-  useLearnSpellMutation,
-  useForgetSpellMutation,
-  usePrepareSpellMutation,
-  useUnprepareSpellMutation,
 } from '../../../generated/graphql'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { useMemo } from 'react'
 
 import Loader from '../../layout/loader'
 import SpellDescription from '../../spell/description'
@@ -19,6 +15,7 @@ import SpellConcentrationRitual from '../../spell/concentration-ritual'
 import SpellMaterial from '../../spell/material'
 import SpellPageSkeleton from '../../skeletons/spell-page'
 import SpellKlasses from '../../spell/klasses'
+import CharacterControls from '../../spell/character-controls'
 
 import styles from './styles.module.css'
 
@@ -35,34 +32,51 @@ const barVariants = {
 
 type Props = {
   spellId: Spell['id']
-  spellName: Spell['name']
+  characterId: Character['id']
 }
 
-const SpellPageModal: React.FC<Props> = ({ spellId }) => {
-  const [result] = useSpellQuery({
+const SpellPageModal: React.FC<Props> = ({ spellId, characterId }) => {
+  const [
+    { data: spellData, fetching: spellFetching, error: spellError },
+  ] = useSpellQuery({
     variables: { id: spellId },
   })
 
   const [
-    { data: characterData, fetching: fetchingCharacterData, error },
+    { data: characterData, fetching: characterFetching, error: characterError },
   ] = useCharacterSpellQuery({
-    variables: { id: Number(query.character) },
-    pause: !query.character,
+    variables: { id: characterId },
   })
 
-  const canPrepare = useMemo(() => {
-    switch (characterData?.character?.klass?.name) {
-      case 'Cleric':
-      case 'Druid':
-      case 'Paladin':
-      case 'Wizard':
-        return true && isKnownSpell
-      default:
-        return false
-    }
-  }, [characterData])
+  const isKnownSpell = useMemo(() => {
+    if (characterData && spellData) {
+      const knownSpellIds = characterData.character.spells.map(
+        (spell) => spell.id,
+      )
 
-  if (result.fetching) {
+      if (knownSpellIds.includes(spellData.spell.id)) {
+        return true
+      }
+    }
+
+    return false
+  }, [characterData, spellData])
+
+  const isPreparedSpell = useMemo(() => {
+    if (characterData && spellData) {
+      const preparedSpellsIds = characterData.character.preparedSpells.map(
+        (spell) => spell.id,
+      )
+
+      if (preparedSpellsIds.includes(spellData.spell.id)) {
+        return true
+      }
+    }
+
+    return false
+  }, [characterData, spellData])
+
+  if (spellFetching || characterFetching) {
     return (
       <div className={styles.skeletonContainer}>
         <div className={styles.skeletonNameBar}>
@@ -103,12 +117,18 @@ const SpellPageModal: React.FC<Props> = ({ spellId }) => {
     )
   }
 
-  if (result.error) {
-    console.log(result.error)
-    return <div>{result?.error?.message || 'Unknown error occurred'}</div>
+  if (spellError) {
+    console.log(spellError)
+    return <div>{spellError?.message || 'Unknown error occurred'}</div>
   }
 
-  const { spell } = result.data
+  if (characterError) {
+    console.log(characterError)
+    return <div>{characterError?.message || 'Unknown error occurred'}</div>
+  }
+
+  const { spell } = spellData
+  const { character } = characterData
 
   return (
     <div className={styles.container}>
@@ -130,6 +150,16 @@ const SpellPageModal: React.FC<Props> = ({ spellId }) => {
         <SpellDescription description={spell.description} />
         <SpellMaterial material={spell.material} />
         <SpellKlasses klasses={spell.klasses} />
+
+        <CharacterControls
+          klassName={character?.klass?.name}
+          subclassName={character?.subclass?.name}
+          characterId={character?.id}
+          spellId={spell.id}
+          characterName={character?.name}
+          isKnownSpell={isKnownSpell}
+          isPreparedSpell={isPreparedSpell}
+        />
       </div>
     </div>
   )

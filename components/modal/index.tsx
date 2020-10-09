@@ -64,7 +64,7 @@ const Modal: React.FC = ({ children }) => {
         return (
           <SpellPageModal
             spellId={modal.props.spellId}
-            spellName={modal.props.spellName}
+            characterId={modal.props.characterId}
           />
         )
       case 'spellPageStatic':
