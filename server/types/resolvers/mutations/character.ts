@@ -46,47 +46,7 @@ export const updateCharacter = mutationField('updateCharacter', {
     }
 
     try {
-      const { klassId, skillId, id, ...restCharacter } = character
-
-      if (skillId) {
-        const skills = await prisma.character
-          .findOne({
-            where: {
-              id: Number(id),
-            },
-          })
-          .skills()
-
-        const targetSkill = skills.find((skill) => skill.id === Number(skillId))
-
-        const action = targetSkill ? 'disconnect' : 'connect'
-
-        const updatedCharacter = await prisma.character.update({
-          where: {
-            id: Number(id),
-          },
-          data: {
-            ...restCharacter,
-            skills: { [action]: { id: Number(skillId) } },
-          },
-        })
-
-        return updatedCharacter
-      }
-
-      if (klassId) {
-        const updatedCharacter = await prisma.character.update({
-          where: {
-            id: Number(id),
-          },
-          data: {
-            ...restCharacter,
-            klass: { connect: { id: Number(klassId) } },
-          },
-        })
-
-        return updatedCharacter
-      }
+      const { id, ...restCharacter } = character
 
       const updatedCharacter = await prisma.character.update({
         where: {
@@ -237,7 +197,7 @@ export const unprepareSpell = mutationField('unprepareSpell', {
 export const addSubclass = mutationField('addSubclass', {
   type: 'Character',
   args: {
-    character: 'CharacterAddSubclassInputType',
+    character: 'CharacterAddSubclassInput',
   },
   async resolve(_parent, { character }, { prisma }) {
     if (!character) {
@@ -251,6 +211,62 @@ export const addSubclass = mutationField('addSubclass', {
         },
         data: {
           subclass: { connect: { id: Number(character.subclassId) } },
+        },
+      })
+
+      return updatedCharacter
+    } catch (err) {
+      console.log(err)
+      return handleError(errors.badCharacterData)
+    }
+  },
+})
+
+export const addSkill = mutationField('addSkill', {
+  type: 'Character',
+  args: {
+    character: 'CharacterEditSkillInput',
+  },
+  async resolve(_parent, { character }, { prisma }) {
+    if (!character) {
+      return handleError(errors.serverError)
+    }
+
+    try {
+      const updatedCharacter = await prisma.character.update({
+        where: {
+          id: Number(character.id),
+        },
+        data: {
+          skills: { connect: { id: Number(character.skillId) } },
+        },
+      })
+
+      return updatedCharacter
+    } catch (err) {
+      console.log(err)
+      return handleError(errors.badCharacterData)
+    }
+  },
+})
+
+export const removeSkill = mutationField('removeSkill', {
+  type: 'Character',
+  args: {
+    character: 'CharacterEditSkillInput',
+  },
+  async resolve(_parent, { character }, { prisma }) {
+    if (!character) {
+      return handleError(errors.serverError)
+    }
+
+    try {
+      const updatedCharacter = await prisma.character.update({
+        where: {
+          id: Number(character.id),
+        },
+        data: {
+          skills: { disconnect: { id: Number(character.skillId) } },
         },
       })
 

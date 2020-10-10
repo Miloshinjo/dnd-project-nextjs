@@ -1,0 +1,10 @@
+mutation AddSkill($id: ID!, $skillId: ID!) {
+  addSkill(character: { id: $id, skillId: $skillId }) {
+    id
+    skills {
+      id
+      name
+      ability
+    }
+  }
+}

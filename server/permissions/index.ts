@@ -1,4 +1,4 @@
-import { shield, not, allow } from 'graphql-shield'
+import { shield, allow } from 'graphql-shield'
 import rules from './rules'
 
 const permissions = shield({
@@ -17,6 +17,8 @@ const permissions = shield({
     addSubclass: rules.isCharacterOwner,
     unprepareSpell: rules.isCharacterOwner,
     prepareSpell: rules.isCharacterOwner,
+    addSkill: rules.isCharacterOwner,
+    removeSkill: rules.isCharacterOwner,
   },
 })
 

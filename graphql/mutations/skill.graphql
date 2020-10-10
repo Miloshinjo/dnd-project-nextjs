@@ -1,9 +1,0 @@
-mutation Skill($id: ID!, $skillId: ID!) {
-  updateCharacter(character: { id: $id, skillId: $skillId }) {
-    id
-    skills {
-      id
-      name
-    }
-  }
-}

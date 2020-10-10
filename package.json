@@ -11,10 +11,10 @@
     "migrate:down": "prisma migrate down 1 --experimental",
     "generate:graphql": "graphql-codegen --config codegen.yml",
     "generate:prisma": "prisma generate",
+    "generate:nexus": "ts-node --transpile-only server/schema",
     "studio": "npx prisma studio",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet",
-    "lint:fix": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
-    "generate:nexus": "ts-node --transpile-only -P nexus.tsconfig.json server/schema"
+    "lint:fix": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
   },
   "resolutions": {
     "@types/react": "16.9.46"

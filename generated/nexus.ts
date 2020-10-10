@@ -19,7 +19,7 @@ declare global {
 }
 
 export interface NexusGenInputs {
-  CharacterAddSubclassInputType: { // input type
+  CharacterAddSubclassInput: { // input type
     id: string; // ID!
     subclassId: string; // ID!
   }
@@ -31,6 +31,10 @@ export interface NexusGenInputs {
   }
   CharacterDeleteInput: { // input type
     id: string; // ID!
+  }
+  CharacterEditSkillInput: { // input type
+    id: string; // ID!
+    skillId: string; // ID!
   }
   CharacterEditSpellInput: { // input type
     id: string; // ID!
@@ -52,17 +56,13 @@ export interface NexusGenInputs {
     id: string; // ID!
     inspiration?: boolean | null; // Boolean
     intelligence?: number | null; // Int
-    klassId?: string | null; // ID
     level?: number | null; // Int
     maxHitPoints?: number | null; // Int
     name?: string | null; // String
     race?: string | null; // String
-    skillId?: string | null; // ID
     speed?: number | null; // Int
-    spellId?: string | null; // ID
     spellSlots?: string | null; // String
     strength?: number | null; // Int
-    subclassId?: string | null; // ID
     wisdom?: number | null; // Int
   }
   CharacterWhereUniqueInput: { // input type
@@ -174,9 +174,10 @@ export interface NexusGenRootTypes {
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
-  CharacterAddSubclassInputType: NexusGenInputs['CharacterAddSubclassInputType'];
+  CharacterAddSubclassInput: NexusGenInputs['CharacterAddSubclassInput'];
   CharacterCreateInput: NexusGenInputs['CharacterCreateInput'];
   CharacterDeleteInput: NexusGenInputs['CharacterDeleteInput'];
+  CharacterEditSkillInput: NexusGenInputs['CharacterEditSkillInput'];
   CharacterEditSpellInput: NexusGenInputs['CharacterEditSpellInput'];
   CharacterQueryInputType: NexusGenInputs['CharacterQueryInputType'];
   CharacterUpdateInput: NexusGenInputs['CharacterUpdateInput'];
@@ -240,25 +241,27 @@ export interface NexusGenFieldTypes {
     weapons: string[]; // [String!]!
   }
   Mutation: { // field return type
-    addSubclass: NexusGenRootTypes['Character'] | null; // Character
-    createCharacter: NexusGenRootTypes['Character'] | null; // Character
+    addSKill: NexusGenRootTypes['Character']; // Character!
+    addSubclass: NexusGenRootTypes['Character']; // Character!
+    createCharacter: NexusGenRootTypes['Character']; // Character!
     deleteCharacter: NexusGenRootTypes['Character'] | null; // Character
-    forgetSpell: NexusGenRootTypes['Character'] | null; // Character
-    learnSpell: NexusGenRootTypes['Character'] | null; // Character
-    prepareSpell: NexusGenRootTypes['Character'] | null; // Character
-    unprepareSpell: NexusGenRootTypes['Character'] | null; // Character
-    updateCharacter: NexusGenRootTypes['Character'] | null; // Character
+    forgetSpell: NexusGenRootTypes['Character']; // Character!
+    learnSpell: NexusGenRootTypes['Character']; // Character!
+    prepareSpell: NexusGenRootTypes['Character']; // Character!
+    removeSKill: NexusGenRootTypes['Character']; // Character!
+    unprepareSpell: NexusGenRootTypes['Character']; // Character!
+    updateCharacter: NexusGenRootTypes['Character']; // Character!
   }
   Query: { // field return type
-    character: NexusGenRootTypes['Character'] | null; // Character
-    characters: Array<NexusGenRootTypes['Character'] | null> | null; // [Character]
-    klass: NexusGenRootTypes['Klass'] | null; // Klass
-    klasses: Array<NexusGenRootTypes['Klass'] | null> | null; // [Klass]
-    me: NexusGenRootTypes['User'] | null; // User
-    skills: Array<NexusGenRootTypes['Skill'] | null> | null; // [Skill]
-    spell: NexusGenRootTypes['Spell'] | null; // Spell
-    spells: Array<NexusGenRootTypes['Spell'] | null> | null; // [Spell]
-    subclasses: Array<NexusGenRootTypes['SubClass'] | null> | null; // [SubClass]
+    character: NexusGenRootTypes['Character']; // Character!
+    characters: NexusGenRootTypes['Character'][]; // [Character!]!
+    klass: NexusGenRootTypes['Klass']; // Klass!
+    klasses: NexusGenRootTypes['Klass'][]; // [Klass!]!
+    me: NexusGenRootTypes['User']; // User!
+    skills: NexusGenRootTypes['Skill'][]; // [Skill!]!
+    spell: NexusGenRootTypes['Spell']; // Spell!
+    spells: NexusGenRootTypes['Spell'][]; // [Spell!]!
+    subclasses: NexusGenRootTypes['SubClass'][]; // [SubClass!]!
   }
   Skill: { // field return type
     ability: string; // String!
@@ -330,8 +333,11 @@ export interface NexusGenArgTypes {
     }
   }
   Mutation: {
+    addSKill: { // args
+      character?: NexusGenInputs['CharacterEditSkillInput'] | null; // CharacterEditSkillInput
+    }
     addSubclass: { // args
-      character?: NexusGenInputs['CharacterAddSubclassInputType'] | null; // CharacterAddSubclassInputType
+      character?: NexusGenInputs['CharacterAddSubclassInput'] | null; // CharacterAddSubclassInput
     }
     createCharacter: { // args
       character?: NexusGenInputs['CharacterCreateInput'] | null; // CharacterCreateInput
@@ -347,6 +353,9 @@ export interface NexusGenArgTypes {
     }
     prepareSpell: { // args
       character?: NexusGenInputs['CharacterEditSpellInput'] | null; // CharacterEditSpellInput
+    }
+    removeSKill: { // args
+      character?: NexusGenInputs['CharacterEditSkillInput'] | null; // CharacterEditSkillInput
     }
     unprepareSpell: { // args
       character?: NexusGenInputs['CharacterEditSpellInput'] | null; // CharacterEditSpellInput
@@ -397,7 +406,7 @@ export interface NexusGenInheritedFields {}
 
 export type NexusGenObjectNames = "Character" | "Klass" | "Mutation" | "Query" | "Skill" | "Spell" | "SubClass" | "User";
 
-export type NexusGenInputNames = "CharacterAddSubclassInputType" | "CharacterCreateInput" | "CharacterDeleteInput" | "CharacterEditSpellInput" | "CharacterQueryInputType" | "CharacterUpdateInput" | "CharacterWhereUniqueInput" | "SkillWhereUniqueInput" | "SpellWhereUniqueInput" | "SubClassWhereUniqueInput";
+export type NexusGenInputNames = "CharacterAddSubclassInput" | "CharacterCreateInput" | "CharacterDeleteInput" | "CharacterEditSkillInput" | "CharacterEditSpellInput" | "CharacterQueryInputType" | "CharacterUpdateInput" | "CharacterWhereUniqueInput" | "SkillWhereUniqueInput" | "SpellWhereUniqueInput" | "SubClassWhereUniqueInput";
 
 export type NexusGenEnumNames = never;
 

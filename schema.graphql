@@ -34,7 +34,7 @@ type Character {
   wisdom: Int!
 }
 
-input CharacterAddSubclassInputType {
+input CharacterAddSubclassInput {
   id: ID!
   subclassId: ID!
 }
@@ -48,6 +48,11 @@ input CharacterCreateInput {
 
 input CharacterDeleteInput {
   id: ID!
+}
+
+input CharacterEditSkillInput {
+  id: ID!
+  skillId: ID!
 }
 
 input CharacterEditSpellInput {
@@ -72,17 +77,13 @@ input CharacterUpdateInput {
   id: ID!
   inspiration: Boolean
   intelligence: Int
-  klassId: ID
   level: Int
   maxHitPoints: Int
   name: String
   race: String
-  skillId: ID
   speed: Int
-  spellId: ID
   spellSlots: String
   strength: Int
-  subclassId: ID
   wisdom: Int
 }
 
@@ -108,12 +109,14 @@ type Klass {
 }
 
 type Mutation {
-  addSubclass(character: CharacterAddSubclassInputType): Character!
+  addSkill(character: CharacterEditSkillInput): Character!
+  addSubclass(character: CharacterAddSubclassInput): Character!
   createCharacter(character: CharacterCreateInput): Character!
   deleteCharacter(character: CharacterDeleteInput): Character
   forgetSpell(character: CharacterEditSpellInput): Character!
   learnSpell(character: CharacterEditSpellInput): Character!
   prepareSpell(character: CharacterEditSpellInput): Character!
+  removeSkill(character: CharacterEditSkillInput): Character!
   unprepareSpell(character: CharacterEditSpellInput): Character!
   updateCharacter(character: CharacterUpdateInput): Character!
 }

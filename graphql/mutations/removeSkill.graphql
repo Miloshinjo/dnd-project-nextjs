@@ -1,0 +1,10 @@
+mutation RemoveSkill($id: ID!, $skillId: ID!) {
+  removeSkill(character: { id: $id, skillId: $skillId }) {
+    id
+    skills {
+      id
+      name
+      ability
+    }
+  }
+}

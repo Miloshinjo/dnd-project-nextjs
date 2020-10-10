@@ -21,10 +21,6 @@ export type CharacterCreateInput = {
 
 export type CharacterUpdateInput = {
   id: Scalars['ID'];
-  klassId?: Maybe<Scalars['ID']>;
-  skillId?: Maybe<Scalars['ID']>;
-  subclassId?: Maybe<Scalars['ID']>;
-  spellId?: Maybe<Scalars['ID']>;
   name?: Maybe<Scalars['String']>;
   level?: Maybe<Scalars['Int']>;
   race?: Maybe<Scalars['String']>;
@@ -55,9 +51,14 @@ export type CharacterDeleteInput = {
   id: Scalars['ID'];
 };
 
-export type CharacterAddSubclassInputType = {
+export type CharacterAddSubclassInput = {
   id: Scalars['ID'];
   subclassId: Scalars['ID'];
+};
+
+export type CharacterEditSkillInput = {
+  id: Scalars['ID'];
+  skillId: Scalars['ID'];
 };
 
 export type CharacterQueryInputType = {
@@ -276,6 +277,8 @@ export type Mutation = {
   prepareSpell: Character;
   unprepareSpell: Character;
   addSubclass: Character;
+  addSkill: Character;
+  removeSkill: Character;
 };
 
 
@@ -315,8 +318,36 @@ export type MutationUnprepareSpellArgs = {
 
 
 export type MutationAddSubclassArgs = {
-  character?: Maybe<CharacterAddSubclassInputType>;
+  character?: Maybe<CharacterAddSubclassInput>;
 };
+
+
+export type MutationAddSkillArgs = {
+  character?: Maybe<CharacterEditSkillInput>;
+};
+
+
+export type MutationRemoveSkillArgs = {
+  character?: Maybe<CharacterEditSkillInput>;
+};
+
+export type AddSkillMutationVariables = Exact<{
+  id: Scalars['ID'];
+  skillId: Scalars['ID'];
+}>;
+
+
+export type AddSkillMutation = (
+  { __typename?: 'Mutation' }
+  & { addSkill: (
+    { __typename?: 'Character' }
+    & Pick<Character, 'id'>
+    & { skills: Array<(
+      { __typename?: 'Skill' }
+      & Pick<Skill, 'id' | 'name' | 'ability'>
+    )> }
+  ) }
+);
 
 export type AddSubclassMutationVariables = Exact<{
   id: Scalars['ID'];
@@ -563,20 +594,20 @@ export type PrepareSpellMutation = (
   ) }
 );
 
-export type SkillMutationVariables = Exact<{
+export type RemoveSkillMutationVariables = Exact<{
   id: Scalars['ID'];
   skillId: Scalars['ID'];
 }>;
 
 
-export type SkillMutation = (
+export type RemoveSkillMutation = (
   { __typename?: 'Mutation' }
-  & { updateCharacter: (
+  & { removeSkill: (
     { __typename?: 'Character' }
     & Pick<Character, 'id'>
     & { skills: Array<(
       { __typename?: 'Skill' }
-      & Pick<Skill, 'id' | 'name'>
+      & Pick<Skill, 'id' | 'name' | 'ability'>
     )> }
   ) }
 );
@@ -808,6 +839,22 @@ export type SubclassesQuery = (
 );
 
 
+export const AddSkillDocument = gql`
+    mutation AddSkill($id: ID!, $skillId: ID!) {
+  addSkill(character: {id: $id, skillId: $skillId}) {
+    id
+    skills {
+      id
+      name
+      ability
+    }
+  }
+}
+    `;
+
+export function useAddSkillMutation() {
+  return Urql.useMutation<AddSkillMutation, AddSkillMutationVariables>(AddSkillDocument);
+};
 export const AddSubclassDocument = gql`
     mutation AddSubclass($id: ID!, $subclassId: ID!) {
   addSubclass(character: {id: $id, subclassId: $subclassId}) {
@@ -1021,20 +1068,21 @@ export const PrepareSpellDocument = gql`
 export function usePrepareSpellMutation() {
   return Urql.useMutation<PrepareSpellMutation, PrepareSpellMutationVariables>(PrepareSpellDocument);
 };
-export const SkillDocument = gql`
-    mutation Skill($id: ID!, $skillId: ID!) {
-  updateCharacter(character: {id: $id, skillId: $skillId}) {
+export const RemoveSkillDocument = gql`
+    mutation RemoveSkill($id: ID!, $skillId: ID!) {
+  removeSkill(character: {id: $id, skillId: $skillId}) {
     id
     skills {
       id
       name
+      ability
     }
   }
 }
     `;
 
-export function useSkillMutation() {
-  return Urql.useMutation<SkillMutation, SkillMutationVariables>(SkillDocument);
+export function useRemoveSkillMutation() {
+  return Urql.useMutation<RemoveSkillMutation, RemoveSkillMutationVariables>(RemoveSkillDocument);
 };
 export const SpeedDocument = gql`
     mutation Speed($id: ID!, $speed: Int!) {

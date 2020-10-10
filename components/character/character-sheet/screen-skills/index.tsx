@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion'
 
 import {
-  useSkillMutation,
+  useAddSkillMutation,
+  useRemoveSkillMutation,
   Skill,
   Character,
 } from '../../../../generated/graphql'
@@ -54,7 +55,14 @@ type Props = {
 }
 
 const ScreenSkills: React.FC<Props> = ({ character, skills }) => {
-  const [skillMutationResult, toggleSkill] = useSkillMutation()
+  const [
+    { data: addSkillData, fetching: addSkillFetching },
+    addSkill,
+  ] = useAddSkillMutation()
+  const [
+    { data: removeSkillData, fetching: removeSkillFetching },
+    removeSkill,
+  ] = useRemoveSkillMutation()
 
   return (
     <motion.div
@@ -76,9 +84,13 @@ const ScreenSkills: React.FC<Props> = ({ character, skills }) => {
             }
             type="button"
             onClick={() => {
-              toggleSkill({ id: character.id, skillId: skill.id })
+              if (isProficient) {
+                removeSkill({ id: character.id, skillId: skill.id })
+                return
+              }
+              addSkill({ id: character.id, skillId: skill.id })
             }}
-            disabled={skillMutationResult.fetching}
+            disabled={addSkillFetching || removeSkillFetching}
           >
             <div className={styles.infoWrapper}>
               <div

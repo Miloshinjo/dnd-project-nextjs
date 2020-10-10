@@ -22,10 +22,6 @@ export const CharacterUpdateInputType = inputObjectType({
   name: 'CharacterUpdateInput',
   definition(t) {
     t.id('id', { required: true })
-    t.id('klassId')
-    t.id('skillId')
-    t.id('subclassId')
-    t.id('spellId')
     t.string('name')
     t.int('level')
     t.string('race')
@@ -64,9 +60,17 @@ export const CharacterDeleteInputType = inputObjectType({
 })
 
 export const CharacterAddSubclassInputType = inputObjectType({
-  name: 'CharacterAddSubclassInputType',
+  name: 'CharacterAddSubclassInput',
   definition(t) {
     t.id('id', { required: true })
     t.id('subclassId', { required: true })
+  },
+})
+
+export const CharacterEditSkillInputType = inputObjectType({
+  name: 'CharacterEditSkillInput',
+  definition(t) {
+    t.id('id', { required: true })
+    t.id('skillId', { required: true })
   },
 })
