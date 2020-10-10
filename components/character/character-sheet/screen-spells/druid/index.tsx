@@ -1,11 +1,11 @@
-import {
-  useSpellsKlassQuery,
-  Character,
-} from '../../../../../generated/graphql'
+import { useRouter } from 'next/router'
+
+import { Character } from '../../../../../generated/graphql'
 import SpellSlots from '../spell-slots'
 import SpellsKnown from '../spells-known'
 import SpellsPrepared from '../spells-prepared'
 import { abilityScoreM } from '../../../../../utils/character'
+import { seeAllSpellsForKlass } from '../../../../../utils/spells'
 
 import styles from './styles.module.css'
 
@@ -39,14 +39,11 @@ type Props = {
     | 'preparedSpells'
   >
 }
-const Wizard: React.FC<Props> = ({ character }) => {
+const Druid: React.FC<Props> = ({ character }) => {
+  const router = useRouter()
   const spellSlots = character.spellSlots
     ? JSON.parse(character.spellSlots)
     : []
-
-  const [{ data: druidSpells }] = useSpellsKlassQuery({
-    variables: { klassName: 'druid' },
-  })
 
   return (
     <div className={styles.container}>
@@ -57,6 +54,7 @@ const Wizard: React.FC<Props> = ({ character }) => {
         numberOfSpellsPrepared={
           character.level + abilityScoreM(character.wisdom)
         }
+        klassName="Druids"
       />
       <SpellsKnown
         spells={character.spells.filter((spell) => spell.level === 0)}
@@ -70,14 +68,19 @@ const Wizard: React.FC<Props> = ({ character }) => {
         title="Cantrips and Extra Spells"
       />
       <button
+        className="inline-flex ml-2"
         onClick={() => {
-          console.log('all druid spells')
+          seeAllSpellsForKlass({
+            klassName: 'druid',
+            characterId: character.id,
+            router,
+          })
         }}
       >
-        All druid spell
+        <span className="ml-2 underline">All Druid spells</span>
       </button>
     </div>
   )
 }
 
-export { Wizard as default }
+export { Druid as default }

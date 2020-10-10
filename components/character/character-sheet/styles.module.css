@@ -19,7 +19,8 @@
 }
 
 .fetchingContainer {
-  @apply mx-auto flex h-screen items-center justify-center;
+  @apply mx-auto flex items-center justify-center;
+  height: calc(100vh - 4rem);
 }
 
 .screensContainer {

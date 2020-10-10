@@ -1,4 +1,4 @@
-import { Character } from '../../../../../generated/graphql'
+import { Character, Klass } from '../../../../../generated/graphql'
 
 import { useModal } from '../../../../../context/modal'
 
@@ -8,12 +8,14 @@ type Props = {
   characterId: Character['id']
   spells: Character['spells']
   numberOfSpellsPrepared: number
+  klassName: Klass['name']
 }
 
 const SpellsPrepared: React.FC<Props> = ({
   characterId,
   spells,
   numberOfSpellsPrepared,
+  klassName,
 }) => {
   const { openModal } = useModal()
 
@@ -53,7 +55,8 @@ const SpellsPrepared: React.FC<Props> = ({
             })
           ) : (
             <div className="text-sm italic">
-              No prepared spells. Click on a spell to prepare it.
+              No prepared spells. {klassName} need to prepare spells before
+              casting them.
             </div>
           )}
         </div>

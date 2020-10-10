@@ -50,6 +50,7 @@ const Wizard: React.FC<Props> = ({ character }) => {
         numberOfSpellsPrepared={
           character.level + abilityScoreM(character.intelligence)
         }
+        klassName="Wizards"
       />
       <SpellsKnown
         spells={character.spells.filter((spell) => spell.level === 0)}
