@@ -1,44 +1,37 @@
-import {
-  cacheExchange,
-  QueryInput,
-  Cache,
-  Variables,
-  ResolveInfo,
-} from '@urql/exchange-graphcache'
+import { cacheExchange } from '@urql/exchange-graphcache'
 
 import {
   CharacterDocument,
-  CharacterSpellDocument,
   DeleteCharacterMutationVariables,
   SkillsDocument,
   Skill,
   Character,
 } from '../generated/graphql'
 
-function betterUpdateQuery<Result, Query>(
-  cache: Cache,
-  qi: QueryInput,
-  result: any,
-  fn: (r: Result, q: Query) => Query,
-) {
-  return cache.updateQuery(qi, (data) => fn(result, data as any) as any)
-}
+// function betterUpdateQuery<Result, Query>(
+//   cache: Cache,
+//   qi: QueryInput,
+//   result: any,
+//   fn: (r: Result, q: Query) => Query,
+// ) {
+//   return cache.updateQuery(qi, (data) => fn(result, data as any) as any)
+// }
 
-function invalidateAllCharacters(cache: Cache) {
-  const allFields = cache.inspectFields('Query')
-  const fieldInfos = allFields.filter((info) => info.fieldName === 'characters')
-  fieldInfos.forEach((fi) => {
-    cache.invalidate('Query', 'characters', fi.arguments || {})
-  })
-}
+// function invalidateAllCharacters(cache: Cache) {
+//   const allFields = cache.inspectFields('Query')
+//   const fieldInfos = allFields.filter((info) => info.fieldName === 'characters')
+//   fieldInfos.forEach((fi) => {
+//     cache.invalidate('Query', 'characters', fi.arguments || {})
+//   })
+// }
 
 const cache = cacheExchange({
   updates: {
     Mutation: {
-      createCharacter: (result, args, cache, info) => {
+      createCharacter: (_result, _args, cache, _info) => {
         cache.invalidate('Query', 'characters')
       },
-      deleteCharacter: (result, args, cache, info) => {
+      deleteCharacter: (_result, args, cache, _info) => {
         cache.invalidate({
           __typename: 'Character',
           id: (args.character as DeleteCharacterMutationVariables).id,
@@ -47,7 +40,7 @@ const cache = cacheExchange({
     },
   },
   optimistic: {
-    updateCharacter: (variables, cache, info) => {
+    updateCharacter: (variables, _cache, _info) => {
       const { id, ...restCharacter } = variables.character as any
 
       return {
@@ -56,7 +49,7 @@ const cache = cacheExchange({
         ...restCharacter,
       }
     },
-    addSkill: (variables, cache, info) => {
+    addSkill: (variables, cache, _info) => {
       const { id, skillId } = variables.character as any
 
       const characterQuery = cache.readQuery({
@@ -84,7 +77,7 @@ const cache = cacheExchange({
         skills,
       }
     },
-    removeSkill: (variables, cache, info) => {
+    removeSkill: (variables, cache, _info) => {
       const { id, skillId } = variables.character as any
 
       const characterQuery = cache.readQuery({
