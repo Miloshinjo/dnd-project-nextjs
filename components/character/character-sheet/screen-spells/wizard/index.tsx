@@ -48,7 +48,7 @@ const Wizard: React.FC<Props> = ({ character }) => {
         spells={character.preparedSpells}
         characterId={character.id}
         title="Prepared Spells"
-        counter={character.level + abilityScoreM(character.wisdom)}
+        counter={character.level + abilityScoreM(character.intelligence)}
       />
       <SpellsKnown
         spells={character.spells.filter((spell) => spell.level === 0)}

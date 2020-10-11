@@ -50,7 +50,7 @@ const Paladin: React.FC<Props> = ({ character }) => {
         spells={character.preparedSpells}
         characterId={character.id}
         title="Prepared Spells"
-        counter={character.level + abilityScoreM(character.wisdom)}
+        counter={character.level + abilityScoreM(character.charisma)}
       />
       <SeeAllSpellsForKlassButton
         klassName="paladin"
