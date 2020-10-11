@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react'
 
-import { IoMdClose } from 'react-icons/io'
 import { FaPlus, FaMinus } from 'react-icons/fa'
+import { RiEditLine } from 'react-icons/ri'
 import useDebounce from '../../../../../hooks/useDebounce'
 import {
   useSpellSlotsMutation,
   Character,
 } from '../../../../../generated/graphql'
+import SlotButton from './slot-button'
 
 import styles from './styles.module.css'
 
@@ -19,7 +20,7 @@ const SpellSlots: React.FC<Props> = ({ characterId, spellSlots }) => {
   const [slots, setSlots] = useState(spellSlots)
   const [editSlots, setEditSlots] = useState<boolean>(false)
 
-  const debouncedSlots = useDebounce(slots, 500)
+  const debouncedSlots = useDebounce(slots, 200)
 
   const [, setSpellSlots] = useSpellSlotsMutation()
 
@@ -43,13 +44,13 @@ const SpellSlots: React.FC<Props> = ({ characterId, spellSlots }) => {
 
   const toggleSlot = (
     targetSlotLevelIndex: number,
-    targeSlotIndex: number,
+    targetSlotIndex: number,
   ): void => {
     const newSlots = slots.map((levelSlot, slotLevelsIndex) => {
       if (slotLevelsIndex !== targetSlotLevelIndex) return levelSlot
 
       return levelSlot.map((slot, index) => {
-        if (index !== targeSlotIndex) return slot
+        if (index !== targetSlotIndex) return slot
         return !slot
       })
     })
@@ -96,7 +97,7 @@ const SpellSlots: React.FC<Props> = ({ characterId, spellSlots }) => {
   return (
     <div className={styles.container}>
       <div className="p-2">
-        <div className="flex items-center px-4 justify-between mb-6">
+        <div className="flex items-center pl-4 justify-between mb-6">
           <h4 className="text-center">Spell Slots</h4>
           <button
             className={
@@ -104,7 +105,7 @@ const SpellSlots: React.FC<Props> = ({ characterId, spellSlots }) => {
             }
             onClick={() => setEditSlots(!editSlots)}
           >
-            Edit Slots
+            <RiEditLine size={18} />
           </button>
         </div>
         <div className="px-2">
@@ -121,27 +122,32 @@ const SpellSlots: React.FC<Props> = ({ characterId, spellSlots }) => {
                     </button>
                   )}
 
-                  <div className={styles.slotLevelText}>
+                  <div
+                    className={`${styles.slotLevelText} ${
+                      editSlots ? 'opacity-25' : null
+                    }`}
+                  >
                     {slotLevelsIndex + 1}
                   </div>
-                  <div className="grid grid-cols-6 ml-2 gap-1">
+                  <div
+                    className={`grid grid-cols-6 ml-2 gap-1 ${
+                      editSlots ? 'opacity-25' : null
+                    }`}
+                  >
                     {levelSlot.map((slot, index) => {
                       return (
-                        <button
-                          key={Math.random()}
-                          className={styles.spellSlotButton}
+                        <SlotButton
+                          key={index}
+                          isChecked={slot}
                           onClick={() => toggleSlot(slotLevelsIndex, index)}
-                        >
-                          {slot ? (
-                            <IoMdClose size={23} color="#1a202c" />
-                          ) : null}
-                        </button>
+                          editSlots={editSlots}
+                        />
                       )
                     })}
                   </div>
                   {editSlots && (
                     <button
-                      className="ml-auto text-gray-400"
+                      className="ml-auto text-primary-900"
                       onClick={() => addSlot(slotLevelsIndex)}
                     >
                       <FaPlus />
@@ -151,17 +157,17 @@ const SpellSlots: React.FC<Props> = ({ characterId, spellSlots }) => {
               )
             })
           ) : (
-            <div className="text-gray-600">----</div>
+            <div className="text-gray-600 italic ml-2">No slots assigned.</div>
           )}
         </div>
         {editSlots && (
-          <div className="mt-4 flex flex-col items-center">
+          <div className="mt-4 flex font-sm flex-col items-center">
             Add/Remove spell levels
-            <div className="flex mt-4">
-              <button className="mr-4 text-gray-400" onClick={removeLevel}>
+            <div className="flex mt-2">
+              <button className="mr-4 text-primary-900" onClick={removeLevel}>
                 <FaMinus size={35} />
               </button>
-              <button className="text-gray-400" onClick={addLevel}>
+              <button className="text-primary-900" onClick={addLevel}>
                 <FaPlus size={35} />
               </button>
             </div>

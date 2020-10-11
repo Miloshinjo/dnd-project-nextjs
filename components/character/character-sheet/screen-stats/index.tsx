@@ -89,9 +89,7 @@ const CharacterScreenStats: React.FC<Props> = ({ character }) => {
 
       <div className="mt-6 md:flex md:justify-between">
         <div className="mb-4 md:w-1/2 md:mr-16">
-          <h2 className="opacity-50 mb-1 font-semibold text-sm">
-            Attack (Hit)
-          </h2>
+          <h2 className="opacity-50 mb-1 font-semibold text-sm">Attack</h2>
           <StatField
             label="Strength"
             value={hitBonus(

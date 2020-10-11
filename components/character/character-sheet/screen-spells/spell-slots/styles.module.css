@@ -1,13 +1,13 @@
 .container {
-  @apply;
+  @apply bg-white m-2 shadow;
 }
 
 .slotsEditButton {
-  @apply flex items-center text-xs border-b;
+  @apply flex items-center text-xs p-2 text-primary-900;
 }
 
 .slotsEditButtonActive {
-  @apply flex items-center text-xs border-b;
+  @apply flex items-center text-xs p-2 text-primary-900;
 }
 
 .slotLevelContainer {
@@ -15,14 +15,10 @@
 }
 
 .removeSlotButton {
-  @apply mr-4 text-gray-400;
+  @apply mr-4 text-primary-900;
 }
 
 .slotLevelText {
   @apply text-2xl font-semibold text-right mr-2;
   width: 5%;
-}
-
-.spellSlotButton {
-  @apply border w-8 h-8 flex items-center justify-center rounded bg-white shadow-inner;
 }
