@@ -104,7 +104,7 @@ const CharacterControls: React.FC<Props> = ({
           {subclassName} {klassName}
         </span>
       </div>
-      <h2 className="mt-3 font-medium mb-1">{spellName}</h2>
+      <h2 className="mt-3 font-semibold mb-1">{spellName}</h2>
       <div className="flex justify-between items-end">
         <div className="flex flex-col gap-x-4">
           {canPrepare ? (

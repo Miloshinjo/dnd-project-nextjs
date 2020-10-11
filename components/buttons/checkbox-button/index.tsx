@@ -31,7 +31,7 @@ const CheckboxButton: React.FC<Props> = ({
           variants={innerCircleVariants}
           animate={isChecked ? 'checked' : 'unchecked'}
           initial={'unchecked'}
-          className="bg-primary-600 w-2 h-2 rounded-full"
+          className="bg-gray-800 w-2 h-2 rounded-full"
         />
       </motion.div>
       <div className="ml-1">{text}</div>

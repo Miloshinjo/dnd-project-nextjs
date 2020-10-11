@@ -53,8 +53,10 @@ const CharacterSheet: React.FC<Props> = ({ id }) => {
     [id],
   )
 
-  if (characterResult.error || skillsResult.error)
+  if (characterResult.error || skillsResult.error) {
+    console.log(characterResult.error)
     return <div>{'An error occurred loading your character'}</div>
+  }
 
   if (characterResult.fetching || skillsResult.fetching) {
     return (
