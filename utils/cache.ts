@@ -1,10 +1,13 @@
 import { cacheExchange } from '@urql/exchange-graphcache'
+import gql from 'graphql-tag'
 
 import {
   CharacterDocument,
   DeleteCharacterMutationVariables,
   SkillsDocument,
+  SpellDocument,
   Skill,
+  Spell,
   Character,
 } from '../generated/graphql'
 
@@ -95,6 +98,140 @@ const cache = cacheExchange({
         __typename: 'Character',
         id,
         skills,
+      }
+    },
+    prepareSpell: (variables, cache, _info) => {
+      const { id, spellId } = variables.character as any
+
+      const characterQuery = cache.readQuery({
+        query: CharacterDocument,
+        variables: {
+          id,
+        },
+      })
+
+      const spellQuery = cache.readQuery({
+        query: SpellDocument,
+        variables: {
+          id: spellId,
+        },
+      })
+
+      const spell = {
+        __typename: 'Spell',
+        id: (spellQuery.spell as Spell).id,
+        name: (spellQuery.spell as Spell).name,
+        level: (spellQuery.spell as Spell).level,
+        castingTime: (spellQuery.spell as Spell).castingTime,
+        school: (spellQuery.spell as Spell).school,
+        range: (spellQuery.spell as Spell).range,
+        components: (spellQuery.spell as Spell).components,
+      }
+
+      const preparedSpells: Array<Pick<
+        Spell,
+        | 'id'
+        | 'name'
+        | 'level'
+        | 'castingTime'
+        | 'school'
+        | 'range'
+        | 'components'
+      >> = (characterQuery.character as Character).preparedSpells
+
+      preparedSpells.push(spell)
+
+      return {
+        __typename: 'Character',
+        id,
+        preparedSpells,
+      }
+    },
+    unprepareSpell: (variables, cache, _info) => {
+      const { id, spellId } = variables.character as any
+
+      const characterQuery = cache.readQuery({
+        query: CharacterDocument,
+        variables: {
+          id,
+        },
+      })
+
+      const preparedSpells = (characterQuery.character as Character).preparedSpells.filter(
+        (spell) => spell.id !== spellId,
+      )
+
+      return {
+        __typename: 'Character',
+        id,
+        preparedSpells,
+      }
+    },
+    learnSpell: (variables, cache, _info) => {
+      const { id, spellId } = variables.character as any
+
+      const characterQuery = cache.readQuery({
+        query: CharacterDocument,
+        variables: {
+          id,
+        },
+      })
+
+      const spellQuery = cache.readQuery({
+        query: SpellDocument,
+        variables: {
+          id: spellId,
+        },
+      })
+
+      const spell = {
+        __typename: 'Spell',
+        id: (spellQuery.spell as Spell).id,
+        name: (spellQuery.spell as Spell).name,
+        level: (spellQuery.spell as Spell).level,
+        castingTime: (spellQuery.spell as Spell).castingTime,
+        school: (spellQuery.spell as Spell).school,
+        range: (spellQuery.spell as Spell).range,
+        components: (spellQuery.spell as Spell).components,
+      }
+
+      const spells: Array<Pick<
+        Spell,
+        | 'id'
+        | 'name'
+        | 'level'
+        | 'castingTime'
+        | 'school'
+        | 'range'
+        | 'components'
+      >> = (characterQuery.character as Character).spells
+
+      spells.push(spell)
+
+      return {
+        __typename: 'Character',
+        id,
+        spells,
+      }
+    },
+    forgetSpell: (variables, cache, _info) => {
+      const { id, spellId } = variables.character as any
+
+      const characterQuery = cache.readQuery({
+        query: CharacterDocument,
+        variables: {
+          id,
+        },
+      })
+
+      const spells = (characterQuery.character as Character).spells.filter(
+        (spell) => spell.id !== spellId,
+      )
+
+      return {
+        __typename: 'Character',
+        id,
+        spells,
       }
     },
   },

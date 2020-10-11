@@ -1,5 +1,5 @@
 .button {
-  @apply font-bold flex items-center relative;
+  @apply font-medium flex items-center relative px-2;
 }
 
 .buttonActive {

@@ -1,7 +1,0 @@
-.container {
-  @apply;
-}
-
-.prepareSpellsButton {
-  @apply flex items-center text-xs border-b;
-}

@@ -1,7 +1,6 @@
 mutation LearnSpell($id: ID!, $spellId: ID!) {
   learnSpell(character: { id: $id, spellId: $spellId }) {
     id
-    name
     spells {
       id
       name

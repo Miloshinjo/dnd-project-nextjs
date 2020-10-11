@@ -1,7 +1,6 @@
 mutation PrepareSpell($id: ID!, $spellId: ID!) {
   prepareSpell(character: { id: $id, spellId: $spellId }) {
     id
-    name
     preparedSpells {
       id
       name

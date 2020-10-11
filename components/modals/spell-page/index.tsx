@@ -2,18 +2,15 @@ import { useMemo } from 'react'
 import { motion } from 'framer-motion'
 import {
   Spell,
-  Klass,
   Character,
   useSpellQuery,
   useCharacterSpellQuery,
 } from '../../../generated/graphql'
 
-import Loader from '../../layout/loader'
 import SpellDescription from '../../spell/description'
 import SpellInfo from '../../spell/info'
 import SpellConcentrationRitual from '../../spell/concentration-ritual'
 import SpellMaterial from '../../spell/material'
-import SpellPageSkeleton from '../../skeletons/spell-page'
 import SpellKlasses from '../../spell/klasses'
 import CharacterControls from '../../spell/character-controls'
 
@@ -136,8 +133,8 @@ const SpellPageModal: React.FC<Props> = ({
   const { character } = characterData
 
   return (
-    <div className={styles.container}>
-      <div className="flex flex-col p-4 items-start">
+    <>
+      <div className="flex flex-col items-start p-4">
         <h2 className={styles.spellName}>{spell.name}</h2>
         <h3 className={styles.spellSchool}>{spell.school}</h3>
         <SpellConcentrationRitual
@@ -155,12 +152,12 @@ const SpellPageModal: React.FC<Props> = ({
         <SpellDescription description={spell.description} />
         <SpellMaterial material={spell.material} />
         <SpellKlasses klasses={spell.klasses} />
-
         <CharacterControls
           klassName={character?.klass?.name}
           subclassName={character?.subclass?.name}
           characterId={character?.id}
           spellId={spell.id}
+          spellName={spell.name}
           spellLevel={spell.level}
           characterName={character?.name}
           isKnownSpell={isKnownSpell}
@@ -168,7 +165,7 @@ const SpellPageModal: React.FC<Props> = ({
           cannotLearn={cannotLearn}
         />
       </div>
-    </div>
+    </>
   )
 }
 

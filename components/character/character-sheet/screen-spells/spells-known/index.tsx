@@ -23,6 +23,7 @@ type Props = {
   canPrepareOverride?: boolean
   canLearnOverride?: boolean
   cannotLearn?: boolean
+  counter?: number
 }
 
 const SpellsKnown: React.FC<Props> = ({
@@ -32,6 +33,7 @@ const SpellsKnown: React.FC<Props> = ({
   learnControls = true,
   showSectionTitle = true,
   cannotLearn = false,
+  counter = null,
 }) => {
   const { openModal } = useModal()
 
@@ -44,7 +46,14 @@ const SpellsKnown: React.FC<Props> = ({
     <div className={styles.container}>
       <div className="p-2">
         <div className="flex items-center px-4 justify-between">
-          <h4 className="text-center">{title}</h4>
+          <h4 className="text-center">
+            {title}{' '}
+            {counter && (
+              <span className="text-xs opacity-75">
+                ({spells.length} of {counter})
+              </span>
+            )}
+          </h4>
           {learnControls && (
             <div className="flex items-end flex-col">
               <Link href={`/spells?character=${characterId}`}>
@@ -60,7 +69,9 @@ const SpellsKnown: React.FC<Props> = ({
             return (
               <div key={level} className="mt-4">
                 {showSectionTitle && (
-                  <h4 className="text-sm font-semibold text-primary-600 border-b border-primary-900 pb-1 mb-4 w-1/3">
+                  <h4
+                    className={`text-sm font-semibold text-primary-900 border-b border-primary-900 pb-1 mb-4 w-1/3`}
+                  >
                     {level === '0' ? 'Cantrips' : `Level ${level}`}
                   </h4>
                 )}

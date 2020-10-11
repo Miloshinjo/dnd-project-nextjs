@@ -494,7 +494,7 @@ export type ForgetSpellMutation = (
   { __typename?: 'Mutation' }
   & { forgetSpell: (
     { __typename?: 'Character' }
-    & Pick<Character, 'id' | 'name'>
+    & Pick<Character, 'id'>
     & { spells: Array<(
       { __typename?: 'Spell' }
       & Pick<Spell, 'id' | 'name'>
@@ -540,7 +540,7 @@ export type LearnSpellMutation = (
   { __typename?: 'Mutation' }
   & { learnSpell: (
     { __typename?: 'Character' }
-    & Pick<Character, 'id' | 'name'>
+    & Pick<Character, 'id'>
     & { spells: Array<(
       { __typename?: 'Spell' }
       & Pick<Spell, 'id' | 'name'>
@@ -586,7 +586,7 @@ export type PrepareSpellMutation = (
   { __typename?: 'Mutation' }
   & { prepareSpell: (
     { __typename?: 'Character' }
-    & Pick<Character, 'id' | 'name'>
+    & Pick<Character, 'id'>
     & { preparedSpells: Array<(
       { __typename?: 'Spell' }
       & Pick<Spell, 'id' | 'name'>
@@ -664,7 +664,7 @@ export type UnprepareSpellMutation = (
   { __typename?: 'Mutation' }
   & { unprepareSpell: (
     { __typename?: 'Character' }
-    & Pick<Character, 'id' | 'name'>
+    & Pick<Character, 'id'>
     & { preparedSpells: Array<(
       { __typename?: 'Spell' }
       & Pick<Spell, 'id' | 'name'>
@@ -710,7 +710,7 @@ export type CharacterQuery = (
       & Pick<Spell, 'id' | 'name' | 'level' | 'castingTime' | 'school' | 'range' | 'components'>
     )>, preparedSpells: Array<(
       { __typename?: 'Spell' }
-      & Pick<Spell, 'id' | 'name' | 'level' | 'concentration' | 'ritual'>
+      & Pick<Spell, 'id' | 'name' | 'level' | 'castingTime' | 'school' | 'range' | 'components'>
     )> }
   ) }
 );
@@ -976,7 +976,6 @@ export const ForgetSpellDocument = gql`
     mutation ForgetSpell($id: ID!, $spellId: ID!) {
   forgetSpell(character: {id: $id, spellId: $spellId}) {
     id
-    name
     spells {
       id
       name
@@ -1016,7 +1015,6 @@ export const LearnSpellDocument = gql`
     mutation LearnSpell($id: ID!, $spellId: ID!) {
   learnSpell(character: {id: $id, spellId: $spellId}) {
     id
-    name
     spells {
       id
       name
@@ -1056,7 +1054,6 @@ export const PrepareSpellDocument = gql`
     mutation PrepareSpell($id: ID!, $spellId: ID!) {
   prepareSpell(character: {id: $id, spellId: $spellId}) {
     id
-    name
     preparedSpells {
       id
       name
@@ -1124,7 +1121,6 @@ export const UnprepareSpellDocument = gql`
     mutation UnprepareSpell($id: ID!, $spellId: ID!) {
   unprepareSpell(character: {id: $id, spellId: $spellId}) {
     id
-    name
     preparedSpells {
       id
       name
@@ -1198,8 +1194,10 @@ export const CharacterDocument = gql`
       id
       name
       level
-      concentration
-      ritual
+      castingTime
+      school
+      range
+      components
     }
     arcaneWard
     arcaneWardMax

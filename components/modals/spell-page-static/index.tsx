@@ -1,12 +1,8 @@
 import {
   Spell,
   useCharacterSpellQuery,
-  useLearnSpellMutation,
-  useForgetSpellMutation,
-  usePrepareSpellMutation,
-  useUnprepareSpellMutation,
+  useSpellQuery,
 } from '../../../generated/graphql'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useMemo } from 'react'
 
@@ -16,8 +12,6 @@ import SpellInfo from '../../spell/info'
 import SpellConcentrationRitual from '../../spell/concentration-ritual'
 import SpellMaterial from '../../spell/material'
 import SpellKlasses from '../../spell/klasses'
-import SpinnerButton from '../../buttons/spinner-button'
-import icons from './icons'
 
 import styles from './styles.module.css'
 
@@ -65,6 +59,13 @@ const SpellPageModal: React.FC<Props> = ({
     pause: !query.character,
   })
 
+  const [
+    { data: spellData, fetching: spellFetching, error: spellError },
+  ] = useSpellQuery({
+    variables: { id },
+    pause: !query.character,
+  })
+
   const isKnownSpell = useMemo(() => {
     if (characterData) {
       const knownSpellIds = characterData.character.spells.map(
@@ -100,8 +101,8 @@ const SpellPageModal: React.FC<Props> = ({
   const character = characterData?.character
 
   return (
-    <div className={styles.container}>
-      <div className="flex flex-col p-4 items-start">
+    <>
+      <div className="flex flex-col items-start p-4 h-full">
         <h2 className={styles.spellName}>{name}</h2>
         <h3 className={styles.spellSchool}>{school}</h3>
         <SpellConcentrationRitual
@@ -119,6 +120,7 @@ const SpellPageModal: React.FC<Props> = ({
         <SpellDescription description={description} />
         <SpellMaterial material={material} />
         <SpellKlasses klasses={klasses} />
+
         {character && (
           <CharacterControls
             klassName={character?.klass?.name}
@@ -128,12 +130,14 @@ const SpellPageModal: React.FC<Props> = ({
             characterName={character?.name}
             isKnownSpell={isKnownSpell}
             spellLevel={level}
+            spellName={name}
             isPreparedSpell={isPreparedSpell}
             isStaticPage
+            spellFetching={spellFetching}
           />
         )}
       </div>
-    </div>
+    </>
   )
 }
 

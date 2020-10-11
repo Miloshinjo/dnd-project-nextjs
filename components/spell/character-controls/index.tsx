@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import Link from 'next/link'
 
 import { useModal } from '../../../context/modal'
-import SpinnerButton from '../../buttons/spinner-button'
+import CheckboxButton from '../../buttons/checkbox-button'
 import {
   Klass,
   Character,
@@ -21,6 +21,7 @@ type Props = {
   klassName: Klass['name']
   characterId: Character['id']
   spellId: Spell['id']
+  spellName: Spell['name']
   characterName: Character['name']
   subclassName: SubClass['name'] | null
   isKnownSpell: boolean
@@ -28,6 +29,7 @@ type Props = {
   isStaticPage?: boolean
   spellLevel: Spell['level']
   cannotLearn?: boolean
+  spellFetching?: boolean
 }
 
 const CharacterControls: React.FC<Props> = ({
@@ -37,16 +39,33 @@ const CharacterControls: React.FC<Props> = ({
   subclassName,
   spellId,
   spellLevel,
+  spellName,
   isKnownSpell,
   isPreparedSpell,
   isStaticPage = false,
   cannotLearn = false,
+  spellFetching = false,
 }) => {
   const { closeModal } = useModal()
-  const [learnSpellResult, learnSpell] = useLearnSpellMutation()
-  const [prepareSpellResult, prepareSpell] = usePrepareSpellMutation()
-  const [unprepareSpellResult, unprepareSpell] = useUnprepareSpellMutation()
-  const [forgetSpellResult, forgetSpell] = useForgetSpellMutation()
+  const [, learnSpell] = useLearnSpellMutation()
+  const [, prepareSpell] = usePrepareSpellMutation()
+  const [, unprepareSpell] = useUnprepareSpellMutation()
+  const [, forgetSpell] = useForgetSpellMutation()
+
+  const learnSpellText = useMemo(() => {
+    if (spellLevel === 0) {
+      return isKnownSpell ? 'Cantrip known' : 'Learn Cantrip'
+    } else {
+      switch (klassName) {
+        case 'Cleric':
+          return isKnownSpell ? 'Domain Spell' : 'Domain Spell'
+        case 'Wizard':
+          return isKnownSpell ? 'In spellbook' : 'Add to spellbook'
+        default:
+          return isKnownSpell ? 'Spell known' : 'Learn spell'
+      }
+    }
+  }, [isKnownSpell])
 
   const canPrepare = useMemo(() => {
     switch (klassName) {
@@ -65,18 +84,35 @@ const CharacterControls: React.FC<Props> = ({
     <div className={styles.container}>
       <div className={styles.iconContainer}>{icons[klassName]}</div>
 
-      <div className="flex flex-col mb-6">
-        <span className="font-semibold">{characterName}</span>
+      <div className="flex flex-col">
+        {isStaticPage ? (
+          <Link href={`/app/${characterId}`}>
+            <a className="font-semibold text-left">{characterName}</a>
+          </Link>
+        ) : (
+          <button
+            type="button"
+            onClick={() => {
+              closeModal()
+            }}
+            className="font-semibold text-left"
+          >
+            {characterName}
+          </button>
+        )}
         <span className="opacity-50 text-sm">
           {subclassName} {klassName}
         </span>
       </div>
-      <div className="flex justify-between">
-        <div className="">
+      <h2 className="mt-3 font-medium mb-1">{spellName}</h2>
+      <div className="flex justify-between items-end">
+        <div className="flex flex-col gap-x-4">
           {canPrepare ? (
-            isPreparedSpell ? (
-              <SpinnerButton
-                onClick={async () => {
+            <CheckboxButton
+              disabled={spellFetching}
+              isChecked={isPreparedSpell}
+              onClick={async () => {
+                if (isPreparedSpell) {
                   const result = await unprepareSpell({
                     id: characterId,
                     spellId: spellId,
@@ -86,14 +122,7 @@ const CharacterControls: React.FC<Props> = ({
                     console.log('An error occured')
                     return
                   }
-                }}
-                fetching={unprepareSpellResult.fetching}
-                text="Unprepare"
-                textFetching="Unpreparing"
-              />
-            ) : (
-              <SpinnerButton
-                onClick={async () => {
+                } else {
                   const result = await prepareSpell({
                     id: characterId,
                     spellId: spellId,
@@ -103,74 +132,44 @@ const CharacterControls: React.FC<Props> = ({
                     console.log('An error occured')
                     return
                   }
-                }}
-                fetching={prepareSpellResult.fetching}
-                text="Prepare"
-                textFetching="Preparing"
-              />
-            )
-          ) : null}
-          {cannotLearn ? null : isKnownSpell ? (
-            <SpinnerButton
-              onClick={async () => {
-                const result = await forgetSpell({
-                  id: characterId,
-                  spellId: spellId,
-                })
-
-                if (result.error) {
-                  console.log('An error occured')
-                  return
                 }
               }}
-              fetching={forgetSpellResult.fetching}
-              text="Unlearn"
-              textFetching="Unlearning"
+              text={isPreparedSpell ? 'Prepared' : 'Prepare'}
             />
-          ) : (
-            <SpinnerButton
+          ) : null}
+          {cannotLearn ? null : (
+            <CheckboxButton
+              disabled={spellFetching}
+              isChecked={isKnownSpell}
               onClick={async () => {
-                const result = await learnSpell({
-                  id: characterId,
-                  spellId: spellId,
-                })
+                if (isKnownSpell) {
+                  const result = await forgetSpell({
+                    id: characterId,
+                    spellId: spellId,
+                  })
 
-                if (result.error) {
-                  console.log('An error occured')
-                  return
+                  if (result.error) {
+                    console.log('An error occured')
+                    return
+                  }
+                } else {
+                  const result = await learnSpell({
+                    id: characterId,
+                    spellId: spellId,
+                  })
+
+                  if (result.error) {
+                    console.log('An error occured')
+                    return
+                  }
                 }
               }}
-              fetching={learnSpellResult.fetching}
-              text="Learn"
-              textFetching="Learning"
+              text={learnSpellText}
             />
           )}
         </div>
-        <div className="flex items-end flex-col text-sm">
-          {isStaticPage ? (
-            <div className="flex flex-col items-end">
-              <Link href={`/app/${characterId}`}>
-                <a>Back to character</a>
-              </Link>
-              <button
-                type="button"
-                onClick={() => {
-                  closeModal()
-                }}
-              >
-                Back
-              </button>
-            </div>
-          ) : (
-            <button
-              type="button"
-              onClick={() => {
-                closeModal()
-              }}
-            >
-              Back to character
-            </button>
-          )}
+        <div>
+          <button onClick={() => closeModal()}>Back</button>
         </div>
       </div>
     </div>

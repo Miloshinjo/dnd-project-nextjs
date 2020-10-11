@@ -1,11 +1,8 @@
-import { useRouter } from 'next/router'
-
 import { Character } from '../../../../../generated/graphql'
 import SpellSlots from '../spell-slots'
 import SpellsKnown from '../spells-known'
-import SpellsPrepared from '../spells-prepared'
 import { abilityScoreM } from '../../../../../utils/character'
-import { seeAllSpellsForKlass } from '../../../../../utils/spells'
+import SeeAllSpellsForKlassButton from '../../common/see-all-spells-for-class-button'
 
 import styles from './styles.module.css'
 
@@ -40,7 +37,6 @@ type Props = {
   >
 }
 const Druid: React.FC<Props> = ({ character }) => {
-  const router = useRouter()
   const spellSlots = character.spellSlots
     ? JSON.parse(character.spellSlots)
     : []
@@ -48,13 +44,11 @@ const Druid: React.FC<Props> = ({ character }) => {
   return (
     <div className={styles.container}>
       <SpellSlots spellSlots={spellSlots} characterId={character.id} />
-      <SpellsPrepared
-        characterId={character.id}
+      <SpellsKnown
         spells={character.preparedSpells}
-        numberOfSpellsPrepared={
-          character.level + abilityScoreM(character.wisdom)
-        }
-        klassName="Druids"
+        characterId={character.id}
+        title="Prepared Spells"
+        counter={character.level + abilityScoreM(character.wisdom)}
       />
       <SpellsKnown
         spells={character.spells.filter((spell) => spell.level === 0)}
@@ -67,18 +61,10 @@ const Druid: React.FC<Props> = ({ character }) => {
         characterId={character.id}
         title="Cantrips and Extra Spells"
       />
-      <button
-        className="inline-flex ml-2"
-        onClick={() => {
-          seeAllSpellsForKlass({
-            klassName: 'druid',
-            characterId: character.id,
-            router,
-          })
-        }}
-      >
-        <span className="ml-2 underline">All Druid spells</span>
-      </button>
+      <SeeAllSpellsForKlassButton
+        klassName="druid"
+        characterId={character.id}
+      />
     </div>
   )
 }
