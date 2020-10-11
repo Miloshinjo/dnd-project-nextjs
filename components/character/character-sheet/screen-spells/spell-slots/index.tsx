@@ -97,9 +97,7 @@ const SpellSlots: React.FC<Props> = ({ characterId, spellSlots }) => {
     <div className={styles.container}>
       <div className="p-2">
         <div className="flex items-center px-4 justify-between mb-6">
-          <h4 className="text-center text-sm font-medium text-gray-600">
-            Spell Slots
-          </h4>
+          <h4 className="text-center">Spell Slots</h4>
           <button
             className={
               editSlots ? styles.slotsEditButtonActive : styles.slotsEditButton
@@ -109,7 +107,7 @@ const SpellSlots: React.FC<Props> = ({ characterId, spellSlots }) => {
             Edit Slots
           </button>
         </div>
-        <div className="px-4">
+        <div className="px-2">
           {slots.length ? (
             slots.map((levelSlot, slotLevelsIndex) => {
               return (
@@ -126,7 +124,7 @@ const SpellSlots: React.FC<Props> = ({ characterId, spellSlots }) => {
                   <div className={styles.slotLevelText}>
                     {slotLevelsIndex + 1}
                   </div>
-                  <div className="flex flex-wrap mx-2">
+                  <div className="grid grid-cols-6 ml-2 gap-1">
                     {levelSlot.map((slot, index) => {
                       return (
                         <button
@@ -157,7 +155,7 @@ const SpellSlots: React.FC<Props> = ({ characterId, spellSlots }) => {
           )}
         </div>
         {editSlots && (
-          <div className="mt-10 flex flex-col items-center">
+          <div className="mt-4 flex flex-col items-center">
             Add/Remove spell levels
             <div className="flex mt-4">
               <button className="mr-4 text-gray-400" onClick={removeLevel}>
