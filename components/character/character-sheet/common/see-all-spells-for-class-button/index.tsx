@@ -1,8 +1,17 @@
 import { seeAllSpellsForKlass } from '../../../../../utils/spells'
 
 import { useRouter } from 'next/router'
+import { Character, Klass } from '../../../../../generated/graphql'
 
-const SeeAllSpellsForKlassButton = ({ characterId, klassName }) => {
+type Props = {
+  characterId: Character['id']
+  klassName: Klass['name']
+}
+
+const SeeAllSpellsForKlassButton: React.FC<Props> = ({
+  characterId,
+  klassName,
+}) => {
   const router = useRouter()
   return (
     <button

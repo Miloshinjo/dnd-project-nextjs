@@ -1,5 +1,4 @@
 import { cacheExchange } from '@urql/exchange-graphcache'
-import gql from 'graphql-tag'
 
 import {
   CharacterDocument,

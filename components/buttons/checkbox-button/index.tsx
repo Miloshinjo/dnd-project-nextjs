@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { motion, useMotionValue, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 type Props = {
   isChecked: boolean
@@ -8,7 +8,7 @@ type Props = {
   disabled?: boolean
 }
 
-const Example: React.FC<Props> = ({
+const CheckboxButton: React.FC<Props> = ({
   isChecked,
   onClick,
   text,
@@ -26,16 +26,16 @@ const Example: React.FC<Props> = ({
       className={`flex items-center ${disabled ? 'opacity-50' : ''}`}
       disabled={disabled}
     >
-      <motion.div className="border-2 border-gray-900 w-4 h-4 items-center justify-center flex">
+      <motion.div className="border-2 border-gray-600 w-4 h-4 items-center justify-center flex rounded-full">
         <motion.div
           variants={innerCircleVariants}
           animate={isChecked ? 'checked' : 'unchecked'}
           initial={'unchecked'}
-          className="bg-gray-900 w-2 h-2"
+          className="bg-primary-600 w-2 h-2 rounded-full"
         />
       </motion.div>
       <div className="ml-1">{text}</div>
     </button>
   )
 }
-export { Example as default }
+export { CheckboxButton as default }
