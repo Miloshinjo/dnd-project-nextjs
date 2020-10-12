@@ -2,6 +2,12 @@
   @apply bg-white m-2 shadow;
 }
 
+@screen md {
+  .container {
+    @apply shadow-none;
+  }
+}
+
 .slotsEditButton {
   @apply flex items-center text-xs p-2 text-primary-900;
 }

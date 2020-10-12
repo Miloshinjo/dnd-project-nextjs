@@ -2,6 +2,12 @@
   @apply m-2 bg-white shadow rounded py-2;
 }
 
+@screen md {
+  .container {
+    @apply shadow-none;
+  }
+}
+
 .manageSpellsButton {
   @apply flex items-center opacity-75;
 }
