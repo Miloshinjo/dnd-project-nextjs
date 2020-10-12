@@ -5,6 +5,7 @@ import {
   DeleteCharacterMutationVariables,
   SkillsDocument,
   SpellDocument,
+  SubclassesDocument,
   Skill,
   Spell,
   Character,
