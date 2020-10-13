@@ -3,7 +3,7 @@
 }
 
 .button {
-  @apply py-2 flex items-center justify-between  cursor-pointer;
+  @apply py-2 flex items-center justify-between cursor-pointer;
 }
 
 .spellName {
@@ -11,11 +11,13 @@
 }
 
 .spellSchool {
-  @apply text-sm font-medium opacity-50;
+  @apply text-sm font-medium;
+  color: var(--text-secondary);
 }
 
 .spellLevel {
-  @apply text-sm font-bold opacity-50 text-primary-900;
+  @apply text-sm font-bold opacity-75;
+  color: var(--text-accent);
 }
 
 .bottomPart {

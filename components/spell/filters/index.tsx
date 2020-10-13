@@ -106,7 +106,7 @@ const Filters: React.FC<Props> = ({
         Filters
       </button>
 
-      <div className="flex pb-4 px-4 flex-col bg-gray-100 border-t">
+      <div className={styles.filtersContent}>
         <h3 className="text-xs my-2 font-bold">Level</h3>
         <div className={styles.levelsFiltersContainer}>
           {spellLevels.map((level) => {
@@ -126,7 +126,7 @@ const Filters: React.FC<Props> = ({
           })}
         </div>
       </div>
-      <div className="flex pb-4 px-4 flex-col bg-gray-100">
+      <div className={styles.filtersContent}>
         <h3 className="text-xs mb-2 font-bold">Spell School</h3>
         <div className={styles.schoolsFiltersContainer}>
           {spellSchools.map((school) => {
@@ -146,7 +146,7 @@ const Filters: React.FC<Props> = ({
           })}
         </div>
       </div>
-      <div className="flex pb-4 px-4 flex-col bg-gray-100">
+      <div className={styles.filtersContent}>
         <h3 className="text-xs mb-2 font-bold">Class</h3>
         <div className={styles.klassesFiltersContainer}>
           {spellKlasses.map((klass) => {

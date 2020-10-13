@@ -84,6 +84,6 @@ const FiltersProvider: React.FC = ({ children }) => {
   )
 }
 
-const useFilters = () => useContext(FiltersContext)
+const useFilters = (): FilterContextTypes => useContext(FiltersContext)
 
 export { FiltersProvider as default, useFilters }

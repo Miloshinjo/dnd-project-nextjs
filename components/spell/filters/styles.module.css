@@ -1,9 +1,17 @@
 .container {
-  @apply mt-auto fixed bottom-0 left-0 z-10 text-gray-900 w-full shadow-xl;
+  @apply mt-auto fixed bottom-0 left-0 z-10 w-full shadow-xl;
+}
+
+.filtersContent {
+  @apply flex pb-4 px-4 flex-col border-t;
+  background-color: var(--bg-filters);
+  border-color: var(--border-primary);
 }
 
 .filtersButton {
-  @apply flex justify-center items-center h-8 px-4 bg-gray-100 w-24 text-center border-t  border-r font-semibold;
+  @apply flex justify-center items-center h-8 px-4  w-24 text-center border-t  border-r font-semibold;
+  background-color: var(--bg-filters);
+  border-color: var(--border-primary);
   transform: translateY(1px);
   border-top-right-radius: 130px;
 }
@@ -18,10 +26,14 @@
 
 .levelFilter {
   @apply px-2 border font-medium text-sm opacity-75 rounded;
+  border-color: var(--border-filters);
 }
 
 .levelFilterSelected {
-  @apply px-2 border text-sm font-medium bg-primary-900 text-white rounded;
+  @apply px-2 border text-sm font-bold rounded;
+  background-color: var(--bg-accent);
+  border-color: var(--border-primary);
+  color: var(--text-alt);
 }
 
 .schoolsFiltersContainer {
@@ -30,10 +42,14 @@
 
 .schoolFilter {
   @apply px-2 border font-medium text-sm opacity-75 rounded;
+  border-color: var(--border-filters);
 }
 
 .schoolFilterSelected {
-  @apply px-2 border text-sm font-medium bg-primary-900 text-white rounded;
+  @apply px-2 border text-sm font-bold rounded;
+  background-color: var(--bg-accent);
+  border-color: var(--border-primary);
+  color: var(--text-alt);
 }
 
 .klassesFiltersContainer {
@@ -42,8 +58,12 @@
 
 .klassFilter {
   @apply px-2 border font-medium text-sm opacity-75 rounded;
+  border-color: var(--border-filters);
 }
 
 .klassFilterSelected {
-  @apply px-2 border text-sm font-medium  bg-primary-900 text-white rounded;
+  @apply px-2 border text-sm font-bold  rounded;
+  border-color: var(--border-primary);
+  background-color: var(--bg-accent);
+  color: var(--text-alt);
 }

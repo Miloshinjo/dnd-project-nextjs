@@ -1,5 +1,6 @@
 .container {
-  @apply bg-gray-900 text-white px-4 py-2;
+  @apply px-4 py-2;
+  background-color: var(--bg-header);
 }
 
 .searchContainer {
@@ -7,7 +8,8 @@
 }
 
 .searchInput {
-  @apply p-2 rounded-lg bg-gray-800 text-white;
+  @apply p-2 rounded-lg;
+  background-color: var(--bg-input);
 }
 
 .searchInput:focus {
