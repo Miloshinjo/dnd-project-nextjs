@@ -2,21 +2,29 @@
   /* Your default theme */
   --bg-primary: #f7fafc;
   --bg-secondary: #fff;
+  --bg-accent: #2a4365;
   --text-primary: #1a202c;
-  --text-accent-dark: #2a4365;
+  --text-secondary: rgb(255, 255, 255, 0.5);
+  --text-accent: #2a4365;
   --border-primary: #e2e8f0;
 
   --bg-modal-drawer: #fff;
+  --bg-header: #1a202c;
+  --bg-klass-logo: #1a202c;
 }
 
 [data-theme='dark'] {
   --bg-primary: #121212;
   --bg-secondary: #1f1f1f;
+  --bg-accent: #3182ce;
   --text-primary: rgb(255, 255, 255, 0.87);
-  --text-accent-dark: #3182ce;
+  --text-secondary: rgb(255, 255, 255, 0.6);
+  --text-accent: #3182ce;
   --border-primary: #1a202c;
 
   --bg-modal-drawer: #121212;
+  --bg-header: #1f1f1f;
+  --bg-klass-logo: #121212;
 }
 
 @tailwind base;

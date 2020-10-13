@@ -32,7 +32,7 @@
 
 .sectionHeader {
   @apply px-6 text-xs font-bold mt-4 uppercase mb-2 text-left;
-  color: var(--text-accent-dark);
+  color: var(--text-accent);
 }
 
 .link {

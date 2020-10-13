@@ -3,7 +3,8 @@
 }
 
 .createCharacterButton {
-  @apply border bg-gray-800 text-white mt-4 py-2 flex justify-center w-full rounded cursor-pointer;
+  @apply text-white mt-4 py-2 flex justify-center w-full rounded cursor-pointer;
+  background-color: var(--bg-accent);
 }
 
 @screen md {

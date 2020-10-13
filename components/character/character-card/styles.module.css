@@ -1,5 +1,6 @@
 .container {
-  @apply cursor-pointer flex p-2 items-center bg-white my-2 rounded;
+  @apply cursor-pointer flex p-2 items-center  my-2 rounded;
+  background-color: var(--bg-secondary);
 }
 
 @screen md {
@@ -25,7 +26,8 @@
 }
 
 .klassLogoContainer {
-  @apply w-10 h-10 rounded-full flex p-2 bg-gray-800 shadow-inner;
+  @apply w-10 h-10 rounded-full flex p-2 shadow-inner;
+  background-color: var(--bg-klass-logo);
 }
 
 .infoContainer {

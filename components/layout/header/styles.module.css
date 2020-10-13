@@ -1,5 +1,6 @@
 .header {
-  @apply bg-gray-900 px-4 flex items-center fixed justify-between z-20 w-full py-3;
+  @apply px-4 flex items-center fixed justify-between z-20 w-full py-3;
+  background-color: var(--bg-header);
   height: 4rem;
 }
 
