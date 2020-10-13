@@ -1,3 +1,24 @@
+:root {
+  /* Your default theme */
+  --bg-primary: #f7fafc;
+  --bg-secondary: #fff;
+  --text-primary: #1a202c;
+  --text-accent-dark: #2a4365;
+  --border-primary: #e2e8f0;
+
+  --bg-modal-drawer: #fff;
+}
+
+[data-theme='dark'] {
+  --bg-primary: #121212;
+  --bg-secondary: #1f1f1f;
+  --text-primary: rgb(255, 255, 255, 0.87);
+  --text-accent-dark: #3182ce;
+  --border-primary: #1a202c;
+
+  --bg-modal-drawer: #121212;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind screens;
@@ -34,7 +55,9 @@ html {
 }
 
 body {
-  @apply antialiased text-gray-900 bg-gray-100;
+  @apply antialiased;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
 
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */

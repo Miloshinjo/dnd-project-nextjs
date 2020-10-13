@@ -6,6 +6,7 @@ import {
   fetchExchange,
 } from 'urql'
 import { Provider as SessionProvider } from 'next-auth/client'
+import { ThemeProvider } from 'next-themes'
 
 import cache from '../utils/cache'
 
@@ -22,7 +23,9 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <UrqlProvider value={client}>
       <SessionProvider session={pageProps.session}>
-        <Component {...pageProps} />
+        <ThemeProvider>
+          <Component {...pageProps} />
+        </ThemeProvider>
       </SessionProvider>
     </UrqlProvider>
   )

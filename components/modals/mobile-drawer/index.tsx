@@ -1,10 +1,14 @@
+import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { signOut, useSession } from 'next-auth/client'
+import { useTheme } from 'next-themes'
 
 import styles from './styles.module.css'
 
 const DrawerMenu: React.FC = () => {
+  const { theme, setTheme } = useTheme()
+
   const router = useRouter()
 
   const [session] = useSession()
@@ -13,19 +17,27 @@ const DrawerMenu: React.FC = () => {
   const name = session?.user?.name
   const image = session?.user?.image
 
+  const [src, setSrc] = useState(image)
+
+  const removeSrc = () => {
+    setSrc(null)
+  }
+
   return (
     <div className={styles.drawer}>
       <div className={styles.userProfile}>
-        {image && (
-          <div className={styles.avatarContainer}>
+        <div className={styles.avatarContainer}>
+          {src ? (
             <img
-              src={image}
+              src={src}
+              onError={removeSrc}
               alt="profile image"
               className={styles.avatarImage}
             />
-          </div>
-        )}
-
+          ) : (
+            <div className={styles.emptyAvatar}>{name.substring(0, 2)}</div>
+          )}
+        </div>
         <div className={styles.username}>{name || email}</div>
       </div>
       <nav className="w-full">
@@ -63,6 +75,18 @@ const DrawerMenu: React.FC = () => {
         }}
       >
         Sign out
+      </button>
+
+      <button
+        onClick={() => {
+          if (theme === 'light') {
+            setTheme('dark')
+          } else {
+            setTheme('light')
+          }
+        }}
+      >
+        Set Theme {theme === 'light' ? 'Dark' : 'Light'}
       </button>
     </div>
   )

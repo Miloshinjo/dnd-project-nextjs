@@ -16,9 +16,10 @@
 }
 
 .modal {
-  @apply bg-white text-center rounded shadow-md relative;
+  @apply text-center rounded shadow-md relative;
   max-width: 275px;
   width: 100%;
+  background-color: var(--bg-secondary);
 }
 
 .drawerBackdrop {
@@ -33,7 +34,8 @@
 }
 
 .modalDrawer {
-  @apply bg-white text-center shadow-md relative;
+  @apply text-center shadow-md relative;
+  background-color: var(--bg-secondary);
   height: 100vh;
   width: 80%;
   overflow-y: scroll;
@@ -41,6 +43,7 @@
 
 .drawerCloseContainer {
   @apply flex justify-end pr-2 pt-2;
+  background-color: var(--bg-modal-drawer);
 }
 
 .drawerCloseButton {
@@ -51,7 +54,8 @@
 }
 
 .modalSpellDrawer {
-  @apply bg-white shadow-md relative;
+  @apply shadow-md relative;
+  background-color: var(--bg-secondary);
   height: calc(100vh - 4rem);
   margin-top: auto;
   width: 100%;
