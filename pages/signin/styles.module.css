@@ -3,7 +3,8 @@
 }
 
 .contentContainer {
-  @apply bg-gray-100 p-6 rounded-lg w-full;
+  @apply p-6 rounded-lg w-full;
+  background-color: var(--bg-primary);
 }
 
 .headingPrimary {
@@ -53,7 +54,8 @@
 
 @screen sm {
   .contentContainer {
-    @apply bg-white shadow-lg p-10 rounded-lg w-2/3;
+    @apply shadow-lg p-10 rounded-lg w-2/3;
+    background-color: var(--bg-secondary);
   }
 
   .headingPrimary {

@@ -6,6 +6,7 @@ import {
 import { useRouter } from 'next/router'
 import { useMemo } from 'react'
 
+import TextLoader from '../../layout/text-loader'
 import CharacterControls from '../../spell/character-controls'
 import SpellDescription from '../../spell/description'
 import SpellInfo from '../../spell/info'
@@ -95,14 +96,18 @@ const SpellPageModal: React.FC<Props> = ({
   }, [characterData])
 
   if (fetchingCharacterData) {
-    return <div>Loading..</div>
+    return (
+      <div className={styles.fetchingContainer}>
+        <TextLoader text="Fetching spell" />
+      </div>
+    )
   }
 
   const character = characterData?.character
 
   return (
     <>
-      <div className="flex flex-col items-start p-4 h-full">
+      <div className={styles.container}>
         <h2 className={styles.spellName}>{name}</h2>
         <h3 className={styles.spellSchool}>{school}</h3>
         <SpellConcentrationRitual

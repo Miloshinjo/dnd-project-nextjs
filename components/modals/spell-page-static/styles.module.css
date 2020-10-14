@@ -1,3 +1,9 @@
+.container {
+  @apply flex flex-col items-start p-4 flex-1;
+  background-color: var(--bg-modal-drawer);
+  min-height: calc(100% - 2rem);
+}
+
 .headerTitle {
   @apply text-left flex items-center;
 }
@@ -12,10 +18,12 @@
 
 .spellName {
   @apply text-xl leading-tight font-extrabold;
+  color: var(--color-spell-name);
 }
 
 .spellSchool {
-  @apply opacity-50 text-sm capitalize mb-4;
+  @apply text-sm capitalize mb-4;
+  color: var(--text-secondary);
 }
 
 .spellInfoContainer {
@@ -34,45 +42,6 @@
   @apply text-sm font-semibold;
 }
 
-/* ----------------------- skelton */
-
-.skeletonContainer {
-  @apply flex flex-col p-4 items-start;
-}
-
-.skeletonNameBar {
-  @apply bg-gray-200 w-48 block rounded-sm overflow-hidden;
-  height: 18px;
-}
-
-.skeletonSchoolBar {
-  @apply bg-gray-200 w-32 block rounded-sm overflow-hidden mt-1 mb-6;
-  height: 9px;
-}
-
-.skeletonInfo {
-  @apply grid grid-cols-2 my-4 gap-2 w-full;
-}
-
-.skeletonInfoField {
-  @apply h-8 w-20 bg-gray-200 rounded-sm;
-}
-
-.skeletonDescription {
-  @apply h-40 bg-gray-200 w-10/12;
-}
-
-.skeletonKlasses {
-  @apply bg-gray-200 w-48 block rounded-sm overflow-hidden mt-4;
-  height: 24px;
-}
-
-.animatedBar {
-  @apply block h-6 rounded-sm w-10;
-  background-image: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0),
-    rgba(255, 255, 255, 0.5),
-    rgba(255, 255, 255, 0)
-  );
+.fetchingContainer {
+  @apply;
 }

@@ -3,7 +3,8 @@
 }
 
 .badge {
-  @apply text-xs bg-gray-300 font-semibold rounded px-1 inline-flex;
+  @apply text-xs  font-semibold rounded px-1 inline-flex;
+  background-color: var(--color-spell-badge);
 }
 
 .badge:not(:last-child) {

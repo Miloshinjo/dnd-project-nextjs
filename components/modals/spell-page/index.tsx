@@ -1,5 +1,4 @@
 import { useMemo } from 'react'
-import { motion } from 'framer-motion'
 import {
   Spell,
   Character,
@@ -7,6 +6,7 @@ import {
   useCharacterSpellQuery,
 } from '../../../generated/graphql'
 
+import TextLoader from '../../layout/text-loader'
 import SpellDescription from '../../spell/description'
 import SpellInfo from '../../spell/info'
 import SpellConcentrationRitual from '../../spell/concentration-ritual'
@@ -15,17 +15,6 @@ import SpellKlasses from '../../spell/klasses'
 import CharacterControls from '../../spell/character-controls'
 
 import styles from './styles.module.css'
-
-const barVariants = {
-  animation: {
-    x: [-25, 175],
-    transition: {
-      duration: 1,
-      repeat: Infinity,
-      ease: [0.2, 0.7, 0.3, 1],
-    },
-  },
-}
 
 type Props = {
   spellId: Spell['id']
@@ -80,41 +69,8 @@ const SpellPageModal: React.FC<Props> = ({
 
   if (spellFetching || characterFetching) {
     return (
-      <div className={styles.skeletonContainer}>
-        <div className={styles.skeletonNameBar}>
-          <motion.div
-            className={styles.animatedBar}
-            variants={barVariants}
-            animate="animation"
-          />
-        </div>
-
-        <div className={styles.skeletonSchoolBar}>
-          <motion.div
-            className={styles.animatedBar}
-            variants={barVariants}
-            animate="animation"
-          />
-        </div>
-
-        <div className={styles.skeletonInfo}>
-          <div className={styles.skeletonInfoField}></div>
-          <div className={styles.skeletonInfoField}></div>
-          <div className={styles.skeletonInfoField}></div>
-          <div className={styles.skeletonInfoField}></div>
-          <div className={styles.skeletonInfoField}></div>
-          <div className={styles.skeletonInfoField}></div>
-        </div>
-
-        <div className={styles.skeletonDescription}></div>
-
-        <div className={styles.skeletonKlasses}>
-          <motion.div
-            className={styles.animatedBar}
-            variants={barVariants}
-            animate="animation"
-          />
-        </div>
+      <div className={styles.fetchingContainer}>
+        <TextLoader text="Fetching spell" />
       </div>
     )
   }

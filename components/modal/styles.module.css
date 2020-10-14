@@ -42,7 +42,8 @@
 }
 
 .drawerCloseContainer {
-  @apply flex justify-end pr-2 pt-2;
+  @apply flex justify-end pr-2;
+  height: 2rem;
   background-color: var(--bg-modal-drawer);
 }
 

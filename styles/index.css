@@ -15,6 +15,8 @@
   --bg-input: #2d3748;
   --bg-filters: #f7fafc;
   --border-filters: #e2e8f0;
+  --color-spell-name: #1f1f1f;
+  --color-spell-badge: #e2e8f0;
 }
 
 [data-theme='dark'] {
@@ -33,6 +35,8 @@
   --bg-input: #121212;
   --bg-filters: #1f1f1f;
   --border-filters: rgb(255, 255, 255, 0.6);
+  --color-spell-name: #63b3ed;
+  --color-spell-badge: #1f1f1f;
 }
 
 @tailwind base;
