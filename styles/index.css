@@ -3,6 +3,7 @@
   --bg-primary: #f7fafc;
   --bg-secondary: #fff;
   --bg-accent: #2a4365;
+  --bg-focused: #edf2f7;
   --text-primary: #1f1f1f;
   --text-secondary: rgb(0, 0, 0, 0.6);
   --text-alt: #f7fafc;
@@ -12,19 +13,23 @@
   --bg-modal-drawer: #fff;
   --bg-header: #1f1f1f;
   --bg-klass-logo: #1f1f1f;
-  --bg-input: #2d3748;
+  --bg-search-input: #2d3748;
   --bg-filters: #f7fafc;
   --border-filters: #e2e8f0;
   --color-spell-name: #1f1f1f;
   --bg-create-button: #1f1f1f;
   --color-spell-badge: #e2e8f0;
+  --color-placeholder: rgb(0, 0, 0, 0.4);
   --bg-animated-bar: rgba(255, 255, 255, 0.5);
+
+  --drawer-modal-height: 3rem;
 }
 
 [data-theme='dark'] {
   --bg-primary: #121212;
   --bg-secondary: #1f1f1f;
   --bg-accent: #3182ce;
+  --bg-focused: #282d33;
   --text-primary: rgb(255, 255, 255, 0.87);
   --text-secondary: rgb(255, 255, 255, 0.6);
   --text-alt: #1f1f1f;
@@ -34,12 +39,13 @@
   --bg-modal-drawer: #121212;
   --bg-header: #1f1f1f;
   --bg-klass-logo: #121212;
-  --bg-input: #121212;
+  --bg-search-input: #282d33;
   --bg-filters: #1f1f1f;
   --bg-create-button: #1f1f1f;
   --border-filters: rgb(255, 255, 255, 0.6);
   --color-spell-name: #63b3ed;
   --color-spell-badge: #1f1f1f;
+  --color-placeholder: rgb(255, 255, 255, 0.4);
   --bg-animated-bar: rgba(0, 0, 0, 0.6);
 }
 

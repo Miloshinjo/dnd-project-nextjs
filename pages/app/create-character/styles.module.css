@@ -1,9 +1,9 @@
 .container {
-  @apply flex items-center justify-center bg-gray-100 py-12 px-4;
+  @apply flex items-center justify-center py-12 px-4;
 }
 
 .contentContainer {
-  @apply max-w-md w-full bg-gray-100;
+  @apply max-w-md w-full;
 }
 
 .title {

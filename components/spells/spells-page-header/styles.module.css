@@ -9,7 +9,7 @@
 
 .searchInput {
   @apply p-2 rounded-lg;
-  background-color: var(--bg-input);
+  background-color: var(--bg-search-input);
 }
 
 .searchInput:focus {

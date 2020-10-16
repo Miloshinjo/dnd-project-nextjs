@@ -1,5 +1,7 @@
 .input {
-  @apply appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 text-gray-900;
+  @apply appearance-none rounded-md relative block w-full px-3 py-2 border;
+  background-color: var(--bg-secondary);
+  border-color: var(--border-primary);
 }
 
 .input:focus {
@@ -7,7 +9,7 @@
 }
 
 .input::placeholder {
-  @apply text-gray-500;
+  color: var(--color-placeholder);
 }
 
 .label {
