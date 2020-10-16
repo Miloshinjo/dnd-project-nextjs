@@ -13,16 +13,6 @@ const barVariants = {
   },
 }
 
-const buttonVariants = {
-  animation: {
-    x: ['-100vw', '100vw'],
-    transition: {
-      duration: 2,
-      repeat: Infinity,
-    },
-  },
-}
-
 const CharacterListSkeletonCard = () => {
   return (
     <div className={styles.card}>
@@ -47,18 +37,13 @@ const CharacterListSkeletonCard = () => {
   )
 }
 
-const CharactersListSkeleton = () => {
+const CharactersListSkeleton: React.FC = () => {
   return (
     <div className={styles.container}>
       <CharacterListSkeletonCard />
       <CharacterListSkeletonCard />
-      <div className={styles.button}>
-        <motion.div
-          className={styles.animatedButton}
-          variants={buttonVariants}
-          animate="animation"
-        />
-      </div>
+      <CharacterListSkeletonCard />
+      <CharacterListSkeletonCard />
     </div>
   )
 }

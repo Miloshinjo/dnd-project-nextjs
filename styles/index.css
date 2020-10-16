@@ -18,6 +18,7 @@
   --color-spell-name: #1f1f1f;
   --bg-create-button: #1f1f1f;
   --color-spell-badge: #e2e8f0;
+  --bg-animated-bar: rgba(255, 255, 255, 0.5);
 }
 
 [data-theme='dark'] {
@@ -39,6 +40,7 @@
   --border-filters: rgb(255, 255, 255, 0.6);
   --color-spell-name: #63b3ed;
   --color-spell-badge: #1f1f1f;
+  --bg-animated-bar: rgba(0, 0, 0, 0.6);
 }
 
 @tailwind base;

@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion'
 
+import styles from './styles.module.css'
+
 const loadingContainerVariants = {
   start: {
     transition: {
@@ -37,25 +39,25 @@ type Props = {
 
 const TextLoader: React.FC<Props> = ({ text }) => {
   return (
-    <div className="flex items-baseline text-primary-900">
+    <div className={styles.container}>
       {text}
       <motion.div
-        className="flex ml-2"
+        className={styles.loaderContainer}
         variants={loadingContainerVariants}
         initial="start"
         animate="end"
       >
         <motion.span
           variants={loadingCircleVariants}
-          className="w-1 h-1 block bg-primary-900 rounded-full mr-1"
+          className={`${styles.loaderCircle} mr-1`}
         />
         <motion.span
           variants={loadingCircleVariants}
-          className="w-1 h-1 block bg-primary-900 rounded-full mr-1"
+          className={`${styles.loaderCircle} mr-1`}
         />
         <motion.span
           variants={loadingCircleVariants}
-          className="w-1 h-1 block bg-primary-900 rounded-full"
+          className={styles.loaderCircle}
         />
       </motion.div>
     </div>
