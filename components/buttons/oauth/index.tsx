@@ -1,4 +1,3 @@
-import { MouseEvent } from 'react'
 import { signIn } from 'next-auth/client'
 
 import styles from './styles.module.css'
@@ -20,8 +19,8 @@ const ButtonOauth: React.FC<Props> = ({
         signIn(oauthClientId, {
           callbackUrl:
             process.env.NODE_ENV === 'production'
-              ? 'https://simulacrum.rocks/app'
-              : 'http://localhost:3000/app',
+              ? 'https://simulacrum.rocks/app/'
+              : 'http://localhost:3000/app/',
         })
       }
       className={styles.button}
