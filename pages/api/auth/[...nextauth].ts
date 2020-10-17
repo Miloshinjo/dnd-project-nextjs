@@ -47,7 +47,9 @@ const options = {
   secret: process.env.SECRET,
   callbacks: {
     session: async (session, user) => {
-      session.user.id = user.id
+      session.user.id = user?.id
+
+      console.log('I failed here', { session, user })
 
       return Promise.resolve(session)
     },
