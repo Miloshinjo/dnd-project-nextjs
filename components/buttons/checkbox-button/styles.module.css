@@ -1,0 +1,13 @@
+.container {
+  @apply flex items-center;
+}
+
+.outerCircle {
+  @apply border-2 w-4 h-4 items-center justify-center flex rounded-full;
+  border-color: var(--text-secondary);
+}
+
+.innerCircle {
+  @apply w-2 h-2 rounded-full;
+  background-color: var(--bg-accent);
+}

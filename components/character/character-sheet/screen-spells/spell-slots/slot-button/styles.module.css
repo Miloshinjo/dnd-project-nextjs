@@ -1,5 +1,5 @@
 .spellSlotButton {
-  @apply border w-8 h-8 flex items-center justify-center rounded  shadow-inner;
+  @apply border w-8 h-8 flex items-center justify-center rounded shadow-inner;
   background-color: var(--bg-tertiary);
   border-color: var(--border-primary);
 }

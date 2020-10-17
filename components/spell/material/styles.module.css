@@ -1,5 +1,6 @@
 .container {
   @apply text-xs text-left flex flex-col py-2 border-t border-b w-full;
+  border-color: var(--border-primary);
 }
 
 .title {

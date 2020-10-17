@@ -57,9 +57,9 @@ const ScreenSettings: React.FC<Props> = ({ character }) => {
       initial="initial"
       className={styles.container}
     >
-      <div className="p-6">
-        <div className="mb-8">
-          <h3 className=" font-medium mb-1">
+      <div className="p-4">
+        <div className={styles.subclassSectionContainer}>
+          <h3 className="font-medium mb-1">
             {subclassTitle[character.klass.name]}
           </h3>
           {character?.subclass ? (
@@ -105,7 +105,7 @@ const ScreenSettings: React.FC<Props> = ({ character }) => {
             </>
           )}
         </div>
-        <div>
+        <div className="px-2 py-4">
           <h3 className="font-medium mb-1">Delete character</h3>
           <p className="mb-4 text-sm">
             This action is irreversible, deleted characters cannot be restored.

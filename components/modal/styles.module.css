@@ -44,7 +44,7 @@
 .drawerCloseContainer {
   @apply flex justify-end pr-2;
   height: var(--drawer-modal-height);
-  background-color: var(--bg-modal-drawer);
+  background-color: var(--bg-secondary);
 }
 
 .drawerCloseButton {

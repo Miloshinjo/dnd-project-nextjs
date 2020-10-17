@@ -1,5 +1,6 @@
 .container {
-  @apply flex flex-col p-6 justify-center;
+  @apply flex flex-col p-4 justify-center rounded shadow-sm m-4;
+  background-color: var(--bg-secondary);
 }
 
 .skillContainer {
@@ -32,9 +33,9 @@
 
 .indicator {
   @apply w-2 h-2 rounded-full  border mr-2;
-  border-color: var(--bg-accent);
+  border-color: var(--text-primary);
 }
 
 .isProficient {
-  background-color: var(--bg-accent);
+  background-color: var(--text-primary);
 }

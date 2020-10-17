@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { motion } from 'framer-motion'
 
+import styles from './styles.module.css'
+
 const innerCircleVariants = {
   checked: { scale: 1, opacity: 1 },
   unchecked: { scale: 0, opacity: 0 },
@@ -23,15 +25,15 @@ const CheckboxButton: React.FC<Props> = ({
     <button
       type="button"
       onClick={onClick}
-      className={`flex items-center ${disabled ? 'opacity-50' : ''}`}
+      className={`${styles.container} ${disabled ? 'opacity-50' : ''}`}
       disabled={disabled}
     >
-      <div className="border-2 border-gray-600 w-4 h-4 items-center justify-center flex rounded-full">
+      <div className={styles.outerCircle}>
         <motion.div
           variants={innerCircleVariants}
           animate={isChecked ? 'checked' : 'unchecked'}
           initial={'unchecked'}
-          className="bg-gray-800 w-2 h-2 rounded-full"
+          className={styles.innerCircle}
         />
       </div>
       <div className="ml-1">{text}</div>

@@ -147,7 +147,7 @@ const SpellSlots: React.FC<Props> = ({ characterId, spellSlots }) => {
                   </div>
                   {editSlots && (
                     <button
-                      className="ml-auto"
+                      className={styles.addSlotButton}
                       onClick={() => addSlot(slotLevelsIndex)}
                     >
                       <FaPlus />
@@ -157,17 +157,20 @@ const SpellSlots: React.FC<Props> = ({ characterId, spellSlots }) => {
               )
             })
           ) : (
-            <div className="text-gray-600 italic ml-2">No slots assigned.</div>
+            <div className={styles.noSlotsText}>No slots assigned.</div>
           )}
         </div>
         {editSlots && (
           <div className="mt-4 flex font-sm flex-col items-center">
             Add/Remove spell levels
             <div className="flex mt-2">
-              <button className="mr-4 text-primary-900" onClick={removeLevel}>
+              <button
+                className={styles.removeLevelButton}
+                onClick={removeLevel}
+              >
                 <FaMinus size={35} />
               </button>
-              <button className="text-primary-900" onClick={addLevel}>
+              <button className={styles.addLevelButton} onClick={addLevel}>
                 <FaPlus size={35} />
               </button>
             </div>

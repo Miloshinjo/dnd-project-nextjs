@@ -37,5 +37,6 @@
 }
 
 .fetchingContainer {
-  @apply;
+  @apply flex items-center justify-center;
+  height: calc(100% - var(--drawer-modal-height));
 }
