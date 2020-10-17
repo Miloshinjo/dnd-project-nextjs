@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { IoMdClose } from 'react-icons/io'
 
+import React from 'react'
 import { useModal, ModalType } from '../../context/modal'
 import UpdateNumberValue from '../modals/update-number-value'
 import UpdateSelectValue from '../modals/update-subclass'
@@ -13,7 +14,6 @@ import SpellPageStaticModal from '../modals/spell-page-static'
 import ClientOnlyPortal from '../../utils/clientOnlyPortal'
 
 import styles from './styles.module.css'
-import React from 'react'
 
 const Modal: React.FC = ({ children }) => {
   const { modal, closeModal } = useModal()
@@ -178,8 +178,6 @@ const drawerModalVariants = {
 }
 
 const ComeInDrawer: React.FC = ({ children }) => {
-  const { closeModal } = useModal()
-
   return (
     <motion.div
       className={styles.drawerBackdrop}
@@ -189,18 +187,6 @@ const ComeInDrawer: React.FC = ({ children }) => {
       exit="hidden"
     >
       <motion.div className={styles.modalDrawer} variants={drawerModalVariants}>
-        <div className={styles.drawerCloseContainer}>
-          <button
-            type="button"
-            className={styles.drawerCloseButton}
-            onClick={() => {
-              closeModal()
-            }}
-          >
-            <IoMdClose size={25} />
-          </button>
-        </div>
-
         {children}
       </motion.div>
     </motion.div>
@@ -217,8 +203,6 @@ const drawerSpellModalVariants = {
 }
 
 const SpellDrawer: React.FC = ({ children }) => {
-  const { closeModal } = useModal()
-
   return (
     <motion.div
       className={styles.drawerBackdrop}
@@ -231,18 +215,6 @@ const SpellDrawer: React.FC = ({ children }) => {
         className={styles.modalSpellDrawer}
         variants={drawerSpellModalVariants}
       >
-        <div className={styles.drawerCloseContainer}>
-          <button
-            type="button"
-            className={styles.drawerCloseButton}
-            onClick={() => {
-              closeModal()
-            }}
-          >
-            <IoMdClose size={25} />
-          </button>
-        </div>
-
         {children}
       </motion.div>
     </motion.div>

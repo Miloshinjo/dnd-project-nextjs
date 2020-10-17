@@ -6,6 +6,7 @@ import {
 import { useRouter } from 'next/router'
 import { useMemo } from 'react'
 
+import DrawerHeader from '../../modal/drawer-header'
 import TextLoader from '../../layout/text-loader'
 import CharacterControls from '../../spell/character-controls'
 import SpellDescription from '../../spell/description'
@@ -107,6 +108,7 @@ const SpellPageModal: React.FC<Props> = ({
 
   return (
     <>
+      <DrawerHeader backgroundColor="var(--bg-drawer-header-2)" />
       <div className={styles.container}>
         <h2 className={styles.spellName}>{name}</h2>
         <h3 className={styles.spellSchool}>{school}</h3>

@@ -6,6 +6,7 @@ import {
   useCharacterSpellQuery,
 } from '../../../generated/graphql'
 
+import DrawerHeader from '../../modal/drawer-header'
 import TextLoader from '../../layout/text-loader'
 import SpellDescription from '../../spell/description'
 import SpellInfo from '../../spell/info'
@@ -90,6 +91,7 @@ const SpellPageModal: React.FC<Props> = ({
 
   return (
     <>
+      <DrawerHeader backgroundColor="var(--bg-drawer-header-2)" />
       <div className="flex flex-col items-start p-4">
         <h2 className={styles.spellName}>{spell.name}</h2>
         <h3 className={styles.spellSchool}>{spell.school}</h3>

@@ -1,0 +1,11 @@
+.container {
+  @apply flex justify-between pr-2;
+  height: var(--drawer-header-height);
+}
+
+.closeButton {
+  @apply p-1 ml-auto;
+  bottom: 2.5rem;
+  right: 50%;
+  z-index: 1000;
+}

@@ -41,19 +41,6 @@
   overflow-y: scroll;
 }
 
-.drawerCloseContainer {
-  @apply flex justify-end pr-2;
-  height: var(--drawer-modal-height);
-  background-color: var(--bg-secondary);
-}
-
-.drawerCloseButton {
-  @apply p-1;
-  bottom: 2.5rem;
-  right: 50%;
-  z-index: 1000;
-}
-
 .modalSpellDrawer {
   @apply shadow-md relative;
   background-color: var(--bg-secondary);

@@ -2,13 +2,16 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { signOut, useSession } from 'next-auth/client'
-import { useTheme } from 'next-themes'
+import { FiLogOut } from 'react-icons/fi'
+import { GoHome } from 'react-icons/go'
+import { GiMagicSwirl } from 'react-icons/gi'
+
+import ThemeSwitchButton from '../../buttons/theme-switch'
+import DrawerHeader from '../../modal/drawer-header'
 
 import styles from './styles.module.css'
 
 const DrawerMenu: React.FC = () => {
-  const { theme, setTheme } = useTheme()
-
   const router = useRouter()
 
   const [session] = useSession()
@@ -25,6 +28,31 @@ const DrawerMenu: React.FC = () => {
 
   return (
     <div className={styles.drawer}>
+      <DrawerHeader logoVisible />
+      <nav className={styles.nav}>
+        <Link href="/app">
+          <a
+            className={`${styles.link} ${
+              router.pathname === '/app' ? styles.activeLink : ''
+            }`}
+          >
+            <GoHome size={20} />
+            <span>Home</span>
+          </a>
+        </Link>
+        <Link href="/spells">
+          <a
+            className={`${styles.link} ${
+              router.pathname === '/spells' ? styles.activeLink : ''
+            }`}
+          >
+            <GiMagicSwirl size={20} />
+            <span>Spells</span>
+          </a>
+        </Link>
+      </nav>
+      <ThemeSwitchButton />
+      <div className={styles.border} />
       <div className={styles.userProfile}>
         <div className={styles.avatarContainer}>
           {src ? (
@@ -38,31 +66,12 @@ const DrawerMenu: React.FC = () => {
             <div className={styles.emptyAvatar}>{name.substring(0, 2)}</div>
           )}
         </div>
-        <div className={styles.username}>{name || email}</div>
-      </div>
-      <nav className="w-full">
-        <Link href="/app">
-          <a
-            className={`${styles.link} ${
-              router.pathname === '/app' ? styles.activeLink : ''
-            }`}
-          >
-            Home
-          </a>
-        </Link>
-        <div className={styles.section}>
-          <h2 className={styles.sectionHeader}>Library</h2>
-          <Link href="/spells">
-            <a
-              className={`${styles.link} ${
-                router.pathname === '/spells' ? styles.activeLink : ''
-              }`}
-            >
-              Spells
-            </a>
-          </Link>
+        <div className={styles.userInfoContainer}>
+          <div className={styles.username}>{name}</div>
+          <div className={styles.email}>{email}</div>
         </div>
-      </nav>
+      </div>
+
       <button
         className={styles.link}
         onClick={() => {
@@ -74,19 +83,8 @@ const DrawerMenu: React.FC = () => {
           })
         }}
       >
-        Sign out
-      </button>
-
-      <button
-        onClick={() => {
-          if (theme === 'light') {
-            setTheme('dark')
-          } else {
-            setTheme('light')
-          }
-        }}
-      >
-        Set Theme {theme === 'light' ? 'Dark' : 'Light'}
+        <FiLogOut size={20} />
+        <span>Sign out</span>
       </button>
     </div>
   )

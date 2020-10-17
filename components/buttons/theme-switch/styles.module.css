@@ -1,0 +1,7 @@
+.button {
+  @apply px-2 rounded flex ml-4 mt-4 text-sm;
+}
+
+.button span {
+  @apply flex items-center gap-x-2;
+}

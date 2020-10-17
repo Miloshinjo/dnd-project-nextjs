@@ -1,7 +1,7 @@
 .container {
   @apply flex flex-col items-start p-4 flex-1;
   background-color: var(--bg-modal-drawer);
-  min-height: calc(100% - var(--drawer-modal-height));
+  min-height: calc(100% - var(--drawer-header-height));
 }
 
 .headerTitle {

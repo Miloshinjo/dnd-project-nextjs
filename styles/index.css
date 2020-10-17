@@ -24,8 +24,10 @@
   --color-placeholder: rgb(0, 0, 0, 0.4);
   --bg-animated-bar: rgba(255, 255, 255, 0.5);
   --bg-slot-active: rgba(0, 0, 0, 0.5);
-  --drawer-modal-height: 3rem;
+  --drawer-header-height: 3rem;
   --combo-white-d-3: #fff;
+  --bg-drawer-header: #fff;
+  --bg-drawer-header-2: #fff;
 }
 
 [data-theme='dark'] {
@@ -53,8 +55,10 @@
   --color-placeholder: rgb(255, 255, 255, 0.4);
   --bg-animated-bar: rgba(0, 0, 0, 0.6);
   --bg-slot-active: #121212;
-  --drawer-modal-height: 3rem;
+  --drawer-header-height: 3rem;
   --combo-white-d-3: #333333;
+  --bg-drawer-header: #121212;
+  --bg-drawer-header-2: #1f1f1f;
 }
 
 @tailwind base;
