@@ -6,5 +6,5 @@
 
 .spellSlotChecked {
   @apply w-6 h-6 rounded;
-  background-color: var(--bg-slot-active);
+  color: var(--color-text);
 }

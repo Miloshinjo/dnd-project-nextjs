@@ -1,4 +1,5 @@
 import React from 'react'
+import { IoMdClose } from 'react-icons/io'
 import styles from './styles.module.css'
 
 const SlotButton = ({ onClick, isChecked, editSlots }) => {
@@ -10,7 +11,7 @@ const SlotButton = ({ onClick, isChecked, editSlots }) => {
       }`}
       onClick={onClick}
     >
-      {isChecked && <div className={styles.spellSlotChecked} />}
+      {isChecked && <IoMdClose className={styles.spellSlotChecked} />}
     </button>
   )
 }

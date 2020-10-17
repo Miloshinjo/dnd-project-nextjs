@@ -5,7 +5,8 @@
 }
 
 .navLink {
-  @apply mx-2 flex flex-col items-center w-full text-gray-500;
+  @apply mx-2 flex flex-col items-center w-full;
+  color: var(--text-secondary);
 }
 
 .navLinkActive {
