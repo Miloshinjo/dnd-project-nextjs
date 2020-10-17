@@ -1,5 +1,7 @@
 .container {
-  @apply mt-auto border-t-2 py-2 px-4 flex fixed bottom-0 z-10 bg-white w-full;
+  @apply mt-auto border-t-2 py-2 px-4 flex fixed bottom-0 z-10 w-full;
+  background-color: var(--bg-secondary);
+  border-color: var(--border-primary);
 }
 
 .navLink {
@@ -7,7 +9,8 @@
 }
 
 .navLinkActive {
-  @apply text-primary-900;
+  @apply;
+  color: var(--bg-accent);
 }
 
 .navLinkText {

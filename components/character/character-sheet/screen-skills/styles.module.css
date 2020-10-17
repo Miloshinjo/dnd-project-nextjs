@@ -29,3 +29,12 @@
 .value {
   @apply font-semibold;
 }
+
+.indicator {
+  @apply w-2 h-2 rounded-full  border mr-2;
+  border-color: var(--bg-accent);
+}
+
+.isProficient {
+  background-color: var(--bg-accent);
+}

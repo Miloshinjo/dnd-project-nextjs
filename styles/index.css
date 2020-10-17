@@ -2,6 +2,7 @@
   /* Your default theme */
   --bg-primary: #f7fafc;
   --bg-secondary: #fff;
+  --bg-info: #f7fafc;
   --bg-accent: #2a4365;
   --bg-focused: #edf2f7;
   --text-primary: #1f1f1f;
@@ -15,13 +16,14 @@
   --bg-klass-logo: #1f1f1f;
   --bg-search-input: #2d3748;
   --bg-filters: #f7fafc;
+  --bg-tertiary: #edf2f7;
   --border-filters: #e2e8f0;
   --color-spell-name: #1f1f1f;
   --bg-create-button: #1f1f1f;
   --color-spell-badge: #e2e8f0;
   --color-placeholder: rgb(0, 0, 0, 0.4);
   --bg-animated-bar: rgba(255, 255, 255, 0.5);
-
+  --bg-slot-active: rgba(0, 0, 0, 0.5);
   --drawer-modal-height: 3rem;
 }
 
@@ -37,16 +39,20 @@
   --border-primary: #1a202c;
 
   --bg-modal-drawer: #121212;
+  --bg-info: #333333;
   --bg-header: #1f1f1f;
   --bg-klass-logo: #121212;
   --bg-search-input: #282d33;
   --bg-filters: #1f1f1f;
   --bg-create-button: #1f1f1f;
+  --bg-tertiary: #333333;
   --border-filters: rgb(255, 255, 255, 0.6);
   --color-spell-name: #63b3ed;
   --color-spell-badge: #1f1f1f;
   --color-placeholder: rgb(255, 255, 255, 0.4);
   --bg-animated-bar: rgba(0, 0, 0, 0.6);
+  --bg-slot-active: #121212;
+  --drawer-modal-height: 3rem;
 }
 
 @tailwind base;
@@ -58,6 +64,10 @@ html {
   font-family: 'Inter var', sans-serif;
   width: 100vw;
   overflow-x: hidden;
+
+  @media only screen and (max-width: 325px) {
+    font-size: 12px;
+  }
 }
 
 @supports (font-variation-settings: normal) {

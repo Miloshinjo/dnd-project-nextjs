@@ -86,7 +86,7 @@ const CreateCharacterForm: React.FC<Props> = ({ klasses }) => {
         label="Name"
         errors={errors}
         name="name"
-        placeholder="Drizzt Do'Urden"
+        placeholder="Name your character"
         register={register}
         validations={validations.name}
       />
@@ -94,7 +94,7 @@ const CreateCharacterForm: React.FC<Props> = ({ klasses }) => {
         label="Race"
         errors={errors}
         name="race"
-        placeholder="Drow"
+        placeholder="Type in character race"
         register={register}
         validations={validations.race}
       />

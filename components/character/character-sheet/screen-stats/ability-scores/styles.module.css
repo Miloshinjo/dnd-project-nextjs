@@ -1,5 +1,6 @@
 .abilityScores {
-  @apply flex flex-col py-2;
+  @apply flex flex-col py-2  p-4 rounded shadow-sm;
+  background-color: var(--bg-secondary);
 }
 
 .abilityScoreContainer {
@@ -7,7 +8,8 @@
 }
 
 .abilityScoreContainer:not(:last-child) {
-  @apply mb-2 border-b border-gray-300 pb-1;
+  @apply mb-2 border-b pb-1;
+  border-color: var(--bg-tertiary);
 }
 
 .abilityScoreIcon {
@@ -15,7 +17,7 @@
 }
 
 .abilityScoreTitle {
-  @apply text-sm flex capitalize;
+  @apply text-sm flex capitalize mr-4;
 }
 
 .abilityScoreValue {
@@ -27,7 +29,7 @@
 }
 
 .abilityScoreSave {
-  @apply flex justify-end items-start font-bold w-20;
+  @apply flex justify-end items-start font-bold ml-4;
 }
 
 .miniLabel {

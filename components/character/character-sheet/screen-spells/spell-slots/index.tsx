@@ -147,7 +147,7 @@ const SpellSlots: React.FC<Props> = ({ characterId, spellSlots }) => {
                   </div>
                   {editSlots && (
                     <button
-                      className="ml-auto text-primary-900"
+                      className="ml-auto"
                       onClick={() => addSlot(slotLevelsIndex)}
                     >
                       <FaPlus />

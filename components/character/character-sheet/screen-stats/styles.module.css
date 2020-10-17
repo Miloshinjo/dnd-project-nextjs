@@ -1,9 +1,16 @@
 .heading {
-  @apply mb-2 text-sm font-medium text-gray-600 whitespace-no-wrap;
+  @apply mb-2 text-sm font-medium whitespace-no-wrap;
+  color: var(--text-secondary);
 }
 
 .header {
-  @apply flex justify-between pb-2 mb-4;
+  @apply flex justify-between pb-2 mb-4 p-4 rounded shadow-sm;
+  background-color: var(--bg-secondary);
+}
+
+.statBlockWrapper {
+  @apply p-4 shadow-sm rounded;
+  background-color: var(--bg-secondary);
 }
 
 .header > *:not(:last-child) {

@@ -1,5 +1,6 @@
 .container {
-  @apply bg-white m-2 shadow;
+  @apply m-4 shadow-sm rounded;
+  background-color: var(--bg-secondary);
 }
 
 @screen md {
@@ -9,11 +10,11 @@
 }
 
 .slotsEditButton {
-  @apply flex items-center text-xs p-2 text-primary-900;
+  @apply flex items-center text-xs p-2;
 }
 
 .slotsEditButtonActive {
-  @apply flex items-center text-xs p-2 text-primary-900;
+  @apply flex items-center text-xs p-2;
 }
 
 .slotLevelContainer {
@@ -21,7 +22,8 @@
 }
 
 .removeSlotButton {
-  @apply mr-4 text-primary-900;
+  @apply mr-4;
+  color: var(--text-accent);
 }
 
 .slotLevelText {

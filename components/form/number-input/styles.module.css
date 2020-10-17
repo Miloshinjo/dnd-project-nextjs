@@ -1,9 +1,11 @@
 .container {
   @apply flex justify-center items-center px-4;
+  background-color: var(--bg-secondary);
 }
 
 .input {
   @apply font-bold text-2xl w-16 px-1 shadow-inner;
+  background-color: var(--bg-info);
 }
 
 .input:focus {

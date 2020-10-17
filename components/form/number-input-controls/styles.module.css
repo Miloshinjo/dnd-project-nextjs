@@ -1,10 +1,12 @@
 .container {
-  @apply grid grid-cols-2 grid-rows-2 flex-1 bg-gray-200 m-4;
+  @apply grid grid-cols-2 grid-rows-2 flex-1 m-4;
+  background-color: var(--bg-tertiary);
   grid-gap: 1px;
 }
 
 .valueButton {
-  @apply inline-flex items-center justify-center p-1 bg-white rounded-none;
+  @apply inline-flex items-center justify-center p-1  rounded-none;
+  background-color: var(--bg-secondary);
 }
 
 .valueButtonNumber {

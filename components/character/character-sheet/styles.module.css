@@ -1,10 +1,12 @@
 .container {
   @apply flex flex-col h-full pb-16 relative;
+  /* background-color: var(--bg-primary); */
 }
 
 @screen md {
   .container {
-    @apply shadow-lg w-1/2 mx-auto mt-12 pb-0 h-auto rounded-lg bg-white mb-12;
+    @apply shadow-lg w-1/2 mx-auto mt-12 pb-0 h-auto rounded-lg mb-12;
+    background-color: var(--bg-secondary);
   }
 }
 
@@ -15,7 +17,7 @@
 }
 
 .heading {
-  @apply mt-4 mb-2 text-sm font-medium text-gray-600 whitespace-no-wrap;
+  @apply mt-4 mb-2 text-sm font-medium whitespace-no-wrap;
 }
 
 .fetchingContainer {

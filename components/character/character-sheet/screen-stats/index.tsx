@@ -73,7 +73,7 @@ const CharacterScreenStats: React.FC<Props> = ({ character }) => {
       variants={screenVariants}
       animate="animate"
       initial="initial"
-      className="p-6"
+      className="p-4"
     >
       <div className={styles.header}>
         <StatField label="Prof." value={proficiencyBonus(character.level)} />
@@ -90,59 +90,63 @@ const CharacterScreenStats: React.FC<Props> = ({ character }) => {
       <div className="mt-6 md:flex md:justify-between">
         <div className="mb-4 md:w-1/2 md:mr-16">
           <h2 className="opacity-50 mb-1 font-semibold text-sm">Attack</h2>
-          <StatField
-            label="Strength"
-            value={hitBonus(
-              abilityScoreM(character.strength),
-              proficiencyBonus(character.level),
-            )}
-            fullWidth
-          />
-          <StatField
-            label="Dexterity"
-            value={hitBonus(
-              abilityScoreM(character.dexterity),
-              proficiencyBonus(character.level),
-            )}
-            fullWidth
-          />
-          {character.klass.name === 'Rogue' && (
+          <div className={styles.statBlockWrapper}>
             <StatField
-              label="Sneak Attack"
-              value={`${sneakAttack(character.level)}d6`}
+              label="Strength"
+              value={hitBonus(
+                abilityScoreM(character.strength),
+                proficiencyBonus(character.level),
+              )}
               fullWidth
             />
-          )}
+            <StatField
+              label="Dexterity"
+              value={hitBonus(
+                abilityScoreM(character.dexterity),
+                proficiencyBonus(character.level),
+              )}
+              fullWidth
+            />
+            {character.klass.name === 'Rogue' && (
+              <StatField
+                label="Sneak Attack"
+                value={`${sneakAttack(character.level)}d6`}
+                fullWidth
+              />
+            )}
+          </div>
         </div>
         <div className="mb-4 md:w-1/2">
           <h2 className="opacity-50 mb-1 font-semibold text-sm">Senses</h2>
-          <StatField
-            label="Passive perception"
-            value={passivePerception(
-              abilityScoreM(character.wisdom),
-              proficiencyBonus(character.level),
-              hasSkill('Perception'),
-            )}
-            fullWidth
-          />
-          <StatField
-            label="Passive investigation"
-            value={passiveInvestigation(
-              abilityScoreM(character.intelligence),
-              proficiencyBonus(character.level),
-              hasSkill('Investigation'),
-            )}
-            fullWidth
-          />
-          <StatField
-            label="Passive insight"
-            value={passiveInsight(
-              abilityScoreM(character.wisdom),
-              proficiencyBonus(character.level),
-              hasSkill('Insight'),
-            )}
-            fullWidth
-          />
+          <div className={styles.statBlockWrapper}>
+            <StatField
+              label="Passive perception"
+              value={passivePerception(
+                abilityScoreM(character.wisdom),
+                proficiencyBonus(character.level),
+                hasSkill('Perception'),
+              )}
+              fullWidth
+            />
+            <StatField
+              label="Passive investigation"
+              value={passiveInvestigation(
+                abilityScoreM(character.intelligence),
+                proficiencyBonus(character.level),
+                hasSkill('Investigation'),
+              )}
+              fullWidth
+            />
+            <StatField
+              label="Passive insight"
+              value={passiveInsight(
+                abilityScoreM(character.wisdom),
+                proficiencyBonus(character.level),
+                hasSkill('Insight'),
+              )}
+              fullWidth
+            />
+          </div>
         </div>
       </div>
     </motion.div>

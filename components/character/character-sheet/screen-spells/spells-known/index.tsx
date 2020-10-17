@@ -69,9 +69,7 @@ const SpellsKnown: React.FC<Props> = ({
             return (
               <div key={level} className="mt-4">
                 {showSectionTitle && (
-                  <h4
-                    className={`text-sm font-semibold text-primary-900 border-b border-primary-900 pb-1 mb-4 w-1/3`}
-                  >
+                  <h4 className={styles.spellLevelHeading}>
                     {level === '0' ? 'Cantrips' : `Level ${level}`}
                   </h4>
                 )}

@@ -10,7 +10,7 @@ const SlotButton = ({ onClick, isChecked, editSlots }) => {
       }`}
       onClick={onClick}
     >
-      {isChecked && <div className="bg-primary-900 w-6 h-6 rounded" />}
+      {isChecked && <div className={styles.spellSlotChecked} />}
     </button>
   )
 }
