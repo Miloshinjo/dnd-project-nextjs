@@ -3,5 +3,5 @@
 }
 
 .button span {
-  @apply flex items-center gap-x-2;
+  @apply flex items-center;
 }

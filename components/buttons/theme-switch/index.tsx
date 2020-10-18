@@ -20,12 +20,12 @@ const ThemeSwitchButton: React.FC = () => {
     >
       {theme === 'light' ? (
         <span>
-          <GiNightSky size={20} />
+          <GiNightSky size={20} className="mr-2" />
           Night Mode
         </span>
       ) : (
         <span>
-          <GiSun size={20} />
+          <GiSun size={20} className="mr-2" />
           Day Mode
         </span>
       )}

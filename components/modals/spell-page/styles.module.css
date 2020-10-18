@@ -16,7 +16,7 @@
 }
 
 .spellSchool {
-  @apply text-sm capitalize mb-4;
+  @apply text-sm mb-4;
   color: var(--text-secondary);
 }
 

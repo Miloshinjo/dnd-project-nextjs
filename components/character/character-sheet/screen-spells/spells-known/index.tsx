@@ -106,7 +106,7 @@ const SpellsKnown: React.FC<Props> = ({
                         <div className={styles.spellTitle}>
                           <span className="font-medium">{spell.name}</span>
                           <span className="text-xs opacity-75">
-                            {spell.school}
+                            {spell.school} - lv {spell.level}
                           </span>
                         </div>
                         <div className={styles.attributesContainer}>

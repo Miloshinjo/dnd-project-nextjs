@@ -94,7 +94,9 @@ const SpellPageModal: React.FC<Props> = ({
       <DrawerHeader backgroundColor="var(--bg-drawer-header-2)" />
       <div className="flex flex-col items-start p-4">
         <h2 className={styles.spellName}>{spell.name}</h2>
-        <h3 className={styles.spellSchool}>{spell.school}</h3>
+        <h3 className={styles.spellSchool}>
+          level {spell.level} {spell.school} spell
+        </h3>
         <SpellConcentrationRitual
           concentration={spell.concentration}
           ritual={spell.ritual}
