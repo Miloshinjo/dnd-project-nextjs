@@ -53,7 +53,8 @@ const options = {
     },
   },
   pages: {
-    signIn: '/signin',
+    signIn: '/signin', // sign in screen
+    verifyRequest: '/verify-request', // (used for check email message)
   },
 }
 

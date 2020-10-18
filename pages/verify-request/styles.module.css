@@ -1,0 +1,53 @@
+.container {
+  @apply h-screen flex items-center justify-center flex-col;
+}
+
+.contentContainer {
+  @apply p-6 rounded-lg w-full text-center;
+  background-color: var(--bg-primary);
+}
+
+.headingSecondary {
+  @apply text-lg mb-4 text-center;
+}
+
+.emailInput {
+  @apply appearance-none rounded-md relative block w-full px-3 py-2 border mt-1;
+  background-color: var(--bg-secondary);
+  border-color: var(--border-primary);
+}
+
+.emailInput:focus {
+  @apply outline-none shadow-outline z-10;
+}
+
+.emailInput::placeholder {
+  @apply text-gray-500;
+}
+
+.emailLabel {
+  @apply text-sm font-medium;
+}
+
+.logoImage {
+  @apply w-56 h-56;
+}
+
+@screen sm {
+  .contentContainer {
+    @apply shadow-lg p-10 rounded-lg w-2/3;
+    background-color: var(--bg-secondary);
+  }
+}
+
+@screen md {
+  .contentContainer {
+    @apply rounded-lg w-1/2;
+  }
+}
+
+@screen lg {
+  .contentContainer {
+    @apply rounded-lg w-1/3;
+  }
+}

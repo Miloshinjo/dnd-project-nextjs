@@ -1,4 +1,5 @@
 import React from 'react'
+import { NextPage } from 'next'
 import { csrfToken, providers } from 'next-auth/client'
 import { FaGithub, FaGoogle, FaDiscord } from 'react-icons/fa'
 
@@ -6,7 +7,12 @@ import ButtonPrimary from '../../components/buttons/primary'
 import ButtonOauth from '../../components/buttons/oauth'
 import styles from './styles.module.css'
 
-export default function SignIn({ providers, csrfToken }) {
+type Props = {
+  providers: any
+  csrfToken: string
+}
+
+const SignIn: NextPage<Props> = ({ providers, csrfToken }) => {
   return (
     <div className={styles.container}>
       <img src="/images/logo.svg" alt="LOGO" className={styles.logoImage} />
@@ -59,7 +65,8 @@ export default function SignIn({ providers, csrfToken }) {
           /> */}
         </div>
         <p className="text-xs text-center mt-8">
-          At the moment, for the ease of development, only Discord is enabled.
+          Only one signin method can be used per email. If you are having any
+          issues with signin in, post your feedback to dm@simulacrum.rocks.
         </p>
       </div>
     </div>
@@ -72,3 +79,5 @@ SignIn.getInitialProps = async (context) => {
     providers: await (providers as any)(context),
   }
 }
+
+export { SignIn as default }

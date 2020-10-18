@@ -63,7 +63,9 @@ const DrawerMenu: React.FC = () => {
               className={styles.avatarImage}
             />
           ) : (
-            <div className={styles.emptyAvatar}>{name.substring(0, 2)}</div>
+            <div className={styles.emptyAvatar}>
+              {(name ? name : email).substring(0, 2)}
+            </div>
           )}
         </div>
         <div className={styles.userInfoContainer}>
