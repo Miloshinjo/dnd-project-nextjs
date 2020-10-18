@@ -6,7 +6,7 @@ import ButtonPrimary from '../../components/buttons/primary'
 import ButtonOauth from '../../components/buttons/oauth'
 import styles from './styles.module.css'
 
-export default function SignIn({ providers }) {
+export default function SignIn({ providers, csrfToken }) {
   return (
     <div className={styles.container}>
       <img src="/images/logo.svg" alt="LOGO" className={styles.logoImage} />
@@ -15,7 +15,7 @@ export default function SignIn({ providers }) {
         <div>
           <h2 className={styles.headingSecondary}>Sign in to your account</h2>
         </div>
-        {/* <form
+        <form
           method="post"
           action="/api/auth/signin/email"
           className={styles.emailForm}
@@ -39,7 +39,7 @@ export default function SignIn({ providers }) {
           <span className={styles.dividerLine}></span>
           <span className={styles.dividerText}>Or</span>
           <span className={styles.dividerLine}></span>
-        </div> */}
+        </div>
 
         <div className="flex justify-center gap-x-4">
           {/* <ButtonOauth
@@ -68,7 +68,7 @@ export default function SignIn({ providers }) {
 
 SignIn.getInitialProps = async (context) => {
   return {
-    // csrfToken: await csrfToken(context),
+    csrfToken: await csrfToken(context),
     providers: await (providers as any)(context),
   }
 }

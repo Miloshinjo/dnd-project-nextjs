@@ -24,7 +24,8 @@
 
 @screen md {
   .contentContainer {
-    @apply max-w-md w-full bg-white px-8 py-8 rounded-md shadow-lg;
+    @apply max-w-md w-full  px-8 py-8 rounded-md shadow-lg;
+    background-color: var(--bg-secondary);
   }
 
   .title {

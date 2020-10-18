@@ -7194,7 +7194,7 @@ next-auth@^3.1.0:
     require_optional "^1.0.1"
     typeorm "^0.2.24"
 
-next-pwa@^3.1.1:
+next-pwa@^3.1.5:
   version "3.1.5"
   resolved "https://registry.yarnpkg.com/next-pwa/-/next-pwa-3.1.5.tgz#336de6998b7678614f0a129b18467785e4e57b40"
   integrity sha512-FInX1Xj9BCYvzwrzH0JupoHCpXKN1lVFospp7uYcL1eO3gOICtrNruYq988JIPG9vaW5iQpmcUkwbjIittyIlQ==

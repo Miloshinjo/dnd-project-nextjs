@@ -29,7 +29,7 @@
     "graphql-shield": "^7.3.6",
     "next": "^9.5.4",
     "next-auth": "^3.1.0",
-    "next-pwa": "^3.1.1",
+    "next-pwa": "^3.1.5",
     "next-themes": "^0.0.4",
     "nexus-plugin-prisma": "^0.19.0",
     "react": "16.13.1",

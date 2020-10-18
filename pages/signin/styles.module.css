@@ -20,7 +20,9 @@
 }
 
 .emailInput {
-  @apply appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 text-gray-900 mt-1;
+  @apply appearance-none rounded-md relative block w-full px-3 py-2 border mt-1;
+  background-color: var(--bg-secondary);
+  border-color: var(--border-primary);
 }
 
 .emailInput:focus {
@@ -56,6 +58,11 @@
   .contentContainer {
     @apply shadow-lg p-10 rounded-lg w-2/3;
     background-color: var(--bg-secondary);
+  }
+
+  .emailInput {
+    background-color: var(--bg-tertiary);
+    border-color: var(--border-primary);
   }
 
   .headingPrimary {

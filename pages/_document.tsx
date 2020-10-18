@@ -26,7 +26,11 @@ class MyDocument extends Document {
           />
           <link rel="apple-touch-icon" href="images/icons/apple-icon.png" />
 
-          <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+          <link
+            rel="mask-icon"
+            href="images/icons/safari-pinned-tab.svg"
+            color="#5bbad5"
+          />
 
           <link rel="manifest" href="/manifest.json" />
           <meta name="msapplication-TileColor" content="#2b5797" />
@@ -36,6 +40,12 @@ class MyDocument extends Document {
           />
           <meta name="theme-color" content="#ffffff" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="mobile-wep-app-capable" content="yes" />
+          <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="default"
+          />
+          <meta name="apple-mobile-web-app-title" content="Simulacrum" />
         </Head>
         <body>
           <Main />
