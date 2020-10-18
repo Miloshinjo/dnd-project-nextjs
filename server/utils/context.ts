@@ -8,16 +8,18 @@ export interface Context {
   userId: number
 }
 
-let prisma
+// let prisma
 
-if (process.env.NODE_ENV === 'production') {
-  prisma = new PrismaClient()
-} else {
-  if (!(global as any).prisma) {
-    ;(global as any).prisma = new PrismaClient()
-  }
-  prisma = (global as any).prisma
-}
+// if (process.env.NODE_ENV === 'production') {
+//   prisma = new PrismaClient()
+// } else {
+//   if (!(global as any).prisma) {
+//     ;(global as any).prisma = new PrismaClient()
+//   }
+//   prisma = (global as any).prisma
+// }
+
+const prisma = new PrismaClient()
 
 // seedSpells(prisma)
 // seedSkills(prisma)

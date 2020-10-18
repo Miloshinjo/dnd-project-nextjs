@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { signOut, useSession } from 'next-auth/client'
+import { signOut, useSession } from '../../../lib/next-auth/client'
 import { FiLogOut } from 'react-icons/fi'
 import { GoHome } from 'react-icons/go'
 import { GiMagicSwirl } from 'react-icons/gi'

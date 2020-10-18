@@ -1,6 +1,6 @@
 import React from 'react'
 import { NextPage } from 'next'
-import { csrfToken, providers } from 'next-auth/client'
+import { csrfToken, providers } from '../../lib/next-auth/client'
 import { FaGithub, FaGoogle, FaDiscord } from 'react-icons/fa'
 
 import ButtonPrimary from '../../components/buttons/primary'

@@ -1,19 +1,21 @@
 import { NextApiHandler } from 'next'
-import NextAuth from 'next-auth'
-import Providers from 'next-auth/providers'
-import Adapters from 'next-auth/adapters'
+import NextAuth from '../../../lib/next-auth'
+import Providers from '../../../lib/next-auth/providers'
+import Adapters from '../../../lib/next-auth/adapters'
 import { PrismaClient } from '@prisma/client'
 
-let prisma
+// let prisma
 
-if (process.env.NODE_ENV === 'production') {
-  prisma = new PrismaClient()
-} else {
-  if (!(global as any).prisma) {
-    ;(global as any).prisma = new PrismaClient()
-  }
-  prisma = (global as any).prisma
-}
+// if (process.env.NODE_ENV === 'production') {
+//   prisma = new PrismaClient()
+// } else {
+//   if (!(global as any).prisma) {
+//     ;(global as any).prisma = new PrismaClient()
+//   }
+//   prisma = (global as any).prisma
+// }
+
+const prisma = new PrismaClient()
 
 const options = {
   providers: [

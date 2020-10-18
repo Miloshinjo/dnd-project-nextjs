@@ -1,4 +1,4 @@
-import { getSession } from 'next-auth/client'
+import { getSession } from '../../lib/next-auth/client'
 
 import { ApolloError } from 'apollo-server-micro'
 

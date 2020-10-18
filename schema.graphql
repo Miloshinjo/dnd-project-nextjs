@@ -109,28 +109,28 @@ type Klass {
 }
 
 type Mutation {
-  addSkill(character: CharacterEditSkillInput): Character!
-  addSubclass(character: CharacterAddSubclassInput): Character!
-  createCharacter(character: CharacterCreateInput): Character!
+  addSkill(character: CharacterEditSkillInput): Character
+  addSubclass(character: CharacterAddSubclassInput): Character
+  createCharacter(character: CharacterCreateInput): Character
   deleteCharacter(character: CharacterDeleteInput): Character
-  forgetSpell(character: CharacterEditSpellInput): Character!
-  learnSpell(character: CharacterEditSpellInput): Character!
-  prepareSpell(character: CharacterEditSpellInput): Character!
-  removeSkill(character: CharacterEditSkillInput): Character!
-  unprepareSpell(character: CharacterEditSpellInput): Character!
-  updateCharacter(character: CharacterUpdateInput): Character!
+  forgetSpell(character: CharacterEditSpellInput): Character
+  learnSpell(character: CharacterEditSpellInput): Character
+  prepareSpell(character: CharacterEditSpellInput): Character
+  removeSkill(character: CharacterEditSkillInput): Character
+  unprepareSpell(character: CharacterEditSpellInput): Character
+  updateCharacter(character: CharacterUpdateInput): Character
 }
 
 type Query {
-  character(character: CharacterQueryInputType): Character!
-  characters: [Character!]!
-  klass(id: ID): Klass!
-  klasses: [Klass!]!
-  me: User!
-  skills: [Skill!]!
-  spell(id: ID): Spell!
-  spells(klassName: String): [Spell!]!
-  subclasses(klassName: String!): [SubClass!]!
+  character(character: CharacterQueryInputType): Character
+  characters: [Character]
+  klass(id: ID): Klass
+  klasses: [Klass]
+  me: User
+  skills: [Skill]
+  spell(id: ID): Spell
+  spells(klassName: String): [Spell]
+  subclasses(klassName: String!): [SubClass]
 }
 
 type Skill {

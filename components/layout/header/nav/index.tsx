@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { signOut } from 'next-auth/client'
+import { signOut } from '../../../../lib/next-auth/client'
 
 import styles from './styles.module.css'
 

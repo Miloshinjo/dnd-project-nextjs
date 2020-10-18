@@ -1,4 +1,4 @@
-import { signIn } from 'next-auth/client'
+import { signIn } from '../../../lib/next-auth/client'
 
 import styles from './styles.module.css'
 

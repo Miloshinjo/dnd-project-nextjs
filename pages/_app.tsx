@@ -5,7 +5,7 @@ import {
   dedupExchange,
   fetchExchange,
 } from 'urql'
-import { Provider as SessionProvider } from 'next-auth/client'
+import { Provider as SessionProvider } from '../lib/next-auth/client'
 import { ThemeProvider } from 'next-themes'
 
 import cache from '../utils/cache'

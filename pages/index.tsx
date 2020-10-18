@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import Head from 'next/head'
-import { signIn, useSession } from 'next-auth/client'
+import { signIn, useSession } from '../lib/next-auth/client'
 import { useRouter } from 'next/router'
 import ButtonPrimary from '../components/buttons/primary'
 import LoadingPage from '../components/layout/loading-page'
