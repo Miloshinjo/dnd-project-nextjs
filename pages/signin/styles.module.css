@@ -25,6 +25,10 @@
   border-color: var(--border-primary);
 }
 
+.emailInput::placeholder {
+  color: var(--color-placeholder);
+}
+
 .emailInput:focus {
   @apply outline-none shadow-outline z-10;
 }

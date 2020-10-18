@@ -8,9 +8,12 @@ const handleError = (error: ApolloError): any => {
   return error
 }
 
+// const getUserByAccountId = async (prisma) => {
+//   return
+// }
+
 const getUserId = async (req): Promise<number | undefined> => {
   const session = await getSession({ req })
-
   return (session?.user as any)?.id
 }
 

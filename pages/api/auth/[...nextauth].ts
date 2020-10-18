@@ -49,12 +49,15 @@ const options = {
     session: async (session, user) => {
       session.user.id = user?.id
 
+      console.log({ session })
+
       return Promise.resolve(session)
     },
   },
   pages: {
     signIn: '/signin', // sign in screen
     verifyRequest: '/verify-request', // (used for check email message)
+    error: '/auth-error',
   },
 }
 

@@ -33,6 +33,7 @@ const SignIn: NextPage<Props> = ({ providers, csrfToken }) => {
               type="text"
               id="email"
               name="email"
+              placeholder="Enter your email address"
               className={styles.emailInput}
             />
           </label>
@@ -65,8 +66,7 @@ const SignIn: NextPage<Props> = ({ providers, csrfToken }) => {
           /> */}
         </div>
         <p className="text-xs text-center mt-8">
-          Only one signin method can be used per email. If you are having any
-          issues with signin in, post your feedback to dm@simulacrum.rocks.
+          Only one signin method can be used per email.
         </p>
       </div>
     </div>
