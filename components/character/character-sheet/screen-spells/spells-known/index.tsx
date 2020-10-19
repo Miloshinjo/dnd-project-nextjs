@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { GiMusicSpell, GiHand, GiSwapBag } from 'react-icons/gi'
 import { FiChevronDown } from 'react-icons/fi'
 import { motion } from 'framer-motion'
@@ -31,7 +31,16 @@ const SpellsKnown: React.FC<Props> = ({
   noSpellsMessage,
 }) => {
   const { openModal } = useModal()
-  const [active, setActive] = useState(false)
+  const [active, setActive] = useState(true)
+
+  const sortedSpells = useMemo(
+    () =>
+      spells.sort((a, b) => {
+        if (a.level > b.level) return 1
+        return -1
+      }),
+    [spells],
+  )
 
   return (
     <div className={styles.container}>
@@ -130,7 +139,9 @@ const SpellsKnown: React.FC<Props> = ({
                         )}
                       </div>
                       <span className="text-xs opacity-75">
-                        lvl {spell.level} {spell.school}
+                        {spell.level > 0
+                          ? `lvl ${spell.level} ${spell.school}`
+                          : `${spell.school}`}
                       </span>
                     </div>
                     <div className={styles.attributesContainer}>

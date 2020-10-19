@@ -9,10 +9,6 @@
   color: var(--text-secondary);
 }
 
-.navLinkActive {
-  @apply text-primary-600;
-}
-
 .navLinkText {
   @apply text-xs font-medium;
 }

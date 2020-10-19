@@ -1,5 +1,7 @@
 .container {
-  @apply flex flex-col rounded;
+  @apply flex flex-col rounded shadow px-2;
+
+  background-color: var(--bg-secondary);
 }
 
 .button {
@@ -8,6 +10,7 @@
 
 .spellName {
   @apply text-lg font-semibold;
+  color: var(--color-spell-name);
 }
 
 .spellSchool {
@@ -17,7 +20,6 @@
 
 .spellLevel {
   @apply text-sm font-bold opacity-75;
-  color: var(--text-accent);
 }
 
 .bottomPart {

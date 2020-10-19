@@ -78,9 +78,11 @@ const Nav: React.FC<Props> = ({
 
         return (
           <motion.button
-            className={`${styles.navLink} ${
-              isActive ? styles.navLinkActive : ''
-            }`}
+            className={styles.navLink}
+            style={{
+              color: isActive ? `var(--color-${klass})` : '',
+              opacity: isActive ? 1 : 0.5,
+            }}
             key={item.text}
             onClick={() => {
               setActiveKeyAndStore(item.key)

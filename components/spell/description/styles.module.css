@@ -4,6 +4,7 @@
 
 .description > p {
   @apply mb-2;
+  /* color: #eaf2fa; */
 }
 
 .description ul {
@@ -16,7 +17,7 @@
 }
 
 .description table {
-  @apply bg-white my-6 overflow-x-auto;
+  @apply my-6 overflow-x-auto;
 }
 
 .description th {
@@ -24,5 +25,5 @@
 }
 
 .description td {
-  @apply p-4;
+  @apply p-4 border;
 }

@@ -8,7 +8,7 @@
 }
 
 .searchInput {
-  @apply p-2 rounded-lg;
+  @apply p-2 rounded-lg text-white;
   background-color: var(--bg-search-input);
 }
 
