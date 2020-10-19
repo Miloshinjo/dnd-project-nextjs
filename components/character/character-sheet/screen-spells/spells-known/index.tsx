@@ -43,7 +43,7 @@ const SpellsKnown: React.FC<Props> = ({
   return (
     <div className={styles.container}>
       <button
-        className="flex items-center px-4 py-2 justify-between w-full"
+        className="flex items-center p-4 justify-between w-full"
         type="button"
         onClick={() => {
           setActive(!active)
@@ -63,7 +63,7 @@ const SpellsKnown: React.FC<Props> = ({
         </div>
       </button>
       {active && Object.keys(spellsByLevel).length === 0 ? (
-        <div className="px-4 pb-2 text-sm italic">{noSpellsMessage}</div>
+        <div className={styles.noSpellsText}>{noSpellsMessage}</div>
       ) : (
         <div className="px-4">
           {Object.keys(spellsByLevel).map((level: string) => {

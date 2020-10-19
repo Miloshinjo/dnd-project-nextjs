@@ -39,7 +39,7 @@
 }
 
 .noSlotsText {
-  @apply italic ml-2;
+  @apply italic ml-2 text-sm pb-2;
   color: var(--text-secondary);
 }
 

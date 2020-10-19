@@ -23,6 +23,11 @@
   border-color: var(--text-secondary);
 }
 
+.noSpellsText {
+  @apply italic text-sm px-4 pb-2;
+  color: var(--text-secondary);
+}
+
 .removeSlotButton {
   @apply mr-4 text-gray-400;
 }
