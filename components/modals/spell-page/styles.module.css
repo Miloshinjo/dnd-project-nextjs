@@ -10,16 +10,6 @@
   @apply text-gray-300;
 }
 
-.spellName {
-  @apply text-xl leading-tight font-extrabold;
-  color: var(--color-spell-name);
-}
-
-.spellSchool {
-  @apply text-sm mb-4;
-  color: var(--text-secondary);
-}
-
 .spellInfoContainer {
   @apply grid grid-cols-2 my-4 gap-y-2 w-full text-left;
 }

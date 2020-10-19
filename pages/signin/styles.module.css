@@ -50,11 +50,12 @@
 }
 
 .dividerText {
-  @apply mx-4 font-medium text-gray-900 opacity-50;
+  @apply mx-4 font-medium  opacity-50;
 }
 
 .dividerLine {
-  @apply block w-full bg-gray-900 opacity-50 rounded;
+  @apply block w-full  opacity-50 rounded;
+  background-color: var(--text-primary);
   height: 1px;
 }
 

@@ -28,6 +28,19 @@
   --combo-white-d-3: #fff;
   --bg-drawer-header: #fff;
   --bg-drawer-header-2: #fff;
+
+  --color-barbarian: #ff7d01;
+  --color-bard: #e6cc80;
+  --color-cleric: #c0c0c0;
+  --color-druid: #ff7d0a;
+  --color-fighter: #c79c6e;
+  --color-monk: #00ff96;
+  --color-paladin: #f58cba;
+  --color-ranger: #abd473;
+  --color-rogue: #fff569;
+  --color-sorcerer: #ff4700;
+  --color-warlock: #9482c9;
+  --color-wizard: #69ccf0;
 }
 
 [data-theme='dark'] {
@@ -59,6 +72,19 @@
   --combo-white-d-3: #333333;
   --bg-drawer-header: #121212;
   --bg-drawer-header-2: #1f1f1f;
+
+  --color-barbarian: #ff7d01;
+  --color-bard: #e6cc80;
+  --color-cleric: #c0c0c0;
+  --color-druid: #ff7d0a;
+  --color-fighter: #c79c6e;
+  --color-monk: #00ff96;
+  --color-paladin: #f58cba;
+  --color-ranger: #abd473;
+  --color-rogue: #fff569;
+  --color-sorcerer: #ff4700;
+  --color-warlock: #9482c9;
+  --color-wizard: #69ccf0;
 }
 
 @tailwind base;

@@ -4,7 +4,7 @@ type Props = {
   klasses: string
 }
 
-const Klasses: React.FC<Props> = ({ klasses }) => (
+const SpellKlasses: React.FC<Props> = ({ klasses }) => (
   <div className={styles.container}>
     {klasses.split(',').map((klass) => {
       return (
@@ -16,4 +16,4 @@ const Klasses: React.FC<Props> = ({ klasses }) => (
   </div>
 )
 
-export { Klasses as default }
+export { SpellKlasses as default }

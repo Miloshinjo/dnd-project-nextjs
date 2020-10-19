@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 
-import { GiFireSpellCast } from 'react-icons/gi'
+import { GiMagicSwirl } from 'react-icons/gi'
 import { HiAdjustments } from 'react-icons/hi'
 import { BsTriangle } from 'react-icons/bs'
 import { BiStats } from 'react-icons/bi'
@@ -26,7 +26,7 @@ const navItems: NavItem[] = [
     key: 'skills',
   },
   {
-    icon: <GiFireSpellCast size={28} />,
+    icon: <GiMagicSwirl size={28} />,
     text: 'Spells',
     key: 'spells',
   },

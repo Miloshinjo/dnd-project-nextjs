@@ -7,7 +7,7 @@ const SlotButton = ({ onClick, isChecked, editSlots }) => {
     <button
       key={Math.random()}
       className={`${styles.spellSlotButton} ${
-        editSlots ? 'border border-gray-900' : ''
+        editSlots ? styles.editSlots : ''
       }`}
       onClick={onClick}
     >

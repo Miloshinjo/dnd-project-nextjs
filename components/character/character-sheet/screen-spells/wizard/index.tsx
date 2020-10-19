@@ -44,6 +44,10 @@ const Wizard: React.FC<Props> = ({ character }) => {
   return (
     <div className={styles.container}>
       <SpellSlots spellSlots={spellSlots} characterId={character.id} />
+      <SeeAllSpellsForKlassButton
+        klassName="wizard"
+        characterId={character.id}
+      />
       <SpellsKnown
         spells={character.preparedSpells}
         characterId={character.id}
@@ -60,10 +64,6 @@ const Wizard: React.FC<Props> = ({ character }) => {
         spells={character.spells.filter((spell) => spell.level !== 0)}
         characterId={character.id}
         title="Spellbook"
-      />
-      <SeeAllSpellsForKlassButton
-        klassName="wizard"
-        characterId={character.id}
       />
     </div>
   )

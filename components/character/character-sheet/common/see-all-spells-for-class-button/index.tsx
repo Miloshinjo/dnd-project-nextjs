@@ -1,7 +1,12 @@
 import { seeAllSpellsForKlass } from '../../../../../utils/spells'
 
+import { GiMagicSwirl } from 'react-icons/gi'
+import { FiChevronRight } from 'react-icons/fi'
+
 import { useRouter } from 'next/router'
 import { Character, Klass } from '../../../../../generated/graphql'
+
+import styles from './styles.module.css'
 
 type Props = {
   characterId: Character['id']
@@ -15,7 +20,7 @@ const SeeAllSpellsForKlassButton: React.FC<Props> = ({
   const router = useRouter()
   return (
     <button
-      className="inline-flex ml-2"
+      className={styles.button}
       onClick={() => {
         seeAllSpellsForKlass({
           klassName: klassName,
@@ -24,9 +29,15 @@ const SeeAllSpellsForKlassButton: React.FC<Props> = ({
         })
       }}
     >
-      <span className="ml-2 mt-4 underline pb-4">
+      <GiMagicSwirl
+        size={20}
+        className={styles.icon}
+        color={`var(--color-${klassName})`}
+      />
+      <span className={styles.buttonText}>
         <span className="capitalize">{klassName}</span> spell list
       </span>
+      <FiChevronRight size={20} />
     </button>
   )
 }

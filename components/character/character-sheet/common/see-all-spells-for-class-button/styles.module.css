@@ -1,0 +1,12 @@
+.button {
+  @apply flex shadow px-3 py-1 ml-auto mr-4 items-center self-end;
+  background-color: var(--bg-secondary);
+}
+
+.buttonText {
+  @apply mx-2;
+}
+
+.icon {
+  /* @apply text-primary-600; */
+}

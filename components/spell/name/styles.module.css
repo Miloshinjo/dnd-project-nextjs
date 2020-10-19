@@ -1,0 +1,9 @@
+.spellName {
+  @apply text-xl leading-tight font-extrabold;
+  color: var(--color-spell-name);
+}
+
+.spellSchool {
+  @apply text-sm mb-4;
+  color: var(--text-secondary);
+}

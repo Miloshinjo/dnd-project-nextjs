@@ -4,7 +4,7 @@ type Props = {
   material: string | null
 }
 
-const Material = ({ material }) => {
+const SpellMaterial: React.FC<Props> = ({ material }) => {
   if (!material) return null
   return (
     <div className={styles.container}>
@@ -14,4 +14,4 @@ const Material = ({ material }) => {
   )
 }
 
-export { Material as default }
+export { SpellMaterial as default }

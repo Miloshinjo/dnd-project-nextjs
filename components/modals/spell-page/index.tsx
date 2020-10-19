@@ -10,6 +10,7 @@ import DrawerHeader from '../../modal/drawer-header'
 import TextLoader from '../../layout/text-loader'
 import SpellDescription from '../../spell/description'
 import SpellInfo from '../../spell/info'
+import SpellName from '../../spell/name'
 import SpellConcentrationRitual from '../../spell/concentration-ritual'
 import SpellMaterial from '../../spell/material'
 import SpellKlasses from '../../spell/klasses'
@@ -93,10 +94,11 @@ const SpellPageModal: React.FC<Props> = ({
     <>
       <DrawerHeader backgroundColor="var(--bg-drawer-header-2)" />
       <div className="flex flex-col items-start p-4">
-        <h2 className={styles.spellName}>{spell.name}</h2>
-        <h3 className={styles.spellSchool}>
-          level {spell.level} {spell.school} spell
-        </h3>
+        <SpellName
+          level={spell.level}
+          name={spell.name}
+          school={spell.school}
+        />
         <SpellConcentrationRitual
           concentration={spell.concentration}
           ritual={spell.ritual}

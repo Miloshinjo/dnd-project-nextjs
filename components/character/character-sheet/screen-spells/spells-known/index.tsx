@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { GiMusicSpell, GiHand, GiSwapBag } from 'react-icons/gi'
 import { FaPlus } from 'react-icons/fa'
 
@@ -30,7 +30,6 @@ const SpellsKnown: React.FC<Props> = ({
   spells,
   characterId,
   title,
-  learnControls = true,
   showSectionTitle = true,
   cannotLearn = false,
   counter = null,
@@ -54,15 +53,10 @@ const SpellsKnown: React.FC<Props> = ({
               </span>
             )}
           </h4>
-          {learnControls && (
-            <div className="flex items-end flex-col">
-              <Link href={`/spells?character=${characterId}`}>
-                <button className={styles.manageSpellsButton}>
-                  <FaPlus size={15} />
-                </button>
-              </Link>
-            </div>
-          )}
+
+          <div className="flex items-end flex-col">
+            <button className={styles.manageSpellsButton}>Expand</button>
+          </div>
         </div>
         <div className="px-4">
           {Object.keys(spellsByLevel).map((level: string) => {
