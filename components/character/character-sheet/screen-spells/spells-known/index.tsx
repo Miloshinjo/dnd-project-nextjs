@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { GiMusicSpell, GiHand, GiSwapBag } from 'react-icons/gi'
 import { FaPlus } from 'react-icons/fa'
+import { FiChevronDown } from 'react-icons/fi'
 
 import Link from 'next/link'
 import {
@@ -55,7 +56,7 @@ const SpellsKnown: React.FC<Props> = ({
           </h4>
 
           <div className="flex items-end flex-col">
-            <button className={styles.manageSpellsButton}>Expand</button>
+            <FiChevronDown />
           </div>
         </div>
         <div className="px-4">

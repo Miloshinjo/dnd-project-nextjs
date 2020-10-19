@@ -10,8 +10,7 @@
 }
 
 .navLinkActive {
-  @apply;
-  color: var(--bg-accent);
+  @apply text-primary-600;
 }
 
 .navLinkText {
