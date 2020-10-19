@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { seeAllSpellsForKlass } from '../../../../../utils/spells'
 
 import { GiMagicSwirl } from 'react-icons/gi'
@@ -18,12 +19,18 @@ const SeeAllSpellsForKlassButton: React.FC<Props> = ({
   klassName,
 }) => {
   const router = useRouter()
+  const parsedKlassName = useMemo(() => {
+    if (klassName === 'Arcane Trickster') return 'wizard'
+    if (klassName === 'Eldritch Knight') return 'wizard'
+    return klassName.toLowerCase()
+  }, [klassName])
+
   return (
     <button
       className={styles.button}
       onClick={() => {
         seeAllSpellsForKlass({
-          klassName: klassName,
+          klassName: parsedKlassName,
           characterId: characterId,
           router,
         })
@@ -32,7 +39,7 @@ const SeeAllSpellsForKlassButton: React.FC<Props> = ({
       <GiMagicSwirl
         size={20}
         className={styles.icon}
-        color={`var(--color-${klassName})`}
+        color={`var(--color-${parsedKlassName})`}
       />
       <span className={styles.buttonText}>
         <span className="capitalize">{klassName}</span> spell list

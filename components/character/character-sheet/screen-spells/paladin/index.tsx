@@ -46,15 +46,16 @@ const Paladin: React.FC<Props> = ({ character }) => {
   return (
     <div className={styles.container}>
       <SpellSlots spellSlots={spellSlots} characterId={character.id} />
+      <SeeAllSpellsForKlassButton
+        klassName="Paladin"
+        characterId={character.id}
+      />
       <SpellsKnown
         spells={character.preparedSpells}
         characterId={character.id}
         title="Prepared Spells"
         counter={character.level + abilityScoreM(character.charisma)}
-      />
-      <SeeAllSpellsForKlassButton
-        klassName="paladin"
-        characterId={character.id}
+        noSpellsMessage="No spells prepared. You can prepare some by going to Paladin spell list."
       />
     </div>
   )

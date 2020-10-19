@@ -1,9 +1,7 @@
 import { useMemo, useState } from 'react'
 import { GiMusicSpell, GiHand, GiSwapBag } from 'react-icons/gi'
-import { FaPlus } from 'react-icons/fa'
 import { FiChevronDown } from 'react-icons/fi'
 
-import Link from 'next/link'
 import {
   Spell,
   Character,
@@ -19,12 +17,10 @@ type Props = {
   spells: CharacterQuery['character']['spells'] | SpellsKlassQuery['spells']
   characterId: Character['id']
   title: string
-  learnControls?: boolean
   showSectionTitle?: boolean
-  canPrepareOverride?: boolean
-  canLearnOverride?: boolean
   cannotLearn?: boolean
   counter?: number
+  noSpellsMessage: string
 }
 
 const SpellsKnown: React.FC<Props> = ({
@@ -34,8 +30,10 @@ const SpellsKnown: React.FC<Props> = ({
   showSectionTitle = true,
   cannotLearn = false,
   counter = null,
+  noSpellsMessage,
 }) => {
   const { openModal } = useModal()
+  const [active, setActive] = useState(false)
 
   const spellsByLevel: Pick<
     Spell,
@@ -44,21 +42,29 @@ const SpellsKnown: React.FC<Props> = ({
 
   return (
     <div className={styles.container}>
-      <div className="p-2">
-        <div className="flex items-center px-4 justify-between">
-          <h4 className="text-center">
-            {title}{' '}
-            {counter && (
-              <span className="text-xs opacity-75">
-                ({spells.length} of {counter})
-              </span>
-            )}
-          </h4>
+      <button
+        className="flex items-center px-4 py-2 justify-between w-full"
+        type="button"
+        onClick={() => {
+          setActive(!active)
+        }}
+      >
+        <h4 className="text-center">
+          {title}{' '}
+          {counter && (
+            <span className="text-xs opacity-75">
+              ({spells.length} of {counter})
+            </span>
+          )}
+        </h4>
 
-          <div className="flex items-end flex-col">
-            <FiChevronDown />
-          </div>
+        <div className="flex items-end flex-col">
+          <FiChevronDown />
         </div>
+      </button>
+      {active && Object.keys(spellsByLevel).length === 0 ? (
+        <div className="px-4 pb-2 text-sm italic">{noSpellsMessage}</div>
+      ) : (
         <div className="px-4">
           {Object.keys(spellsByLevel).map((level: string) => {
             return (
@@ -148,7 +154,7 @@ const SpellsKnown: React.FC<Props> = ({
             )
           })}
         </div>
-      </div>
+      )}
     </div>
   )
 }

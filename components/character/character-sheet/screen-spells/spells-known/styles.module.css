@@ -1,5 +1,5 @@
 .container {
-  @apply py-2 m-4 shadow-sm rounded;
+  @apply m-4 shadow-sm rounded;
   background-color: var(--bg-secondary);
 }
 

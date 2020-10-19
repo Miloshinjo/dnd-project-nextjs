@@ -44,26 +44,29 @@ const Druid: React.FC<Props> = ({ character }) => {
   return (
     <div className={styles.container}>
       <SpellSlots spellSlots={spellSlots} characterId={character.id} />
+      <SeeAllSpellsForKlassButton
+        klassName="Druid"
+        characterId={character.id}
+      />
       <SpellsKnown
         spells={character.preparedSpells}
         characterId={character.id}
         title="Prepared Spells"
         counter={character.level + abilityScoreM(character.wisdom)}
+        noSpellsMessage="No spells prepared. You can prepare some by going to Druid spell list."
       />
       <SpellsKnown
         spells={character.spells.filter((spell) => spell.level === 0)}
         characterId={character.id}
         title="Cantrips"
         showSectionTitle={false}
+        noSpellsMessage="No cantrips known. You can add them from the spell list."
       />
       <SpellsKnown
         spells={character.spells.filter((spell) => spell.level !== 0)}
         characterId={character.id}
-        title="Cantrips and Extra Spells"
-      />
-      <SeeAllSpellsForKlassButton
-        klassName="druid"
-        characterId={character.id}
+        title="Circle Spells"
+        noSpellsMessage="No Circle spells known. You can add them from the spell list."
       />
     </div>
   )
