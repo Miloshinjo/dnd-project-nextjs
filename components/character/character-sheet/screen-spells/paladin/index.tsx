@@ -57,6 +57,12 @@ const Paladin: React.FC<Props> = ({ character }) => {
         counter={character.level + abilityScoreM(character.charisma)}
         noSpellsMessage="No spells prepared. You can prepare some by going to Paladin spell list."
       />
+      <SpellsKnown
+        spells={character.spells.filter((spell) => spell.level !== 0)}
+        characterId={character.id}
+        title="Oath Spells"
+        noSpellsMessage="No Oath spells known. You can add them from the spell list."
+      />
     </div>
   )
 }

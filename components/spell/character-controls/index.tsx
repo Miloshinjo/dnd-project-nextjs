@@ -58,7 +58,9 @@ const CharacterControls: React.FC<Props> = ({
     } else {
       switch (klassName) {
         case 'Cleric':
-          return isKnownSpell ? 'Domain Spell' : 'Domain Spell'
+          return 'Domain Spell'
+        case 'Druid':
+          return 'Circle Spell'
         case 'Wizard':
           return isKnownSpell ? 'In spellbook' : 'Add to spellbook'
         default:

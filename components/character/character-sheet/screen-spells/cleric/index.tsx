@@ -60,14 +60,12 @@ const Cleric: React.FC<Props> = ({ character }) => {
         spells={character.spells.filter((spell) => spell.level === 0)}
         characterId={character.id}
         title="Cantrips"
-        showSectionTitle={false}
         noSpellsMessage="No cantrips known. You can add them from the spell list."
       />
       <SpellsKnown
         spells={character.spells.filter((spell) => spell.level !== 0)}
         characterId={character.id}
         title="Domain Spells"
-        showSectionTitle={false}
         noSpellsMessage="No Domain spells known. You can add them from the spell list."
       />
     </div>

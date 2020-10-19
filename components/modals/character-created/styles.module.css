@@ -3,7 +3,7 @@
 }
 
 .spellLearntLink {
-  @apply px-2 border bg-primary-600 text-white rounded font-medium mt-4 py-1;
+  @apply px-2 bg-primary-600 text-white rounded font-medium mt-4 py-1;
 }
 
 .spellLearntLinkFlat {

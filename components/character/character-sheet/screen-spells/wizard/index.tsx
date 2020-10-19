@@ -59,7 +59,6 @@ const Wizard: React.FC<Props> = ({ character }) => {
         spells={character.spells.filter((spell) => spell.level === 0)}
         characterId={character.id}
         title="Cantrips"
-        showSectionTitle={false}
         noSpellsMessage="No cantrips known. You can add them from the spell list."
       />
       <SpellsKnown
