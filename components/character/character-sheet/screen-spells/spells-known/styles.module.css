@@ -46,13 +46,8 @@
 }
 
 .spellContainer {
-  @apply mb-2 flex items-center justify-between w-full border-b pb-2;
+  @apply mb-2 flex items-center justify-between w-full pb-2;
   border-color: var(--bg-tertiary);
-}
-
-.spellContainer:last-child {
-  border: none;
-  margin-bottom: 0;
 }
 
 .spellTitle {
@@ -72,4 +67,12 @@
 .spellCountText {
   @apply text-xs;
   color: var(--text-secondary);
+}
+
+.badge {
+  @apply inline-flex h-3 w-3 rounded items-center font-bold justify-center uppercase;
+  font-size: 8px;
+
+  background-color: var(--text-secondary);
+  color: var(--text-alt);
 }

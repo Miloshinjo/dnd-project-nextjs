@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { GiMusicSpell, GiHand, GiSwapBag } from 'react-icons/gi'
 import { FiChevronDown } from 'react-icons/fi'
 import { motion } from 'framer-motion'
@@ -9,7 +9,6 @@ import {
   CharacterQuery,
   SpellsKlassQuery,
 } from '../../../../../generated/graphql'
-import { arrangeSpellsByLevel } from '../../../../../utils/spells'
 import { useModal } from '../../../../../context/modal'
 
 import styles from './styles.module.css'
@@ -33,11 +32,6 @@ const SpellsKnown: React.FC<Props> = ({
 }) => {
   const { openModal } = useModal()
   const [active, setActive] = useState(false)
-
-  const spellsByLevel: Pick<
-    Spell,
-    'id' | 'name' | 'level' | 'castingTime' | 'school' | 'range' | 'components'
-  > = useMemo(() => arrangeSpellsByLevel(spells), [spells])
 
   return (
     <div className={styles.container}>
@@ -71,101 +65,112 @@ const SpellsKnown: React.FC<Props> = ({
         </motion.div>
       </button>
       {active &&
-        (Object.keys(spellsByLevel).length === 0 ? (
+        (spells.length === 0 ? (
           <div className={styles.noSpellsText}>{noSpellsMessage}</div>
         ) : (
           <div className="px-4">
-            {Object.keys(spellsByLevel).map((level: string) => {
-              return (
-                <div key={level} className="mt-4">
-                  {spellsByLevel[level].map(
-                    (
-                      spell: Pick<
-                        Spell,
-                        | 'id'
-                        | 'name'
-                        | 'level'
-                        | 'school'
-                        | 'castingTime'
-                        | 'range'
-                        | 'components'
-                      >,
-                    ) => {
-                      return (
-                        <button
-                          type="button"
-                          key={spell.id}
-                          className={styles.spellContainer}
-                          onClick={() =>
-                            openModal({
-                              type: 'spellPage',
-                              props: {
-                                spellId: spell.id,
-                                characterId,
-                                cannotLearn,
-                              },
-                            })
-                          }
-                        >
-                          <div className={styles.spellTitle}>
-                            <span className="font-medium">{spell.name}</span>
-                            <span className="text-xs opacity-75">
-                              lvl {spell.level} {spell.school}
-                            </span>
-                          </div>
-                          <div className={styles.attributesContainer}>
-                            <div className="flex flex-col items-end">
-                              <span className="text-xs">
-                                {spell.castingTime}
+            {(spells as Array<
+              Pick<
+                Spell,
+                | 'id'
+                | 'level'
+                | 'name'
+                | 'school'
+                | 'castingTime'
+                | 'components'
+                | 'range'
+                | 'concentration'
+                | 'ritual'
+              >
+            >).map(
+              (
+                spell: Pick<
+                  Spell,
+                  | 'id'
+                  | 'level'
+                  | 'name'
+                  | 'school'
+                  | 'castingTime'
+                  | 'components'
+                  | 'range'
+                  | 'concentration'
+                  | 'ritual'
+                >,
+              ) => {
+                return (
+                  <button
+                    type="button"
+                    key={spell.id}
+                    className={styles.spellContainer}
+                    onClick={() =>
+                      openModal({
+                        type: 'spellPage',
+                        props: {
+                          spellId: spell.id,
+                          characterId,
+                          cannotLearn,
+                        },
+                      })
+                    }
+                  >
+                    <div className={styles.spellTitle}>
+                      <div className="font-medium flex">
+                        {spell.name}
+                        {(spell.concentration || spell.ritual) && (
+                          <div className="ml-4 flex items-center">
+                            {spell.concentration && (
+                              <span className={`${styles.badge} mr-2`}>
+                                {spell.concentration && 'c'}
                               </span>
-                              <div className="flex items-center">
-                                <div className="text-xs ml-1 uppercase flex">
-                                  {spell.components
-                                    .split(',')
-                                    .map((component) =>
-                                      component === 'v' ? (
-                                        <span
-                                          className={
-                                            styles.spellInfoComponentsIcon
-                                          }
-                                          key="v"
-                                        >
-                                          <GiMusicSpell size={10} />
-                                        </span>
-                                      ) : component === 's' ? (
-                                        <span
-                                          className={
-                                            styles.spellInfoComponentsIcon
-                                          }
-                                          key="s"
-                                        >
-                                          <GiHand size={10} />
-                                        </span>
-                                      ) : (
-                                        <div
-                                          className={
-                                            styles.spellInfoComponentsIcon
-                                          }
-                                          key="m"
-                                        >
-                                          <GiSwapBag size={10} />
-                                        </div>
-                                      ),
-                                    )}
-                                </div>
-                                <span className="text-xs ml-1">
-                                  {spell.range}
-                                </span>
-                              </div>
-                            </div>
+                            )}
+                            {spell.ritual && (
+                              <span className={styles.badge}>r</span>
+                            )}
                           </div>
-                        </button>
-                      )
-                    },
-                  )}
-                </div>
-              )
-            })}
+                        )}
+                      </div>
+                      <span className="text-xs opacity-75">
+                        lvl {spell.level} {spell.school}
+                      </span>
+                    </div>
+                    <div className={styles.attributesContainer}>
+                      <div className="flex flex-col items-end">
+                        <span className="text-xs">{spell.castingTime}</span>
+                        <div className="flex items-center">
+                          <div className="text-xs ml-1 uppercase flex">
+                            {spell.components.split(',').map((component) =>
+                              component === 'v' ? (
+                                <span
+                                  className={styles.spellInfoComponentsIcon}
+                                  key="v"
+                                >
+                                  <GiMusicSpell size={10} />
+                                </span>
+                              ) : component === 's' ? (
+                                <span
+                                  className={styles.spellInfoComponentsIcon}
+                                  key="s"
+                                >
+                                  <GiHand size={10} />
+                                </span>
+                              ) : (
+                                <div
+                                  className={styles.spellInfoComponentsIcon}
+                                  key="m"
+                                >
+                                  <GiSwapBag size={10} />
+                                </div>
+                              ),
+                            )}
+                          </div>
+                          <span className="text-xs ml-1">{spell.range}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </button>
+                )
+              },
+            )}
           </div>
         ))}
     </div>

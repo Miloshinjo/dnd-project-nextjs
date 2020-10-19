@@ -42,6 +42,8 @@ query Character($id: ID!) {
       school
       range
       components
+      ritual
+      concentration
     }
     preparedSpells {
       id
