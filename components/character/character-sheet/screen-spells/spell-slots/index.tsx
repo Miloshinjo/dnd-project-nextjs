@@ -98,7 +98,7 @@ const SpellSlots: React.FC<Props> = ({ characterId, spellSlots }) => {
   return (
     <div className={styles.container}>
       <div className="p-2">
-        <div className="flex items-center pl-2 justify-between">
+        <div className="flex items-center pl-2 justify-between mb-4">
           <h4 className="text-center">Spell Slots</h4>
           <button
             className={
