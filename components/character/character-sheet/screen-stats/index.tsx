@@ -63,8 +63,8 @@ const CharacterScreenStats: React.FC<Props> = ({ character, skills }) => {
 
       <AbilityScores character={character} />
 
-      <div className="mt-6 md:flex md:justify-between">
-        <div className="mb-4 md:w-1/2 md:mr-16">
+      <div className="mt-6">
+        <div className="mb-4 ">
           <h2 className="opacity-50 mb-1 font-semibold text-sm">Attack</h2>
           <div className={styles.statBlockWrapper}>
             <StatField
@@ -92,11 +92,11 @@ const CharacterScreenStats: React.FC<Props> = ({ character, skills }) => {
             )}
           </div>
         </div>
-        <div className="mb-4 md:w-1/2">
+        <div className="mb-4">
           <h2 className="opacity-50 mb-1 font-semibold text-sm">Skills</h2>
           <Skills character={character} skills={skills} />
         </div>
-        <div className="mb-4 md:w-1/2">
+        <div className="mb-4">
           <h2 className="opacity-50 mb-1 font-semibold text-sm">Senses</h2>
           <div className={styles.statBlockWrapper}>
             <StatField

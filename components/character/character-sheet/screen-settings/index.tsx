@@ -1,9 +1,7 @@
 import { motion } from 'framer-motion'
 
-import { subclassTitle } from '../../../../utils/character'
 import { useModal } from '../../../../context/modal'
 import DeleteButton from '../../../buttons/delete-button'
-import AddButton from '../../../buttons/add-button'
 import { Character } from '../../../../generated/graphql'
 
 import styles from './styles.module.css'
@@ -58,53 +56,6 @@ const ScreenSettings: React.FC<Props> = ({ character }) => {
       className={styles.container}
     >
       <div className="p-4">
-        <div className={styles.subclassSectionContainer}>
-          <h3 className="font-medium mb-1">
-            {subclassTitle[character.klass.name]}
-          </h3>
-          {character?.subclass ? (
-            <button
-              type="button"
-              className="font-bold"
-              onClick={() => {
-                openModal({
-                  type: 'addSubclass',
-                  props: {
-                    originalValue: {
-                      id: character.subclass.id,
-                      label: character.subclass.name,
-                    },
-                    characterId: character.id,
-                    klassName: character.klass.name,
-                  },
-                })
-              }}
-            >
-              {character.subclass.name}
-            </button>
-          ) : (
-            <>
-              <p className="mb-4">You didn&apos;t pick a one yet.</p>
-              <AddButton
-                onClick={() => {
-                  openModal({
-                    type: 'addSubclass',
-                    props: {
-                      originalValue: {
-                        id: character?.subclass?.id,
-                        label: character?.subclass?.name,
-                      },
-                      characterId: character.id,
-                      klassName: character.klass.name,
-                    },
-                  })
-                }}
-              >
-                Pick {subclassTitle[character.klass.name]}
-              </AddButton>
-            </>
-          )}
-        </div>
         <div className="px-2 py-4">
           <h3 className="font-medium mb-1">Delete character</h3>
           <p className="mb-4 text-sm">

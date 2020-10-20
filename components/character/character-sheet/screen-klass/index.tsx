@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+
 import Sorcerer from './sorcerer'
 import Cleric from './cleric'
 import Druid from './druid'
@@ -12,6 +13,7 @@ import Monk from './monk'
 import Fighter from './fighter'
 import Barbarian from './barbarian'
 import StatField from '../common/stat-field'
+import SubclassSection from './subclass-section'
 
 import styles from './styles.module.css'
 
@@ -64,6 +66,7 @@ const ScreenKlass: React.FC<Props> = ({ character }) => {
           klassAbilityOne: character.klassAbilityOne,
         })[character.klass.name]
       }
+      <SubclassSection character={character} />
     </motion.div>
   )
 }

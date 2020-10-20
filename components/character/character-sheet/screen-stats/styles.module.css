@@ -22,5 +22,6 @@
 }
 
 .heading {
-  @apply text-sm font-medium text-gray-600;
+  @apply text-sm font-medium;
+  color: var(--text-secondary);
 }
