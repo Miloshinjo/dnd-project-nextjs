@@ -39,6 +39,7 @@ const SubclassSection: React.FC<Props> = ({ character }) => {
         <>
           <p className="mb-4">You didn&apos;t pick a one yet.</p>
           <button
+            type="button"
             style={{
               borderColor: `var(--color-${character.klass.name.toLowerCase()})`,
             }}
