@@ -11,6 +11,8 @@ import Rogue from './rogue'
 import Monk from './monk'
 import Fighter from './fighter'
 import Barbarian from './barbarian'
+import StatField from '../common/stat-field'
+
 import styles from './styles.module.css'
 
 const screenVariants = {
@@ -52,12 +54,10 @@ type Props = {
 
 const ScreenKlass: React.FC<Props> = ({ character }) => {
   return (
-    <motion.div
-      variants={screenVariants}
-      animate="animate"
-      initial="initial"
-      className={styles.container}
-    >
+    <motion.div variants={screenVariants} animate="animate" initial="initial">
+      <div className={styles.section}>
+        <StatField label="Hit Die" value={character.klass.hitDie} />
+      </div>
       {
         klassToRender({
           characterId: character.id,

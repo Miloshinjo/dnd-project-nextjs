@@ -23,11 +23,6 @@ const navItems: NavItem[] = [
   },
   {
     icon: <BsTriangle size={28} />,
-    text: 'Skills',
-    key: 'skills',
-  },
-  {
-    icon: <BsTriangle size={28} />,
     text: 'Class',
     key: 'class',
   },
@@ -84,6 +79,7 @@ const Nav: React.FC<Props> = ({
 
         if (item.key === 'class') {
           item.icon = icons[klassName]
+          item.text = klassName
         }
 
         return (

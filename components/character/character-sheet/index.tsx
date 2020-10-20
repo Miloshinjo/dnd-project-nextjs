@@ -11,7 +11,6 @@ import {
 
 import ScreenStats from './screen-stats'
 import ScreenKlass from './screen-klass'
-import ScreenSkills from './screen-skills'
 import ScreenSpells from './screen-spells'
 import ScreenSettings from './screen-settings'
 import CharacterHeader from './common/header'
@@ -71,8 +70,7 @@ const CharacterSheet: React.FC<Props> = ({ id }) => {
   const { skills } = skillsResult.data
 
   const screens = {
-    stats: <ScreenStats character={character} />,
-    skills: <ScreenSkills character={character} skills={skills} />,
+    stats: <ScreenStats character={character} skills={skills} />,
     class: <ScreenKlass character={character} />,
     spells: <ScreenSpells character={character} />,
     settings: <ScreenSettings character={character} />,

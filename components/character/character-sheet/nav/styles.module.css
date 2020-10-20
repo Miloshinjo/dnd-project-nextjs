@@ -10,7 +10,7 @@
 }
 
 .navLinkText {
-  @apply text-xs font-medium;
+  @apply text-xs font-medium capitalize;
 }
 
 @screen md {

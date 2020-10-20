@@ -4,11 +4,11 @@
 }
 
 .abilityPoints {
-  @apply flex mt-4;
+  @apply flex mt-4 flex-wrap;
 }
 
 .abilityPoint {
-  @apply w-8 h-8 flex items-center justify-center rounded-full mr-2 shadow-inner;
+  @apply w-8 h-8 mb-2 flex items-center justify-center rounded-full mr-2 shadow-inner;
   background-color: var(--bg-tertiary);
 }
 

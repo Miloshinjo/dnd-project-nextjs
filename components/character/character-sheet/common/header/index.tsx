@@ -1,41 +1,15 @@
 import { useCallback } from 'react'
 
-import { useLevelMutation, Character } from '../../../../../generated/graphql'
+import { useLevelMutation } from '../../../../../generated/graphql'
 import { useModal } from '../../../../../context/modal'
+import { CharacterModel } from '../../../../../models/character'
 import HitPoints from './hit-points'
 import ArcaneWard from './arcane-ward'
 
 import styles from './styles.module.css'
 
 type Props = {
-  character: Pick<
-    Character,
-    | 'id'
-    | 'name'
-    | 'armorClass'
-    | 'level'
-    | 'race'
-    | 'klass'
-    | 'hitPoints'
-    | 'maxHitPoints'
-    | 'arcaneWard'
-    | 'arcaneWardMax'
-    | 'alignment'
-    | 'gold'
-    | 'inspiration'
-    | 'strength'
-    | 'dexterity'
-    | 'intelligence'
-    | 'wisdom'
-    | 'charisma'
-    | 'constitution'
-    | 'skills'
-    | 'speed'
-    | 'spellSlots'
-    | 'subclass'
-    | 'spells'
-    | 'preparedSpells'
-  >
+  character: CharacterModel
 }
 
 const CharacterHeader: React.FC<Props> = ({ character }) => {

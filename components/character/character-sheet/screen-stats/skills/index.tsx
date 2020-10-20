@@ -1,60 +1,25 @@
 import { motion } from 'framer-motion'
-
 import {
   useAddSkillMutation,
   useRemoveSkillMutation,
   Skill,
-  Character,
-} from '../../../../generated/graphql'
+} from '../../../../../generated/graphql'
+import { CharacterModel } from '../../../../../models/character'
+
 import {
   calculateSkill,
-  abilityScoreM,
   proficiencyBonus,
-} from '../../../../utils/character'
+  abilityScoreM,
+} from '../../../../../utils/character'
 
 import styles from './styles.module.css'
 
-const screenVariants = {
-  initial: { x: '100vw' },
-  animate: {
-    x: '0',
-    transition: { duration: 0.3, ease: 'easeIn' },
-  },
-}
-
 type Props = {
-  character: Pick<
-    Character,
-    | 'id'
-    | 'name'
-    | 'armorClass'
-    | 'level'
-    | 'race'
-    | 'klass'
-    | 'hitPoints'
-    | 'maxHitPoints'
-    | 'arcaneWard'
-    | 'arcaneWardMax'
-    | 'alignment'
-    | 'gold'
-    | 'inspiration'
-    | 'strength'
-    | 'dexterity'
-    | 'intelligence'
-    | 'wisdom'
-    | 'charisma'
-    | 'constitution'
-    | 'skills'
-    | 'speed'
-    | 'spellSlots'
-    | 'subclass'
-    | 'spells'
-    | 'preparedSpells'
-  >
   skills: Array<Skill>
+  character: CharacterModel
 }
 
-const ScreenSkills: React.FC<Props> = ({ character, skills }) => {
+const Skills: React.FC<Props> = ({ skills, character }) => {
   const [
     { data: addSkillData, fetching: addSkillFetching },
     addSkill,
@@ -65,12 +30,7 @@ const ScreenSkills: React.FC<Props> = ({ character, skills }) => {
   ] = useRemoveSkillMutation()
 
   return (
-    <motion.div
-      variants={screenVariants}
-      animate="animate"
-      initial="initial"
-      className={styles.container}
-    >
+    <div className={styles.container}>
       {skills.map((skill) => {
         const isProficient = !!character.skills.find((el) => el.id === skill.id)
 
@@ -115,8 +75,8 @@ const ScreenSkills: React.FC<Props> = ({ character, skills }) => {
           </motion.button>
         )
       })}
-    </motion.div>
+    </div>
   )
 }
 
-export { ScreenSkills as default }
+export { Skills as default }

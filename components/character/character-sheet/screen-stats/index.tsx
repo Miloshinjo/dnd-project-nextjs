@@ -2,7 +2,8 @@ import { useCallback } from 'react'
 import { motion } from 'framer-motion'
 
 import AbilityScores from './ability-scores'
-import { Character } from '../../../../generated/graphql'
+import Skills from './skills'
+import { Skill } from '../../../../generated/graphql'
 import {
   proficiencyBonus,
   initiative,
@@ -13,6 +14,7 @@ import {
   abilityScoreM,
   hitBonus,
 } from '../../../../utils/character'
+import { CharacterModel } from '../../../../models/character'
 import ArmorClass from '../screen-stats/armor-class'
 import Speed from '../screen-stats/speed'
 import StatField from '../common/stat-field'
@@ -20,34 +22,8 @@ import StatField from '../common/stat-field'
 import styles from './styles.module.css'
 
 type Props = {
-  character: Pick<
-    Character,
-    | 'id'
-    | 'armorClass'
-    | 'name'
-    | 'level'
-    | 'race'
-    | 'klass'
-    | 'hitPoints'
-    | 'maxHitPoints'
-    | 'arcaneWard'
-    | 'arcaneWardMax'
-    | 'alignment'
-    | 'gold'
-    | 'inspiration'
-    | 'strength'
-    | 'dexterity'
-    | 'intelligence'
-    | 'wisdom'
-    | 'charisma'
-    | 'constitution'
-    | 'skills'
-    | 'speed'
-    | 'spellSlots'
-    | 'subclass'
-    | 'spells'
-    | 'preparedSpells'
-  >
+  skills: Array<Skill>
+  character: CharacterModel
 }
 
 const screenVariants = {
@@ -58,7 +34,7 @@ const screenVariants = {
   },
 }
 
-const CharacterScreenStats: React.FC<Props> = ({ character }) => {
+const CharacterScreenStats: React.FC<Props> = ({ character, skills }) => {
   const hasSkill = useCallback(
     (skillName) => {
       const skill = character.skills.find((skill) => skillName === skill.name)
@@ -115,6 +91,10 @@ const CharacterScreenStats: React.FC<Props> = ({ character }) => {
               />
             )}
           </div>
+        </div>
+        <div className="mb-4 md:w-1/2">
+          <h2 className="opacity-50 mb-1 font-semibold text-sm">Skills</h2>
+          <Skills character={character} skills={skills} />
         </div>
         <div className="mb-4 md:w-1/2">
           <h2 className="opacity-50 mb-1 font-semibold text-sm">Senses</h2>

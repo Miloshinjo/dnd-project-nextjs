@@ -59,7 +59,7 @@
   },
   {
     "name": "Cleric",
-    "description": "A priestly champion who wields diving magic in service of a higher power.",
+    "description": "A priestly champion who wields divine magic in service of a higher power.",
     "hitDie": "d8",
     "hitPointsAt1st": "8 + Constitution modifier",
     "primaryAbility": ["wisdom"],

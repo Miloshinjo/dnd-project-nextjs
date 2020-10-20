@@ -1,2 +1,4 @@
-.container {
+.section {
+  @apply flex flex-col p-4 justify-center rounded shadow-sm m-4;
+  background-color: var(--bg-secondary);
 }
