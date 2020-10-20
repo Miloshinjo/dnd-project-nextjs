@@ -2,7 +2,7 @@ import React from 'react'
 
 import KlassAbilityTracker from '../klass-ability-tracker'
 
-type Props = { characterId: number; klassAbilityOne: Array<boolean> }
+type Props = { characterId: number; klassAbilityOne: string }
 
 const Paladin: React.FC<Props> = ({ characterId, klassAbilityOne }) => {
   return (

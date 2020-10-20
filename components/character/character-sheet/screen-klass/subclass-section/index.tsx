@@ -37,7 +37,9 @@ const SubclassSection: React.FC<Props> = ({ character }) => {
         </button>
       ) : (
         <>
-          <p className="mb-4">You didn&apos;t pick a one yet.</p>
+          <p className="mb-4 text-sm italic">
+            Usually picked at levels 2 or 3.
+          </p>
           <button
             type="button"
             style={{

@@ -23,7 +23,7 @@
     "@nexus/schema": "^0.16.0",
     "@prisma/client": "2.9.0",
     "@urql/exchange-graphcache": "^3.0.2",
-    "apollo-server-micro": "^2.18.1",
+    "apollo-server-micro": "^2.18.2",
     "framer-motion": "^2.7.7",
     "graphql": "^15.3.0",
     "graphql-middleware": "^4.0.2",

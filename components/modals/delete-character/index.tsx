@@ -20,7 +20,7 @@ const DeleteCharacter = ({ characterId, name }) => {
       <div className="grid grid-cols-2 gap-x-2 mt-4">
         <button
           type="button"
-          className="relative flex justify-center text-gray-900 py-2 px-4 border leading-5 font-bold rounded-md bg-gray-200 transition duration-150 ease-in-out h-10"
+          className={styles.mainButton}
           onClick={() => {
             deleteCharacter({ id: characterId }).then((result) => {
               if (result.error) {
@@ -37,7 +37,7 @@ const DeleteCharacter = ({ characterId, name }) => {
         <button
           type="button"
           onClick={closeModal}
-          className="relative flex justify-center text-gray-900 py-2 px-4 leading-5 font-bold rounded-md transition duration-150 ease-in-out h-10"
+          className={styles.cancelButton}
         >
           Cancel
         </button>
