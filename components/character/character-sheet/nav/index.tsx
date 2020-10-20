@@ -6,6 +6,7 @@ import { BsTriangle } from 'react-icons/bs'
 import { BiStats } from 'react-icons/bi'
 
 import { ActiveKey } from '../../../../models/misc'
+import icons from './icons'
 import styles from './styles.module.css'
 
 type NavItem = {
@@ -26,6 +27,11 @@ const navItems: NavItem[] = [
     key: 'skills',
   },
   {
+    icon: <BsTriangle size={28} />,
+    text: 'Class',
+    key: 'class',
+  },
+  {
     icon: <GiMagicSwirl size={28} />,
     text: 'Spells',
     key: 'spells',
@@ -41,7 +47,7 @@ type Props = {
   activeKey: ActiveKey
   setActiveKeyAndStore: (key: ActiveKey) => void
   isSpellcaster: boolean
-  klass: string
+  klassName: string
 }
 
 const buttonVariants = {
@@ -65,22 +71,26 @@ const Nav: React.FC<Props> = ({
   activeKey,
   setActiveKeyAndStore,
   isSpellcaster,
-  klass,
+  klassName,
 }) => {
   return (
     <div className={styles.container}>
-      {navItems.map((item, index) => {
+      {navItems.map((item) => {
         const isActive = activeKey === item.key
 
         if (!isSpellcaster && item.key === 'spells') {
           return null
         }
 
+        if (item.key === 'class') {
+          item.icon = icons[klassName]
+        }
+
         return (
           <motion.button
             className={styles.navLink}
             style={{
-              color: isActive ? `var(--color-${klass})` : '',
+              color: isActive ? `var(--color-${klassName})` : '',
               opacity: isActive ? 1 : 0.5,
             }}
             key={item.text}

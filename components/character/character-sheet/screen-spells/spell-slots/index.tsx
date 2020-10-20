@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 
 import { FaPlus, FaMinus } from 'react-icons/fa'
-import { RiEditLine } from 'react-icons/ri'
+import { RiQuillPenLine } from 'react-icons/ri'
+import AddOrRemove from '../../common/add-or-remove'
 import useDebounce from '../../../../../hooks/useDebounce'
 import {
   useSpellSlotsMutation,
@@ -97,7 +98,7 @@ const SpellSlots: React.FC<Props> = ({ characterId, spellSlots }) => {
   return (
     <div className={styles.container}>
       <div className="p-2">
-        <div className="flex items-center pl-4 justify-between">
+        <div className="flex items-center pl-2 justify-between">
           <h4 className="text-center">Spell Slots</h4>
           <button
             className={
@@ -105,7 +106,7 @@ const SpellSlots: React.FC<Props> = ({ characterId, spellSlots }) => {
             }
             onClick={() => setEditSlots(!editSlots)}
           >
-            <RiEditLine size={18} />
+            <RiQuillPenLine size={18} />
           </button>
         </div>
         <div className="px-2">
@@ -161,20 +162,11 @@ const SpellSlots: React.FC<Props> = ({ characterId, spellSlots }) => {
           )}
         </div>
         {editSlots && (
-          <div className="mt-4 flex font-sm flex-col items-center">
-            Add/Remove spell levels
-            <div className="flex mt-2">
-              <button
-                className={styles.removeLevelButton}
-                onClick={removeLevel}
-              >
-                <FaMinus size={35} />
-              </button>
-              <button className={styles.addLevelButton} onClick={addLevel}>
-                <FaPlus size={35} />
-              </button>
-            </div>
-          </div>
+          <AddOrRemove
+            plusClick={addLevel}
+            minusClick={removeLevel}
+            message="Add or remove spell slot levels"
+          />
         )}
       </div>
     </div>

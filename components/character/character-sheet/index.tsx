@@ -10,6 +10,7 @@ import {
 } from '../../../generated/graphql'
 
 import ScreenStats from './screen-stats'
+import ScreenKlass from './screen-klass'
 import ScreenSkills from './screen-skills'
 import ScreenSpells from './screen-spells'
 import ScreenSettings from './screen-settings'
@@ -72,6 +73,7 @@ const CharacterSheet: React.FC<Props> = ({ id }) => {
   const screens = {
     stats: <ScreenStats character={character} />,
     skills: <ScreenSkills character={character} skills={skills} />,
+    class: <ScreenKlass character={character} />,
     spells: <ScreenSpells character={character} />,
     settings: <ScreenSettings character={character} />,
   }
@@ -87,7 +89,7 @@ const CharacterSheet: React.FC<Props> = ({ id }) => {
           !!character.subclass?.spellCastingModifier ||
           !!character.klass.spellCastingModifier
         }
-        klass={character.klass.name.toLowerCase()}
+        klassName={character.klass.name.toLowerCase()}
       />
     </div>
   )
