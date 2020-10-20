@@ -48,6 +48,7 @@ type Props = {
 }
 
 const Spells: NextPage<Props> = ({ spells = [] }) => {
+  if (!spells) return null
   return (
     <FiltersProvider>
       <AppLayout title="Spells">
