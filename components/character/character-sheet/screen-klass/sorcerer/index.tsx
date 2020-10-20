@@ -2,12 +2,16 @@ import React from 'react'
 
 import KlassAbilityTracker from '../klass-ability-tracker'
 
-const Sorcerer: React.FC = () => {
+type Props = { characterId: number; klassAbilityOne: Array<boolean> }
+
+const Sorcerer: React.FC<Props> = ({ characterId, klassAbilityOne }) => {
   return (
     <KlassAbilityTracker
       message="Add or remove sorcery points"
       title="Sorcery Points"
       klassName="sorcerer"
+      characterId={characterId}
+      klassAbilityOne={klassAbilityOne}
     />
   )
 }

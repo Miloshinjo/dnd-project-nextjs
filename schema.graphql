@@ -16,6 +16,7 @@ type Character {
   inspiration: Boolean!
   intelligence: Int!
   klass: Klass!
+  klassAbilityOne: String
   klassId: Int!
   level: Int!
   maxHitPoints: Int!
@@ -77,6 +78,7 @@ input CharacterUpdateInput {
   id: ID!
   inspiration: Boolean
   intelligence: Int
+  klassAbilityOne: String
   level: Int
   maxHitPoints: Int
   name: String

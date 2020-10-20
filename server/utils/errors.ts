@@ -23,6 +23,7 @@ const errors = {
   forbiddenError: new ForbiddenError(
     'You are not allowed to edit this resource',
   ),
+  maximumLimitReached: new ForbiddenError('Maximum limit reached'),
 }
 
 export { errors as default }

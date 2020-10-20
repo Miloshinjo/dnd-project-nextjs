@@ -2,12 +2,16 @@ import React from 'react'
 
 import KlassAbilityTracker from '../klass-ability-tracker'
 
-const Cleric: React.FC = () => {
+type Props = { characterId: number; klassAbilityOne: Array<boolean> }
+
+const Cleric: React.FC<Props> = ({ characterId, klassAbilityOne }) => {
   return (
     <KlassAbilityTracker
       message="Add or remove channel divinity use"
       title="Channel Divinity"
       klassName="cleric"
+      characterId={characterId}
+      klassAbilityOne={klassAbilityOne}
     />
   )
 }

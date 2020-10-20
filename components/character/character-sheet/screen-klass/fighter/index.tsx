@@ -2,12 +2,16 @@ import React from 'react'
 
 import KlassAbilityTracker from '../klass-ability-tracker'
 
-const Fighter: React.FC = () => {
+type Props = { characterId: number; klassAbilityOne: Array<boolean> }
+
+const Fighter: React.FC<Props> = ({ characterId, klassAbilityOne }) => {
   return (
     <KlassAbilityTracker
       message="Add or remove Action Surge use"
       title="Action Surge"
       klassName="fighter"
+      characterId={characterId}
+      klassAbilityOne={klassAbilityOne}
     />
   )
 }

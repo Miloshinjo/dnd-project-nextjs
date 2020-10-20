@@ -1,8 +1,8 @@
 import React from 'react'
 
-import KlassAbilityTracker from '../klass-ability-tracker'
+type Props = { characterId: number }
 
-const Rogue: React.FC = () => {
+const Rogue: React.FC<Props> = ({ characterId }) => {
   return <div></div>
 }
 

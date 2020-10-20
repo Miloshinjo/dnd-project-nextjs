@@ -1,6 +1,8 @@
 import React from 'react'
 
-const Ranger: React.FC = () => {
+type Props = { characterId: number }
+
+const Ranger: React.FC<Props> = ({ characterId }) => {
   return <div></div>
 }
 

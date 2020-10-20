@@ -1,6 +1,8 @@
 import React from 'react'
 
-const Warlock: React.FC = () => {
+type Props = { characterId: number }
+
+const Warlock: React.FC<Props> = ({ characterId }) => {
   return <div></div>
 }
 

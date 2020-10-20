@@ -1,0 +1,6 @@
+mutation KlassAbilityOne($id: ID!, $klassAbilityOne: String!) {
+  updateCharacter(character: { id: $id, klassAbilityOne: $klassAbilityOne }) {
+    id
+    klassAbilityOne
+  }
+}

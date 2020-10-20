@@ -2,12 +2,16 @@ import React from 'react'
 
 import KlassAbilityTracker from '../klass-ability-tracker'
 
-const Bard: React.FC = () => {
+type Props = { characterId: number; klassAbilityOne: Array<boolean> }
+
+const Bard: React.FC<Props> = ({ characterId, klassAbilityOne }) => {
   return (
     <KlassAbilityTracker
       message="Add or remove inspiration use"
       title="Bardic Inspiration"
       klassName="bard"
+      characterId={characterId}
+      klassAbilityOne={klassAbilityOne}
     />
   )
 }

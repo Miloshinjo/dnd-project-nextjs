@@ -21,20 +21,30 @@ const screenVariants = {
   },
 }
 
-const klassToRender = {
-  Barbarian: <Barbarian />,
-  Bard: <Bard />,
-  Cleric: <Cleric />,
-  Druid: <Druid />,
-  Fighter: <Fighter />,
-  Monk: <Monk />,
-  Paladin: <Paladin />,
-  Ranger: <Ranger />,
-  Rogue: <Rogue />,
-  Sorcerer: <Sorcerer />,
-  Warlock: <Warlock />,
-  Wizard: <Wizard />,
-}
+const klassToRender = ({ characterId, klassAbilityOne }) => ({
+  Barbarian: (
+    <Barbarian characterId={characterId} klassAbilityOne={klassAbilityOne} />
+  ),
+  Bard: <Bard characterId={characterId} klassAbilityOne={klassAbilityOne} />,
+  Cleric: (
+    <Cleric characterId={characterId} klassAbilityOne={klassAbilityOne} />
+  ),
+  Druid: <Druid characterId={characterId} klassAbilityOne={klassAbilityOne} />,
+  Fighter: (
+    <Fighter characterId={characterId} klassAbilityOne={klassAbilityOne} />
+  ),
+  Monk: <Monk characterId={characterId} klassAbilityOne={klassAbilityOne} />,
+  Paladin: (
+    <Paladin characterId={characterId} klassAbilityOne={klassAbilityOne} />
+  ),
+  Ranger: <Ranger characterId={characterId} />,
+  Rogue: <Rogue characterId={characterId} />,
+  Sorcerer: (
+    <Sorcerer characterId={characterId} klassAbilityOne={klassAbilityOne} />
+  ),
+  Warlock: <Warlock characterId={characterId} />,
+  Wizard: <Wizard characterId={characterId} />,
+})
 
 type Props = {
   character: any
@@ -48,7 +58,12 @@ const ScreenKlass: React.FC<Props> = ({ character }) => {
       initial="initial"
       className={styles.container}
     >
-      {klassToRender[character.klass.name]}
+      {
+        klassToRender({
+          characterId: character.id,
+          klassAbilityOne: character.klassAbilityOne,
+        })[character.klass.name]
+      }
     </motion.div>
   )
 }

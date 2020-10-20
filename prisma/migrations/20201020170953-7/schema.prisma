@@ -3,7 +3,7 @@
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 generator client {
@@ -92,7 +92,7 @@ model Character {
   subclass        SubClass? @relation(fields: [subclassId], references: [id])
   subclassId      Int?
   spellSlots      String?
-  klassAbilityOne String?
+  klassAbilityOne Boolean[]
   speed           Int       @default(30)
   arcaneWard      Int?
   arcaneWardMax   Int?

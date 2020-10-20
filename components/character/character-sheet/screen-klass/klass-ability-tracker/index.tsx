@@ -1,5 +1,7 @@
 import React from 'react'
 import { RiQuillPenLine } from 'react-icons/ri'
+import { useKlassAbilityOneMutation } from '../../../../../generated/graphql'
+import useDebounce from '../../../../../hooks/useDebounce'
 
 import AddOrRemove from '../../common/add-or-remove'
 
@@ -11,19 +13,47 @@ type Props = {
   message: string
   title: string
   klassName: string
+  characterId: number
+  klassAbilityOne: string
 }
 
 const KlassAbilityTracker: React.FC<Props> = ({
   message,
   title,
   klassName,
+  characterId,
+  klassAbilityOne,
 }) => {
-  const [abilityPoints, setAbilityPoints] = React.useState<AbilityPoints>([
-    true,
-    true,
-  ])
+  const klassAbilityPointsDefault = klassAbilityOne
+    ? JSON.parse(klassAbilityOne)
+    : []
 
-  console.log({ klassName })
+  const [editPoints, setEditPoints] = React.useState<boolean>(false)
+  const [abilityPoints, setAbilityPoints] = React.useState<AbilityPoints>(
+    klassAbilityPointsDefault,
+  )
+
+  const debouncedAbilityPoints = useDebounce(abilityPoints, 400)
+
+  const [, setKlassAbilityPoints] = useKlassAbilityOneMutation()
+
+  React.useEffect(() => {
+    const klassAbilityOneString = JSON.stringify(abilityPoints)
+
+    const awaitKlassAbilityPoints = async () => {
+      const result = await setKlassAbilityPoints({
+        id: characterId,
+        klassAbilityOne: klassAbilityOneString,
+      })
+
+      if (result.error) {
+        console.log('An error occured. Handle it later.')
+        return
+      }
+    }
+
+    awaitKlassAbilityPoints()
+  }, [debouncedAbilityPoints])
 
   const addAbilityPoint = () => {
     setAbilityPoints([...abilityPoints, true])
@@ -33,8 +63,6 @@ const KlassAbilityTracker: React.FC<Props> = ({
     const newAbilityPoints = abilityPoints.slice(0, -1)
     setAbilityPoints(newAbilityPoints)
   }
-
-  const [editPoints, setEditPoints] = React.useState<boolean>(false)
 
   const toggleAbilityPoints = (index: number) => {
     const newAbilityPoints = abilityPoints.map((point, i) => {

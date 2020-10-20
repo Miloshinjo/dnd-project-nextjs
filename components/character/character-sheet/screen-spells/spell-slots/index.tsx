@@ -21,7 +21,7 @@ const SpellSlots: React.FC<Props> = ({ characterId, spellSlots }) => {
   const [slots, setSlots] = useState(spellSlots)
   const [editSlots, setEditSlots] = useState<boolean>(false)
 
-  const debouncedSlots = useDebounce(slots, 200)
+  const debouncedSlots = useDebounce(slots, 400)
 
   const [, setSpellSlots] = useSpellSlotsMutation()
 

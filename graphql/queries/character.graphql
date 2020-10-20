@@ -18,6 +18,7 @@ query Character($id: ID!) {
     charisma
     speed
     spellSlots
+    klassAbilityOne
     klass {
       id
       name

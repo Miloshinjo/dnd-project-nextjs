@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
-/// <reference path="./generated/nexus.ts" />
+/// <reference path="../generated/nexus.ts" />
 
 import * as path from 'path'
 import * as types from './types'

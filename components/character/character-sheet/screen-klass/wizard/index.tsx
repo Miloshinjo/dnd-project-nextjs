@@ -1,6 +1,8 @@
 import React from 'react'
 
-const Wizard: React.FC = () => {
+type Props = { characterId: number }
+
+const Wizard: React.FC<Props> = ({ characterId }) => {
   return <div></div>
 }
 

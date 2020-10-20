@@ -38,6 +38,7 @@ export type CharacterUpdateInput = {
   charisma?: Maybe<Scalars['Int']>;
   speed?: Maybe<Scalars['Int']>;
   spellSlots?: Maybe<Scalars['String']>;
+  klassAbilityOne?: Maybe<Scalars['String']>;
   arcaneWard?: Maybe<Scalars['Int']>;
   arcaneWardMax?: Maybe<Scalars['Int']>;
 };
@@ -183,6 +184,7 @@ export type Character = {
   subclass?: Maybe<SubClass>;
   subclassId?: Maybe<Scalars['Int']>;
   spellSlots?: Maybe<Scalars['String']>;
+  klassAbilityOne?: Maybe<Scalars['String']>;
   speed: Scalars['Int'];
 };
 
@@ -530,6 +532,20 @@ export type IntelligenceMutation = (
   )> }
 );
 
+export type KlassAbilityOneMutationVariables = Exact<{
+  id: Scalars['ID'];
+  klassAbilityOne: Scalars['String'];
+}>;
+
+
+export type KlassAbilityOneMutation = (
+  { __typename?: 'Mutation' }
+  & { updateCharacter?: Maybe<(
+    { __typename?: 'Character' }
+    & Pick<Character, 'id' | 'klassAbilityOne'>
+  )> }
+);
+
 export type LearnSpellMutationVariables = Exact<{
   id: Scalars['ID'];
   spellId: Scalars['ID'];
@@ -695,7 +711,7 @@ export type CharacterQuery = (
   { __typename?: 'Query' }
   & { character?: Maybe<(
     { __typename?: 'Character' }
-    & Pick<Character, 'id' | 'name' | 'level' | 'race' | 'hitPoints' | 'maxHitPoints' | 'armorClass' | 'gold' | 'alignment' | 'inspiration' | 'strength' | 'dexterity' | 'constitution' | 'intelligence' | 'wisdom' | 'charisma' | 'speed' | 'spellSlots' | 'arcaneWard' | 'arcaneWardMax'>
+    & Pick<Character, 'id' | 'name' | 'level' | 'race' | 'hitPoints' | 'maxHitPoints' | 'armorClass' | 'gold' | 'alignment' | 'inspiration' | 'strength' | 'dexterity' | 'constitution' | 'intelligence' | 'wisdom' | 'charisma' | 'speed' | 'spellSlots' | 'klassAbilityOne' | 'arcaneWard' | 'arcaneWardMax'>
     & { klass: (
       { __typename?: 'Klass' }
       & Pick<Klass, 'id' | 'name' | 'hitDie' | 'spellCastingModifier'>
@@ -1011,6 +1027,18 @@ export const IntelligenceDocument = gql`
 export function useIntelligenceMutation() {
   return Urql.useMutation<IntelligenceMutation, IntelligenceMutationVariables>(IntelligenceDocument);
 };
+export const KlassAbilityOneDocument = gql`
+    mutation KlassAbilityOne($id: ID!, $klassAbilityOne: String!) {
+  updateCharacter(character: {id: $id, klassAbilityOne: $klassAbilityOne}) {
+    id
+    klassAbilityOne
+  }
+}
+    `;
+
+export function useKlassAbilityOneMutation() {
+  return Urql.useMutation<KlassAbilityOneMutation, KlassAbilityOneMutationVariables>(KlassAbilityOneDocument);
+};
 export const LearnSpellDocument = gql`
     mutation LearnSpell($id: ID!, $spellId: ID!) {
   learnSpell(character: {id: $id, spellId: $spellId}) {
@@ -1165,6 +1193,7 @@ export const CharacterDocument = gql`
     charisma
     speed
     spellSlots
+    klassAbilityOne
     klass {
       id
       name

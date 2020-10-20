@@ -56,6 +56,7 @@ export interface NexusGenInputs {
     id: string; // ID!
     inspiration?: boolean | null; // Boolean
     intelligence?: number | null; // Int
+    klassAbilityOne?: string | null; // String
     level?: number | null; // Int
     maxHitPoints?: number | null; // Int
     name?: string | null; // String
@@ -107,6 +108,7 @@ export interface NexusGenRootTypes {
     id: number; // Int!
     inspiration: boolean; // Boolean!
     intelligence: number; // Int!
+    klassAbilityOne?: string | null; // String
     klassId: number; // Int!
     level: number; // Int!
     maxHitPoints: number; // Int!
@@ -207,6 +209,7 @@ export interface NexusGenFieldTypes {
     inspiration: boolean; // Boolean!
     intelligence: number; // Int!
     klass: NexusGenRootTypes['Klass']; // Klass!
+    klassAbilityOne: string | null; // String
     klassId: number; // Int!
     level: number; // Int!
     maxHitPoints: number; // Int!

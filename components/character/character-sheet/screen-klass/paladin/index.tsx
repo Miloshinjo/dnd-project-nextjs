@@ -2,12 +2,16 @@ import React from 'react'
 
 import KlassAbilityTracker from '../klass-ability-tracker'
 
-const Paladin: React.FC = () => {
+type Props = { characterId: number; klassAbilityOne: Array<boolean> }
+
+const Paladin: React.FC<Props> = ({ characterId, klassAbilityOne }) => {
   return (
     <KlassAbilityTracker
       message="Add or remove divine sense use"
       title="Divine Sense"
       klassName="paladin"
+      characterId={characterId}
+      klassAbilityOne={klassAbilityOne}
     />
   )
 }

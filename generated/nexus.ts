@@ -56,6 +56,7 @@ export interface NexusGenInputs {
     id: string; // ID!
     inspiration?: boolean | null; // Boolean
     intelligence?: number | null; // Int
+    klassAbilityOne?: string | null; // String
     level?: number | null; // Int
     maxHitPoints?: number | null; // Int
     name?: string | null; // String
@@ -107,6 +108,7 @@ export interface NexusGenRootTypes {
     id: number; // Int!
     inspiration: boolean; // Boolean!
     intelligence: number; // Int!
+    klassAbilityOne?: string | null; // String
     klassId: number; // Int!
     level: number; // Int!
     maxHitPoints: number; // Int!
@@ -207,6 +209,7 @@ export interface NexusGenFieldTypes {
     inspiration: boolean; // Boolean!
     intelligence: number; // Int!
     klass: NexusGenRootTypes['Klass']; // Klass!
+    klassAbilityOne: string | null; // String
     klassId: number; // Int!
     level: number; // Int!
     maxHitPoints: number; // Int!
@@ -241,27 +244,27 @@ export interface NexusGenFieldTypes {
     weapons: string[]; // [String!]!
   }
   Mutation: { // field return type
-    addSKill: NexusGenRootTypes['Character']; // Character!
-    addSubclass: NexusGenRootTypes['Character']; // Character!
-    createCharacter: NexusGenRootTypes['Character']; // Character!
+    addSkill: NexusGenRootTypes['Character'] | null; // Character
+    addSubclass: NexusGenRootTypes['Character'] | null; // Character
+    createCharacter: NexusGenRootTypes['Character'] | null; // Character
     deleteCharacter: NexusGenRootTypes['Character'] | null; // Character
-    forgetSpell: NexusGenRootTypes['Character']; // Character!
-    learnSpell: NexusGenRootTypes['Character']; // Character!
-    prepareSpell: NexusGenRootTypes['Character']; // Character!
-    removeSKill: NexusGenRootTypes['Character']; // Character!
-    unprepareSpell: NexusGenRootTypes['Character']; // Character!
-    updateCharacter: NexusGenRootTypes['Character']; // Character!
+    forgetSpell: NexusGenRootTypes['Character'] | null; // Character
+    learnSpell: NexusGenRootTypes['Character'] | null; // Character
+    prepareSpell: NexusGenRootTypes['Character'] | null; // Character
+    removeSkill: NexusGenRootTypes['Character'] | null; // Character
+    unprepareSpell: NexusGenRootTypes['Character'] | null; // Character
+    updateCharacter: NexusGenRootTypes['Character'] | null; // Character
   }
   Query: { // field return type
-    character: NexusGenRootTypes['Character']; // Character!
-    characters: NexusGenRootTypes['Character'][]; // [Character!]!
-    klass: NexusGenRootTypes['Klass']; // Klass!
-    klasses: NexusGenRootTypes['Klass'][]; // [Klass!]!
-    me: NexusGenRootTypes['User']; // User!
-    skills: NexusGenRootTypes['Skill'][]; // [Skill!]!
-    spell: NexusGenRootTypes['Spell']; // Spell!
-    spells: NexusGenRootTypes['Spell'][]; // [Spell!]!
-    subclasses: NexusGenRootTypes['SubClass'][]; // [SubClass!]!
+    character: NexusGenRootTypes['Character'] | null; // Character
+    characters: Array<NexusGenRootTypes['Character'] | null> | null; // [Character]
+    klass: NexusGenRootTypes['Klass'] | null; // Klass
+    klasses: Array<NexusGenRootTypes['Klass'] | null> | null; // [Klass]
+    me: NexusGenRootTypes['User'] | null; // User
+    skills: Array<NexusGenRootTypes['Skill'] | null> | null; // [Skill]
+    spell: NexusGenRootTypes['Spell'] | null; // Spell
+    spells: Array<NexusGenRootTypes['Spell'] | null> | null; // [Spell]
+    subclasses: Array<NexusGenRootTypes['SubClass'] | null> | null; // [SubClass]
   }
   Skill: { // field return type
     ability: string; // String!
@@ -333,7 +336,7 @@ export interface NexusGenArgTypes {
     }
   }
   Mutation: {
-    addSKill: { // args
+    addSkill: { // args
       character?: NexusGenInputs['CharacterEditSkillInput'] | null; // CharacterEditSkillInput
     }
     addSubclass: { // args
@@ -354,7 +357,7 @@ export interface NexusGenArgTypes {
     prepareSpell: { // args
       character?: NexusGenInputs['CharacterEditSpellInput'] | null; // CharacterEditSpellInput
     }
-    removeSKill: { // args
+    removeSkill: { // args
       character?: NexusGenInputs['CharacterEditSkillInput'] | null; // CharacterEditSkillInput
     }
     unprepareSpell: { // args
