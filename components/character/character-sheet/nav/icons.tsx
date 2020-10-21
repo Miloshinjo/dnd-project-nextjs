@@ -1,5 +1,5 @@
 import {
-  GiHeadbandKnot,
+  GiTripleYin,
   GiFireSilhouette,
   GiPointyHat,
   GiHighShot,
@@ -24,7 +24,7 @@ const icons = {
   rogue: <GiHood size={28} />,
   sorcerer: <GiFireSilhouette size={28} />,
   warlock: <GiDaemonSkull size={28} />,
-  monk: <GiHeadbandKnot size={28} />,
+  monk: <GiTripleYin size={28} />,
   wizard: <GiPointyHat size={28} />,
 }
 
