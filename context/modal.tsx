@@ -8,19 +8,10 @@ import React, {
 import { useRouter } from 'next/router'
 
 import Modal from '../components/modal'
+import { ModalTypes } from '../models/modal'
 
 export type ModalType = {
-  type:
-    | 'number'
-    | 'learnSpell'
-    | 'spell'
-    | 'characterCreated'
-    | 'deleteCharacter'
-    | 'addSubclass'
-    | 'mobileDrawer'
-    | 'spellPage'
-    | 'spellPageStatic'
-    | null
+  type: ModalTypes
   props: Record<string, any>
 } | null
 

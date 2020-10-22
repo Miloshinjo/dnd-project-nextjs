@@ -1,5 +1,5 @@
 .container {
-  @apply items-end;
+  @apply items-end flex;
 }
 
 .hitPointsContainer {
@@ -7,11 +7,12 @@
 }
 
 .hitPointsLabel {
-  @apply text-xs font-semibold text-gray-400 w-8;
+  @apply text-xs font-semibold text-gray-400;
+  width: 13%;
 }
 
 .hitPoints {
-  @apply font-extrabold flex items-center self-start;
+  @apply font-extrabold flex items-center self-start ml-auto;
 }
 
 .maxHitPoints {
@@ -19,7 +20,8 @@
 }
 
 .hitPointsBar {
-  @apply bg-gray-100 h-2 w-full shadow-inner overflow-hidden mx-2 rounded-sm;
+  @apply bg-gray-100 h-2 shadow-inner overflow-hidden mx-2 rounded-sm;
+  width: 55%;
 }
 
 .hitPointsBarInner {

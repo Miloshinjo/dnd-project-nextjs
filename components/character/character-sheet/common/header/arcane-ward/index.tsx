@@ -3,7 +3,7 @@ import {
   useArcaneWardMutation,
   useArcaneWardMaxMutation,
 } from '../../../../../../generated/graphql'
-import { useModal } from '../../../../../../context/modal'
+import OpenModalButton from '../../../../../buttons/open-modal-button'
 import { FiShield } from 'react-icons/fi'
 
 import styles from './styles.module.css'
@@ -19,13 +19,21 @@ const ArcaneWard: React.FC<Props> = ({
   arcaneWard,
   arcaneWardMax,
 }) => {
-  const { openModal } = useModal()
-
   const arcaneWardPercent = Math.round((arcaneWard / arcaneWardMax) * 100)
 
   return (
     <div className={styles.container}>
-      <div className={styles.arcaneWardContainer}>
+      <OpenModalButton
+        className={styles.arcaneWardContainer}
+        type="number"
+        props={{
+          originalValue: arcaneWard,
+          characterId,
+          title: 'Arcane Ward',
+          type: 'arcaneWard',
+          mutation: useArcaneWardMutation,
+        }}
+      >
         <div className={styles.arcaneWardLabel}>
           <FiShield size={15} />
         </div>
@@ -37,46 +45,22 @@ const ArcaneWard: React.FC<Props> = ({
             }}
           />
         </div>
-        <div className="flex items-center ml-4">
-          <button
-            type="button"
-            className={styles.arcaneWard}
-            onClick={() =>
-              openModal({
-                type: 'number',
-                props: {
-                  originalValue: arcaneWard,
-                  characterId,
-                  title: 'Arcane Ward',
-                  type: 'arcaneWard',
-                  mutation: useArcaneWardMutation,
-                },
-              })
-            }
-          >
-            {arcaneWard || 0}
-          </button>
-          <span className="mx-1">/</span>
-          <button
-            type="button"
-            className={styles.maxArcaneWard}
-            onClick={() =>
-              openModal({
-                type: 'number',
-                props: {
-                  originalValue: arcaneWardMax,
-                  characterId,
-                  title: 'Arcane Ward Size',
-                  type: 'arcaneWardMax',
-                  mutation: useArcaneWardMaxMutation,
-                },
-              })
-            }
-          >
-            {arcaneWardMax || 0}
-          </button>
-        </div>
-      </div>
+        <div className={styles.arcaneWard}>{arcaneWard || 0}</div>
+      </OpenModalButton>
+      <span className="mx-1">/</span>
+      <OpenModalButton
+        type="number"
+        className={styles.maxArcaneWard}
+        props={{
+          originalValue: arcaneWardMax,
+          characterId,
+          title: 'Arcane Ward Size',
+          type: 'arcaneWardMax',
+          mutation: useArcaneWardMaxMutation,
+        }}
+      >
+        {arcaneWardMax || 0}
+      </OpenModalButton>
     </div>
   )
 }

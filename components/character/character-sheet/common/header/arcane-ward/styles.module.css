@@ -1,5 +1,5 @@
 .container {
-  @apply items-end;
+  @apply items-end flex;
 }
 
 .arcaneWardContainer {
@@ -7,11 +7,12 @@
 }
 
 .arcaneWardLabel {
-  @apply text-gray-400 w-8;
+  @apply text-gray-400;
+  width: 13%;
 }
 
 .arcaneWard {
-  @apply font-bold flex items-center;
+  @apply font-bold flex items-center ml-auto;
 }
 
 .maxArcaneWard {
@@ -19,7 +20,8 @@
 }
 
 .arcaneWardBar {
-  @apply h-2 w-full shadow-inner overflow-hidden mx-2 rounded-sm bg-gray-100;
+  @apply h-2 shadow-inner overflow-hidden mx-2 rounded-sm bg-gray-100;
+  width: 55%;
 }
 
 .arcaneWardBarInner {
