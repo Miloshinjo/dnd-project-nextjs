@@ -12,7 +12,7 @@ const SubclassSection: React.FC<Props> = ({ character }) => {
 
   return (
     <div className={styles.container}>
-      <h3 className="font-medium mb-1">
+      <h3 className="statSectionHeading mb-2">
         {subclassTitle[character.klass.name]}
       </h3>
       {character?.subclass ? (

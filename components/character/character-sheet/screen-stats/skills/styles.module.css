@@ -4,11 +4,11 @@
 }
 
 .skillContainer {
-  @apply flex items-center mb-1 px-2 justify-between;
+  @apply flex items-center mb-1 justify-between;
 }
 
 .skillContainerProficient {
-  @apply flex items-center mb-1 px-2 justify-between;
+  @apply flex items-center mb-1 justify-between;
 }
 
 .ability {

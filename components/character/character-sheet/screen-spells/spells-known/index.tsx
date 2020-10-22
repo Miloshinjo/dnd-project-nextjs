@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState } from 'react'
 import { GiMusicSpell, GiHand, GiSwapBag } from 'react-icons/gi'
 import { FiChevronDown } from 'react-icons/fi'
 import { motion } from 'framer-motion'
@@ -33,15 +33,6 @@ const SpellsKnown: React.FC<Props> = ({
   const { openModal } = useModal()
   const [active, setActive] = useState(true)
 
-  const sortedSpells = useMemo(
-    () =>
-      spells.sort((a, b) => {
-        if (a.level > b.level) return 1
-        return -1
-      }),
-    [spells],
-  )
-
   return (
     <div className={styles.container}>
       <button
@@ -51,12 +42,12 @@ const SpellsKnown: React.FC<Props> = ({
           setActive(!active)
         }}
       >
-        <h4 className="text-center">
+        <h3 className="statSectionHeading">
           {title}{' '}
           <span className={styles.spellCountText}>
             ({counter ? `${spells.length} of ${counter}` : spells.length})
           </span>
-        </h4>
+        </h3>
 
         <motion.div
           className="flex items-end flex-col"

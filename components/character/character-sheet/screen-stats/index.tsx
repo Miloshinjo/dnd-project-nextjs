@@ -64,9 +64,9 @@ const CharacterScreenStats: React.FC<Props> = ({ character, skills }) => {
       <AbilityScores character={character} />
 
       <div className="mt-6">
-        <div className="mb-4 ">
-          <h2 className="opacity-50 mb-1 font-semibold text-sm">Attack</h2>
+        <div className="mb-4">
           <div className={styles.statBlockWrapper}>
+            <h3 className="statSectionHeading mb-2">Attack</h3>
             <StatField
               label="Strength"
               value={hitBonus(
@@ -93,12 +93,11 @@ const CharacterScreenStats: React.FC<Props> = ({ character, skills }) => {
           </div>
         </div>
         <div className="mb-4">
-          <h2 className="opacity-50 mb-1 font-semibold text-sm">Skills</h2>
           <Skills character={character} skills={skills} />
         </div>
         <div className="mb-4">
-          <h2 className="opacity-50 mb-1 font-semibold text-sm">Senses</h2>
           <div className={styles.statBlockWrapper}>
+            <h3 className="statSectionHeading mb-2">Senses</h3>
             <StatField
               label="Passive perception"
               value={passivePerception(

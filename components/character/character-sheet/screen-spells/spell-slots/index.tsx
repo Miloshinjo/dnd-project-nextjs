@@ -99,7 +99,7 @@ const SpellSlots: React.FC<Props> = ({ characterId, spellSlots }) => {
     <div className={styles.container}>
       <div className="p-2">
         <div className="flex items-center pl-2 justify-between mb-4">
-          <h4 className="text-center">Spell Slots</h4>
+          <h3 className="statSectionHeading">Spell Slots</h3>
           <button
             className={
               editSlots ? styles.slotsEditButtonActive : styles.slotsEditButton

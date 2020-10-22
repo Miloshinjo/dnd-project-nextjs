@@ -153,3 +153,8 @@ button:focus {
   width: 1px !important;
   overflow: hidden;
 }
+
+.statSectionHeading {
+  @apply text-sm;
+  color: var(--text-secondary);
+}

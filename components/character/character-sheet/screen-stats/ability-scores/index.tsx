@@ -62,58 +62,57 @@ const AbilityScores: React.FC<Props> = ({ character }) => {
   const { openModal } = useModal()
 
   return (
-    <>
-      <h2 className="opacity-50 mb-1 font-semibold text-sm">Ability Scores</h2>
-      <div className={styles.abilityScores}>
-        {abilityScores.map(
-          (abilityScore: AbilityScore): JSX.Element => {
-            return (
-              <button
-                type="button"
-                className={styles.abilityScoreContainer}
-                key={abilityScore}
-                onClick={() =>
-                  openModal({
-                    type: 'number',
-                    props: {
-                      originalValue: character[abilityScore as AbilityScore],
-                      characterId: character.id,
-                      title: abilityScore,
-                      type: abilityScore.toLowerCase(),
-                      mutation: mutations[abilityScore],
-                    },
-                  })
-                }
-              >
-                <div className="w-1/2 flex justify-between mr-12 md:mr-32">
-                  <div className={styles.abilityScoreTitle}>{abilityScore}</div>
-                  <div className={styles.abilityScoreValue}>
-                    {character[abilityScore as AbilityScore]}
-                  </div>
-                </div>
+    <div className={styles.abilityScores}>
+      <h3 className="statSectionHeading mb-2">Ability Scores</h3>
 
-                <div className="w-1/2 flex justify-end">
-                  <div className={styles.abilityScoreM}>
-                    <span className={styles.miniLabel}>mod</span>
-                    {abilityScoreM(character[abilityScore as AbilityScore])}
-                  </div>
-                  <div className={styles.abilityScoreSave}>
-                    <span className={styles.miniLabel}>save</span>
-                    {savingThrow(
-                      character.klass.name,
-                      abilityScore,
-                      abilityScoreM(character[abilityScore]),
-                      proficiencyBonus(character.level),
-                      character.level,
-                    )}
-                  </div>
+      {abilityScores.map(
+        (abilityScore: AbilityScore): JSX.Element => {
+          return (
+            <button
+              type="button"
+              className={styles.abilityScoreContainer}
+              key={abilityScore}
+              onClick={() =>
+                openModal({
+                  type: 'number',
+                  props: {
+                    originalValue: character[abilityScore as AbilityScore],
+                    characterId: character.id,
+                    title: abilityScore,
+                    type: abilityScore.toLowerCase(),
+                    mutation: mutations[abilityScore],
+                  },
+                })
+              }
+            >
+              <div className="w-1/2 flex justify-between mr-12 md:mr-32">
+                <div className={styles.abilityScoreTitle}>{abilityScore}</div>
+                <div className={styles.abilityScoreValue}>
+                  {character[abilityScore as AbilityScore]}
                 </div>
-              </button>
-            )
-          },
-        )}
-      </div>
-    </>
+              </div>
+
+              <div className="w-1/2 flex justify-end">
+                <div className={styles.abilityScoreM}>
+                  <span className={styles.miniLabel}>mod</span>
+                  {abilityScoreM(character[abilityScore as AbilityScore])}
+                </div>
+                <div className={styles.abilityScoreSave}>
+                  <span className={styles.miniLabel}>save</span>
+                  {savingThrow(
+                    character.klass.name,
+                    abilityScore,
+                    abilityScoreM(character[abilityScore]),
+                    proficiencyBonus(character.level),
+                    character.level,
+                  )}
+                </div>
+              </div>
+            </button>
+          )
+        },
+      )}
+    </div>
   )
 }
 

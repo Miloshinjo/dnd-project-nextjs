@@ -1,6 +1,6 @@
 .container {
   @apply flex items-baseline;
-  color: var(--bg-accent);
+  color: var(--text-primary);
 }
 
 .loaderContainer {
@@ -8,5 +8,5 @@
 }
 .loaderCircle {
   @apply w-1 h-1 block rounded-full;
-  background-color: var(--bg-accent);
+  background-color: var(--text-primary);
 }

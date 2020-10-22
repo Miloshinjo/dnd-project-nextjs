@@ -31,6 +31,8 @@ const Skills: React.FC<Props> = ({ skills, character }) => {
 
   return (
     <div className={styles.container}>
+      <h3 className="statSectionHeading mb-2">Skills</h3>
+
       {skills.map((skill) => {
         const isProficient = !!character.skills.find((el) => el.id === skill.id)
 

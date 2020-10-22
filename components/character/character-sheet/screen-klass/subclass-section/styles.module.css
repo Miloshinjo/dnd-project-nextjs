@@ -4,7 +4,7 @@
 }
 
 .addButton {
-  @apply relative text-sm flex justify-center  transition duration-150 ease-in-out border-b opacity-75;
+  @apply relative text-sm flex justify-center transition duration-150 ease-in-out border-b opacity-75;
 }
 
 .addButton:hover {
