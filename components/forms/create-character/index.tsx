@@ -100,6 +100,7 @@ const CreateCharacterForm: React.FC<Props> = ({ klasses }) => {
       />
 
       <SelectInput
+        isSearchable={false}
         label="Alignment"
         control={control}
         errors={errors}
@@ -110,6 +111,7 @@ const CreateCharacterForm: React.FC<Props> = ({ klasses }) => {
         }))}
       />
       <SelectInput
+        isSearchable={false}
         name="klassId"
         control={control}
         errors={errors}

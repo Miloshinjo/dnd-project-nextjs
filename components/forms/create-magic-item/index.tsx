@@ -8,7 +8,7 @@ import { Character } from '../../../generated/graphql'
 // import { useCreateMagicItemMutation } from '../../../generated/graphql'
 import validations from './validations'
 
-import { Rarity } from '../../../models/magicItem'
+import { Rarity, Type } from '../../../models/magicItem'
 
 import styles from './styles.module.css'
 
@@ -21,6 +21,18 @@ const raritiesRaw: Array<Rarity> = [
   'Artifact',
   'Varies',
   'Unknown',
+]
+
+const typesRaw: Array<Type> = [
+  'Potion',
+  'Armor',
+  'Ring',
+  'Rod',
+  'Scroll',
+  'Staff',
+  'Wand',
+  'Weapon',
+  'Wondrous Item',
 ]
 
 type FormValues = {
@@ -86,6 +98,18 @@ const CreateCharacterForm: React.FC<Props> = ({ characterId }) => {
           value: rarity,
         }))}
       />
+      <SelectInput
+        isSearchable={false}
+        name="type"
+        control={control}
+        errors={errors}
+        label="Item type"
+        options={typesRaw.map((type) => ({
+          label: type,
+          value: type,
+        }))}
+      />
+
       <ButtonPrimary type="submit">Create item</ButtonPrimary>
       {serverError && <p className={styles.errorText}>{serverError}</p>}
     </form>

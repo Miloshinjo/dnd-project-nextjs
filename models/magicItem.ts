@@ -7,3 +7,5 @@ export type Rarity =
   | 'Artifact'
   | 'Varies'
   | 'Unknown'
+
+export type Type = string
