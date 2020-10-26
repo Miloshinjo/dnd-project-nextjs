@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Alert",
+    "description": "<p>Always on the lookout for danger, you gain the following benefits</p><ul><li>You gain a +5 bonus to initiative.</li><li>You can&rsquo;t be surprised while you are conscious.</li><li>Other creatures don&rsquo;t gain advantage on attack rolls against you as a result of being hidden from you.</li></ul>",
+    "source": "PHB",
+    "sourcePage": 165
+  },
+  {
+    "name": "Athlete",
+    "description": "<p>You have undergone extensive physical training to gain the following benefits:</p><ul><li>Increase your Strength or Dexterity score by 1, to a maximum of 20.</li><li>When you are prone, standing up uses only 5 feet of your movement.</li><li>Climbing doesn&rsquo;t halve your speed.</li><li>You can make a running long jump or a running high jump after moving only 5 feet on foot, rather than 10 feet.</li></ul>",
+    "source": "PHB",
+    "sourcePage": 165
+  },
+  {
+    "name": "Actor",
+    "description": "<p>Skilled at mimicry and dramatics, you gain the following benefits:</p><ul><li>Increase your Charisma score by 1, to a maximum of 20.</li><li>You have advantage on Charisma (Deception) and Charisma (Performance) checks when trying to pass yourself off as a different person.</li><li>You can mimic the speech of another person or the sounds made by other creatures. You must have heard the person speaking, or heard the creature make the sound, for at least 1 minute. A successful Wisdom (Insight) check contested by your Charisma (Deception) check allows a listener to determine that the effect is faked.</li></ul>",
+    "source": "PHB",
+    "sourcePage": 165
+  },
+  {
+    "name": "Charger",
+    "description": "<p>When you use your action to Dash, you can use a bonus action to make one melee weapon attack or to shove a creature. If you move at least 10 feet in a straight line immediately before taking this bonus action, you either gain a +5 bonus to the attack's damage roll (if you chose to make a melee attack and hit) or push the target up to 10 feet away from you (if you chose to shove and you succeed).</p>",
+    "source": "PHB",
+    "sourcePage": 165
+  },
+  {
+    "name": "Crossbow Expert",
+    "description": "<p>Thanks to extensive practice with the crossbow, you gain the following benefits:</p><ul><li>You ignore the loading quality of crossbows with which you are proficient.</li><li>Being within 5 feet of a hostile creature doesn&rsquo;t impose disadvantage on your ranged attack rolls.</li><li>When you use the Attack action and attack with a one-handed weapon, you can use a bonus action to attack with a loaded hand crossbow you are holding.</li></ul>",
+    "source": "PHB",
+    "sourcePage": 165
+  }
+]
