@@ -19,6 +19,20 @@ query Character($id: ID!) {
     speed
     spellSlots
     klassAbilityOne
+    magicItems {
+      id
+      name
+      description
+      attunement
+      magicBonus
+      rarity
+      weaponType
+      armorType
+      attachedSpells {
+        id
+        name
+      }
+    }
     klass {
       id
       name

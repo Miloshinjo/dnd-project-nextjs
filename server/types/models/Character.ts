@@ -33,5 +33,6 @@ export const Character = objectType({
     t.model.spellSlots()
     t.model.klassAbilityOne()
     t.model.speed()
+    t.model.magicItems()
   },
 })

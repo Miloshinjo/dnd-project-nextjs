@@ -1,0 +1,16 @@
+.container {
+  @apply flex flex-col p-4;
+}
+
+.heading {
+  @apply mb-4 self-start;
+}
+
+.text {
+  @apply text-sm mt-4 mb-6;
+}
+
+.button {
+  @apply px-2 py-1;
+  background-color: var(--bg-secondary);
+}

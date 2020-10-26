@@ -1,5 +1,4 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { IoMdClose } from 'react-icons/io'
 
 import React from 'react'
 import { useModal, ModalType } from '../../context/modal'
@@ -9,6 +8,7 @@ import CharacterCreated from '../modals/character-created'
 import DeleteCharacter from '../modals/delete-character'
 import LearnSpell from '../modals/learn-spell'
 import MobileDrawerModal from '../modals/mobile-drawer'
+import CreateMagicItemModal from '../modals/create-magic-item'
 import SpellPageModal from '../modals/spell-page'
 import SpellPageStaticModal from '../modals/spell-page-static'
 import ClientOnlyPortal from '../../utils/clientOnlyPortal'
@@ -32,6 +32,8 @@ const Modal: React.FC = ({ children }) => {
             mutation={modal.props.mutation}
           />
         )
+      case 'createMagicItem':
+        return <CreateMagicItemModal characterId={modal.props.characterId} />
       case 'addSubclass':
         return (
           <UpdateSelectValue

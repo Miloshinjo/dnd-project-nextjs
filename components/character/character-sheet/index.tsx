@@ -13,6 +13,7 @@ import ScreenStats from './screen-stats'
 import ScreenKlass from './screen-klass'
 import ScreenSpells from './screen-spells'
 import ScreenSettings from './screen-settings'
+import ScreenInventory from './screen-inventory'
 import CharacterHeader from './common/header'
 
 import styles from './styles.module.css'
@@ -73,6 +74,12 @@ const CharacterSheet: React.FC<Props> = ({ id }) => {
     stats: <ScreenStats character={character} skills={skills} />,
     class: <ScreenKlass character={character} />,
     spells: <ScreenSpells character={character} />,
+    inventory: (
+      <ScreenInventory
+        characterId={character.id}
+        magicItems={character.magicItems}
+      />
+    ),
     settings: <ScreenSettings character={character} />,
   }
 

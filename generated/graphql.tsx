@@ -62,6 +62,18 @@ export type CharacterEditSkillInput = {
   skillId: Scalars['ID'];
 };
 
+export type MagicItemCreateInput = {
+  characterId: Scalars['ID'];
+  name: Scalars['String'];
+  description: Scalars['String'];
+  attunement: Scalars['String'];
+  type: Scalars['String'];
+  rarity: Scalars['String'];
+  magicBonus?: Maybe<Scalars['String']>;
+  weaponType?: Maybe<Scalars['String']>;
+  armorType?: Maybe<Scalars['String']>;
+};
+
 export type CharacterQueryInputType = {
   id: Scalars['ID'];
 };
@@ -186,6 +198,7 @@ export type Character = {
   spellSlots?: Maybe<Scalars['String']>;
   klassAbilityOne?: Maybe<Scalars['String']>;
   speed: Scalars['Int'];
+  magicItems: Array<MagicItem>;
 };
 
 
@@ -212,6 +225,36 @@ export type CharacterSkillsArgs = {
   after?: Maybe<SkillWhereUniqueInput>;
 };
 
+
+export type CharacterMagicItemsArgs = {
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<MagicItemWhereUniqueInput>;
+  after?: Maybe<MagicItemWhereUniqueInput>;
+};
+
+export type MagicItem = {
+  __typename?: 'MagicItem';
+  id: Scalars['Int'];
+  name: Scalars['String'];
+  description: Scalars['String'];
+  armorType?: Maybe<Scalars['String']>;
+  attachedSpells: Array<Spell>;
+  rarity: Scalars['String'];
+  magicBonus?: Maybe<Scalars['Int']>;
+  attunement: Scalars['Boolean'];
+  type: Scalars['String'];
+  weaponType?: Maybe<Scalars['String']>;
+};
+
+
+export type MagicItemAttachedSpellsArgs = {
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<SpellWhereUniqueInput>;
+  after?: Maybe<SpellWhereUniqueInput>;
+};
+
 export type CharacterWhereUniqueInput = {
   id?: Maybe<Scalars['Int']>;
 };
@@ -229,6 +272,10 @@ export type SpellWhereUniqueInput = {
 export type SkillWhereUniqueInput = {
   id?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
+};
+
+export type MagicItemWhereUniqueInput = {
+  id?: Maybe<Scalars['Int']>;
 };
 
 export type Query = {
@@ -712,7 +759,14 @@ export type CharacterQuery = (
   & { character?: Maybe<(
     { __typename?: 'Character' }
     & Pick<Character, 'id' | 'name' | 'level' | 'race' | 'hitPoints' | 'maxHitPoints' | 'armorClass' | 'gold' | 'alignment' | 'inspiration' | 'strength' | 'dexterity' | 'constitution' | 'intelligence' | 'wisdom' | 'charisma' | 'speed' | 'spellSlots' | 'klassAbilityOne' | 'arcaneWard' | 'arcaneWardMax'>
-    & { klass: (
+    & { magicItems: Array<(
+      { __typename?: 'MagicItem' }
+      & Pick<MagicItem, 'id' | 'name' | 'description' | 'attunement' | 'magicBonus' | 'rarity' | 'weaponType' | 'armorType'>
+      & { attachedSpells: Array<(
+        { __typename?: 'Spell' }
+        & Pick<Spell, 'id' | 'name'>
+      )> }
+    )>, klass: (
       { __typename?: 'Klass' }
       & Pick<Klass, 'id' | 'name' | 'hitDie' | 'spellCastingModifier'>
     ), subclass?: Maybe<(
@@ -1194,6 +1248,20 @@ export const CharacterDocument = gql`
     speed
     spellSlots
     klassAbilityOne
+    magicItems {
+      id
+      name
+      description
+      attunement
+      magicBonus
+      rarity
+      weaponType
+      armorType
+      attachedSpells {
+        id
+        name
+      }
+    }
     klass {
       id
       name

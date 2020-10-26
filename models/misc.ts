@@ -1,1 +1,1 @@
-export type ActiveKey = 'spells' | 'stats' | 'settings' | 'class'
+export type ActiveKey = 'spells' | 'stats' | 'settings' | 'class' | 'inventory'

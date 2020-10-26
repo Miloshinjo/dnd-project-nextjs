@@ -63,7 +63,7 @@ const AbilityScores: React.FC<Props> = ({ character }) => {
 
   return (
     <div className={styles.abilityScores}>
-      <h3 className="statSectionHeading mb-2">Ability Scores</h3>
+      <h3 className="statSectionHeading mb-4">Ability Scores</h3>
 
       {abilityScores.map(
         (abilityScore: AbilityScore): JSX.Element => {

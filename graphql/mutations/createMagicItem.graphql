@@ -1,0 +1,22 @@
+mutation CreateMagicItem(
+  $name: String!
+  $description: String!
+  $rarity: String!
+  $characterId: ID!
+  $attunement: Boolean!
+) {
+  createMagicItem(
+    item: {
+      name: $name
+      description: $description
+      rarity: $rarity
+      characterId: $characterId
+      attunement: $attunement
+    }
+  ) {
+    id
+    name
+    description
+    rarity
+  }
+}

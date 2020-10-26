@@ -1,5 +1,5 @@
 .selectContainer {
-  @apply relative mt-2;
+  @apply relative mt-2  w-full;
 }
 
 .select {
@@ -11,7 +11,7 @@
 }
 
 .label {
-  @apply text-sm font-medium;
+  @apply text-sm font-medium text-left;
 }
 
 .chevronContainer {

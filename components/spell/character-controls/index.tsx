@@ -109,36 +109,6 @@ const CharacterControls: React.FC<Props> = ({
       <h2 className="mt-3 font-semibold mb-1">{spellName}</h2>
       <div className="flex justify-between items-end">
         <div className="flex flex-col gap-x-4">
-          {canPrepare ? (
-            <CheckboxButton
-              disabled={spellFetching}
-              isChecked={isPreparedSpell}
-              onClick={async () => {
-                if (isPreparedSpell) {
-                  const result = await unprepareSpell({
-                    id: characterId,
-                    spellId: spellId,
-                  })
-
-                  if (result.error) {
-                    console.log('An error occured')
-                    return
-                  }
-                } else {
-                  const result = await prepareSpell({
-                    id: characterId,
-                    spellId: spellId,
-                  })
-
-                  if (result.error) {
-                    console.log('An error occured')
-                    return
-                  }
-                }
-              }}
-              text={isPreparedSpell ? 'Prepared' : 'Prepare'}
-            />
-          ) : null}
           {cannotLearn ? null : (
             <CheckboxButton
               disabled={spellFetching}
@@ -169,6 +139,36 @@ const CharacterControls: React.FC<Props> = ({
               text={learnSpellText}
             />
           )}
+          {canPrepare ? (
+            <CheckboxButton
+              disabled={spellFetching}
+              isChecked={isPreparedSpell}
+              onClick={async () => {
+                if (isPreparedSpell) {
+                  const result = await unprepareSpell({
+                    id: characterId,
+                    spellId: spellId,
+                  })
+
+                  if (result.error) {
+                    console.log('An error occured')
+                    return
+                  }
+                } else {
+                  const result = await prepareSpell({
+                    id: characterId,
+                    spellId: spellId,
+                  })
+
+                  if (result.error) {
+                    console.log('An error occured')
+                    return
+                  }
+                }
+              }}
+              text={isPreparedSpell ? 'Prepared' : 'Prepare'}
+            />
+          ) : null}
         </div>
         <div>
           <button onClick={() => closeModal()}>Back</button>

@@ -69,6 +69,20 @@ export interface NexusGenInputs {
   CharacterWhereUniqueInput: { // input type
     id?: number | null; // Int
   }
+  MagicItemCreateInput: { // input type
+    armorType?: string | null; // String
+    attunement: string; // String!
+    characterId: string; // ID!
+    description: string; // String!
+    magicBonus?: string | null; // String
+    name: string; // String!
+    rarity: string; // String!
+    type: string; // String!
+    weaponType?: string | null; // String
+  }
+  MagicItemWhereUniqueInput: { // input type
+    id?: number | null; // Int
+  }
   SkillWhereUniqueInput: { // input type
     id?: number | null; // Int
     name?: string | null; // String
@@ -136,6 +150,17 @@ export interface NexusGenRootTypes {
     tools?: string | null; // String
     weapons: string[]; // [String!]!
   }
+  MagicItem: { // root type
+    armorType?: string | null; // String
+    attunement: boolean; // Boolean!
+    description: string; // String!
+    id: number; // Int!
+    magicBonus?: number | null; // Int
+    name: string; // String!
+    rarity: string; // String!
+    type: string; // String!
+    weaponType?: string | null; // String
+  }
   Mutation: {};
   Query: {};
   Skill: { // root type
@@ -184,6 +209,8 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   CharacterQueryInputType: NexusGenInputs['CharacterQueryInputType'];
   CharacterUpdateInput: NexusGenInputs['CharacterUpdateInput'];
   CharacterWhereUniqueInput: NexusGenInputs['CharacterWhereUniqueInput'];
+  MagicItemCreateInput: NexusGenInputs['MagicItemCreateInput'];
+  MagicItemWhereUniqueInput: NexusGenInputs['MagicItemWhereUniqueInput'];
   SkillWhereUniqueInput: NexusGenInputs['SkillWhereUniqueInput'];
   SpellWhereUniqueInput: NexusGenInputs['SpellWhereUniqueInput'];
   SubClassWhereUniqueInput: NexusGenInputs['SubClassWhereUniqueInput'];
@@ -212,6 +239,7 @@ export interface NexusGenFieldTypes {
     klassAbilityOne: string | null; // String
     klassId: number; // Int!
     level: number; // Int!
+    magicItems: NexusGenRootTypes['MagicItem'][]; // [MagicItem!]!
     maxHitPoints: number; // Int!
     name: string; // String!
     preparedSpells: NexusGenRootTypes['Spell'][]; // [Spell!]!
@@ -242,6 +270,18 @@ export interface NexusGenFieldTypes {
     subClasses: NexusGenRootTypes['SubClass'][]; // [SubClass!]!
     tools: string | null; // String
     weapons: string[]; // [String!]!
+  }
+  MagicItem: { // field return type
+    armorType: string | null; // String
+    attachedSpells: NexusGenRootTypes['Spell'][]; // [Spell!]!
+    attunement: boolean; // Boolean!
+    description: string; // String!
+    id: number; // Int!
+    magicBonus: number | null; // Int
+    name: string; // String!
+    rarity: string; // String!
+    type: string; // String!
+    weaponType: string | null; // String
   }
   Mutation: { // field return type
     addSkill: NexusGenRootTypes['Character'] | null; // Character
@@ -308,6 +348,12 @@ export interface NexusGenFieldTypes {
 
 export interface NexusGenArgTypes {
   Character: {
+    magicItems: { // args
+      after?: NexusGenInputs['MagicItemWhereUniqueInput'] | null; // MagicItemWhereUniqueInput
+      before?: NexusGenInputs['MagicItemWhereUniqueInput'] | null; // MagicItemWhereUniqueInput
+      first?: number | null; // Int
+      last?: number | null; // Int
+    }
     preparedSpells: { // args
       after?: NexusGenInputs['SpellWhereUniqueInput'] | null; // SpellWhereUniqueInput
       before?: NexusGenInputs['SpellWhereUniqueInput'] | null; // SpellWhereUniqueInput
@@ -331,6 +377,14 @@ export interface NexusGenArgTypes {
     subClasses: { // args
       after?: NexusGenInputs['SubClassWhereUniqueInput'] | null; // SubClassWhereUniqueInput
       before?: NexusGenInputs['SubClassWhereUniqueInput'] | null; // SubClassWhereUniqueInput
+      first?: number | null; // Int
+      last?: number | null; // Int
+    }
+  }
+  MagicItem: {
+    attachedSpells: { // args
+      after?: NexusGenInputs['SpellWhereUniqueInput'] | null; // SpellWhereUniqueInput
+      before?: NexusGenInputs['SpellWhereUniqueInput'] | null; // SpellWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
     }
@@ -407,9 +461,9 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Character" | "Klass" | "Mutation" | "Query" | "Skill" | "Spell" | "SubClass" | "User";
+export type NexusGenObjectNames = "Character" | "Klass" | "MagicItem" | "Mutation" | "Query" | "Skill" | "Spell" | "SubClass" | "User";
 
-export type NexusGenInputNames = "CharacterAddSubclassInput" | "CharacterCreateInput" | "CharacterDeleteInput" | "CharacterEditSkillInput" | "CharacterEditSpellInput" | "CharacterQueryInputType" | "CharacterUpdateInput" | "CharacterWhereUniqueInput" | "SkillWhereUniqueInput" | "SpellWhereUniqueInput" | "SubClassWhereUniqueInput";
+export type NexusGenInputNames = "CharacterAddSubclassInput" | "CharacterCreateInput" | "CharacterDeleteInput" | "CharacterEditSkillInput" | "CharacterEditSpellInput" | "CharacterQueryInputType" | "CharacterUpdateInput" | "CharacterWhereUniqueInput" | "MagicItemCreateInput" | "MagicItemWhereUniqueInput" | "SkillWhereUniqueInput" | "SpellWhereUniqueInput" | "SubClassWhereUniqueInput";
 
 export type NexusGenEnumNames = never;
 

@@ -19,6 +19,7 @@ import {
   GiHandOfGod,
   GiForest,
 } from 'react-icons/gi'
+import { ImMagicWand } from 'react-icons/im'
 import { FaLevelUpAlt } from 'react-icons/fa'
 import { MdDirectionsRun } from 'react-icons/md'
 import { FiShield } from 'react-icons/fi'
@@ -49,6 +50,7 @@ const icons = {
   Warlock: <GiWarlockEye size={60} color="#eeeeee" />,
   Monk: <GiTripleYin size={60} color="#eeeeee" />,
   Wizard: <GiSpellBook size={60} color="#eeeeee" />,
+  createMagicItem: <ImMagicWand size={60} color="#eeeeee" />,
 }
 
 export { icons as default }

@@ -8,4 +8,5 @@ export type ModalTypes =
   | 'mobileDrawer'
   | 'spellPage'
   | 'spellPageStatic'
+  | 'createMagicItem'
   | null

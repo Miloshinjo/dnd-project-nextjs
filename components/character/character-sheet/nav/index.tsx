@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 
-import { GiMagicSwirl } from 'react-icons/gi'
+import { GiMagicSwirl, GiSwapBag } from 'react-icons/gi'
 import { HiAdjustments } from 'react-icons/hi'
 import { BsTriangle } from 'react-icons/bs'
 import { BiStats } from 'react-icons/bi'
@@ -30,6 +30,11 @@ const navItems: NavItem[] = [
     icon: <GiMagicSwirl size={28} />,
     text: 'Spells',
     key: 'spells',
+  },
+  {
+    icon: <GiSwapBag size={28} />,
+    text: 'Inventory',
+    key: 'inventory',
   },
   {
     icon: <HiAdjustments size={28} />,

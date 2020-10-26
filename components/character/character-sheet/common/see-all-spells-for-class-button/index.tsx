@@ -19,9 +19,15 @@ const SeeAllSpellsForKlassButton: React.FC<Props> = ({
   klassName,
 }) => {
   const router = useRouter()
-  const parsedKlassName = useMemo(() => {
+  const filterKlassName = useMemo(() => {
     if (klassName === 'Arcane Trickster') return 'wizard'
     if (klassName === 'Eldritch Knight') return 'wizard'
+    return klassName.toLowerCase()
+  }, [klassName])
+
+  const colorKlassName = useMemo(() => {
+    if (klassName === 'Arcane Trickster') return 'rogue'
+    if (klassName === 'Eldritch Knight') return 'fighter'
     return klassName.toLowerCase()
   }, [klassName])
 
@@ -30,7 +36,7 @@ const SeeAllSpellsForKlassButton: React.FC<Props> = ({
       className={styles.button}
       onClick={() => {
         seeAllSpellsForKlass({
-          klassName: parsedKlassName,
+          klassName: filterKlassName,
           characterId: characterId,
           router,
         })
@@ -39,7 +45,7 @@ const SeeAllSpellsForKlassButton: React.FC<Props> = ({
       <GiMagicSwirl
         size={20}
         className={styles.icon}
-        color={`var(--color-${parsedKlassName})`}
+        color={`var(--color-${colorKlassName})`}
       />
       <span className={styles.buttonText}>
         <span className="capitalize">{klassName}</span> spell list

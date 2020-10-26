@@ -1,0 +1,15 @@
+.form {
+  @apply flex flex-col mt-6 pb-4 px-4;
+}
+
+.form > * {
+  @apply mt-2;
+}
+
+.form > button {
+  @apply mt-8 self-end text-right;
+}
+
+.errorText {
+  @apply text-orange-600 text-xs;
+}

@@ -1,3 +1,4 @@
+import { useCallback } from 'react'
 import { Controller } from 'react-hook-form'
 import Select from 'react-select'
 
@@ -13,6 +14,7 @@ type Props = {
   name: string
   control: any
   value?: any
+  isSearchable?: boolean
 }
 
 const SelectInput: React.FC<Props> = ({
@@ -22,7 +24,30 @@ const SelectInput: React.FC<Props> = ({
   name,
   control,
   value = '',
+  isSearchable = true,
 }) => {
+  const getOptionColor = useCallback(
+    (label) => {
+      switch (label) {
+        case 'Uncommon':
+          return 'var(--color-uncommon)'
+        case 'Rare':
+          return 'var(--color-rare)'
+        case 'Very rare':
+          return 'var(--color-very-rare)'
+        case 'Legendary':
+          return 'var(--color-legendary)'
+        case 'Artifact':
+          return 'var(--color-artifact)'
+        case 'Unknown':
+          return 'var(--color-unknown)'
+        default:
+          return 'var(--text-primary)'
+      }
+    },
+    [label],
+  )
+
   const colourStyles = {
     singleValue: (
       styles,
@@ -50,13 +75,18 @@ const SelectInput: React.FC<Props> = ({
         : 'none',
       backgroundColor: 'var(--bg-secondary)',
     }),
-    option: (styles, { data, isDisabled, isFocused, isSelected }) => ({
-      ...styles,
-      cursor: 'pointer',
-      border: 'var(--border-primary)',
-      backgroundColor: isFocused ? 'var(--bg-focused)' : 'var(--bg-secondary)',
-      color: 'var(--text-primary)',
-    }),
+    option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+      return {
+        ...styles,
+        cursor: 'pointer',
+        textAlign: 'left',
+        border: 'var(--border-primary)',
+        backgroundColor: isFocused
+          ? 'var(--bg-focused)'
+          : 'var(--bg-secondary)',
+        color: getOptionColor(data.label),
+      }
+    },
     menu: (styles, { data, isDisabled, isFocused, isSelected }) => ({
       ...styles,
       backgroundColor: 'var(--bg-secondary)',
@@ -64,7 +94,7 @@ const SelectInput: React.FC<Props> = ({
   }
 
   return (
-    <div>
+    <div className="flex flex-col w-full">
       <label className={styles.label} htmlFor={name}>
         {label}
       </label>
@@ -80,6 +110,7 @@ const SelectInput: React.FC<Props> = ({
           defaultValue={null}
           value={value}
           onBlur={(event) => event.preventDefault()}
+          isSearchable={isSearchable}
         />
       </div>
       {errors[name] && (

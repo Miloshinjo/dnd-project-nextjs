@@ -75,3 +75,18 @@ export const CharacterEditSkillInputType = inputObjectType({
     t.id('skillId', { required: true })
   },
 })
+
+export const MagicItemCreateInputType = inputObjectType({
+  name: 'MagicItemCreateInput',
+  definition(t) {
+    t.id('characterId', { required: true })
+    t.string('name', { required: true })
+    t.string('description', { required: true })
+    t.string('attunement', { required: true })
+    t.string('type', { required: true })
+    t.string('rarity', { required: true })
+    t.string('magicBonus', { required: false })
+    t.string('weaponType', { required: false })
+    t.string('armorType', { required: false })
+  },
+})

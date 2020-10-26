@@ -19,6 +19,7 @@ type Character {
   klassAbilityOne: String
   klassId: Int!
   level: Int!
+  magicItems(after: MagicItemWhereUniqueInput, before: MagicItemWhereUniqueInput, first: Int, last: Int): [MagicItem!]!
   maxHitPoints: Int!
   name: String!
   preparedSpells(after: SpellWhereUniqueInput, before: SpellWhereUniqueInput, first: Int, last: Int): [Spell!]!
@@ -110,10 +111,40 @@ type Klass {
   weapons: [String!]!
 }
 
+type MagicItem {
+  armorType: String
+  attachedSpells(after: SpellWhereUniqueInput, before: SpellWhereUniqueInput, first: Int, last: Int): [Spell!]!
+  attunement: Boolean!
+  description: String!
+  id: Int!
+  magicBonus: Int
+  name: String!
+  rarity: String!
+  type: String!
+  weaponType: String
+}
+
+input MagicItemCreateInput {
+  armorType: String
+  attunement: String!
+  characterId: ID!
+  description: String!
+  magicBonus: String
+  name: String!
+  rarity: String!
+  type: String!
+  weaponType: String
+}
+
+input MagicItemWhereUniqueInput {
+  id: Int
+}
+
 type Mutation {
   addSkill(character: CharacterEditSkillInput): Character
   addSubclass(character: CharacterAddSubclassInput): Character
   createCharacter(character: CharacterCreateInput): Character
+  createMagicItem(item: MagicItemCreateInput): MagicItem
   deleteCharacter(character: CharacterDeleteInput): Character
   forgetSpell(character: CharacterEditSpellInput): Character
   learnSpell(character: CharacterEditSpellInput): Character

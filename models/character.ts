@@ -14,6 +14,7 @@ export type CharacterModel = Pick<
   | 'arcaneWardMax'
   | 'alignment'
   | 'gold'
+  | 'magicItems'
   | 'inspiration'
   | 'strength'
   | 'dexterity'

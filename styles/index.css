@@ -10,6 +10,13 @@
   --text-alt: #f7fafc;
   --text-accent: #2a4365;
   --border-primary: #e2e8f0;
+  --color-uncommon: #1eff00;
+  --color-rare: #0070dd;
+  --color-very-rare: #a335ee;
+  --color-legendary: #ff8000;
+  --color-artifact: #e6cc80;
+  --color-unknown: #9d9d9d;
+  --color-varies: #63b3ed;
 
   --bg-modal-drawer: #fff;
   --bg-header: #1f1f1f;
