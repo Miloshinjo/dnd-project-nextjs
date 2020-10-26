@@ -71,10 +71,10 @@ export interface NexusGenInputs {
   }
   MagicItemCreateInput: { // input type
     armorType?: string | null; // String
-    attunement: string; // String!
+    attunement: boolean; // Boolean!
     characterId: string; // ID!
     description: string; // String!
-    magicBonus?: string | null; // String
+    magicBonus?: number | null; // Int
     name: string; // String!
     rarity: string; // String!
     type: string; // String!
@@ -287,6 +287,7 @@ export interface NexusGenFieldTypes {
     addSkill: NexusGenRootTypes['Character'] | null; // Character
     addSubclass: NexusGenRootTypes['Character'] | null; // Character
     createCharacter: NexusGenRootTypes['Character'] | null; // Character
+    createMagicItem: NexusGenRootTypes['MagicItem'] | null; // MagicItem
     deleteCharacter: NexusGenRootTypes['Character'] | null; // Character
     forgetSpell: NexusGenRootTypes['Character'] | null; // Character
     learnSpell: NexusGenRootTypes['Character'] | null; // Character
@@ -398,6 +399,9 @@ export interface NexusGenArgTypes {
     }
     createCharacter: { // args
       character?: NexusGenInputs['CharacterCreateInput'] | null; // CharacterCreateInput
+    }
+    createMagicItem: { // args
+      item?: NexusGenInputs['MagicItemCreateInput'] | null; // MagicItemCreateInput
     }
     deleteCharacter: { // args
       character?: NexusGenInputs['CharacterDeleteInput'] | null; // CharacterDeleteInput

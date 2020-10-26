@@ -82,10 +82,10 @@ export const MagicItemCreateInputType = inputObjectType({
     t.id('characterId', { required: true })
     t.string('name', { required: true })
     t.string('description', { required: true })
-    t.string('attunement', { required: true })
+    t.boolean('attunement', { required: true })
     t.string('type', { required: true })
     t.string('rarity', { required: true })
-    t.string('magicBonus', { required: false })
+    t.int('magicBonus', { required: false })
     t.string('weaponType', { required: false })
     t.string('armorType', { required: false })
   },

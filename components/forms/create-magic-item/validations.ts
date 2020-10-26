@@ -13,7 +13,7 @@ export default {
   description: {
     required: 'Description is required',
     minLength: {
-      value: 10,
+      value: 1,
       message: 'Description too short',
     },
     maxLength: {

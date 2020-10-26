@@ -71,10 +71,10 @@ export interface NexusGenInputs {
   }
   MagicItemCreateInput: { // input type
     armorType?: string | null; // String
-    attunement: string; // String!
+    attunement: boolean; // Boolean!
     characterId: string; // ID!
     description: string; // String!
-    magicBonus?: string | null; // String
+    magicBonus?: number | null; // Int
     name: string; // String!
     rarity: string; // String!
     type: string; // String!

@@ -28,6 +28,7 @@ query Character($id: ID!) {
       rarity
       weaponType
       armorType
+      type
       attachedSpells {
         id
         name

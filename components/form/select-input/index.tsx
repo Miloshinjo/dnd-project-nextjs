@@ -54,7 +54,7 @@ const SelectInput: React.FC<Props> = ({
       { data, isDisabled, isFocused, isSelected, isHovered },
     ) => ({
       ...styles,
-      color: 'var(--text-primary)',
+      color: getOptionColor(data.label),
     }),
     placeholder: (
       styles,

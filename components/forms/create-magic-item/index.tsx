@@ -3,9 +3,11 @@ import { useForm } from 'react-hook-form'
 import ButtonPrimary from '../../buttons/primary'
 import TextInput from '../../form/text-input'
 import SelectInput from '../../form/select-input'
+import { useModal } from '../../../context/modal'
+import CheckboxInput from '../../form/checkbox-input'
 import { Character } from '../../../generated/graphql'
 
-// import { useCreateMagicItemMutation } from '../../../generated/graphql'
+import { useCreateMagicItemMutation } from '../../../generated/graphql'
 import validations from './validations'
 
 import { Rarity, Type } from '../../../models/magicItem'
@@ -38,7 +40,12 @@ const typesRaw: Array<Type> = [
 type FormValues = {
   name: string
   description: string
-  rarity: Rarity
+  rarity: {
+    label: Rarity
+    value: Rarity
+  }
+  type: { label: Type; value: Type }
+  attunement: boolean
 }
 
 type Props = {
@@ -47,26 +54,53 @@ type Props = {
 
 const CreateCharacterForm: React.FC<Props> = ({ characterId }) => {
   const [serverError, setServerError] = useState<string>('')
-  // const [, createMagicItem] = useCreateMagicItemMutation()
+  const [, createMagicItem] = useCreateMagicItemMutation()
+  const { closeModal } = useModal()
 
-  const { register, handleSubmit, errors, control } = useForm<FormValues>({
+  const { register, handleSubmit, errors, control, watch } = useForm<
+    FormValues
+  >({
     mode: 'onBlur',
   })
 
-  const onSubmit = ({ name, description, rarity }: FormValues) => {
+  const onSubmit = ({
+    name,
+    description,
+    rarity,
+    attunement,
+    type,
+  }: FormValues) => {
     setServerError('')
 
-    // createMagicItem({
-    //   name,
-    //   description,
-    //   characterId,
-    //   rarity,
-    // }).then((result) => {
-    //   if (result.error) {
-    //     setServerError(result?.error?.message || 'Unknown error occurred')
-    //     return
-    //   }
-    // })
+    // const klassIdReal = Number(klassId.value)
+    const rarityReal = rarity.value
+    const typeReal = type.value
+
+    console.log({
+      attunement,
+      rarity: rarityReal,
+      description,
+      name,
+      type: typeReal,
+    })
+
+    createMagicItem({
+      name,
+      description,
+      characterId,
+      rarity: rarityReal,
+      type: typeReal,
+      attunement,
+    }).then((result) => {
+      if (result.error) {
+        setServerError(result?.error?.message || 'Unknown error occurred')
+        return
+      }
+
+      if (result?.data) {
+        closeModal()
+      }
+    })
   }
 
   return (
@@ -108,6 +142,12 @@ const CreateCharacterForm: React.FC<Props> = ({ characterId }) => {
           label: type,
           value: type,
         }))}
+      />
+      <span className="mt-2" />
+      <CheckboxInput
+        register={register}
+        name="attunement"
+        currentValue={watch('attunement')}
       />
 
       <ButtonPrimary type="submit">Create item</ButtonPrimary>

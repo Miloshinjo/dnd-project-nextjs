@@ -23,7 +23,7 @@
 }
 
 .error {
-  @apply text-xs text-orange-600;
+  @apply text-xs text-orange-600 text-left;
 }
 
 @screen sm {

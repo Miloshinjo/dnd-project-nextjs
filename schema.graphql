@@ -126,10 +126,10 @@ type MagicItem {
 
 input MagicItemCreateInput {
   armorType: String
-  attunement: String!
+  attunement: Boolean!
   characterId: ID!
   description: String!
-  magicBonus: String
+  magicBonus: Int
   name: String!
   rarity: String!
   type: String!

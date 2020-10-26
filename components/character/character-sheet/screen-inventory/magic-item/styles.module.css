@@ -1,0 +1,25 @@
+.container {
+  @apply rounded mb-2;
+  background-color: var(--bg-secondary);
+}
+
+.title {
+  @apply flex flex-col leading-tight items-start;
+}
+
+.itemName {
+  @apply font-semibold;
+}
+
+.itemRarity {
+  @apply text-xs;
+  color: var(--text-secondary);
+}
+
+.itemType {
+  @apply text-sm;
+}
+
+.button {
+  @apply w-full flex items-center justify-between px-4 py-2;
+}

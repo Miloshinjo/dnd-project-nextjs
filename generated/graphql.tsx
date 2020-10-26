@@ -66,10 +66,10 @@ export type MagicItemCreateInput = {
   characterId: Scalars['ID'];
   name: Scalars['String'];
   description: Scalars['String'];
-  attunement: Scalars['String'];
+  attunement: Scalars['Boolean'];
   type: Scalars['String'];
   rarity: Scalars['String'];
-  magicBonus?: Maybe<Scalars['String']>;
+  magicBonus?: Maybe<Scalars['Int']>;
   weaponType?: Maybe<Scalars['String']>;
   armorType?: Maybe<Scalars['String']>;
 };
@@ -328,6 +328,7 @@ export type Mutation = {
   addSubclass?: Maybe<Character>;
   addSkill?: Maybe<Character>;
   removeSkill?: Maybe<Character>;
+  createMagicItem?: Maybe<MagicItem>;
 };
 
 
@@ -378,6 +379,11 @@ export type MutationAddSkillArgs = {
 
 export type MutationRemoveSkillArgs = {
   character?: Maybe<CharacterEditSkillInput>;
+};
+
+
+export type MutationCreateMagicItemArgs = {
+  item?: Maybe<MagicItemCreateInput>;
 };
 
 export type AddSkillMutationVariables = Exact<{
@@ -503,6 +509,24 @@ export type CreateCharacterMutation = (
       { __typename?: 'Klass' }
       & Pick<Klass, 'id' | 'name'>
     ) }
+  )> }
+);
+
+export type CreateMagicItemMutationVariables = Exact<{
+  name: Scalars['String'];
+  description: Scalars['String'];
+  rarity: Scalars['String'];
+  characterId: Scalars['ID'];
+  attunement: Scalars['Boolean'];
+  type: Scalars['String'];
+}>;
+
+
+export type CreateMagicItemMutation = (
+  { __typename?: 'Mutation' }
+  & { createMagicItem?: Maybe<(
+    { __typename?: 'MagicItem' }
+    & Pick<MagicItem, 'id' | 'name' | 'description' | 'rarity'>
   )> }
 );
 
@@ -761,7 +785,7 @@ export type CharacterQuery = (
     & Pick<Character, 'id' | 'name' | 'level' | 'race' | 'hitPoints' | 'maxHitPoints' | 'armorClass' | 'gold' | 'alignment' | 'inspiration' | 'strength' | 'dexterity' | 'constitution' | 'intelligence' | 'wisdom' | 'charisma' | 'speed' | 'spellSlots' | 'klassAbilityOne' | 'arcaneWard' | 'arcaneWardMax'>
     & { magicItems: Array<(
       { __typename?: 'MagicItem' }
-      & Pick<MagicItem, 'id' | 'name' | 'description' | 'attunement' | 'magicBonus' | 'rarity' | 'weaponType' | 'armorType'>
+      & Pick<MagicItem, 'id' | 'name' | 'description' | 'attunement' | 'magicBonus' | 'rarity' | 'weaponType' | 'armorType' | 'type'>
       & { attachedSpells: Array<(
         { __typename?: 'Spell' }
         & Pick<Spell, 'id' | 'name'>
@@ -1018,6 +1042,20 @@ export const CreateCharacterDocument = gql`
 export function useCreateCharacterMutation() {
   return Urql.useMutation<CreateCharacterMutation, CreateCharacterMutationVariables>(CreateCharacterDocument);
 };
+export const CreateMagicItemDocument = gql`
+    mutation CreateMagicItem($name: String!, $description: String!, $rarity: String!, $characterId: ID!, $attunement: Boolean!, $type: String!) {
+  createMagicItem(item: {name: $name, description: $description, rarity: $rarity, characterId: $characterId, attunement: $attunement, type: $type}) {
+    id
+    name
+    description
+    rarity
+  }
+}
+    `;
+
+export function useCreateMagicItemMutation() {
+  return Urql.useMutation<CreateMagicItemMutation, CreateMagicItemMutationVariables>(CreateMagicItemDocument);
+};
 export const DeleteCharacterDocument = gql`
     mutation DeleteCharacter($id: ID!) {
   deleteCharacter(character: {id: $id}) {
@@ -1257,6 +1295,7 @@ export const CharacterDocument = gql`
       rarity
       weaponType
       armorType
+      type
       attachedSpells {
         id
         name
