@@ -1,11 +1,9 @@
 node_modules
 *.env
-component-factory
 # dependencies
 /node_modules
 /.pnp
 .pnp.js
-/component-factory
 
 # testing
 /coverage

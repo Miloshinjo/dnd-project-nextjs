@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { MagicItem as MagicItemType } from '../../../../../generated/graphql'
 
 import styles from './styles.module.css'
@@ -18,6 +19,7 @@ const magicItemColors = {
 }
 
 const MagicItem: React.FC<Props> = ({ magicItem }) => {
+  const [isActive, setActive] = useState(false)
   return (
     <div className={styles.container}>
       <button className={styles.button}>
