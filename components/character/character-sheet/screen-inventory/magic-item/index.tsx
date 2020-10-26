@@ -18,7 +18,6 @@ const magicItemColors = {
 }
 
 const MagicItem: React.FC<Props> = ({ magicItem }) => {
-  console.log({ magicItem })
   return (
     <div className={styles.container}>
       <button className={styles.button}>
