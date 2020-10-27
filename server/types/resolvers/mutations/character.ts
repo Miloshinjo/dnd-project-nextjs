@@ -1,8 +1,7 @@
 import { mutationField } from '@nexus/schema'
 
-import { getUserId } from '../../../utils/helpers'
 import errors from '../../../utils/errors'
-import { handleError } from '../../../utils/helpers'
+import { getUserId, handleError } from '../../../utils/helpers'
 
 export const createCharacter = mutationField('createCharacter', {
   type: 'Character',
@@ -74,11 +73,21 @@ export const deleteCharacter = mutationField('deleteCharacter', {
       return handleError(errors.serverError)
     }
 
-    return prisma.character.delete({
-      where: {
-        id: Number(character.id),
-      },
-    })
+    try {
+      await prisma.magicItem.deleteMany({
+        where: {
+          characterId: Number(character.id),
+        },
+      })
+
+      return prisma.character.delete({
+        where: {
+          id: Number(character.id),
+        },
+      })
+    } catch (e) {
+      console.log(e)
+    }
   },
 })
 

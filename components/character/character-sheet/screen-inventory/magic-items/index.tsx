@@ -1,8 +1,9 @@
-import OpenModalButton from '../../../../buttons/open-modal-button'
-
 import { GiMagicLamp } from 'react-icons/gi'
 
+import OpenModalButton from '../../../../buttons/open-modal-button'
+
 import MagicItem from '../magic-item'
+
 import styles from './styles.module.css'
 
 const MagicItems = ({ magicItems, characterId }) => {
@@ -27,6 +28,8 @@ const MagicItems = ({ magicItems, characterId }) => {
 
   return (
     <div className={styles.container}>
+      <h3 className={`${styles.heading} statSectionHeading`}>Magic Items</h3>
+
       {magicItems.map((magicItem) => {
         return <MagicItem key={magicItem.id} magicItem={magicItem} />
       })}

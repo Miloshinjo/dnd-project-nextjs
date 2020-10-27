@@ -19,6 +19,15 @@ mutation CreateMagicItem(
     id
     name
     description
+    attunement
+    magicBonus
     rarity
+    weaponType
+    armorType
+    type
+    attachedSpells {
+      id
+      name
+    }
   }
 }

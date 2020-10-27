@@ -1,4 +1,4 @@
-import { cacheExchange } from '@urql/exchange-graphcache'
+import { cacheExchange, QueryInput, Cache } from '@urql/exchange-graphcache'
 
 import {
   CharacterDocument,
@@ -8,16 +8,18 @@ import {
   Skill,
   Spell,
   Character,
+  CreateMagicItemMutation,
+  CharacterQuery,
 } from '../generated/graphql'
 
-// function betterUpdateQuery<Result, Query>(
-//   cache: Cache,
-//   qi: QueryInput,
-//   result: any,
-//   fn: (r: Result, q: Query) => Query,
-// ) {
-//   return cache.updateQuery(qi, (data) => fn(result, data as any) as any)
-// }
+function betterUpdateQuery<Result, Query>(
+  cache: Cache,
+  qi: QueryInput,
+  result: any,
+  fn: (r: Result, q: Query) => Query,
+) {
+  return cache.updateQuery(qi, (data) => fn(result, data as any) as any)
+}
 
 // function invalidateAllCharacters(cache: Cache) {
 //   const allFields = cache.inspectFields('Query')
@@ -38,6 +40,26 @@ const cache = cacheExchange({
           __typename: 'Character',
           id: (args.character as DeleteCharacterMutationVariables).id,
         })
+      },
+      createMagicItem: (_result, args, cache, _info) => {
+        betterUpdateQuery<CreateMagicItemMutation, CharacterQuery>(
+          cache,
+          {
+            query: CharacterDocument,
+            variables: {
+              id: (args.item as any).characterId,
+            },
+          },
+          _result,
+          (result, query) => {
+            if (!result?.createMagicItem) {
+              return query
+            } else {
+              query.character.magicItems.push(result.createMagicItem)
+              return query
+            }
+          },
+        )
       },
     },
   },

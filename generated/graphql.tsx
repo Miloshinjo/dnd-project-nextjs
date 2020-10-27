@@ -526,7 +526,11 @@ export type CreateMagicItemMutation = (
   { __typename?: 'Mutation' }
   & { createMagicItem?: Maybe<(
     { __typename?: 'MagicItem' }
-    & Pick<MagicItem, 'id' | 'name' | 'description' | 'rarity'>
+    & Pick<MagicItem, 'id' | 'name' | 'description' | 'attunement' | 'magicBonus' | 'rarity' | 'weaponType' | 'armorType' | 'type'>
+    & { attachedSpells: Array<(
+      { __typename?: 'Spell' }
+      & Pick<Spell, 'id' | 'name'>
+    )> }
   )> }
 );
 
@@ -1048,7 +1052,16 @@ export const CreateMagicItemDocument = gql`
     id
     name
     description
+    attunement
+    magicBonus
     rarity
+    weaponType
+    armorType
+    type
+    attachedSpells {
+      id
+      name
+    }
   }
 }
     `;
