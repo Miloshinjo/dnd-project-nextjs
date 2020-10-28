@@ -1,10 +1,11 @@
 import { useCallback } from 'react'
 
-import { useLevelMutation } from '../../../../../generated/graphql'
 import { useModal } from '../../../../../context/modal'
+import { useLevelMutation } from '../../../../../generated/graphql'
 import { CharacterModel } from '../../../../../models/character'
-import HitPoints from './hit-points'
+
 import ArcaneWard from './arcane-ward'
+import HitPoints from './hit-points'
 
 import styles from './styles.module.css'
 
@@ -55,6 +56,7 @@ const CharacterHeader: React.FC<Props> = ({ character }) => {
         <div className="font-bold">
           <button
             className={styles.characterLevel}
+            type="button"
             onClick={() =>
               openModal({
                 type: 'number',

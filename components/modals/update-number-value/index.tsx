@@ -2,14 +2,14 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 
 import { useModal } from '../../../context/modal'
+import { Character } from '../../../generated/graphql'
+import PrimaryButton from '../../buttons/primary'
 import NumberInput from '../../form/number-input'
 import NumberInputControls from '../../form/number-input-controls'
-import PrimaryButton from '../../buttons/primary'
-import { Character } from '../../../generated/graphql'
 import ModalHeader from '../../modal/modal-header'
 
-import validations from './validations'
 import styles from './styles.module.css'
+import validations from './validations'
 
 type FormValues = Record<string, number>
 

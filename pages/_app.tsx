@@ -1,3 +1,4 @@
+import { ThemeProvider } from 'next-themes'
 import { AppProps } from 'next/app'
 import {
   Provider as UrqlProvider,
@@ -5,8 +6,8 @@ import {
   dedupExchange,
   fetchExchange,
 } from 'urql'
+
 import { Provider as SessionProvider } from '../lib/next-auth/client'
-import { ThemeProvider } from 'next-themes'
 
 import cache from '../utils/cache'
 

@@ -1,0 +1,6 @@
+mutation Gold($id: ID!, $gold: Int!) {
+  updateCharacter(character: { id: $id, gold: $gold }) {
+    id
+    gold
+  }
+}

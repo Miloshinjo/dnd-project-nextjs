@@ -17,7 +17,7 @@
 }
 
 .itemType {
-  @apply text-sm font-light;
+  @apply text-xs font-light;
 }
 
 .button {

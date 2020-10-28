@@ -519,6 +519,8 @@ export type CreateMagicItemMutationVariables = Exact<{
   characterId: Scalars['ID'];
   attunement: Scalars['Boolean'];
   type: Scalars['String'];
+  weaponType?: Maybe<Scalars['String']>;
+  armorType?: Maybe<Scalars['String']>;
 }>;
 
 
@@ -576,6 +578,20 @@ export type ForgetSpellMutation = (
       { __typename?: 'Spell' }
       & Pick<Spell, 'id' | 'name'>
     )> }
+  )> }
+);
+
+export type GoldMutationVariables = Exact<{
+  id: Scalars['ID'];
+  gold: Scalars['Int'];
+}>;
+
+
+export type GoldMutation = (
+  { __typename?: 'Mutation' }
+  & { updateCharacter?: Maybe<(
+    { __typename?: 'Character' }
+    & Pick<Character, 'id' | 'gold'>
   )> }
 );
 
@@ -1047,8 +1063,8 @@ export function useCreateCharacterMutation() {
   return Urql.useMutation<CreateCharacterMutation, CreateCharacterMutationVariables>(CreateCharacterDocument);
 };
 export const CreateMagicItemDocument = gql`
-    mutation CreateMagicItem($name: String!, $description: String!, $rarity: String!, $characterId: ID!, $attunement: Boolean!, $type: String!) {
-  createMagicItem(item: {name: $name, description: $description, rarity: $rarity, characterId: $characterId, attunement: $attunement, type: $type}) {
+    mutation CreateMagicItem($name: String!, $description: String!, $rarity: String!, $characterId: ID!, $attunement: Boolean!, $type: String!, $weaponType: String, $armorType: String) {
+  createMagicItem(item: {name: $name, description: $description, rarity: $rarity, characterId: $characterId, attunement: $attunement, type: $type, weaponType: $weaponType, armorType: $armorType}) {
     id
     name
     description
@@ -1107,6 +1123,18 @@ export const ForgetSpellDocument = gql`
 
 export function useForgetSpellMutation() {
   return Urql.useMutation<ForgetSpellMutation, ForgetSpellMutationVariables>(ForgetSpellDocument);
+};
+export const GoldDocument = gql`
+    mutation Gold($id: ID!, $gold: Int!) {
+  updateCharacter(character: {id: $id, gold: $gold}) {
+    id
+    gold
+  }
+}
+    `;
+
+export function useGoldMutation() {
+  return Urql.useMutation<GoldMutation, GoldMutationVariables>(GoldDocument);
 };
 export const HitPointsDocument = gql`
     mutation HitPoints($id: ID!, $hitPoints: Int!) {

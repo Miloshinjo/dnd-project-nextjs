@@ -5,6 +5,8 @@ mutation CreateMagicItem(
   $characterId: ID!
   $attunement: Boolean!
   $type: String!
+  $weaponType: String
+  $armorType: String
 ) {
   createMagicItem(
     item: {
@@ -14,6 +16,8 @@ mutation CreateMagicItem(
       characterId: $characterId
       attunement: $attunement
       type: $type
+      weaponType: $weaponType
+      armorType: $armorType
     }
   ) {
     id

@@ -11,7 +11,7 @@ const MagicItems = ({ magicItems, characterId }) => {
     return (
       <div className={styles.container}>
         <h3 className={`${styles.heading} statSectionHeading`}>Magic Items</h3>
-        <ImMagicWand size={45} />
+        <ImMagicWand size={35} />
         <p className={styles.text}>
           Your character does not have any magic items. Click below to add some
         </p>

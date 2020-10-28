@@ -1,10 +1,11 @@
+import { FiShield } from 'react-icons/fi'
+
 import {
   Character,
   useArcaneWardMutation,
   useArcaneWardMaxMutation,
 } from '../../../../../../generated/graphql'
 import OpenModalButton from '../../../../../buttons/open-modal-button'
-import { FiShield } from 'react-icons/fi'
 
 import styles from './styles.module.css'
 

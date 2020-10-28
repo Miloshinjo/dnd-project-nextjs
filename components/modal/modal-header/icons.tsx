@@ -20,11 +20,13 @@ import {
   GiSwordsEmblem,
   GiHandOfGod,
   GiForest,
+  GiTwoCoins,
 } from 'react-icons/gi'
 import { ImMagicWand } from 'react-icons/im'
 import { MdDirectionsRun } from 'react-icons/md'
 
 const icons = {
+  gold: <GiTwoCoins size={60} color="#eeeeee" />,
   hitPoints: <GiHealthPotion size={60} color="#eeeeee" />,
   maxHitPoints: <GiHealthPotion size={60} color="#eeeeee" />,
   armorClass: <GiLayeredArmor size={60} color="#eeeeee" />,

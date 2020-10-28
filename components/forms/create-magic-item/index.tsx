@@ -7,14 +7,19 @@ import {
   useCreateMagicItemMutation,
 } from '../../../generated/graphql'
 
-import { RarityType, ItemType, WeaponType } from '../../../models/magicItem'
+import {
+  RarityType,
+  ItemType,
+  WeaponType,
+  ArmorType,
+} from '../../../models/magicItem'
 import ButtonPrimary from '../../buttons/primary'
 import CheckboxInput from '../../form/checkbox-input'
 import SelectInput from '../../form/select-input'
 import TextInput from '../../form/text-input'
 import TextareaInput from '../../form/textarea-input'
 
-import { raritiesRaw, typesRaw, weaponsRaw } from './data'
+import { raritiesRaw, typesRaw, weaponsRaw, armorsRaw } from './data'
 
 import styles from './styles.module.css'
 import validations from './validations'
@@ -29,6 +34,7 @@ type FormValues = {
   type: { label: ItemType; value: ItemType }
   attunement: boolean
   weaponType?: { label: WeaponType; value: WeaponType }
+  armorType?: { label: ArmorType; value: ArmorType }
 }
 
 type Props = {
@@ -52,11 +58,15 @@ const CreateCharacterForm: React.FC<Props> = ({ characterId }) => {
     rarity,
     attunement,
     type,
+    armorType,
+    weaponType,
   }: FormValues) => {
     setServerError('')
 
     const rarityReal = rarity.value
     const typeReal = type.value
+    const armorTypeReal = armorType?.value ?? null
+    const weaponTypeReal = weaponType?.value ?? null
 
     createMagicItem({
       name,
@@ -65,6 +75,8 @@ const CreateCharacterForm: React.FC<Props> = ({ characterId }) => {
       rarity: rarityReal,
       type: typeReal,
       attunement,
+      weaponType: weaponTypeReal,
+      armorType: armorTypeReal,
     }).then((result) => {
       if (result.error) {
         setServerError(result?.error?.message || 'Unknown error occurred')
@@ -128,6 +140,19 @@ const CreateCharacterForm: React.FC<Props> = ({ characterId }) => {
           errors={errors}
           label="Weapon type"
           options={weaponsRaw.map((type) => ({
+            label: type,
+            value: type,
+          }))}
+        />
+      )}
+      {shouldPickArmorType && (
+        <SelectInput
+          isSearchable={false}
+          name="armorType"
+          control={control}
+          errors={errors}
+          label="Armor type"
+          options={armorsRaw.map((type) => ({
             label: type,
             value: type,
           }))}

@@ -1,4 +1,9 @@
-import { RarityType, ItemType, WeaponType } from '../../../models/magicItem'
+import {
+  RarityType,
+  ItemType,
+  WeaponType,
+  ArmorType,
+} from '../../../models/magicItem'
 
 const raritiesRaw: Array<RarityType> = [
   'Common',
@@ -62,4 +67,21 @@ const weaponsRaw: Array<WeaponType> = [
   'Gun',
 ]
 
-export { typesRaw, raritiesRaw, weaponsRaw }
+const armorsRaw: Array<ArmorType> = [
+  'Robe',
+  'Padded',
+  'Leather',
+  'Studded Leather',
+  'Hide',
+  'Chain Shirt',
+  'Scale Mail',
+  'Breastplate',
+  'Half Plate',
+  'Ring Mail',
+  'Chain Mail',
+  'Splint',
+  'Plate',
+  'Shield',
+]
+
+export { typesRaw, raritiesRaw, weaponsRaw, armorsRaw }

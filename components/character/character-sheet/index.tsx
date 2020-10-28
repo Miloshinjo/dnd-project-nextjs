@@ -1,20 +1,21 @@
 import { useState, useCallback } from 'react'
 
-import TextLoader from '../../layout/text-loader'
-import Nav from './nav'
-import { ActiveKey } from '../../../models/misc'
 import {
   Character,
   useCharacterQuery,
   useSkillsQuery,
 } from '../../../generated/graphql'
+import { ActiveKey } from '../../../models/misc'
+import TextLoader from '../../layout/text-loader'
 
-import ScreenStats from './screen-stats'
-import ScreenKlass from './screen-klass'
-import ScreenSpells from './screen-spells'
-import ScreenSettings from './screen-settings'
-import ScreenInventory from './screen-inventory'
 import CharacterHeader from './common/header'
+import Nav from './nav'
+
+import ScreenInventory from './screen-inventory'
+import ScreenKlass from './screen-klass'
+import ScreenSettings from './screen-settings'
+import ScreenSpells from './screen-spells'
+import ScreenStats from './screen-stats'
 
 import styles from './styles.module.css'
 
@@ -78,6 +79,7 @@ const CharacterSheet: React.FC<Props> = ({ id }) => {
       <ScreenInventory
         characterId={character.id}
         magicItems={character.magicItems}
+        gold={character.gold}
       />
     ),
     settings: <ScreenSettings character={character} />,
