@@ -1,6 +1,7 @@
 import { IoIosClose } from 'react-icons/io'
 
 import { useModal } from '../../../context/modal'
+
 import icons from './icons'
 
 import styles from './styles.module.css'

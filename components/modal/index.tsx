@@ -1,17 +1,18 @@
 import { AnimatePresence, motion } from 'framer-motion'
 
 import React from 'react'
+
 import { useModal, ModalType } from '../../context/modal'
-import UpdateNumberValue from '../modals/update-number-value'
-import UpdateSelectValue from '../modals/update-subclass'
+import ClientOnlyPortal from '../../utils/clientOnlyPortal'
 import CharacterCreated from '../modals/character-created'
+import CreateMagicItemModal from '../modals/create-magic-item'
 import DeleteCharacter from '../modals/delete-character'
 import LearnSpell from '../modals/learn-spell'
 import MobileDrawerModal from '../modals/mobile-drawer'
-import CreateMagicItemModal from '../modals/create-magic-item'
 import SpellPageModal from '../modals/spell-page'
 import SpellPageStaticModal from '../modals/spell-page-static'
-import ClientOnlyPortal from '../../utils/clientOnlyPortal'
+import UpdateNumberValue from '../modals/update-number-value'
+import UpdateSelectValue from '../modals/update-subclass'
 
 import styles from './styles.module.css'
 
@@ -124,6 +125,19 @@ const Modal: React.FC = ({ children }) => {
           )}
         </AnimatePresence>
       )
+    case 'createMagicItem':
+      return (
+        <AnimatePresence exitBeforeEnter onExitComplete={closeModal}>
+          {modal && (
+            <ClientOnlyPortal selector="#modal">
+              <ComeInBottom>
+                {renderModal(modal)}
+                {children}
+              </ComeInBottom>
+            </ClientOnlyPortal>
+          )}
+        </AnimatePresence>
+      )
 
     default:
       return (
@@ -163,7 +177,7 @@ const ComeInTop: React.FC = ({ children }) => {
       animate="visible"
       exit="hidden"
     >
-      <motion.div className={styles.modal} variants={topModalVariants}>
+      <motion.div className={styles.modalDefault} variants={topModalVariants}>
         {children}
       </motion.div>
     </motion.div>
@@ -217,6 +231,31 @@ const SpellDrawer: React.FC = ({ children }) => {
         className={styles.modalSpellDrawer}
         variants={drawerSpellModalVariants}
       >
+        {children}
+      </motion.div>
+    </motion.div>
+  )
+}
+
+const bottomModalVariants = {
+  hidden: { y: '200px', opacity: 0, transition: { duration: 0.4 } },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.3 },
+  },
+}
+
+const ComeInBottom: React.FC = ({ children }) => {
+  return (
+    <motion.div
+      className={styles.backdrop}
+      variants={backdropVariants}
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+    >
+      <motion.div className={styles.modalBottom} variants={bottomModalVariants}>
         {children}
       </motion.div>
     </motion.div>

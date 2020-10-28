@@ -1,3 +1,5 @@
+import { FaLevelUpAlt } from 'react-icons/fa'
+import { FiShield } from 'react-icons/fi'
 import {
   GiHealthPotion,
   GiLayeredArmor,
@@ -20,9 +22,7 @@ import {
   GiForest,
 } from 'react-icons/gi'
 import { ImMagicWand } from 'react-icons/im'
-import { FaLevelUpAlt } from 'react-icons/fa'
 import { MdDirectionsRun } from 'react-icons/md'
-import { FiShield } from 'react-icons/fi'
 
 const icons = {
   hitPoints: <GiHealthPotion size={60} color="#eeeeee" />,

@@ -1,4 +1,4 @@
-export type Rarity =
+export type RarityType =
   | 'Uncommon'
   | 'Rare'
   | 'Common'
@@ -8,4 +8,6 @@ export type Rarity =
   | 'Varies'
   | 'Unknown'
 
-export type Type = string
+export type ItemType = string
+
+export type WeaponType = string

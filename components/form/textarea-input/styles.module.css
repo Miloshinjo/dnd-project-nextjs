@@ -1,0 +1,21 @@
+.input {
+  @apply appearance-none rounded-md relative block w-full px-3 py-2 border;
+  background-color: var(--bg-secondary);
+  border-color: var(--border-primary);
+}
+
+.input:focus {
+  @apply outline-none shadow-outline z-10;
+}
+
+.input::placeholder {
+  color: var(--color-placeholder);
+}
+
+.label {
+  @apply text-sm font-medium text-left;
+}
+
+.error {
+  @apply text-xs text-orange-600 text-left;
+}

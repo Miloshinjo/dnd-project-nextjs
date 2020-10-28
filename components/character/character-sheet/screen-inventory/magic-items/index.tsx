@@ -1,4 +1,4 @@
-import { GiMagicLamp } from 'react-icons/gi'
+import { ImMagicWand } from 'react-icons/im'
 
 import OpenModalButton from '../../../../buttons/open-modal-button'
 
@@ -11,7 +11,7 @@ const MagicItems = ({ magicItems, characterId }) => {
     return (
       <div className={styles.container}>
         <h3 className={`${styles.heading} statSectionHeading`}>Magic Items</h3>
-        <GiMagicLamp size={55} />
+        <ImMagicWand size={45} />
         <p className={styles.text}>
           Your character does not have any magic items. Click below to add some
         </p>

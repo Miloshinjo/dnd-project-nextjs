@@ -1,51 +1,34 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import ButtonPrimary from '../../buttons/primary'
-import TextInput from '../../form/text-input'
-import SelectInput from '../../form/select-input'
+
 import { useModal } from '../../../context/modal'
+import {
+  Character,
+  useCreateMagicItemMutation,
+} from '../../../generated/graphql'
+
+import { RarityType, ItemType, WeaponType } from '../../../models/magicItem'
+import ButtonPrimary from '../../buttons/primary'
 import CheckboxInput from '../../form/checkbox-input'
-import { Character } from '../../../generated/graphql'
+import SelectInput from '../../form/select-input'
+import TextInput from '../../form/text-input'
+import TextareaInput from '../../form/textarea-input'
 
-import { useCreateMagicItemMutation } from '../../../generated/graphql'
-import validations from './validations'
-
-import { Rarity, Type } from '../../../models/magicItem'
+import { raritiesRaw, typesRaw, weaponsRaw } from './data'
 
 import styles from './styles.module.css'
-
-const raritiesRaw: Array<Rarity> = [
-  'Common',
-  'Uncommon',
-  'Rare',
-  'Very rare',
-  'Legendary',
-  'Artifact',
-  'Varies',
-  'Unknown',
-]
-
-const typesRaw: Array<Type> = [
-  'Potion',
-  'Armor',
-  'Ring',
-  'Rod',
-  'Scroll',
-  'Staff',
-  'Wand',
-  'Weapon',
-  'Wondrous Item',
-]
+import validations from './validations'
 
 type FormValues = {
   name: string
   description: string
   rarity: {
-    label: Rarity
-    value: Rarity
+    label: RarityType
+    value: RarityType
   }
-  type: { label: Type; value: Type }
+  type: { label: ItemType; value: ItemType }
   attunement: boolean
+  weaponType?: { label: WeaponType; value: WeaponType }
 }
 
 type Props = {
@@ -72,17 +55,8 @@ const CreateCharacterForm: React.FC<Props> = ({ characterId }) => {
   }: FormValues) => {
     setServerError('')
 
-    // const klassIdReal = Number(klassId.value)
     const rarityReal = rarity.value
     const typeReal = type.value
-
-    console.log({
-      attunement,
-      rarity: rarityReal,
-      description,
-      name,
-      type: typeReal,
-    })
 
     createMagicItem({
       name,
@@ -103,6 +77,9 @@ const CreateCharacterForm: React.FC<Props> = ({ characterId }) => {
     })
   }
 
+  const shouldPickWeaponType = watch('type')?.value === 'Weapon'
+  const shouldPickArmorType = watch('type')?.value === 'Armor'
+
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <TextInput
@@ -113,7 +90,7 @@ const CreateCharacterForm: React.FC<Props> = ({ characterId }) => {
         register={register}
         validations={validations.name}
       />
-      <TextInput
+      <TextareaInput
         label="Description"
         errors={errors}
         name="description"
@@ -143,6 +120,19 @@ const CreateCharacterForm: React.FC<Props> = ({ characterId }) => {
           value: type,
         }))}
       />
+      {shouldPickWeaponType && (
+        <SelectInput
+          isSearchable={false}
+          name="weaponType"
+          control={control}
+          errors={errors}
+          label="Weapon type"
+          options={weaponsRaw.map((type) => ({
+            label: type,
+            value: type,
+          }))}
+        />
+      )}
       <span className="mt-2" />
       <CheckboxInput
         register={register}

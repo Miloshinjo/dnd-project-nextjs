@@ -15,9 +15,16 @@
   } */
 }
 
-.modal {
+.modalDefault {
   @apply text-center rounded shadow-md relative;
   max-width: 275px;
+  width: 100%;
+  background-color: var(--bg-secondary);
+}
+
+.modalBottom {
+  @apply text-center rounded shadow-md relative overflow-visible;
+  max-width: 90vw;
   width: 100%;
   background-color: var(--bg-secondary);
 }
