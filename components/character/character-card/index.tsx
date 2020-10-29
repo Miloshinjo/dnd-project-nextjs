@@ -1,6 +1,7 @@
-import Link from 'next/link'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { FiChevronRight } from 'react-icons/fi'
+
 import { Character, Klass } from '../../../generated/graphql'
 
 import styles from './styles.module.css'
@@ -21,7 +22,7 @@ const CharacterCard: React.FC<Props> = ({
   itemVariants,
 }) => {
   return (
-    <Link href="/app/[characterId]" as={`/app/${id}`} key={id}>
+    <Link href={`/app/${id}`} key={id}>
       <motion.div
         className={styles.container}
         variants={itemVariants}
