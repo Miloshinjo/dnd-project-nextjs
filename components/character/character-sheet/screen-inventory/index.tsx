@@ -41,7 +41,7 @@ const ScreenInventory: React.FC<Props> = ({
           mutation: useGoldMutation,
         }}
       >
-        <GiTwoCoins className="mr-2 text-rogue" />
+        <GiTwoCoins className={styles.icon} />
         {gold || 0}
       </OpenModalButton>
       <MagicItems magicItems={magicItems} characterId={characterId} />

@@ -7,6 +7,11 @@
   @apply flex flex-col leading-tight items-start;
 }
 
+.icon {
+  @apply mr-2;
+  color: var(--color-item-icon);
+}
+
 .itemName {
   @apply font-semibold;
 }

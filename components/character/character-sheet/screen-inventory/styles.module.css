@@ -2,3 +2,8 @@
   @apply flex justify-between m-4 shadow-sm rounded p-4 mb-0 items-center ml-auto font-semibold;
   background-color: var(--bg-secondary);
 }
+
+.icon {
+  @apply mr-2;
+  color: var(--color-gold);
+}

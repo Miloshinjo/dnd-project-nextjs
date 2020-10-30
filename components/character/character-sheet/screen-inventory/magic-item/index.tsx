@@ -64,7 +64,7 @@ const MagicItem: React.FC<Props> = ({ magicItem }) => {
         onClick={() => setActive(!isActive)}
       >
         <div className="flex items-center">
-          <div className="mr-2">{icons[iconType]}</div>
+          <div className={styles.icon}>{icons[iconType]}</div>
           <div className={styles.title}>
             <h4 className={styles.itemName}>{magicItem.name}</h4>
             <h5

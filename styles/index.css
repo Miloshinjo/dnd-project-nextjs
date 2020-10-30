@@ -48,6 +48,8 @@
   --color-sorcerer: #ff4700;
   --color-warlock: #9482c9;
   --color-wizard: #69ccf0;
+  --color-gold: #ffd700;
+  --color-item-icon: #1f1f1f;
 }
 
 [data-theme='dark'] {
@@ -92,6 +94,8 @@
   --color-sorcerer: #ff4700;
   --color-warlock: #9482c9;
   --color-wizard: #69ccf0;
+  --color-gold: #ffd700;
+  --color-item-icon: #eeeeee;
 }
 
 @tailwind base;
