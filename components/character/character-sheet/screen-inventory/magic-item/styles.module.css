@@ -16,13 +16,20 @@
   @apply font-semibold;
 }
 
-.itemRarity {
-  @apply text-xs;
+.itemInfo {
   color: var(--text-secondary);
 }
 
+.itemRarity {
+  @apply text-xs;
+}
+
 .itemType {
-  @apply text-xs font-light;
+  @apply text-xs;
+}
+
+.attuned {
+  @apply text-xs italic;
 }
 
 .button {

@@ -62,22 +62,28 @@ const MagicItem: React.FC<Props> = ({ magicItem }) => {
         className={styles.button}
         type="button"
         onClick={() => setActive(!isActive)}
+        style={{
+          borderColor: magicItemColors[magicItem.rarity],
+          borderWidth: '2px',
+          borderBottom: 'none',
+          borderTop: 'none',
+          borderRight: 'none',
+        }}
       >
         <div className="flex items-center">
           <div className={styles.icon}>{icons[iconType]}</div>
           <div className={styles.title}>
             <h4 className={styles.itemName}>{magicItem.name}</h4>
-            <h5
-              className={styles.itemRarity}
-              style={{
-                color: magicItemColors[magicItem.rarity],
-              }}
-            >
-              {magicItem.rarity}
-            </h5>
+
+            <div className={styles.itemInfo}>
+              <span className={styles.itemType}>{itemType}, </span>
+              <span className={styles.itemRarity}>{magicItem.rarity}</span>
+              {magicItem.attunement && (
+                <span className={styles.attuned}> (attuned)</span>
+              )}
+            </div>
           </div>
         </div>
-        <div className={styles.itemType}>{itemType}</div>
       </button>
       {isActive && (
         <p className={styles.description}>{magicItem.description}</p>
