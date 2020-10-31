@@ -824,7 +824,7 @@ export type CharacterQuery = (
       & Pick<Spell, 'id' | 'name' | 'level' | 'castingTime' | 'school' | 'range' | 'components' | 'ritual' | 'concentration'>
     )>, preparedSpells: Array<(
       { __typename?: 'Spell' }
-      & Pick<Spell, 'id' | 'name' | 'level' | 'castingTime' | 'school' | 'range' | 'components'>
+      & Pick<Spell, 'id' | 'name' | 'level' | 'castingTime' | 'school' | 'range' | 'components' | 'ritual' | 'concentration'>
     )> }
   )> }
 );
@@ -1377,6 +1377,8 @@ export const CharacterDocument = gql`
       school
       range
       components
+      ritual
+      concentration
     }
     arcaneWard
     arcaneWardMax

@@ -3,6 +3,6 @@
 }
 
 .header {
-  @apply flex justify-between m-4 shadow-sm rounded p-4 mb-0;
+  @apply flex justify-between m-4  rounded p-4 mb-0;
   background-color: var(--bg-secondary);
 }

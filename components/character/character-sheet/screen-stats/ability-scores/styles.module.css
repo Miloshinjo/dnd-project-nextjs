@@ -1,5 +1,5 @@
 .abilityScores {
-  @apply flex flex-col py-2  p-4 rounded shadow-sm;
+  @apply flex flex-col py-2  p-4 rounded;
   background-color: var(--bg-secondary);
 }
 
