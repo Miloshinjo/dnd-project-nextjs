@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react'
 
 import { FaPlus, FaMinus } from 'react-icons/fa'
 import { RiQuillPenLine } from 'react-icons/ri'
-import AddOrRemove from '../../common/add-or-remove'
-import useDebounce from '../../../../../hooks/useDebounce'
+
 import {
   useSpellSlotsMutation,
   Character,
 } from '../../../../../generated/graphql'
+import useDebounce from '../../../../../hooks/useDebounce'
+import AddOrRemove from '../../common/add-or-remove'
+
 import SlotButton from './slot-button'
 
 import styles from './styles.module.css'

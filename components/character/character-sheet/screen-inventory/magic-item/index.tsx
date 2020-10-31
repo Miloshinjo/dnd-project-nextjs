@@ -1,6 +1,12 @@
 import { useState, useMemo } from 'react'
 
-import { MagicItem as MagicItemType } from '../../../../../generated/graphql'
+import { useModal } from '../../../../../context/modal'
+import {
+  MagicItem as MagicItemType,
+  Character,
+} from '../../../../../generated/graphql'
+
+import DeleteButton from '../../../../buttons/delete-button'
 
 import icons from './icons'
 
@@ -23,6 +29,7 @@ const magicItemColors = {
 
 const MagicItem: React.FC<Props> = ({ magicItem }) => {
   const [isActive, setActive] = useState(false)
+  const { openModal } = useModal()
 
   const iconType = useMemo(() => {
     switch (magicItem.armorType) {
@@ -86,7 +93,32 @@ const MagicItem: React.FC<Props> = ({ magicItem }) => {
         </div>
       </button>
       {isActive && (
-        <p className={styles.description}>{magicItem.description}</p>
+        <div
+          className={styles.bottomPart}
+          style={{
+            borderColor: magicItemColors[magicItem.rarity],
+            borderWidth: '2px',
+            borderBottom: 'none',
+            borderTop: 'none',
+            borderRight: 'none',
+          }}
+        >
+          <p className={styles.description}>{magicItem.description}</p>
+
+          <DeleteButton
+            onClick={() => {
+              openModal({
+                type: 'deleteMagicItem',
+                props: {
+                  magicItemId: magicItem.id,
+                  name: magicItem.name,
+                },
+              })
+            }}
+          >
+            Delete item
+          </DeleteButton>
+        </div>
       )}
     </div>
   )

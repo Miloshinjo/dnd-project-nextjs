@@ -1,18 +1,15 @@
-import { useRouter } from 'next/router'
-
 import { useModal } from '../../../context/modal'
-import { useDeleteCharacterMutation } from '../../../generated/graphql'
+import { useDeleteMagicItemMutation } from '../../../generated/graphql'
 
 import styles from './styles.module.css'
 
-const DeleteCharacter = ({ characterId, name }) => {
-  const router = useRouter()
+const DeleteMagicItem = ({ magicItemId, name }) => {
   const { closeModal } = useModal()
-  const [deleteCharacterResult, deleteCharacter] = useDeleteCharacterMutation()
+  const [deleteMagicItemResult, deleteMagicItem] = useDeleteMagicItemMutation()
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Delete Character</h1>
+      <h1 className={styles.title}>Delete Magic Item</h1>
       <div className={styles.message}>
         Are you absolutely sure you want to delete <strong>{name}</strong>?
       </div>
@@ -22,13 +19,13 @@ const DeleteCharacter = ({ characterId, name }) => {
           type="button"
           className={styles.mainButton}
           onClick={() => {
-            deleteCharacter({ id: characterId }).then((result) => {
+            deleteMagicItem({ id: magicItemId }).then((result) => {
               if (result.error) {
                 console.log(result.error)
                 return
               }
 
-              router.push('/app')
+              closeModal()
             })
           }}
         >
@@ -46,4 +43,4 @@ const DeleteCharacter = ({ characterId, name }) => {
   )
 }
 
-export { DeleteCharacter as default }
+export { DeleteMagicItem as default }

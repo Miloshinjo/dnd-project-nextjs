@@ -1,0 +1,5 @@
+mutation DeleteMagicItem($id: ID!) {
+  deleteMagicItem(item: { id: $id }) {
+    id
+  }
+}

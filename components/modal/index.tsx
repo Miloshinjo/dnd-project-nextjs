@@ -7,6 +7,7 @@ import ClientOnlyPortal from '../../utils/clientOnlyPortal'
 import CharacterCreated from '../modals/character-created'
 import CreateMagicItemModal from '../modals/create-magic-item'
 import DeleteCharacter from '../modals/delete-character'
+import DeleteMagicItem from '../modals/delete-magic-item'
 import LearnSpell from '../modals/learn-spell'
 import MobileDrawerModal from '../modals/mobile-drawer'
 import SpellPageModal from '../modals/spell-page'
@@ -58,6 +59,13 @@ const Modal: React.FC = ({ children }) => {
         return (
           <DeleteCharacter
             characterId={modal.props.characterId}
+            name={modal.props.name}
+          />
+        )
+      case 'deleteMagicItem':
+        return (
+          <DeleteMagicItem
+            magicItemId={modal.props.magicItemId}
             name={modal.props.name}
           />
         )

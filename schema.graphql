@@ -136,6 +136,10 @@ input MagicItemCreateInput {
   weaponType: String
 }
 
+input MagicItemDeleteInput {
+  id: ID!
+}
+
 input MagicItemWhereUniqueInput {
   id: Int
 }
@@ -146,6 +150,7 @@ type Mutation {
   createCharacter(character: CharacterCreateInput): Character
   createMagicItem(item: MagicItemCreateInput): MagicItem
   deleteCharacter(character: CharacterDeleteInput): Character
+  deleteMagicItem(item: MagicItemDeleteInput): MagicItem
   forgetSpell(character: CharacterEditSpellInput): Character
   learnSpell(character: CharacterEditSpellInput): Character
   prepareSpell(character: CharacterEditSpellInput): Character

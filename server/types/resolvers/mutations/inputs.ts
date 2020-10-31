@@ -90,3 +90,10 @@ export const MagicItemCreateInputType = inputObjectType({
     t.string('armorType', { required: false })
   },
 })
+
+export const MagicItemDeleteInputType = inputObjectType({
+  name: 'MagicItemDeleteInput',
+  definition(t) {
+    t.id('id', { required: true })
+  },
+})

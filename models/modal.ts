@@ -9,4 +9,5 @@ export type ModalTypes =
   | 'spellPage'
   | 'spellPageStatic'
   | 'createMagicItem'
+  | 'deleteMagicItem'
   | null

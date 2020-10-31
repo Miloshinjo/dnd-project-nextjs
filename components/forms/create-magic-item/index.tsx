@@ -43,7 +43,7 @@ type Props = {
 
 const CreateCharacterForm: React.FC<Props> = ({ characterId }) => {
   const [serverError, setServerError] = useState<string>('')
-  const [, createMagicItem] = useCreateMagicItemMutation()
+  const [{ fetching }, createMagicItem] = useCreateMagicItemMutation()
   const { closeModal } = useModal()
 
   const { register, handleSubmit, errors, control, watch } = useForm<
@@ -165,7 +165,9 @@ const CreateCharacterForm: React.FC<Props> = ({ characterId }) => {
         currentValue={watch('attunement')}
       />
 
-      <ButtonPrimary type="submit">Create item</ButtonPrimary>
+      <ButtonPrimary type="submit" loading={fetching} loadingText="Creating">
+        Create item
+      </ButtonPrimary>
       {serverError && <p className={styles.errorText}>{serverError}</p>}
     </form>
   )

@@ -36,9 +36,13 @@
   @apply w-full flex items-center justify-between px-2 py-2;
 }
 
-.description {
-  @apply px-4 py-2 shadow-inner border-2 text-sm;
+.bottomPart {
+  @apply px-4 py-2 text-sm;
 
   border-color: var(--bg-secondary);
-  background-color: var(--bg-tertiary);
+  background-color: var(--bg-secondary);
+}
+
+.description {
+  @apply mb-4;
 }

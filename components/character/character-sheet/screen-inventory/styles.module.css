@@ -1,6 +1,6 @@
 .goldPieces {
   @apply flex justify-between m-4 p-2 mb-0 items-center ml-auto font-semibold;
-  /* background-color: var(--bg-secondary); */
+  background-color: var(--bg-secondary);
 }
 
 .icon {

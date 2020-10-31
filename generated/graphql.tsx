@@ -74,6 +74,10 @@ export type MagicItemCreateInput = {
   armorType?: Maybe<Scalars['String']>;
 };
 
+export type MagicItemDeleteInput = {
+  id: Scalars['ID'];
+};
+
 export type CharacterQueryInputType = {
   id: Scalars['ID'];
 };
@@ -329,6 +333,7 @@ export type Mutation = {
   addSkill?: Maybe<Character>;
   removeSkill?: Maybe<Character>;
   createMagicItem?: Maybe<MagicItem>;
+  deleteMagicItem?: Maybe<MagicItem>;
 };
 
 
@@ -384,6 +389,11 @@ export type MutationRemoveSkillArgs = {
 
 export type MutationCreateMagicItemArgs = {
   item?: Maybe<MagicItemCreateInput>;
+};
+
+
+export type MutationDeleteMagicItemArgs = {
+  item?: Maybe<MagicItemDeleteInput>;
 };
 
 export type AddSkillMutationVariables = Exact<{
@@ -546,6 +556,19 @@ export type DeleteCharacterMutation = (
   & { deleteCharacter?: Maybe<(
     { __typename?: 'Character' }
     & Pick<Character, 'id' | 'name'>
+  )> }
+);
+
+export type DeleteMagicItemMutationVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type DeleteMagicItemMutation = (
+  { __typename?: 'Mutation' }
+  & { deleteMagicItem?: Maybe<(
+    { __typename?: 'MagicItem' }
+    & Pick<MagicItem, 'id'>
   )> }
 );
 
@@ -1096,6 +1119,17 @@ export const DeleteCharacterDocument = gql`
 
 export function useDeleteCharacterMutation() {
   return Urql.useMutation<DeleteCharacterMutation, DeleteCharacterMutationVariables>(DeleteCharacterDocument);
+};
+export const DeleteMagicItemDocument = gql`
+    mutation DeleteMagicItem($id: ID!) {
+  deleteMagicItem(item: {id: $id}) {
+    id
+  }
+}
+    `;
+
+export function useDeleteMagicItemMutation() {
+  return Urql.useMutation<DeleteMagicItemMutation, DeleteMagicItemMutationVariables>(DeleteMagicItemDocument);
 };
 export const DexterityDocument = gql`
     mutation Dexterity($id: ID!, $dexterity: Int!) {

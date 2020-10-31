@@ -10,6 +10,7 @@ import {
   Character,
   CreateMagicItemMutation,
   CharacterQuery,
+  DeleteMagicItemMutationVariables,
 } from '../generated/graphql'
 
 function betterUpdateQuery<Result, Query>(
@@ -60,6 +61,12 @@ const cache = cacheExchange({
             }
           },
         )
+      },
+      deleteMagicItem: (_result, args, cache, _info) => {
+        cache.invalidate({
+          __typename: 'MagicItem',
+          id: (args.item as DeleteMagicItemMutationVariables).id,
+        })
       },
     },
   },

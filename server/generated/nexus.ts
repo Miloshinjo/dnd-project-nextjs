@@ -80,6 +80,9 @@ export interface NexusGenInputs {
     type: string; // String!
     weaponType?: string | null; // String
   }
+  MagicItemDeleteInput: { // input type
+    id: string; // ID!
+  }
   MagicItemWhereUniqueInput: { // input type
     id?: number | null; // Int
   }
@@ -210,6 +213,7 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   CharacterUpdateInput: NexusGenInputs['CharacterUpdateInput'];
   CharacterWhereUniqueInput: NexusGenInputs['CharacterWhereUniqueInput'];
   MagicItemCreateInput: NexusGenInputs['MagicItemCreateInput'];
+  MagicItemDeleteInput: NexusGenInputs['MagicItemDeleteInput'];
   MagicItemWhereUniqueInput: NexusGenInputs['MagicItemWhereUniqueInput'];
   SkillWhereUniqueInput: NexusGenInputs['SkillWhereUniqueInput'];
   SpellWhereUniqueInput: NexusGenInputs['SpellWhereUniqueInput'];
@@ -289,6 +293,7 @@ export interface NexusGenFieldTypes {
     createCharacter: NexusGenRootTypes['Character'] | null; // Character
     createMagicItem: NexusGenRootTypes['MagicItem'] | null; // MagicItem
     deleteCharacter: NexusGenRootTypes['Character'] | null; // Character
+    deleteMagicItem: NexusGenRootTypes['MagicItem'] | null; // MagicItem
     forgetSpell: NexusGenRootTypes['Character'] | null; // Character
     learnSpell: NexusGenRootTypes['Character'] | null; // Character
     prepareSpell: NexusGenRootTypes['Character'] | null; // Character
@@ -406,6 +411,9 @@ export interface NexusGenArgTypes {
     deleteCharacter: { // args
       character?: NexusGenInputs['CharacterDeleteInput'] | null; // CharacterDeleteInput
     }
+    deleteMagicItem: { // args
+      item?: NexusGenInputs['MagicItemDeleteInput'] | null; // MagicItemDeleteInput
+    }
     forgetSpell: { // args
       character?: NexusGenInputs['CharacterEditSpellInput'] | null; // CharacterEditSpellInput
     }
@@ -467,7 +475,7 @@ export interface NexusGenInheritedFields {}
 
 export type NexusGenObjectNames = "Character" | "Klass" | "MagicItem" | "Mutation" | "Query" | "Skill" | "Spell" | "SubClass" | "User";
 
-export type NexusGenInputNames = "CharacterAddSubclassInput" | "CharacterCreateInput" | "CharacterDeleteInput" | "CharacterEditSkillInput" | "CharacterEditSpellInput" | "CharacterQueryInputType" | "CharacterUpdateInput" | "CharacterWhereUniqueInput" | "MagicItemCreateInput" | "MagicItemWhereUniqueInput" | "SkillWhereUniqueInput" | "SpellWhereUniqueInput" | "SubClassWhereUniqueInput";
+export type NexusGenInputNames = "CharacterAddSubclassInput" | "CharacterCreateInput" | "CharacterDeleteInput" | "CharacterEditSkillInput" | "CharacterEditSpellInput" | "CharacterQueryInputType" | "CharacterUpdateInput" | "CharacterWhereUniqueInput" | "MagicItemCreateInput" | "MagicItemDeleteInput" | "MagicItemWhereUniqueInput" | "SkillWhereUniqueInput" | "SpellWhereUniqueInput" | "SubClassWhereUniqueInput";
 
 export type NexusGenEnumNames = never;
 
