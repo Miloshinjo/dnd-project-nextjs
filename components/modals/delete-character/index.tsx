@@ -8,7 +8,7 @@ import styles from './styles.module.css'
 const DeleteCharacter = ({ characterId, name }) => {
   const router = useRouter()
   const { closeModal } = useModal()
-  const [deleteCharacterResult, deleteCharacter] = useDeleteCharacterMutation()
+  const [, deleteCharacter] = useDeleteCharacterMutation()
 
   return (
     <div className={styles.container}>

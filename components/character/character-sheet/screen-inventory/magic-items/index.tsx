@@ -7,7 +7,12 @@ import MagicItem from '../magic-item'
 
 import styles from './styles.module.css'
 
-const MagicItems = ({ magicItems, characterId }) => {
+type Props = {
+  magicItems: any
+  characterId: any
+}
+
+const MagicItems: React.FC<Props> = ({ magicItems, characterId }) => {
   if (magicItems.length === 0) {
     return (
       <div className={styles.container}>

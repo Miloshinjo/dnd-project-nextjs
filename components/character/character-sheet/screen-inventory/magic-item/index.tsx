@@ -1,10 +1,7 @@
 import { useState, useMemo } from 'react'
 
 import { useModal } from '../../../../../context/modal'
-import {
-  MagicItem as MagicItemType,
-  Character,
-} from '../../../../../generated/graphql'
+import { MagicItem as MagicItemType } from '../../../../../generated/graphql'
 
 import DeleteButton from '../../../../buttons/delete-button'
 
