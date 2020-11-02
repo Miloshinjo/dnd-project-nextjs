@@ -1,12 +1,16 @@
-import { useEffect } from 'react'
 import { NextPage } from 'next'
-import { useSession } from '../../lib/next-auth/client'
-import { useRouter } from 'next/router'
 
-import AppLayout from '../../components/layouts/app-layout'
-import SubHeader from '../../components/layout/sub-header'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
+
 import CharactersList from '../../components/character/characters-list'
 import LoadingPage from '../../components/layout/loading-page'
+import SubHeader from '../../components/layout/sub-header'
+import SubHeaderDesktop from '../../components/layout/sub-header-desktop'
+import AppLayout from '../../components/layouts/app-layout'
+import { useSession } from '../../lib/next-auth/client'
+
+import styles from './styles.module.css'
 
 const App: NextPage = () => {
   const [session, loading] = useSession()
@@ -16,7 +20,7 @@ const App: NextPage = () => {
     if (!session && !loading) {
       router.push('/')
     }
-  }, [session, loading])
+  }, [session, loading, router])
 
   if (loading) return <LoadingPage />
 
@@ -27,7 +31,8 @@ const App: NextPage = () => {
       <SubHeader text1="Welcome,">
         <span className="text-primary-600">adventurer</span>!
       </SubHeader>
-      <div className="p-4">
+      <SubHeaderDesktop>Characters</SubHeaderDesktop>
+      <div className={styles.contentContainer}>
         <CharactersList />
       </div>
     </AppLayout>

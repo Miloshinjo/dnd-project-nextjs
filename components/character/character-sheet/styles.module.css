@@ -22,7 +22,7 @@
 
 .fetchingContainer {
   @apply mx-auto flex items-center justify-center;
-  height: calc(100vh - 4rem);
+  height: calc(100vh - var(--mobile-header-height));
 }
 
 .screensContainer {

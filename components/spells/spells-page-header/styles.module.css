@@ -15,3 +15,9 @@
 .searchInput:focus {
   @apply outline-none shadow-outline;
 }
+
+@screen md {
+  .container {
+    @apply hidden;
+  }
+}

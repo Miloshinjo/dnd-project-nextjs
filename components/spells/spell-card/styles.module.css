@@ -32,5 +32,6 @@
 
 @screen md {
   .container {
+    /* @apply w-1/4; */
   }
 }

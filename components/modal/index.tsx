@@ -2,6 +2,8 @@ import { AnimatePresence, motion } from 'framer-motion'
 
 import React from 'react'
 
+import { useMediaQuery } from 'react-responsive'
+
 import { useModal, ModalType } from '../../context/modal'
 import ClientOnlyPortal from '../../utils/clientOnlyPortal'
 import CharacterCreated from '../modals/character-created'
@@ -226,7 +228,19 @@ const drawerSpellModalVariants = {
   },
 }
 
+const drawerSpellModalVariantsDesktop = {
+  hidden: { x: '-100vw', opacity: 0 },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: { delay: 0.2, type: 'tween' },
+  },
+}
+
 const SpellDrawer: React.FC = ({ children }) => {
+  const isBigScreen = useMediaQuery({ query: '(min-device-width: 768px)' })
+
+  console.log(isBigScreen)
   return (
     <motion.div
       className={styles.drawerBackdrop}
@@ -237,7 +251,11 @@ const SpellDrawer: React.FC = ({ children }) => {
     >
       <motion.div
         className={styles.modalSpellDrawer}
-        variants={drawerSpellModalVariants}
+        variants={
+          isBigScreen
+            ? drawerSpellModalVariantsDesktop
+            : drawerSpellModalVariants
+        }
       >
         {children}
       </motion.div>

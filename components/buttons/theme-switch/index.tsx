@@ -3,7 +3,11 @@ import { GiNightSky, GiSun } from 'react-icons/gi'
 
 import styles from './styles.module.css'
 
-const ThemeSwitchButton: React.FC = () => {
+type Props = {
+  color?: 'alternate' | 'same'
+}
+
+const ThemeSwitchButton: React.FC<Props> = ({ color = 'alternate' }) => {
   const { theme, setTheme } = useTheme()
 
   return (
@@ -15,18 +19,18 @@ const ThemeSwitchButton: React.FC = () => {
           setTheme('light')
         }
       }}
-      className={styles.button}
+      className={`${styles.button} ${color === 'same' && styles.sameColor}`}
       type="button"
     >
       {theme === 'light' ? (
         <span>
           <GiNightSky size={20} className="mr-2" />
-          Night Mode
+          <span className="md:hidden">Night Mode</span>
         </span>
       ) : (
         <span>
           <GiSun size={20} className="mr-2" />
-          Day Mode
+          <span className="md:hidden">Day Mode</span>
         </span>
       )}
     </button>

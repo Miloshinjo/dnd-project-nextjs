@@ -1,7 +1,7 @@
 import Select from 'react-select'
 
-import actionTypes from '../../../utils/constants/actionTypes'
 import { useFilters } from '../../../context/filters'
+import actionTypes from '../../../utils/constants/actionTypes'
 
 import styles from './styles.module.css'
 

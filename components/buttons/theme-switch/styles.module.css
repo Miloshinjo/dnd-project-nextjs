@@ -5,3 +5,16 @@
 .button span {
   @apply flex items-center;
 }
+
+.sameColor {
+  color: rgb(255, 255, 255, 0.6);
+}
+
+@screen md {
+  .button {
+    @apply px-4 flex;
+  }
+
+  .button span {
+  }
+}

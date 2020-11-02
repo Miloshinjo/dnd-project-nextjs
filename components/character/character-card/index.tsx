@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import Link from 'next/link'
 import { FiChevronRight } from 'react-icons/fi'
 
@@ -30,7 +31,12 @@ const CharacterCard: React.FC<Props> = ({
         whileTap={{ y: '1px' }}
       >
         <div className={styles.klassLogoContainer}>
-          <img src={`/images/classes/${klass.toLowerCase()}.png`} alt={klass} />
+          <Image
+            src={`/images/classes/${klass.toLowerCase()}.png`}
+            alt={klass}
+            width={30}
+            height={30}
+          />
         </div>
         <div className={styles.infoContainer}>
           <div className={styles.name}>{name}</div>

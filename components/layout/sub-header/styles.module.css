@@ -6,3 +6,9 @@
 .heading {
   @apply text-2xl text-white font-bold leading-tight;
 }
+
+@screen md {
+  .container {
+    @apply hidden;
+  }
+}

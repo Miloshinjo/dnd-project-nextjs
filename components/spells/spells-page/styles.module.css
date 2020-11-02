@@ -34,7 +34,11 @@
 
 @screen md {
   .spellsContainer {
-    /* @apply w-1/2; */
+    @apply grid grid-cols-3;
+  }
+
+  .contentContainer {
+    @apply p-6;
   }
 }
 

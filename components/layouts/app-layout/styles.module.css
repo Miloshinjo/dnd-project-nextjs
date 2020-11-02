@@ -3,5 +3,12 @@
 }
 
 .main {
-  margin-top: 4rem;
+  margin-top: var(--mobile-header-height);
+}
+
+@screen md {
+  .main {
+    margin-top: 0;
+    margin-left: var(--desktop-sidebar-width);
+  }
 }

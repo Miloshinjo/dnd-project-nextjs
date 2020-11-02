@@ -37,6 +37,7 @@
     "react-dom": "16.13.1",
     "react-hook-form": "^6.2.0",
     "react-icons": "^3.11.0",
+    "react-responsive": "^8.1.0",
     "react-select": "^3.1.0",
     "urql": "^1.10.0"
   },

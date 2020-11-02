@@ -1,0 +1,9 @@
+.contentContainer {
+  @apply p-4;
+}
+
+@screen md {
+  .contentContainer {
+    @apply p-6;
+  }
+}

@@ -1,0 +1,45 @@
+.container {
+  @apply w-full flex items-center text-left px-6 py-4;
+}
+
+.userInfoContainer {
+  @apply flex flex-col leading-tight ml-2;
+}
+
+.username {
+  @apply font-medium w-full text-sm;
+}
+
+.email {
+  @apply text-xs;
+  color: var(--text-secondary);
+}
+
+.avatarContainer {
+  @apply shadow-inner w-10 h-10 border rounded-full overflow-hidden;
+  border-color: var(--border-primary);
+}
+
+.emptyAvatar {
+  @apply flex items-center justify-center w-full h-full shadow-inner font-semibold;
+  background-color: var(--bg-secondary);
+}
+
+.avatarImage {
+  @apply block w-full h-full;
+}
+
+@screen md {
+  .container {
+    @apply mt-auto;
+    color: rgb(255, 255, 255, 0.6);
+  }
+
+  .email {
+    color: rgb(255, 255, 255, 0.6);
+  }
+
+  .avatarContainer {
+    border-color: rgb(255, 255, 255, 0.1);
+  }
+}

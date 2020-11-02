@@ -1,0 +1,13 @@
+.container {
+  @apply hidden;
+}
+
+@screen md {
+  .container {
+    @apply flex px-6 pt-6;
+  }
+
+  .heading {
+    @apply text-xl font-medium leading-tight;
+  }
+}

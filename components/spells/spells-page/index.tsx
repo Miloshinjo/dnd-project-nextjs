@@ -1,13 +1,13 @@
 import { useState, useEffect, useMemo, useCallback } from 'react'
 
-import SpellsPageHeader from '../../spells/spells-page-header'
-
-import { Spell, useCharacterSpellQuery } from '../../../generated/graphql'
 import { useFilters } from '../../../context/filters'
+import { Spell } from '../../../generated/graphql'
 import actionTypes from '../../../utils/constants/actionTypes'
 import SubHeader from '../../layout/sub-header'
-import SpellCard from '../spell-card'
+import SubHeaderDesktop from '../../layout/sub-header-desktop'
 import Filters from '../../spell/filters'
+import SpellsPageHeader from '../../spells/spells-page-header'
+import SpellCard from '../spell-card'
 
 import styles from './styles.module.css'
 
@@ -32,7 +32,7 @@ const SpellsPage: React.FC<Props> = ({ spells }) => {
         },
       })
     }
-  }, [])
+  }, [dispatchFiltersAction])
 
   const filterByName = useCallback(
     (spells) => {
@@ -120,6 +120,7 @@ const SpellsPage: React.FC<Props> = ({ spells }) => {
   return (
     <div className={styles.container}>
       <SubHeader text1="Spells" />
+      <SubHeaderDesktop>Spells</SubHeaderDesktop>
       <SpellsPageHeader spellLevels={spellLevels} />
       <div className={styles.contentContainer}>
         <div className={styles.spellsContainer}>

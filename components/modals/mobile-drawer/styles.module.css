@@ -3,37 +3,6 @@
   background-color: var(--bg-modal-drawer);
 }
 
-.userProfile {
-  @apply w-full flex items-center text-left px-6 py-4;
-}
-
-.userInfoContainer {
-  @apply flex flex-col leading-tight ml-2;
-}
-
-.username {
-  @apply font-medium w-full text-sm;
-}
-
-.email {
-  @apply text-xs;
-  color: var(--text-secondary);
-}
-
-.avatarContainer {
-  @apply shadow-inner w-10 h-10 border rounded-full overflow-hidden;
-  border-color: var(--border-primary);
-}
-
-.emptyAvatar {
-  @apply flex items-center justify-center w-full h-full shadow-inner font-semibold;
-  background-color: var(--bg-secondary);
-}
-
-.avatarImage {
-  @apply block w-full h-full;
-}
-
 .nav {
   @apply w-full mt-6 border-b pb-2;
   border-color: var(--border-primary);

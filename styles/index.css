@@ -20,6 +20,7 @@
 
   --bg-modal-drawer: #fff;
   --bg-header: #1f1f1f;
+  --bg-sidebar: #1f1f1f;
   --bg-klass-logo: #1f1f1f;
   --bg-search-input: #333333;
   --bg-filters: #f7fafc;
@@ -50,11 +51,14 @@
   --color-wizard: #69ccf0;
   --color-gold: #ffd700;
   --color-item-icon: #1f1f1f;
+  --mobile-header-height: 4rem;
+  --desktop-sidebar-width: 18vw;
 }
 
 [data-theme='dark'] {
   --bg-primary: #121212;
   --bg-secondary: #1f1f1f;
+  --bg-sidebar: #1f1f1f;
   --bg-accent: #3182ce;
   --bg-focused: #282d33;
   --text-primary: rgb(255, 255, 255, 0.87);

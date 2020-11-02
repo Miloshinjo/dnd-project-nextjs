@@ -1,7 +1,8 @@
-import Header from '../../layout/header'
 import Head from 'next/head'
 
 import ModalProvider from '../../../context/modal'
+import Header from '../../layout/header'
+import Sidebar from '../../layout/sidebar'
 
 import styles from './styles.module.css'
 
@@ -22,6 +23,7 @@ const Layout: React.FC<Props> = ({ children, title }) => {
 
       <div className={styles.container}>
         <Header title={title} />
+        <Sidebar />
         <main className={styles.main}>{children}</main>
       </div>
     </ModalProvider>

@@ -1,11 +1,11 @@
 .header {
   @apply px-4 flex items-center fixed justify-between z-20 w-full py-3;
   background-color: var(--bg-header);
-  height: 4rem;
+  height: var(--mobile-header-height);
 }
 
 @screen md {
   .header {
-    flex-direction: row-reverse;
+    @apply hidden;
   }
 }

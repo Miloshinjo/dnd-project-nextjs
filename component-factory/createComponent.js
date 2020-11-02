@@ -27,4 +27,4 @@ if (!fs.existsSync(`./${componentName}`)) {
 
 // create out files
 fs.writeFileSync(`${componentName}/index.tsx`, indexContent)
-fs.writeFileSync(`${componentName}/styled.ts`, styledContent)
+fs.writeFileSync(`${componentName}/styles.module.css`, styledContent)

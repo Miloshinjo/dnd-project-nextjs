@@ -2,6 +2,12 @@
   @apply mt-auto fixed bottom-0 left-0 z-10 w-full shadow-xl;
 }
 
+@screen md {
+  .container {
+    @apply hidden;
+  }
+}
+
 .filtersContent {
   @apply flex pb-4 px-4 flex-col border-t;
   background-color: var(--bg-filters);
