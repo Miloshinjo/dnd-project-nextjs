@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import { useMediaQuery } from 'react-responsive'
 
@@ -21,16 +21,6 @@ import styles from './styles.module.css'
 
 const Modal: React.FC = ({ children }) => {
   const { modal, closeModal } = useModal()
-
-  useEffect(() => {
-    if (modal) {
-      document.body.style.overflow = 'hidden'
-    }
-
-    return () => {
-      document.body.style.overflow = 'unset'
-    }
-  })
 
   const renderModal = (modal: ModalType) => {
     if (!modal) return null
@@ -234,16 +224,16 @@ const drawerSpellModalVariants = {
   visible: {
     x: 0,
     opacity: 1,
-    transition: { delay: 0.1, type: 'tween' },
+    transition: { type: 'tween' },
   },
 }
 
 const drawerSpellModalVariantsDesktop = {
-  hidden: { scale: 0, opacity: 0 },
+  hidden: { scale: 0.5, opacity: 0 },
   visible: {
     scale: 1,
     opacity: 1,
-    transition: { delay: 0.2, type: 'tween' },
+    transition: { type: 'tween' },
   },
 }
 

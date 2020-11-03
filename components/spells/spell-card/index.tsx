@@ -1,5 +1,17 @@
+import { motion } from 'framer-motion'
+import { useState } from 'react'
+
+import { useMediaQuery } from 'react-responsive'
+
 import { useModal } from '../../../context/modal'
 import { Spell } from '../../../generated/graphql'
+
+import SpellConcentrationRitual from '../../spell/concentration-ritual'
+import SpellDescription from '../../spell/description'
+import SpellInfo from '../../spell/info'
+import SpellKlasses from '../../spell/klasses'
+import SpellMaterial from '../../spell/material'
+import SpellName from '../../spell/name'
 
 import styles from './styles.module.css'
 
@@ -8,45 +20,93 @@ type Props = {
 }
 
 const SpellCard: React.FC<Props> = ({ spell }) => {
+  const {
+    level,
+    name,
+    attackSave,
+    castingTime,
+    components,
+    material,
+    concentration,
+    damageEffect,
+    description,
+    duration,
+    klasses,
+    range,
+    ritual,
+    school,
+  } = spell
   const { openModal } = useModal()
+  const [isOpen, setOpen] = useState(false)
+  const isBigScreen = useMediaQuery({ query: '(min-device-width: 768px)' })
+
+  const handleSpellCardClick = () => {
+    if (isBigScreen) {
+      setOpen(!isOpen)
+    } else {
+      openModal({
+        type: 'spellPageStatic',
+        props: {
+          id: spell.id,
+          name: spell.name,
+          attackSave: spell.attackSave,
+          castingTime: spell.castingTime,
+          components: spell.components,
+          material: spell.material,
+          concentration: spell.concentration,
+          damageEffect: spell.damageEffect,
+          description: spell.description,
+          duration: spell.duration,
+          klasses: spell.klasses,
+          range: spell.range,
+          ritual: spell.ritual,
+          level: spell.level,
+          school: spell.school,
+        },
+      })
+    }
+  }
 
   return (
-    <div className={styles.container}>
+    <motion.div
+      className={styles.container}
+      whileHover={{ y: '-1px' }}
+      whileTap={{ y: '1px' }}
+    >
       <button
         type="button"
-        onClick={() => {
-          openModal({
-            type: 'spellPageStatic',
-            props: {
-              id: spell.id,
-              name: spell.name,
-              attackSave: spell.attackSave,
-              castingTime: spell.castingTime,
-              components: spell.components,
-              material: spell.material,
-              concentration: spell.concentration,
-              damageEffect: spell.damageEffect,
-              description: spell.description,
-              duration: spell.duration,
-              klasses: spell.klasses,
-              range: spell.range,
-              ritual: spell.ritual,
-              level: spell.level,
-              school: spell.school,
-            },
-          })
-        }}
+        onClick={handleSpellCardClick}
         className={styles.button}
       >
         <div className="leading-tight text-left">
-          <div className={styles.spellName}>{spell.name}</div>
-          <div className={styles.spellSchool}>{spell.school}</div>
+          <div className={styles.spellName}>{name}</div>
+          <div className={styles.spellSchool}>{school}</div>
         </div>
         <div className={styles.spellLevel}>
-          {spell.level === 0 ? <span>Cantrip</span> : `Level ${spell.level}`}
+          {level === 0 ? <span>Cantrip</span> : `Level ${level}`}
         </div>
       </button>
-    </div>
+
+      {isOpen && (
+        <div className={styles.bottomPartContainer}>
+          <SpellConcentrationRitual
+            concentration={concentration}
+            ritual={ritual}
+          />
+          <SpellInfo
+            attackSave={attackSave}
+            castingTime={castingTime}
+            components={components}
+            damageEffect={damageEffect}
+            duration={duration}
+            range={range}
+          />
+          <SpellDescription description={description} />
+          <SpellMaterial material={material} />
+          <SpellKlasses klasses={klasses} />
+        </div>
+      )}
+    </motion.div>
   )
 }
 

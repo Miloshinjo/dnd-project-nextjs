@@ -1,20 +1,22 @@
+import { useRouter } from 'next/router'
+
+import { useMemo } from 'react'
+
 import {
   Spell,
   useCharacterSpellQuery,
   useSpellQuery,
 } from '../../../generated/graphql'
-import { useRouter } from 'next/router'
-import { useMemo } from 'react'
 
-import DrawerHeader from '../../modal/drawer-header'
 import TextLoader from '../../layout/text-loader'
+import DrawerHeader from '../../modal/drawer-header'
 import CharacterControls from '../../spell/character-controls'
+import SpellConcentrationRitual from '../../spell/concentration-ritual'
 import SpellDescription from '../../spell/description'
 import SpellInfo from '../../spell/info'
-import SpellName from '../../spell/name'
-import SpellConcentrationRitual from '../../spell/concentration-ritual'
-import SpellMaterial from '../../spell/material'
 import SpellKlasses from '../../spell/klasses'
+import SpellMaterial from '../../spell/material'
+import SpellName from '../../spell/name'
 
 import styles from './styles.module.css'
 

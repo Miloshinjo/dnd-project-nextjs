@@ -1,15 +1,15 @@
 .container {
-  @apply flex flex-col rounded shadow px-2;
+  @apply flex flex-col rounded shadow;
 
   background-color: var(--bg-secondary);
 }
 
 .button {
-  @apply py-2 flex items-center justify-between cursor-pointer;
+  @apply py-2 px-2 flex items-center justify-between cursor-pointer;
 }
 
 .spellName {
-  @apply text-lg font-semibold;
+  @apply text-lg font-bold;
   color: var(--color-spell-name);
 }
 
@@ -22,16 +22,28 @@
   @apply text-sm font-bold opacity-75;
 }
 
-.bottomPart {
-  @apply p-4 pt-2;
-}
-
 .description p {
   @apply my-2;
 }
 
 @screen md {
   .container {
-    /* @apply w-1/4; */
+    @apply shadow-lg mr-2;
+  }
+
+  .container:hover {
+    @apply shadow-xl transition duration-200;
+  }
+
+  .button {
+    @apply p-4;
+  }
+
+  .bottomPartContainer {
+    @apply px-4;
+  }
+
+  .spellLevel {
+    @apply opacity-50;
   }
 }

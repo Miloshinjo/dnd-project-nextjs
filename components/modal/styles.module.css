@@ -63,8 +63,27 @@
     height: 80vh;
     margin-top: 0;
     overflow-y: auto;
-
     @apply rounded;
+  }
+
+  /* width */
+  .modalSpellDrawer::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  .modalSpellDrawer::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  .modalSpellDrawer::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  .modalSpellDrawer::-webkit-scrollbar-thumb:hover {
+    background: #555;
   }
 
   .drawerBackdrop {

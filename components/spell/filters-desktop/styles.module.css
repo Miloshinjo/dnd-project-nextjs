@@ -1,17 +1,23 @@
 .container {
-  @apply w-full px-6 py-2;
-  background-color: var(--bg-secondary);
+  @apply hidden;
 }
 
-.searchLabel {
-  @apply flex items-center;
-}
+@screen md {
+  .container {
+    @apply w-full px-6 py-2 flex;
+    background-color: var(--bg-secondary);
+  }
 
-.searchInput {
-  @apply p-2 rounded-lg;
-  background-color: var(--bg-secondary);
-}
+  .searchLabel {
+    @apply flex items-center;
+  }
 
-.searchInput:focus {
-  @apply outline-none;
+  .searchInput {
+    @apply p-2 rounded-lg;
+    background-color: var(--bg-secondary);
+  }
+
+  .searchInput:focus {
+    @apply outline-none;
+  }
 }
