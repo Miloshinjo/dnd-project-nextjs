@@ -6,6 +6,7 @@ import actionTypes from '../../../utils/constants/actionTypes'
 import SubHeader from '../../layout/sub-header'
 import SubHeaderDesktop from '../../layout/sub-header-desktop'
 import Filters from '../../spell/filters'
+import FiltersDesktop from '../../spell/filters-desktop'
 import SpellsPageHeader from '../../spells/spells-page-header'
 import SpellCard from '../spell-card'
 
@@ -42,7 +43,7 @@ const SpellsPage: React.FC<Props> = ({ spells }) => {
         spell.name.toLowerCase().includes(filtersState.name.toLowerCase()),
       )
     },
-    [spells, filtersState.name],
+    [filtersState.name],
   )
 
   const filterByLevel = useCallback(
@@ -50,7 +51,7 @@ const SpellsPage: React.FC<Props> = ({ spells }) => {
       if (!filtersState.levels.length) return spells
       return spells.filter((spell) => filtersState.levels.includes(spell.level))
     },
-    [spells, filtersState.levels],
+    [filtersState.levels],
   )
 
   const filterBySchool = useCallback(
@@ -60,7 +61,7 @@ const SpellsPage: React.FC<Props> = ({ spells }) => {
         filtersState.school.includes(spell.school),
       )
     },
-    [spells, filtersState.school],
+    [filtersState.school],
   )
 
   const filterByKlass = useCallback(
@@ -70,7 +71,7 @@ const SpellsPage: React.FC<Props> = ({ spells }) => {
         spell.klasses.includes(filtersState.klass),
       )
     },
-    [spells, filtersState.klass],
+    [filtersState.klass],
   )
 
   useEffect(() => {
@@ -94,6 +95,11 @@ const SpellsPage: React.FC<Props> = ({ spells }) => {
     filtersState.levels,
     filtersState.school,
     filtersState.klass,
+    spells,
+    filterByKlass,
+    filterByLevel,
+    filterByName,
+    filterBySchool,
   ])
 
   const spellLevels = useMemo(
@@ -119,9 +125,10 @@ const SpellsPage: React.FC<Props> = ({ spells }) => {
 
   return (
     <div className={styles.container}>
+      <FiltersDesktop />
       <SubHeader text1="Spells" />
       <SubHeaderDesktop>Spells</SubHeaderDesktop>
-      <SpellsPageHeader spellLevels={spellLevels} />
+      <SpellsPageHeader />
       <div className={styles.contentContainer}>
         <div className={styles.spellsContainer}>
           {filteredSpells.map((spell) => {

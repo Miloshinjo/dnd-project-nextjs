@@ -4,10 +4,11 @@
 
 @screen md {
   .container {
-    @apply fixed flex flex-col;
+    @apply fixed flex flex-col border-r;
     width: var(--desktop-sidebar-width);
     background-color: var(--bg-sidebar);
     height: 100vh;
+    border-color: var(--bg-tertiary);
   }
 
   .logoContainer {

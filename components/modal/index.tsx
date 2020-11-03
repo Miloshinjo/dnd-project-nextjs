@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { useMediaQuery } from 'react-responsive'
 
@@ -21,6 +21,16 @@ import styles from './styles.module.css'
 
 const Modal: React.FC = ({ children }) => {
   const { modal, closeModal } = useModal()
+
+  useEffect(() => {
+    if (modal) {
+      document.body.style.overflow = 'hidden'
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  })
 
   const renderModal = (modal: ModalType) => {
     if (!modal) return null
@@ -229,9 +239,9 @@ const drawerSpellModalVariants = {
 }
 
 const drawerSpellModalVariantsDesktop = {
-  hidden: { x: '-100vw', opacity: 0 },
+  hidden: { scale: 0, opacity: 0 },
   visible: {
-    x: 0,
+    scale: 1,
     opacity: 1,
     transition: { delay: 0.2, type: 'tween' },
   },
@@ -240,7 +250,6 @@ const drawerSpellModalVariantsDesktop = {
 const SpellDrawer: React.FC = ({ children }) => {
   const isBigScreen = useMediaQuery({ query: '(min-device-width: 768px)' })
 
-  console.log(isBigScreen)
   return (
     <motion.div
       className={styles.drawerBackdrop}

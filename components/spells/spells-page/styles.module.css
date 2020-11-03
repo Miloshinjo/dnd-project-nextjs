@@ -28,7 +28,7 @@
 
 @screen sm {
   .spellsContainer {
-    @apply gap-y-4 gap-x-4 flex-wrap;
+    @apply gap-y-4 gap-x-4 grid grid-cols-2;
   }
 }
 

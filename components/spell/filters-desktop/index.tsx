@@ -1,9 +1,11 @@
+import { IoIosSearch } from 'react-icons/io'
+
 import { useFilters } from '../../../context/filters'
 import actionTypes from '../../../utils/constants/actionTypes'
 
 import styles from './styles.module.css'
 
-const SpellsPageHeader: React.FC = () => {
+const FiltersDesktop: React.FC = () => {
   const { dispatchFiltersAction, filtersState } = useFilters()
 
   const search = (e): void => {
@@ -17,16 +19,18 @@ const SpellsPageHeader: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.searchContainer}>
+      <label className={styles.searchLabel}>
+        <IoIosSearch size={22} color="var(--text-secondary)" />
         <input
+          aria-label="Search Spells"
           value={filtersState.name}
           onChange={search}
           placeholder="Search spells"
           className={styles.searchInput}
         />
-      </div>
+      </label>
     </div>
   )
 }
 
-export { SpellsPageHeader as default }
+export default FiltersDesktop

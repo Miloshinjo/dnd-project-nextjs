@@ -1,0 +1,17 @@
+.container {
+  @apply w-full px-6 py-2;
+  background-color: var(--bg-secondary);
+}
+
+.searchLabel {
+  @apply flex items-center;
+}
+
+.searchInput {
+  @apply p-2 rounded-lg;
+  background-color: var(--bg-secondary);
+}
+
+.searchInput:focus {
+  @apply outline-none;
+}
