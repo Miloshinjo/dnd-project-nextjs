@@ -4,12 +4,12 @@
 
 @screen md {
   .container {
-    @apply w-full px-6 py-2 flex;
+    @apply w-full px-6 pb-4 pt-2 flex flex-col;
     background-color: var(--bg-secondary);
   }
 
   .searchLabel {
-    @apply flex items-center;
+    @apply flex items-center w-full;
   }
 
   .searchInput {
@@ -19,5 +19,14 @@
 
   .searchInput:focus {
     @apply outline-none;
+  }
+
+  .selectLabel {
+    @apply text-sm mr-4;
+    color: var(--text-secondary);
+  }
+
+  .selectLabelText {
+    @apply font-bold mb-1 block;
   }
 }

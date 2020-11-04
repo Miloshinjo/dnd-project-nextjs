@@ -1,5 +1,5 @@
 .selectContainer {
-  @apply relative mt-2  w-full;
+  @apply relative mt-2 w-full;
 }
 
 .select {

@@ -1,5 +1,5 @@
-import { useState, Dispatch, SetStateAction } from 'react'
 import { motion } from 'framer-motion'
+import { useState, Dispatch } from 'react'
 
 import actionTypes from '../../../utils/constants/actionTypes'
 

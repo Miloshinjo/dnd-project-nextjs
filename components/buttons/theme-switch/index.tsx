@@ -1,5 +1,5 @@
 import { useTheme } from 'next-themes'
-import { GiNightSky, GiSun } from 'react-icons/gi'
+import { GiMoonOrbit, GiSun } from 'react-icons/gi'
 
 import styles from './styles.module.css'
 
@@ -24,7 +24,7 @@ const ThemeSwitchButton: React.FC<Props> = ({ color = 'alternate' }) => {
     >
       {theme === 'light' ? (
         <span>
-          <GiNightSky size={20} className="mr-2" />
+          <GiMoonOrbit size={20} className="mr-2" />
           <span className="md:hidden">Night Mode</span>
         </span>
       ) : (

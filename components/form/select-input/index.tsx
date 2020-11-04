@@ -49,24 +49,15 @@ const SelectInput: React.FC<Props> = ({
   )
 
   const colourStyles = {
-    singleValue: (
-      styles,
-      { data, isDisabled, isFocused, isSelected, isHovered },
-    ) => ({
+    singleValue: (styles, { data }) => ({
       ...styles,
       color: getOptionColor(data.label),
     }),
-    placeholder: (
-      styles,
-      { data, isDisabled, isFocused, isSelected, isHovered },
-    ) => ({
+    placeholder: (styles) => ({
       ...styles,
       color: 'var(--color-placeholder)',
     }),
-    control: (
-      styles,
-      { data, isDisabled, isFocused, isSelected, isHovered },
-    ) => ({
+    control: (styles, { isFocused }) => ({
       ...styles,
       cursor: 'pointer',
       border: '1px solid var(--border-primary)',
@@ -75,7 +66,7 @@ const SelectInput: React.FC<Props> = ({
         : 'none',
       backgroundColor: 'var(--bg-secondary)',
     }),
-    option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+    option: (styles, { data, isFocused }) => {
       return {
         ...styles,
         cursor: 'pointer',
@@ -87,7 +78,7 @@ const SelectInput: React.FC<Props> = ({
         color: getOptionColor(data.label),
       }
     },
-    menu: (styles, { data, isDisabled, isFocused, isSelected }) => ({
+    menu: (styles) => ({
       ...styles,
       backgroundColor: 'var(--bg-secondary)',
     }),

@@ -70,7 +70,7 @@ const SpellCard: React.FC<Props> = ({ spell }) => {
   return (
     <motion.div
       className={styles.container}
-      whileHover={{ y: '-1px' }}
+      whileHover={{ y: isOpen ? 0 : '-1px' }}
       whileTap={{ y: '1px' }}
     >
       <button

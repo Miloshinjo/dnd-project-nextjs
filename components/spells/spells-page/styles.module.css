@@ -28,13 +28,13 @@
 
 @screen sm {
   .spellsContainer {
-    @apply gap-y-4 gap-x-4 grid grid-cols-2 items-start;
+    @apply gap-y-4 gap-x-4 grid grid-cols-1 items-start;
   }
 }
 
 @screen md {
   .spellsContainer {
-    @apply grid grid-cols-2;
+    @apply grid grid-cols-1;
   }
 
   .contentContainer {
@@ -44,6 +44,12 @@
 
 @screen lg {
   .spellsContainer {
-    @apply grid grid-cols-3;
+    @apply grid grid-cols-2;
+  }
+}
+
+@screen xl {
+  .spellsContainer {
+    /* @apply grid grid-cols-3; */
   }
 }

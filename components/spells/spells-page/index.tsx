@@ -125,16 +125,25 @@ const SpellsPage: React.FC<Props> = ({ spells }) => {
 
   return (
     <div className={styles.container}>
-      <FiltersDesktop />
+      <FiltersDesktop
+        dispatch={dispatchFiltersAction}
+        spellLevels={spellLevels as any}
+        spellSchools={spellSchools as any}
+        spellKlasses={spellKlasses}
+      />
       <SubHeader text1="Spells" />
       <SubHeaderDesktop>Spells</SubHeaderDesktop>
       <SpellsPageHeader />
       <div className={styles.contentContainer}>
-        <div className={styles.spellsContainer}>
-          {filteredSpells.map((spell) => {
-            return <SpellCard spell={spell} key={spell.id} />
-          })}
-        </div>
+        {filteredSpells.length === 0 ? (
+          <div>No spells found.</div>
+        ) : (
+          <div className={styles.spellsContainer}>
+            {filteredSpells.map((spell) => {
+              return <SpellCard spell={spell} key={spell.id} />
+            })}
+          </div>
+        )}
         <Filters
           levelFilters={filtersState.levels}
           spellLevels={spellLevels as any}
