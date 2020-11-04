@@ -15,25 +15,5 @@
 
 @screen md {
   .container {
-    @apply right-0 border-t-0 absolute inline-flex mt-0 max-w-xs w-auto h-auto items-center  rounded-lg;
-    top: 0;
-    right: 0;
-    bottom: auto;
-  }
-
-  .navLink {
-    @apply my-2 opacity-75;
-  }
-
-  .navLinkIcon {
-    @apply hidden;
-  }
-
-  .navLinkActive {
-    @apply opacity-100 text-white;
-  }
-
-  .navLinkText {
-    @apply text-sm font-medium;
   }
 }

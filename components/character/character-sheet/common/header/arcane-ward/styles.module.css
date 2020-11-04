@@ -27,3 +27,13 @@
 .arcaneWardBarInner {
   @apply w-full h-full flex bg-primary-600;
 }
+
+@screen md {
+  .arcaneWardLabel {
+    width: 7%;
+  }
+
+  .arcaneWardBar {
+    width: 60%;
+  }
+}

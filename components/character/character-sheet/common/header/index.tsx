@@ -28,7 +28,7 @@ const CharacterHeader: React.FC<Props> = ({ character }) => {
 
       return klass
     },
-    [character?.subclass?.name, character.klass.name],
+    [character?.subclass?.name],
   )
 
   return (

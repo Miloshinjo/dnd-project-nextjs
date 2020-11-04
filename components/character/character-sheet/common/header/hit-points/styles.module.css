@@ -27,3 +27,21 @@
 .hitPointsBarInner {
   @apply w-full h-full flex;
 }
+
+@screen md {
+  .container {
+    @apply items-start;
+  }
+
+  .hitPointsLabel {
+    width: 7%;
+  }
+
+  .hitPoints {
+    @apply;
+  }
+
+  .hitPointsBar {
+    width: 60%;
+  }
+}
