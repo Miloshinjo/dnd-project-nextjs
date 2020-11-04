@@ -7,13 +7,21 @@
   background-color: var(--bg-create-button);
 }
 
+.container > * {
+  @apply mb-2;
+}
+
 @screen md {
   .container {
     @apply flex items-center flex-wrap;
   }
 
+  .container > * {
+    @apply m-2 ml-0 mr-4;
+  }
+
   .createCharacterButton {
-    @apply mt-0 py-2 flex h-12 w-12 ml-4 justify-center items-center shadow-lg border-none;
+    @apply mt-0 py-2 flex h-12 w-12 ml-0 mb-0 justify-center items-center shadow-lg border-none;
   }
 
   .createCharacterButton:hover {

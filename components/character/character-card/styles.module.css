@@ -1,11 +1,11 @@
 .container {
-  @apply cursor-pointer flex p-2 items-center  my-2 rounded;
+  @apply cursor-pointer flex p-2 items-center rounded;
   background-color: var(--bg-secondary);
 }
 
 @screen md {
   .container {
-    @apply shadow-lg p-4 mr-2;
+    @apply shadow-lg p-4;
   }
 
   .container:hover {
