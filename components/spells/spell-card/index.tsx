@@ -1,17 +1,15 @@
 import { motion } from 'framer-motion'
-import { useState, useRef, useEffect } from 'react'
-
-import { useMediaQuery } from 'react-responsive'
+import { useState } from 'react'
 
 import { useModal } from '../../../context/modal'
 import { Spell } from '../../../generated/graphql'
+import useBigScreen from '../../../hooks/useBigScreen'
 
 import SpellConcentrationRitual from '../../spell/concentration-ritual'
 import SpellDescription from '../../spell/description'
 import SpellInfo from '../../spell/info'
 import SpellKlasses from '../../spell/klasses'
 import SpellMaterial from '../../spell/material'
-import SpellName from '../../spell/name'
 
 import styles from './styles.module.css'
 
@@ -38,7 +36,7 @@ const SpellCard: React.FC<Props> = ({ spell }) => {
   } = spell
   const { openModal } = useModal()
   const [isOpen, setOpen] = useState(false)
-  const isBigScreen = useMediaQuery({ query: '(min-device-width: 768px)' })
+  const isBigScreen = useBigScreen()
 
   const handleSpellCardClick = () => {
     if (isBigScreen) {

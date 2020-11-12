@@ -5,7 +5,7 @@
 
 @screen md {
   .container {
-    @apply shadow-lg mx-auto pb-0 h-auto rounded-lg mb-12;
+    @apply mx-auto pb-0 h-auto rounded-lg mb-12;
   }
 }
 

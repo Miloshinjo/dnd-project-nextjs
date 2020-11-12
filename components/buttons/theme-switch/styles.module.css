@@ -12,9 +12,10 @@
 
 @screen md {
   .button {
-    @apply px-4 flex;
+    @apply px-4 inline-flex justify-center ml-0;
   }
 
-  .button span {
+  .button span > span {
+    @apply hidden;
   }
 }

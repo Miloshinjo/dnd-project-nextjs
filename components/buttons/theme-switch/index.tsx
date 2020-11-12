@@ -25,12 +25,12 @@ const ThemeSwitchButton: React.FC<Props> = ({ color = 'alternate' }) => {
       {theme === 'light' ? (
         <span>
           <GiMoonOrbit size={20} className="mr-2" />
-          <span className="md:hidden">Night Mode</span>
+          <span>Night Mode</span>
         </span>
       ) : (
         <span>
           <GiSun size={20} className="mr-2" />
-          <span className="md:hidden">Day Mode</span>
+          <span>Day Mode</span>
         </span>
       )}
     </button>

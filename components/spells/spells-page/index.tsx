@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { useState, useEffect, useMemo, useCallback } from 'react'
 
 import { useFilters } from '../../../context/filters'
@@ -144,6 +145,7 @@ const SpellsPage: React.FC<Props> = ({ spells }) => {
             })}
           </div>
         )}
+
         <Filters
           levelFilters={filtersState.levels}
           spellLevels={spellLevels as any}

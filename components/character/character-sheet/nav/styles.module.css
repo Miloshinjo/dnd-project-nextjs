@@ -15,5 +15,6 @@
 
 @screen md {
   .container {
+    @apply hidden;
   }
 }

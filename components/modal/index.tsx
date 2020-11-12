@@ -2,9 +2,8 @@ import { AnimatePresence, motion } from 'framer-motion'
 
 import React from 'react'
 
-import { useMediaQuery } from 'react-responsive'
-
 import { useModal, ModalType } from '../../context/modal'
+import useBigScreen from '../../hooks/useBigScreen'
 import ClientOnlyPortal from '../../utils/clientOnlyPortal'
 import CharacterCreated from '../modals/character-created'
 import CreateMagicItemModal from '../modals/create-magic-item'
@@ -238,7 +237,7 @@ const drawerSpellModalVariantsDesktop = {
 }
 
 const SpellDrawer: React.FC = ({ children }) => {
-  const isBigScreen = useMediaQuery({ query: '(min-device-width: 768px)' })
+  const isBigScreen = useBigScreen()
 
   return (
     <motion.div

@@ -5,6 +5,7 @@ import {
   useCharacterQuery,
   useSkillsQuery,
 } from '../../../generated/graphql'
+import useBigScreen from '../../../hooks/useBigScreen'
 import { ActiveKey } from '../../../models/misc'
 import TextLoader from '../../layout/text-loader'
 
@@ -16,7 +17,7 @@ import ScreenKlass from './screen-klass'
 import ScreenSettings from './screen-settings'
 import ScreenSpells from './screen-spells'
 import ScreenStats from './screen-stats'
-
+import AbilityScores from './screen-stats/ability-scores'
 import styles from './styles.module.css'
 
 type Props = {
@@ -26,6 +27,7 @@ type Props = {
 const CharacterSheet: React.FC<Props> = ({ id }) => {
   const [characterResult] = useCharacterQuery({ variables: { id } })
   const [skillsResult] = useSkillsQuery()
+  const isBigScreen = useBigScreen()
 
   const getActiveKey = (): ActiveKey => {
     if (!localStorage.getItem('activeCharacterScreen')) return 'stats'
@@ -88,7 +90,14 @@ const CharacterSheet: React.FC<Props> = ({ id }) => {
   return (
     <div className={styles.container}>
       <CharacterHeader character={character} />
-      <div className={styles.screensContainer}>{screens[activeKey]}</div>
+      {isBigScreen ? (
+        <div className="grid grid-cols-3 p-4">
+          <AbilityScores character={character} />
+        </div>
+      ) : (
+        <div className={styles.screensContainer}>{screens[activeKey]}</div>
+      )}
+
       <Nav
         activeKey={activeKey}
         setActiveKeyAndStore={setActiveKeyAndStore}
