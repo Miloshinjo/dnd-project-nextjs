@@ -1,4 +1,4 @@
-export type AbilityScore =
+export type AbilityScoreType =
   | 'strength'
   | 'dexterity'
   | 'constitution'

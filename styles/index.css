@@ -1,6 +1,6 @@
 :root {
   /* Your default theme */
-  --bg-primary: #eeeeee;
+  --bg-primary: #f8f8fb;
   --bg-secondary: #fff;
   --bg-info: #f7fafc;
   --bg-accent: #2a4365;
@@ -19,15 +19,15 @@
   --color-varies: #63b3ed;
 
   --bg-modal-drawer: #fff;
-  --bg-header: #1f1f1f;
-  --bg-sidebar: #1f1f1f;
-  --bg-klass-logo: #1f1f1f;
+  --bg-header: #1d2333;
+  --bg-sidebar: #1d2333;
+  --bg-klass-logo: #1d2333;
   --bg-search-input: #333333;
   --bg-filters: #f7fafc;
   --bg-tertiary: #edf2f7;
   --border-filters: #e2e8f0;
-  --color-spell-name: #1f1f1f;
-  --bg-create-button: #1f1f1f;
+  --color-spell-name: #1d2333;
+  --bg-create-button: #1d2333;
   --color-spell-badge: #e2e8f0;
   --color-placeholder: rgb(0, 0, 0, 0.4);
   --bg-animated-bar: rgba(255, 255, 255, 0.5);
@@ -39,7 +39,7 @@
 
   --color-barbarian: #c41f3b;
   --color-bard: #e6cc80;
-  --color-cleric: #121212;
+  --color-cleric: #161b28;
   --color-druid: #ff7d0a;
   --color-fighter: #c79c6e;
   --color-monk: #00e084;
@@ -50,15 +50,16 @@
   --color-warlock: #9482c9;
   --color-wizard: #69ccf0;
   --color-gold: #ffd700;
-  --color-item-icon: #1f1f1f;
+  --color-item-icon: #1d2333;
+  --color-ability-score-border: #1d2333;
   --mobile-header-height: 4rem;
   --desktop-sidebar-width: 18vw;
 }
 
 [data-theme='dark'] {
-  --bg-primary: #121212;
-  --bg-secondary: #1f1f1f;
-  --bg-sidebar: #1f1f1f;
+  --bg-primary: #161b28;
+  --bg-secondary: #1d2333;
+  --bg-sidebar: #1d2333;
   --bg-accent: #3182ce;
   --bg-focused: #282d33;
   --text-primary: rgb(255, 255, 255, 0.87);
@@ -67,24 +68,24 @@
   --text-accent: #3182ce;
   --border-primary: rgb(255, 255, 255, 0.1);
 
-  --bg-modal-drawer: #121212;
+  --bg-modal-drawer: #161b28;
   --bg-info: #333333;
-  --bg-header: #1f1f1f;
-  --bg-klass-logo: #121212;
+  --bg-header: #1d2333;
+  --bg-klass-logo: #161b28;
   --bg-search-input: #282d33;
-  --bg-filters: #1f1f1f;
-  --bg-create-button: #1f1f1f;
+  --bg-filters: #1d2333;
+  --bg-create-button: #1d2333;
   --bg-tertiary: #333333;
   --border-filters: rgb(255, 255, 255, 0.6);
   --color-spell-name: #63b3ed;
   --color-spell-badge: #333333;
   --color-placeholder: rgb(255, 255, 255, 0.4);
   --bg-animated-bar: rgba(0, 0, 0, 0.6);
-  --bg-slot-active: #121212;
+  --bg-slot-active: #161b28;
   --drawer-header-height: 3rem;
   --combo-white-d-3: #333333;
-  --bg-drawer-header: #121212;
-  --bg-drawer-header-2: #1f1f1f;
+  --bg-drawer-header: #161b28;
+  --bg-drawer-header-2: #1d2333;
 
   --color-barbarian: #c41f3b;
   --color-bard: #e6cc80;
@@ -100,6 +101,7 @@
   --color-wizard: #69ccf0;
   --color-gold: #ffd700;
   --color-item-icon: #eeeeee;
+  --color-ability-score-border: #333333;
 }
 
 @tailwind base;

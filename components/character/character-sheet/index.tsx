@@ -10,6 +10,7 @@ import { ActiveKey } from '../../../models/misc'
 import TextLoader from '../../layout/text-loader'
 
 import CharacterHeader from './common/header'
+import AbilityScoresDesktop from './desktop-specific/ability-scores'
 import Nav from './nav'
 
 import ScreenInventory from './screen-inventory'
@@ -17,7 +18,6 @@ import ScreenKlass from './screen-klass'
 import ScreenSettings from './screen-settings'
 import ScreenSpells from './screen-spells'
 import ScreenStats from './screen-stats'
-import AbilityScores from './screen-stats/ability-scores'
 import styles from './styles.module.css'
 
 type Props = {
@@ -91,8 +91,8 @@ const CharacterSheet: React.FC<Props> = ({ id }) => {
     <div className={styles.container}>
       <CharacterHeader character={character} />
       {isBigScreen ? (
-        <div className="grid grid-cols-3 p-4">
-          <AbilityScores character={character} />
+        <div className="p-4">
+          <AbilityScoresDesktop character={character} />
         </div>
       ) : (
         <div className={styles.screensContainer}>{screens[activeKey]}</div>

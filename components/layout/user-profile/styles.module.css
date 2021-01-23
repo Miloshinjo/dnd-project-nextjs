@@ -15,14 +15,14 @@
   color: var(--text-secondary);
 }
 
-.avatarContainer {
-  @apply shadow-inner w-10 h-10 border rounded-full overflow-hidden;
-  border-color: var(--border-primary);
-}
-
 .emptyAvatar {
   @apply flex items-center justify-center w-full h-full shadow-inner font-semibold;
   background-color: var(--bg-secondary);
+}
+
+.avatarContainer {
+  @apply shadow-inner w-10 h-10 border rounded-full overflow-hidden;
+  border-color: var(--border-primary);
 }
 
 .avatarImage {
@@ -33,6 +33,11 @@
   .container {
     @apply mt-auto;
     color: rgb(255, 255, 255, 0.6);
+  }
+
+  .username {
+    @apply font-bold w-full text-sm;
+    color: white;
   }
 
   .email {

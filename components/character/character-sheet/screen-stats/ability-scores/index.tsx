@@ -1,8 +1,4 @@
-import {
-  abilityScoreM,
-  savingThrow,
-  proficiencyBonus,
-} from '../../../../../utils/character'
+import { useModal } from '../../../../../context/modal'
 import abilityScores from '../../../../../data/abilityScores'
 import {
   useStrengthMutation,
@@ -13,9 +9,13 @@ import {
   useCharismaMutation,
   Character,
 } from '../../../../../generated/graphql'
-import { AbilityScore } from '../../../../../models/abilityScore'
+import { AbilityScoreType } from '../../../../../models/abilityScore'
+import {
+  abilityScoreM,
+  savingThrow,
+  proficiencyBonus,
+} from '../../../../../utils/character'
 
-import { useModal } from '../../../../../context/modal'
 import styles from './styles.module.css'
 
 type Props = {
@@ -49,7 +49,7 @@ type Props = {
   >
 }
 
-const mutations: Record<AbilityScore, any> = {
+const mutations: Record<AbilityScoreType, any> = {
   strength: useStrengthMutation,
   dexterity: useDexterityMutation,
   constitution: useConstitutionMutation,
@@ -66,7 +66,7 @@ const AbilityScores: React.FC<Props> = ({ character }) => {
       <h3 className="statSectionHeading mb-4">Ability Scores</h3>
 
       {abilityScores.map(
-        (abilityScore: AbilityScore): JSX.Element => {
+        (abilityScore: AbilityScoreType): JSX.Element => {
           return (
             <button
               type="button"
@@ -76,7 +76,7 @@ const AbilityScores: React.FC<Props> = ({ character }) => {
                 openModal({
                   type: 'number',
                   props: {
-                    originalValue: character[abilityScore as AbilityScore],
+                    originalValue: character[abilityScore as AbilityScoreType],
                     characterId: character.id,
                     title: abilityScore,
                     type: abilityScore.toLowerCase(),
@@ -88,14 +88,14 @@ const AbilityScores: React.FC<Props> = ({ character }) => {
               <div className="w-1/2 flex justify-between mr-12 md:mr-32">
                 <div className={styles.abilityScoreTitle}>{abilityScore}</div>
                 <div className={styles.abilityScoreValue}>
-                  {character[abilityScore as AbilityScore]}
+                  {character[abilityScore as AbilityScoreType]}
                 </div>
               </div>
 
               <div className="w-1/2 flex justify-end">
                 <div className={styles.abilityScoreM}>
                   <span className={styles.miniLabel}>mod</span>
-                  {abilityScoreM(character[abilityScore as AbilityScore])}
+                  {abilityScoreM(character[abilityScore as AbilityScoreType])}
                 </div>
                 <div className={styles.abilityScoreSave}>
                   <span className={styles.miniLabel}>save</span>

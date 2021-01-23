@@ -1,6 +1,6 @@
-import { AbilityScore } from '../models/abilityScore'
+import { AbilityScoreType } from '../models/abilityScore'
 
-const abilityScores: AbilityScore[] = [
+const abilityScores: AbilityScoreType[] = [
   'strength',
   'dexterity',
   'constitution',

@@ -6245,6 +6245,7 @@
     "castingTime": "1 Reaction",
     "range": "60 ft",
     "components": "v,s,m",
+    "material": "A tiny silver cage worth 100 gp",
     "duration": "8 Hours",
     "concentration": false,
     "ritual": false,
