@@ -1,16 +1,12 @@
-import { getSession } from '../../lib/next-auth/client'
-
 import { ApolloError } from 'apollo-server-micro'
+
+import { getSession } from '../../lib/next-auth/client'
 
 const handleError = (error: ApolloError): any => {
   // add any other logging mechanism here e.g. Sentry
 
   return error
 }
-
-// const getUserByAccountId = async (prisma) => {
-//   return
-// }
 
 const getUserId = async (req): Promise<number | undefined> => {
   const session = await getSession({ req })
