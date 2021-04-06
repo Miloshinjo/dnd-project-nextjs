@@ -1,6 +1,7 @@
 import { rule } from 'graphql-shield'
-import { handleError, getUserId } from '../utils/helpers'
+
 import errors from '../utils/errors'
+import { handleError, getUserId } from '../utils/helpers'
 
 const rules = {
   isAuthenticatedUser: rule({ cache: 'contextual' })(

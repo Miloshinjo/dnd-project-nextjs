@@ -1,4 +1,5 @@
 import { shield, allow } from 'graphql-shield'
+
 import rules from './rules'
 
 const permissions = shield({
