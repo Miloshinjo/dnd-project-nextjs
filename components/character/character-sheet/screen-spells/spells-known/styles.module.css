@@ -1,5 +1,5 @@
 .container {
-  @apply m-4 rounded;
+  @apply m-4 rounded mb-4;
   background-color: var(--bg-secondary);
 }
 
