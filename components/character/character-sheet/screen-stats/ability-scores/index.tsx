@@ -7,7 +7,7 @@ import {
   useIntelligenceMutation,
   useWisdomMutation,
   useCharismaMutation,
-  Character,
+  CharacterQuery,
 } from '../../../../../generated/graphql'
 import { AbilityScoreType } from '../../../../../models/abilityScore'
 import {
@@ -19,34 +19,7 @@ import {
 import styles from './styles.module.css'
 
 type Props = {
-  character: Pick<
-    Character,
-    | 'id'
-    | 'name'
-    | 'armorClass'
-    | 'level'
-    | 'race'
-    | 'klass'
-    | 'hitPoints'
-    | 'maxHitPoints'
-    | 'arcaneWard'
-    | 'arcaneWardMax'
-    | 'alignment'
-    | 'gold'
-    | 'inspiration'
-    | 'strength'
-    | 'dexterity'
-    | 'intelligence'
-    | 'wisdom'
-    | 'charisma'
-    | 'constitution'
-    | 'skills'
-    | 'speed'
-    | 'spellSlots'
-    | 'subclass'
-    | 'spells'
-    | 'preparedSpells'
-  >
+  character: CharacterQuery['character']
 }
 
 const mutations: Record<AbilityScoreType, any> = {

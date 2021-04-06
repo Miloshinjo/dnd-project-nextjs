@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion'
 
 import { useModal } from '../../../../context/modal'
+import { CharacterQuery } from '../../../../generated/graphql'
 import DeleteButton from '../../../buttons/delete-button'
-import { Character } from '../../../../generated/graphql'
 
 import styles from './styles.module.css'
 
@@ -15,34 +15,7 @@ const screenVariants = {
 }
 
 type Props = {
-  character: Pick<
-    Character,
-    | 'id'
-    | 'name'
-    | 'armorClass'
-    | 'level'
-    | 'race'
-    | 'klass'
-    | 'hitPoints'
-    | 'maxHitPoints'
-    | 'arcaneWard'
-    | 'arcaneWardMax'
-    | 'alignment'
-    | 'gold'
-    | 'inspiration'
-    | 'strength'
-    | 'dexterity'
-    | 'intelligence'
-    | 'wisdom'
-    | 'charisma'
-    | 'constitution'
-    | 'skills'
-    | 'speed'
-    | 'spellSlots'
-    | 'subclass'
-    | 'spells'
-    | 'preparedSpells'
-  >
+  character: CharacterQuery['character']
 }
 
 const ScreenSettings: React.FC<Props> = ({ character }) => {

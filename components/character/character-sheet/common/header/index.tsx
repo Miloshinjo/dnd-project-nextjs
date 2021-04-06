@@ -1,8 +1,10 @@
 import { useCallback } from 'react'
 
 import { useModal } from '../../../../../context/modal'
-import { useLevelMutation } from '../../../../../generated/graphql'
-import { CharacterModel } from '../../../../../models/character'
+import {
+  useLevelMutation,
+  CharacterQuery,
+} from '../../../../../generated/graphql'
 
 import ArcaneWard from './arcane-ward'
 import HitPoints from './hit-points'
@@ -10,7 +12,7 @@ import HitPoints from './hit-points'
 import styles from './styles.module.css'
 
 type Props = {
-  character: CharacterModel
+  character: CharacterQuery['character']
 }
 
 const CharacterHeader: React.FC<Props> = ({ character }) => {

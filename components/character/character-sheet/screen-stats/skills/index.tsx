@@ -4,8 +4,8 @@ import {
   useAddSkillMutation,
   useRemoveSkillMutation,
   Skill,
+  CharacterQuery,
 } from '../../../../../generated/graphql'
-import { CharacterModel } from '../../../../../models/character'
 
 import {
   calculateSkill,
@@ -17,7 +17,7 @@ import styles from './styles.module.css'
 
 type Props = {
   skills: Array<Skill>
-  character: CharacterModel
+  character: CharacterQuery['character']
 }
 
 const Skills: React.FC<Props> = ({ skills, character }) => {

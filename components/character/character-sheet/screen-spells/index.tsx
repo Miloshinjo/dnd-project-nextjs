@@ -1,7 +1,7 @@
-import { useCallback } from 'react'
 import { motion } from 'framer-motion'
+import { useCallback } from 'react'
 
-import { Character } from '../../../../generated/graphql'
+import { CharacterQuery } from '../../../../generated/graphql'
 import {
   spellHit,
   spellSaveDc,
@@ -9,13 +9,14 @@ import {
   proficiencyBonus,
 } from '../../../../utils/character'
 import StatField from '../common/stat-field'
+
 import Cleric from './cleric'
-import Wizard from './wizard'
 import Druid from './druid'
 import Paladin from './paladin'
 import SorcererType from './sorcerer-type'
 
 import styles from './styles.module.css'
+import Wizard from './wizard'
 
 const screenVariants = {
   initial: { x: '100vw' },
@@ -26,39 +27,16 @@ const screenVariants = {
 }
 
 type Props = {
-  character: Pick<
-    Character,
-    | 'id'
-    | 'name'
-    | 'armorClass'
-    | 'level'
-    | 'race'
-    | 'klass'
-    | 'hitPoints'
-    | 'maxHitPoints'
-    | 'arcaneWard'
-    | 'arcaneWardMax'
-    | 'alignment'
-    | 'gold'
-    | 'inspiration'
-    | 'strength'
-    | 'dexterity'
-    | 'intelligence'
-    | 'wisdom'
-    | 'charisma'
-    | 'constitution'
-    | 'skills'
-    | 'speed'
-    | 'spellSlots'
-    | 'subclass'
-    | 'spells'
-    | 'preparedSpells'
-  >
+  character: CharacterQuery['character']
 }
 
 const ScreenSpells: React.FC<Props> = ({ character }) => {
   const renderSpellType = useCallback(
-    (klass: Character['klass'], subclass: Character['subclass'], character) => {
+    (
+      klass: CharacterQuery['character']['klass'],
+      subclass: CharacterQuery['character']['subclass'],
+      character,
+    ) => {
       if (
         subclass?.name === 'Arcane Trickster' ||
         subclass?.name === 'Eldritch Knight'

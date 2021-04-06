@@ -1,9 +1,8 @@
-import { useCallback } from 'react'
 import { motion } from 'framer-motion'
+import { useCallback } from 'react'
 
-import AbilityScores from './ability-scores'
-import Skills from './skills'
-import { Skill } from '../../../../generated/graphql'
+import { CharacterQuery, Skill } from '../../../../generated/graphql'
+
 import {
   proficiencyBonus,
   initiative,
@@ -14,16 +13,18 @@ import {
   abilityScoreM,
   hitBonus,
 } from '../../../../utils/character'
-import { CharacterModel } from '../../../../models/character'
+import StatField from '../common/stat-field'
 import ArmorClass from '../screen-stats/armor-class'
 import Speed from '../screen-stats/speed'
-import StatField from '../common/stat-field'
+
+import AbilityScores from './ability-scores'
+import Skills from './skills'
 
 import styles from './styles.module.css'
 
 type Props = {
   skills: Array<Skill>
-  character: CharacterModel
+  character: CharacterQuery['character']
 }
 
 const screenVariants = {
