@@ -10,14 +10,14 @@ import {
   GiHood,
   GiClosedBarbute,
   GiHolySymbol,
-  GiPawprint,
+  GiPawPrint,
 } from 'react-icons/gi'
 
 const icons = {
   barbarian: <GiBattleAxe size={28} />,
   bard: <GiLyre size={28} />,
   cleric: <GiHolySymbol size={28} />,
-  druid: <GiPawprint size={28} />,
+  druid: <GiPawPrint size={28} />,
   fighter: <GiClosedBarbute size={28} />,
   paladin: <GiElfHelmet size={28} />,
   ranger: <GiHighShot size={28} />,

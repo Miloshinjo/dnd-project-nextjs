@@ -6,7 +6,7 @@ import {
   GiLyre,
   GiRelicBlade,
   GiHood,
-  GiPawprint,
+  GiPawPrint,
   GiElfHelmet,
   GiHighShot,
 } from 'react-icons/gi'
@@ -14,7 +14,7 @@ import {
 const icons = {
   Bard: <GiLyre size={60} color="#eeeeee" />,
   Cleric: <GiHolySymbol size={60} color="#eeeeee" />,
-  Druid: <GiPawprint size={60} color="#eeeeee" />,
+  Druid: <GiPawPrint size={60} color="#eeeeee" />,
   Fighter: <GiRelicBlade size={60} color="#eeeeee" />,
   Paladin: <GiElfHelmet size={60} color="#eeeeee" />,
   Ranger: <GiHighShot size={60} color="#eeeeee" />,
