@@ -11,5 +11,5 @@
 }
 
 .errorText {
-  @apply text-orange-600 text-xs;
+  @apply text-yellow-600 text-xs;
 }

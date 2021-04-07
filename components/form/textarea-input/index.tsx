@@ -27,7 +27,7 @@ const TextareaInput: React.FC<Props> = ({
       <textarea
         aria-invalid={errors.name ? 'true' : 'false'}
         id={name}
-        className={`${styles.input} ${errors[name] && 'border-orange-600'}`}
+        className={`${styles.input} ${errors[name] && 'border-yellow-600'}`}
         name={name}
         defaultValue={defaultValue}
         placeholder={placeholder}

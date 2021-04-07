@@ -7,7 +7,7 @@
 }
 
 .button:focus {
-  @apply outline-none border-gray-600 shadow-outline;
+  @apply outline-none border-gray-600 ring;
 }
 
 .button:active {

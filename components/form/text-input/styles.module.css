@@ -5,7 +5,7 @@
 }
 
 .input:focus {
-  @apply outline-none shadow-outline z-10;
+  @apply outline-none ring z-10;
 }
 
 .input::placeholder {
@@ -17,5 +17,5 @@
 }
 
 .error {
-  @apply text-xs text-orange-600 text-left;
+  @apply text-xs text-yellow-600 text-left;
 }

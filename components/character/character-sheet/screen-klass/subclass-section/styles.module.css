@@ -8,15 +8,15 @@
 }
 
 .addButton:hover {
-  @apply;
+
 }
 
 .addButton:focus {
-  @apply outline-none  shadow-outline;
+  @apply outline-none ring;
 }
 
 .addButton:active {
-  @apply;
+
 }
 
 .disabled {

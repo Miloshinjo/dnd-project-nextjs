@@ -8,6 +8,7 @@
 
 @screen md {
   .main {
+    height: 100%;
     margin-top: 0;
     margin-left: var(--desktop-sidebar-width);
   }

@@ -3,11 +3,11 @@
 }
 
 .deleteButton:hover {
-  @apply;
+
 }
 
 .deleteButton:focus {
-  @apply outline-none border-red-700 shadow-outline;
+  @apply outline-none border-red-700 ring;
 }
 
 .deleteButton:active {

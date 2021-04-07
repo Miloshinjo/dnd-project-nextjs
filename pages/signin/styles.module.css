@@ -30,7 +30,7 @@
 }
 
 .emailInput:focus {
-  @apply outline-none shadow-outline z-10;
+  @apply outline-none ring z-10;
 }
 
 .emailInput::placeholder {

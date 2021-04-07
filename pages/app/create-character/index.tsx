@@ -1,13 +1,13 @@
-import { useSession } from '../../../lib/next-auth/client'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
-import AppLayout from '../../../components/layouts/app-layout'
 import CreateCharacterForm from '../../../components/forms/create-character'
-import SubHeader from '../../../components/layout/sub-header'
-import { Klass } from '../../../generated/graphql'
-import { client } from '../../../pages/_app'
 import LoadingPage from '../../../components/layout/loading-page'
+import SubHeader from '../../../components/layout/sub-header'
+import AppLayout from '../../../components/layouts/app-layout'
+import { Klass } from '../../../generated/graphql'
+import { useSession } from '../../../lib/next-auth/client'
+import { client } from '../../../pages/_app'
 
 import styles from './styles.module.css'
 
@@ -20,7 +20,7 @@ const KlassesQuery = `
   }
 `
 
-export const getKlasses = async () => {
+export const getKlasses = async (): Promise<Array<Klass>> => {
   const result = await client.query(KlassesQuery).toPromise()
 
   if (!result || result.error) {
@@ -60,10 +60,7 @@ const CreateCharacter: React.FC<Props> = ({ klasses }) => {
       </SubHeader>
       <div className={styles.container}>
         <div className={styles.contentContainer}>
-          <p className={styles.paragraph}>
-            This is basic character creation. Other stats is editable on the
-            character screen.
-          </p>
+          <p className={styles.paragraph}>Create your character</p>
           <CreateCharacterForm klasses={klasses} />
         </div>
       </div>
@@ -71,7 +68,7 @@ const CreateCharacter: React.FC<Props> = ({ klasses }) => {
   )
 }
 
-export const getStaticProps = async () => {
+export const getStaticProps = async (): Promise<{ props: Props }> => {
   const klasses: Array<Klass> = await getKlasses()
 
   return {

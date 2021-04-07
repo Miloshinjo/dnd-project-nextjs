@@ -1,4 +1,5 @@
 import { useMemo } from 'react'
+
 import {
   Character,
   useHitPointsMutation,
@@ -25,7 +26,7 @@ const HitPoints: React.FC<Props> = ({
     if (hitPointsPercent < 25) {
       return 'bg-red-800'
     } else if (hitPointsPercent < 70) {
-      return 'bg-orange-500'
+      return 'bg-yellow-500'
     } else {
       return 'bg-green-700'
     }

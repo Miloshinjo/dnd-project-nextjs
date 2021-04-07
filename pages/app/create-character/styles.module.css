@@ -1,5 +1,5 @@
 .container {
-  @apply flex items-center justify-center py-12 px-4;
+  @apply flex items-center justify-center py-12 px-4 h-full;
 }
 
 .contentContainer {

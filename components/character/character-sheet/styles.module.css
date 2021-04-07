@@ -10,7 +10,7 @@
 }
 
 .heading {
-  @apply mt-4 mb-2 text-sm font-medium whitespace-no-wrap;
+  @apply mt-4 mb-2 text-sm font-medium whitespace-nowrap;
 }
 
 .fetchingContainer {

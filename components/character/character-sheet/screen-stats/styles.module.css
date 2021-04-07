@@ -1,5 +1,5 @@
 .heading {
-  @apply mb-2 text-sm font-medium whitespace-no-wrap;
+  @apply mb-2 text-sm font-medium whitespace-nowrap;
   color: var(--text-secondary);
 }
 

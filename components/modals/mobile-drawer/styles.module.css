@@ -27,6 +27,5 @@
 }
 
 .activeLink {
-  @apply;
   background-color: var(--bg-secondary);
 }

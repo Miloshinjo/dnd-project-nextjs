@@ -14,4 +14,5 @@ module.exports = withPWA({
     // !! WARN !!
     ignoreBuildErrors: true,
   },
+  future: { webpack5: true },
 })
