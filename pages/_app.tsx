@@ -9,7 +9,7 @@ import {
 
 import { Provider as SessionProvider } from '../lib/next-auth/client'
 
-import cache from '../utils/cache'
+import cacheExchange from '../utils/cache'
 
 import '../styles/index.css'
 
@@ -17,7 +17,7 @@ const url = process.env.NEXT_PUBLIC_GRAPHQL_URL
 
 export const client = createClient({
   url,
-  exchanges: [dedupExchange, cache, fetchExchange],
+  exchanges: [dedupExchange, cacheExchange, fetchExchange],
 })
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {

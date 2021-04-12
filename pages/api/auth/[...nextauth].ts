@@ -1,8 +1,9 @@
-import { NextApiHandler } from 'next'
-import NextAuth from '../../../lib/next-auth'
-import Providers from '../../../lib/next-auth/providers'
-import Adapters from '../../../lib/next-auth/adapters'
 import { PrismaClient } from '@prisma/client'
+import { NextApiHandler } from 'next'
+
+import NextAuth from '../../../lib/next-auth'
+import Adapters from '../../../lib/next-auth/adapters'
+import Providers from '../../../lib/next-auth/providers'
 
 let prisma
 

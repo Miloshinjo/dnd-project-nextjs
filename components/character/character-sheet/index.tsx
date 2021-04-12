@@ -11,13 +11,13 @@ import TextLoader from '../../layout/text-loader'
 
 import CharacterHeader from './common/header'
 import AbilityScoresDesktop from './desktop-specific/ability-scores'
-import Nav from './nav'
+import Nav from './mobile/nav'
 
-import ScreenInventory from './screen-inventory'
-import ScreenKlass from './screen-klass'
-import ScreenSettings from './screen-settings'
-import ScreenSpells from './screen-spells'
-import ScreenStats from './screen-stats'
+import ScreenInventory from './mobile/screen-inventory'
+import ScreenKlass from './mobile/screen-klass'
+import ScreenSettings from './mobile/screen-settings'
+import ScreenSpells from './mobile/screen-spells'
+import ScreenStats from './mobile/screen-stats'
 import styles from './styles.module.css'
 
 type Props = {
@@ -95,18 +95,19 @@ const CharacterSheet: React.FC<Props> = ({ id }) => {
           <AbilityScoresDesktop character={character} />
         </div>
       ) : (
-        <div className={styles.screensContainer}>{screens[activeKey]}</div>
+        <>
+          <div className={styles.screensContainer}>{screens[activeKey]}</div>
+          <Nav
+            activeKey={activeKey}
+            setActiveKeyAndStore={setActiveKeyAndStore}
+            isSpellcaster={
+              !!character.subclass?.spellCastingModifier ||
+              !!character.klass.spellCastingModifier
+            }
+            klassName={character.klass.name.toLowerCase()}
+          />
+        </>
       )}
-
-      <Nav
-        activeKey={activeKey}
-        setActiveKeyAndStore={setActiveKeyAndStore}
-        isSpellcaster={
-          !!character.subclass?.spellCastingModifier ||
-          !!character.klass.spellCastingModifier
-        }
-        klassName={character.klass.name.toLowerCase()}
-      />
     </div>
   )
 }

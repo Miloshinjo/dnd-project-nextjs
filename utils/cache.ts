@@ -22,14 +22,6 @@ function betterUpdateQuery<Result, Query>(
   return cache.updateQuery(qi, (data) => fn(result, data as any) as any)
 }
 
-// function invalidateAllCharacters(cache: Cache) {
-//   const allFields = cache.inspectFields('Query')
-//   const fieldInfos = allFields.filter((info) => info.fieldName === 'characters')
-//   fieldInfos.forEach((fi) => {
-//     cache.invalidate('Query', 'characters', fi.arguments || {})
-//   })
-// }
-
 const cache = cacheExchange({
   updates: {
     Mutation: {

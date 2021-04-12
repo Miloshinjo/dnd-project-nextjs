@@ -2,10 +2,11 @@
 /// <reference path="../generated/nexus.ts" />
 
 import * as path from 'path'
-import * as types from './types'
 
 import { makeSchema } from '@nexus/schema'
 import { nexusSchemaPrisma } from 'nexus-plugin-prisma/schema'
+
+import * as types from './types'
 
 export const schema = makeSchema({
   types,
