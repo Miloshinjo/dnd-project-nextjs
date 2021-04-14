@@ -9,8 +9,8 @@ import useBigScreen from '../../../hooks/useBigScreen'
 import { ActiveKey } from '../../../models/misc'
 import TextLoader from '../../layout/text-loader'
 
+import AbilityScores from './common/ability-scores'
 import CharacterHeader from './common/header'
-import AbilityScoresDesktop from './desktop-specific/ability-scores'
 import Nav from './mobile/nav'
 
 import ScreenInventory from './mobile/screen-inventory'
@@ -91,8 +91,8 @@ const CharacterSheet: React.FC<Props> = ({ id }) => {
     <div className={styles.container}>
       <CharacterHeader character={character} />
       {isBigScreen ? (
-        <div className="p-4">
-          <AbilityScoresDesktop character={character} />
+        <div className="p-4 flex">
+          <AbilityScores character={character} />
         </div>
       ) : (
         <>

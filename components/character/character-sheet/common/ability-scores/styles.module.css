@@ -1,5 +1,5 @@
 .abilityScores {
-  @apply flex flex-col py-2  p-4 rounded;
+  @apply flex flex-col py-2 p-4 rounded;
   background-color: var(--bg-secondary);
 }
 
@@ -16,12 +16,20 @@
   @apply mr-2 text-white bg-gray-800 rounded-full p-1;
 }
 
+.abilityScoreFirstPart {
+  @apply w-1/2 flex md:grid md:grid-cols-2 justify-between mr-12 md:mr-0;
+}
+
+.abilityScoreSecondPart {
+  @apply w-1/2 flex justify-end md:ml-16;
+}
+
 .abilityScoreTitle {
   @apply text-sm flex capitalize mr-4;
 }
 
 .abilityScoreValue {
-  @apply font-bold flex text-left;
+  @apply font-bold flex text-left md:justify-self-end;
 }
 
 .abilityScoreM {

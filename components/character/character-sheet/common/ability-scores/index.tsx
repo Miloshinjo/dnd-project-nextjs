@@ -1,5 +1,5 @@
-import { useModal } from '../../../../../../context/modal'
-import abilityScores from '../../../../../../data/abilityScores'
+import { useModal } from '../../../../../context/modal'
+import abilityScores from '../../../../../data/abilityScores'
 import {
   useStrengthMutation,
   useDexterityMutation,
@@ -8,13 +8,13 @@ import {
   useWisdomMutation,
   useCharismaMutation,
   CharacterQuery,
-} from '../../../../../../generated/graphql'
-import { AbilityScoreType } from '../../../../../../models/abilityScore'
+} from '../../../../../generated/graphql'
+import { AbilityScoreType } from '../../../../../models/abilityScore'
 import {
   abilityScoreM,
   savingThrow,
   proficiencyBonus,
-} from '../../../../../../utils/character'
+} from '../../../../../utils/character'
 
 import styles from './styles.module.css'
 
@@ -58,14 +58,14 @@ const AbilityScores: React.FC<Props> = ({ character }) => {
                 })
               }
             >
-              <div className="w-1/2 flex justify-between mr-12 md:mr-32">
+              <div className={styles.abilityScoreFirstPart}>
                 <div className={styles.abilityScoreTitle}>{abilityScore}</div>
                 <div className={styles.abilityScoreValue}>
                   {character[abilityScore as AbilityScoreType]}
                 </div>
               </div>
 
-              <div className="w-1/2 flex justify-end">
+              <div className={styles.abilityScoreSecondPart}>
                 <div className={styles.abilityScoreM}>
                   <span className={styles.miniLabel}>mod</span>
                   {abilityScoreM(character[abilityScore as AbilityScoreType])}
