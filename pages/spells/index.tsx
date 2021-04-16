@@ -1,12 +1,12 @@
-import { client } from '../_app'
 import { NextPage } from 'next'
 
+import AppLayout from '../../components/layouts/app-layout'
+import SpellsPage from '../../components/spells/spells-page'
 import FiltersProvider from '../../context/filters'
 
 import { Spell } from '../../generated/graphql'
 
-import AppLayout from '../../components/layouts/app-layout'
-import SpellsPage from '../../components/spells/spells-page'
+import { client } from '../_app'
 
 export const SpellsQuery = `
   query {
