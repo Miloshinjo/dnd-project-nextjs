@@ -9,11 +9,7 @@
   @apply flex items-center justify-center;
 }
 
-@screen lg {
-  /* .backdrop {
-    display: none;
-  } */
-}
+
 
 .modalDefault {
   @apply text-center rounded shadow-md relative;
@@ -58,6 +54,12 @@
 }
 
 @screen md {
+  .modalDefault {
+    @apply text-center rounded shadow-md relative -mt-48 p-4;
+    max-width: 450px;
+
+  }
+
   .modalSpellDrawer {
     width: 30%;
     height: 80vh;

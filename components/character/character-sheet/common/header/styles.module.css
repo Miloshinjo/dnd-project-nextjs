@@ -47,10 +47,11 @@
   }
 
   .hpContainer {
-    @apply hidden;
+    /* @apply hidden; */
   }
 
   .bottomContainer {
-    @apply hidden;
+    /* @apply hidden; */
+    @apply mt-4;
   }
 }

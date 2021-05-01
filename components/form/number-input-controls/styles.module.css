@@ -5,10 +5,16 @@
 }
 
 .valueButton {
-  @apply inline-flex items-center justify-center p-1  rounded-none;
+  @apply inline-flex items-center justify-center p-1 rounded-none;
   background-color: var(--bg-secondary);
 }
 
 .valueButtonNumber {
   @apply font-semibold text-sm;
+}
+
+@screen md {
+  .valueButtonNumber {
+    @apply text-base;
+  }
 }

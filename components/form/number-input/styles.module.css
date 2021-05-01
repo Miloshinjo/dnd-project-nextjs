@@ -16,8 +16,8 @@
   @apply text-gray-500;
 }
 
-@screen sm {
+@screen md {
   .input {
-    @apply text-sm leading-5;
+    @apply leading-5;
   }
 }

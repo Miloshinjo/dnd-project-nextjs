@@ -7,7 +7,7 @@
 }
 
 .arcaneWardLabel {
-  @apply text-gray-400;
+  @apply text-gray-400 flex justify-center;
   width: 13%;
 }
 
@@ -33,7 +33,16 @@
     width: 7%;
   }
 
+  .arcaneWardContainer {
+    @apply justify-end;
+  }
+
+  .arcaneWard {
+    @apply ml-0;
+  }
+
+
   .arcaneWardBar {
-    width: 60%;
+    @apply h-3;
   }
 }

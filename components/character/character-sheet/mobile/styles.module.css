@@ -1,0 +1,4 @@
+
+.screensContainer {
+  @apply overflow-hidden h-full;
+}

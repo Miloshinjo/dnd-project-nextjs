@@ -22,20 +22,20 @@ const HitPoints: React.FC<Props> = ({
 }) => {
   const hitPointsPercent = Math.round((hitPoints / maxHitPoints) * 100)
 
-  const getHitPointsColor = useMemo(() => {
+  const hitPointsColor = useMemo(() => {
     if (hitPointsPercent < 25) {
-      return 'bg-red-800'
+      return 'colorRed'
     } else if (hitPointsPercent < 70) {
-      return 'bg-yellow-500'
+      return 'colorYellow'
     } else {
-      return 'bg-green-700'
+      return 'colorGreen'
     }
   }, [hitPointsPercent])
 
   return (
     <div className={styles.container}>
       <OpenModalButton
-        className="w-full flex items-center"
+        className={styles.hitPointsContainer}
         type="number"
         props={{
           originalValue: hitPoints,
@@ -48,7 +48,7 @@ const HitPoints: React.FC<Props> = ({
         <div className={styles.hitPointsLabel}>HP</div>
         <div className={styles.hitPointsBar}>
           <div
-            className={`${styles.hitPointsBarInner} ${getHitPointsColor}`}
+            className={`${styles.hitPointsBarInner} ${styles[hitPointsColor]}`}
             style={{
               width: `${hitPointsPercent}%`,
             }}

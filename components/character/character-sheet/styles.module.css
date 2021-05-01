@@ -18,6 +18,3 @@
   height: calc(100vh - var(--mobile-header-height));
 }
 
-.screensContainer {
-  @apply overflow-hidden h-full;
-}

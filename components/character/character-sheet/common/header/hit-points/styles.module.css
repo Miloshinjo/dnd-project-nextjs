@@ -3,7 +3,7 @@
 }
 
 .hitPointsContainer {
-  @apply flex items-center w-full;
+  @apply w-full flex items-center;
 }
 
 .hitPointsLabel {
@@ -28,9 +28,25 @@
   @apply w-full h-full flex;
 }
 
+.colorGreen {
+  @apply bg-green-700;
+}
+
+.colorYellow {
+  @apply bg-yellow-500;
+}
+
+.colorRed {
+  @apply bg-red-600;
+}
+
 @screen md {
   .container {
     @apply items-start;
+  }
+
+  .hitPointsContainer {
+    @apply justify-end;
   }
 
   .hitPointsLabel {
@@ -38,10 +54,10 @@
   }
 
   .hitPoints {
-
+    @apply ml-0;
   }
 
   .hitPointsBar {
-    width: 60%;
+    @apply h-3;
   }
 }
