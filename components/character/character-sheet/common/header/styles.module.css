@@ -20,7 +20,7 @@
 }
 
 .characterLevel {
-  @apply text-white font-medium ml-1 flex items-center;
+  @apply  font-medium ml-1 flex items-center;
 }
 
 .hpContainer {
@@ -33,7 +33,7 @@
 
 @screen md {
   .container {
-    @apply rounded-t-lg px-6 py-4;
+    @apply px-6 py-4;
     background-color: var(--bg-secondary);
     color: var(--text-primary);
   }
