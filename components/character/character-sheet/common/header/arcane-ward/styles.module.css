@@ -41,8 +41,7 @@
     @apply ml-0;
   }
 
-
   .arcaneWardBar {
-    @apply h-3;
+    @apply h-2 w-1/3;
   }
 }
