@@ -8,7 +8,7 @@ import {
   abilityScoreM,
   proficiencyBonus,
 } from '../../../../../utils/character'
-import StatField from '../../common/stat-field'
+import StatField from '../../common/stats/stat-field'
 
 import Cleric from './cleric'
 import Druid from './druid'

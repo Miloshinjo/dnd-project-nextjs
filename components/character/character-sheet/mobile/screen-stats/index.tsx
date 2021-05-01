@@ -13,10 +13,9 @@ import {
   abilityScoreM,
   hitBonus,
 } from '../../../../../utils/character'
-import AbilityScores from '../../common/ability-scores'
-import StatField from '../../common/stat-field'
-
+import AbilityScores from '../../common/stats/ability-scores'
 import BaseStats from '../../common/stats/base-stats'
+import StatField from '../../common/stats/stat-field'
 
 import Skills from './skills'
 

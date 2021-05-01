@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 
-import StatField from '../../common/stat-field'
+import StatField from '../../common/stats/stat-field'
 
 import Barbarian from './barbarian'
 import Bard from './bard'

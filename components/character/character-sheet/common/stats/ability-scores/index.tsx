@@ -1,5 +1,5 @@
-import { useModal } from '../../../../../context/modal'
-import abilityScores from '../../../../../data/abilityScores'
+import { useModal } from '../../../../../../context/modal'
+import abilityScores from '../../../../../../data/abilityScores'
 import {
   useStrengthMutation,
   useDexterityMutation,
@@ -8,13 +8,13 @@ import {
   useWisdomMutation,
   useCharismaMutation,
   CharacterQuery,
-} from '../../../../../generated/graphql'
-import { AbilityScoreType } from '../../../../../models/abilityScore'
+} from '../../../../../../generated/graphql'
+import { AbilityScoreType } from '../../../../../../models/abilityScore'
 import {
   abilityScoreM,
   savingThrow,
   proficiencyBonus,
-} from '../../../../../utils/character'
+} from '../../../../../../utils/character'
 
 import styles from './styles.module.css'
 

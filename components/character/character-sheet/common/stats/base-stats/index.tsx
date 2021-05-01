@@ -1,8 +1,8 @@
 import { Character } from '../../../../../../generated/graphql'
 
-import StatField from '../../stat-field'
 import ArmorClass from '../armor-class'
 import Speed from '../speed'
+import StatField from '../stat-field'
 
 import styles from './styles.module.css'
 
