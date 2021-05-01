@@ -18,20 +18,17 @@ type Props = {
 const CharacterHeader: React.FC<Props> = ({ character }) => {
   const { openModal } = useModal()
 
-  const characterKlassName = useCallback(
-    (klass, subclass) => {
-      if (subclass) {
-        if (klass === 'Cleric') {
-          return `${subclass} Cleric`
-        }
-
-        return `${subclass} ${klass}`
+  const characterKlassName = useCallback((klass, subclass) => {
+    if (subclass) {
+      if (klass === 'Cleric') {
+        return `${subclass} Cleric`
       }
 
-      return klass
-    },
-    [character?.subclass?.name],
-  )
+      return `${subclass} ${klass}`
+    }
+
+    return klass
+  }, [])
 
   return (
     <div className={styles.container}>
