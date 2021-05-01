@@ -5,7 +5,7 @@ import Nav from './nav'
 
 import styles from './styles.module.css'
 
-const Header: React.FC<Props> = () => {
+const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       <DrawerMenu />
