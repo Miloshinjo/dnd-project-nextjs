@@ -3,18 +3,9 @@
   color: var(--text-secondary);
 }
 
-.header {
-  @apply flex justify-between pb-2 mb-4 p-4 rounded;
-  background-color: var(--bg-secondary);
-}
-
 .statBlockWrapper {
   @apply p-4  rounded;
   background-color: var(--bg-secondary);
-}
-
-.header > *:not(:last-child) {
-  @apply mr-2;
 }
 
 .hpContainer {

@@ -16,9 +16,9 @@ import {
 import AbilityScores from '../../common/ability-scores'
 import StatField from '../../common/stat-field'
 
-import ArmorClass from './armor-class'
+import BaseStats from '../../common/stats/base-stats'
+
 import Skills from './skills'
-import Speed from './speed'
 
 import styles from './styles.module.css'
 
@@ -52,15 +52,13 @@ const CharacterScreenStats: React.FC<Props> = ({ character, skills }) => {
       initial="initial"
       className="p-4"
     >
-      <div className={styles.header}>
-        <StatField label="Prof." value={proficiencyBonus(character.level)} />
-        <StatField label="Initiative" value={initiative(character.dexterity)} />
-        <Speed characterId={character.id} speed={character.speed} />
-        <ArmorClass
-          characterId={character.id}
-          armorClass={character.armorClass}
-        />
-      </div>
+      <BaseStats
+        proficiencyBonus={proficiencyBonus(character.level)}
+        initiative={initiative(character.dexterity)}
+        speed={character.speed}
+        characterId={character.id}
+        armorClass={character.armorClass}
+      />
 
       <AbilityScores character={character} />
 
