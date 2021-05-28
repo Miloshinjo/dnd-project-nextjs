@@ -1,9 +1,11 @@
-import { useState, useCallback } from 'react'
+import { useMemo } from 'react'
 
 import { CharacterQuery, SkillsQuery } from '../../../../generated/graphql'
-import { ActiveKey } from '../../../../models/misc'
 
-import Nav from './nav'
+import useGetActiveCharacterScreen from '../../../../hooks/useGetActiveCharacterScreen'
+
+import Nav from '../common/nav'
+
 import ScreenInventory from './screen-inventory'
 import ScreenKlass from './screen-klass'
 import ScreenSettings from './screen-settings'
@@ -18,60 +20,42 @@ type Props = {
 }
 
 const SheetMobile: React.FC<Props> = ({ character, skills }) => {
-  const getActiveKey = (): ActiveKey => {
-    if (!localStorage.getItem('activeCharacterScreen')) return 'stats'
+  const [
+    activeCharacterScreen,
+    setActiveCharacterScreenAndStore,
+  ] = useGetActiveCharacterScreen(character.id)
 
-    const [characterId, activeKey] = localStorage
-      .getItem('activeCharacterScreen')
-      .split(',')
-
-    if (!characterId || !activeKey) return 'stats'
-
-    if (character.id === Number(characterId)) {
-      return activeKey as ActiveKey
-    } else {
-      return 'stats'
-    }
-  }
-
-  const [activeKey, setActiveKey] = useState<ActiveKey>(
-    (getActiveKey() as ActiveKey) || 'stats',
+  const screens = useMemo(
+    () => ({
+      stats: <ScreenStats character={character} skills={skills} />,
+      class: <ScreenKlass character={character} />,
+      spells: <ScreenSpells character={character} />,
+      inventory: (
+        <ScreenInventory
+          characterId={character.id}
+          magicItems={character.magicItems}
+          gold={character.gold}
+        />
+      ),
+      settings: <ScreenSettings character={character} />,
+    }),
+    [character, skills],
   )
-
-  const setActiveKeyAndStore = useCallback(
-    (key: ActiveKey) => {
-      setActiveKey(key)
-      localStorage.setItem('activeCharacterScreen', `${character.id},${key}`)
-    },
-    [character.id],
-  )
-
-  const screens = {
-    stats: <ScreenStats character={character} skills={skills} />,
-    class: <ScreenKlass character={character} />,
-    spells: <ScreenSpells character={character} />,
-    inventory: (
-      <ScreenInventory
-        characterId={character.id}
-        magicItems={character.magicItems}
-        gold={character.gold}
-      />
-    ),
-    settings: <ScreenSettings character={character} />,
-  }
 
   return (
     <>
-      <div className={styles.screensContainer}>{screens[activeKey]}</div>
+      <div className={styles.screensContainer}>
+        {screens[activeCharacterScreen]}
+      </div>
       <Nav
-        activeKey={activeKey}
-        setActiveKeyAndStore={setActiveKeyAndStore}
+        activeKey={activeCharacterScreen}
+        setActiveKeyAndStore={setActiveCharacterScreenAndStore}
         isSpellcaster={
           !!character.subclass?.spellCastingModifier ||
           !!character.klass.spellCastingModifier
         }
         klassName={character.klass.name.toLowerCase()}
-      />{' '}
+      />
     </>
   )
 }

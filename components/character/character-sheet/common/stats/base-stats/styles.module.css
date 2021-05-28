@@ -1,6 +1,6 @@
 
 .container {
-  @apply flex justify-between pb-2 mb-4 p-4 rounded;
+  @apply flex justify-between pb-2 p-4 rounded;
   background-color: var(--bg-secondary);
 }
 

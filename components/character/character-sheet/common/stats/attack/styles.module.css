@@ -1,0 +1,4 @@
+.container {
+    @apply p-4  rounded;
+    background-color: var(--bg-secondary);
+}

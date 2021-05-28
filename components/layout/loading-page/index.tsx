@@ -6,7 +6,7 @@ const loaderVariants = {
 
     transition: {
       scale: {
-        yoyo: Infinity,
+        repeat: Infinity,
         duration: 1,
       },
     },
@@ -15,7 +15,7 @@ const loaderVariants = {
     rotate: [10, 0],
     transition: {
       rotate: {
-        yoyo: Infinity,
+        repeat: Infinity,
         duration: 0.8,
       },
     },

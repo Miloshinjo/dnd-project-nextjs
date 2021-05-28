@@ -1,0 +1,15 @@
+.container {
+  @apply p-4 flex gap-4;
+}
+
+.container > div:first-child {
+  @apply flex flex-col gap-4;
+}
+
+.container > div:nth-child(2) {
+  @apply flex flex-1;
+}
+
+.container > div:nth-child(2) > * {
+  @apply flex-1;
+}

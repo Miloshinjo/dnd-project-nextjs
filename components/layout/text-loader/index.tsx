@@ -19,7 +19,7 @@ const loadingCircleVariants = {
     opacity: 0,
     transition: {
       duration: 0.5,
-      yoyo: Infinity,
+      repeat: Infinity,
       ease: 'easeInOut',
     },
   },
@@ -27,7 +27,7 @@ const loadingCircleVariants = {
     opacity: 1,
     transition: {
       duration: 0.5,
-      yoyo: Infinity,
+      repeat: Infinity,
       ease: 'easeInOut',
     },
   },

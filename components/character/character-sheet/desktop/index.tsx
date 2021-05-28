@@ -1,10 +1,17 @@
+import { useMemo } from 'react'
+
 import { CharacterQuery, SkillsQuery } from '../../../../generated/graphql'
-import { initiative, proficiencyBonus } from '../../../../utils/character'
 
-import AbilityScores from '../common/stats/ability-scores'
-import BaseStats from '../common/stats/base-stats'
+import useGetActiveCharacterScreen from '../../../../hooks/useGetActiveCharacterScreen'
 
-import styles from './styles.module.css'
+import Nav from '../common/nav'
+
+import ScreenInventory from '../mobile/screen-inventory'
+import ScreenKlass from '../mobile/screen-klass'
+import ScreenSettings from '../mobile/screen-settings'
+import ScreenSpells from '../mobile/screen-spells'
+
+import ScreenStats from './screen-stats'
 
 type Props = {
   character: CharacterQuery['character']
@@ -12,17 +19,40 @@ type Props = {
 }
 
 const SheetDesktop: React.FC<Props> = ({ character, skills }) => {
-  return (
-    <div className={styles.container}>
-      <BaseStats
-        proficiencyBonus={proficiencyBonus(character.level)}
-        initiative={initiative(character.dexterity)}
-        speed={character.speed}
-        characterId={character.id}
-        armorClass={character.armorClass}
-      />
+  const [
+    activeCharacterScreen,
+    setActiveCharacterScreenAndStore,
+  ] = useGetActiveCharacterScreen(character.id)
 
-      <AbilityScores character={character} />
+  const screens = useMemo(
+    () => ({
+      stats: <ScreenStats character={character} skills={skills} />,
+      class: <ScreenKlass character={character} />,
+      spells: <ScreenSpells character={character} />,
+      inventory: (
+        <ScreenInventory
+          characterId={character.id}
+          magicItems={character.magicItems}
+          gold={character.gold}
+        />
+      ),
+      settings: <ScreenSettings character={character} />,
+    }),
+    [character, skills],
+  )
+
+  return (
+    <div>
+      <Nav
+        setActiveKeyAndStore={setActiveCharacterScreenAndStore}
+        activeKey={activeCharacterScreen}
+        isSpellcaster={
+          !!character.subclass?.spellCastingModifier ||
+          !!character.klass.spellCastingModifier
+        }
+        klassName={character.klass.name.toLowerCase()}
+      />
+      <div>{screens[activeCharacterScreen]}</div>
     </div>
   )
 }

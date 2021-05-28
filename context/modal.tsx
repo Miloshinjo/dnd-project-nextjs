@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import React, {
   useEffect,
   Dispatch,
@@ -5,7 +6,6 @@ import React, {
   useState,
   useContext,
 } from 'react'
-import { useRouter } from 'next/router'
 
 import Modal from '../components/modal'
 import { ModalTypes } from '../models/modal'
@@ -27,12 +27,31 @@ const ModalProvider: React.FC = ({ children }) => {
   const [modal, openModal] = useState<ModalType>(null)
   const router = useRouter()
 
+  /**
+   * Closes the modal
+   */
   const closeModal = () => {
     if (modal && router.query.modal) {
       router.back()
     }
   }
 
+  // /**
+  //  * Add relevant styles to prevent scrolling behind modal
+  //  */
+  // useEffect(() => {
+  //   if (modal && router.query.modal) {
+  //     document.body.style.overflow = 'hidden'
+  //     document.body.style.height = '100vh'
+  //   } else {
+  //     document.body.style.overflow = 'visible'
+  //     document.body.style.height = 'auto'
+  //   }
+  // }, [router.query.modal])
+
+  /**
+   * Close the modal when close modal route changes
+   */
   useEffect(() => {
     if (!router.query.modal && modal) {
       openModal(null)

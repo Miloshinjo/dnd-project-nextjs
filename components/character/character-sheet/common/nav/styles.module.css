@@ -15,6 +15,10 @@
 
 @screen md {
   .container {
-    @apply hidden;
+    @apply relative border-t-0;
+  }
+
+  .navLink {
+    @apply items-start capitalize w-auto text-sm;
   }
 }

@@ -14,10 +14,10 @@ import {
   hitBonus,
 } from '../../../../../utils/character'
 import AbilityScores from '../../common/stats/ability-scores'
+import Attack from '../../common/stats/attack'
 import BaseStats from '../../common/stats/base-stats'
+import Skills from '../../common/stats/skills'
 import StatField from '../../common/stats/stat-field'
-
-import Skills from './skills'
 
 import styles from './styles.module.css'
 
@@ -51,79 +51,69 @@ const CharacterScreenStats: React.FC<Props> = ({ character, skills }) => {
       initial="initial"
       className="p-4"
     >
-      <BaseStats
-        proficiencyBonus={proficiencyBonus(character.level)}
-        initiative={initiative(character.dexterity)}
-        speed={character.speed}
-        characterId={character.id}
-        armorClass={character.armorClass}
-      />
+      <div className="mb-4">
+        <BaseStats
+          proficiencyBonus={proficiencyBonus(character.level)}
+          initiative={initiative(character.dexterity)}
+          speed={character.speed}
+          characterId={character.id}
+          armorClass={character.armorClass}
+        />
+      </div>
 
-      <AbilityScores character={character} />
-
-      <div className="mt-6">
-        <div className="mb-4">
-          <div className={styles.statBlockWrapper}>
-            <h3 className="statSectionHeading mb-2">Attack</h3>
-            <StatField
-              label="Strength"
-              value={hitBonus(
-                abilityScoreM(character.strength),
-                proficiencyBonus(character.level),
-              )}
-              fullWidth
-            />
-            <StatField
-              label="Dexterity"
-              value={hitBonus(
-                abilityScoreM(character.dexterity),
-                proficiencyBonus(character.level),
-              )}
-              fullWidth
-            />
-            {character.klass.name === 'Rogue' && (
-              <StatField
-                label="Sneak Attack"
-                value={`${sneakAttack(character.level)}d6`}
-                fullWidth
-              />
+      <div className="">
+        <AbilityScores character={character} />
+      </div>
+      <div className="mb-4">
+        <Attack
+          hitStrength={hitBonus(
+            abilityScoreM(character.strength),
+            proficiencyBonus(character.level),
+          )}
+          hitDexterity={hitBonus(
+            abilityScoreM(character.dexterity),
+            proficiencyBonus(character.level),
+          )}
+          sneakAttack={
+            character.klass.name === 'Rogue'
+              ? `${sneakAttack(character.level)}d6`
+              : null
+          }
+        />
+      </div>
+      <div className="mb-4">
+        <Skills character={character} skills={skills} />
+      </div>
+      <div className="mb-4">
+        <div className={styles.statBlockWrapper}>
+          <h3 className="statSectionHeading mb-2">Senses</h3>
+          <StatField
+            label="Passive perception"
+            value={passivePerception(
+              abilityScoreM(character.wisdom),
+              proficiencyBonus(character.level),
+              hasSkill('Perception'),
             )}
-          </div>
-        </div>
-        <div className="mb-4">
-          <Skills character={character} skills={skills} />
-        </div>
-        <div className="mb-4">
-          <div className={styles.statBlockWrapper}>
-            <h3 className="statSectionHeading mb-2">Senses</h3>
-            <StatField
-              label="Passive perception"
-              value={passivePerception(
-                abilityScoreM(character.wisdom),
-                proficiencyBonus(character.level),
-                hasSkill('Perception'),
-              )}
-              fullWidth
-            />
-            <StatField
-              label="Passive investigation"
-              value={passiveInvestigation(
-                abilityScoreM(character.intelligence),
-                proficiencyBonus(character.level),
-                hasSkill('Investigation'),
-              )}
-              fullWidth
-            />
-            <StatField
-              label="Passive insight"
-              value={passiveInsight(
-                abilityScoreM(character.wisdom),
-                proficiencyBonus(character.level),
-                hasSkill('Insight'),
-              )}
-              fullWidth
-            />
-          </div>
+            fullWidth
+          />
+          <StatField
+            label="Passive investigation"
+            value={passiveInvestigation(
+              abilityScoreM(character.intelligence),
+              proficiencyBonus(character.level),
+              hasSkill('Investigation'),
+            )}
+            fullWidth
+          />
+          <StatField
+            label="Passive insight"
+            value={passiveInsight(
+              abilityScoreM(character.wisdom),
+              proficiencyBonus(character.level),
+              hasSkill('Insight'),
+            )}
+            fullWidth
+          />
         </div>
       </div>
     </motion.div>

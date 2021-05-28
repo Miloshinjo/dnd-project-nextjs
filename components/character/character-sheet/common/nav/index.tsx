@@ -1,52 +1,15 @@
 import { motion } from 'framer-motion'
 
-import { BiStats } from 'react-icons/bi'
-import { BsTriangle } from 'react-icons/bs'
-import { GiMagicSwirl, GiSwapBag } from 'react-icons/gi'
-import { HiAdjustments } from 'react-icons/hi'
-
-import { ActiveKey } from '../../../../../models/misc'
+import useBigScreen from '../../../../../hooks/useBigScreen'
+import { ActiveCharacterScreen } from '../../../../../models/misc'
 
 import icons from './icons'
+import { navItems } from './navItems'
 import styles from './styles.module.css'
 
-type NavItem = {
-  icon: JSX.Element
-  text: string
-  key: ActiveKey
-}
-
-const navItems: NavItem[] = [
-  {
-    icon: <BiStats size={28} />,
-    text: 'Stats',
-    key: 'stats',
-  },
-  {
-    icon: <BsTriangle size={28} />,
-    text: 'Class',
-    key: 'class',
-  },
-  {
-    icon: <GiMagicSwirl size={28} />,
-    text: 'Spells',
-    key: 'spells',
-  },
-  {
-    icon: <GiSwapBag size={28} />,
-    text: 'Inventory',
-    key: 'inventory',
-  },
-  {
-    icon: <HiAdjustments size={28} />,
-    text: 'Settings',
-    key: 'settings',
-  },
-]
-
 type Props = {
-  activeKey: ActiveKey
-  setActiveKeyAndStore: (key: ActiveKey) => void
+  activeKey: ActiveCharacterScreen
+  setActiveKeyAndStore: (key: ActiveCharacterScreen) => void
   isSpellcaster: boolean
   klassName: string
 }
@@ -74,6 +37,7 @@ const Nav: React.FC<Props> = ({
   isSpellcaster,
   klassName,
 }) => {
+  const isBigScreen = useBigScreen()
   return (
     <div className={styles.container}>
       {navItems.map((item) => {
@@ -88,7 +52,21 @@ const Nav: React.FC<Props> = ({
           item.text = klassName
         }
 
-        return (
+        return isBigScreen ? (
+          <button
+            key={item.text}
+            onClick={() => {
+              setActiveKeyAndStore(item.key)
+            }}
+            style={{
+              color: isActive ? `var(--color-text)` : '',
+              opacity: isActive ? 1 : 0.5,
+            }}
+            className={styles.navLink}
+          >
+            {item.text}
+          </button>
+        ) : (
           <motion.button
             className={styles.navLink}
             style={{
@@ -113,3 +91,6 @@ const Nav: React.FC<Props> = ({
 }
 
 export { Nav as default }
+function useIsBigScreen() {
+  throw new Error('Function not implemented.')
+}

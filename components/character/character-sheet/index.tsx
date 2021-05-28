@@ -44,7 +44,7 @@ const CharacterSheet: React.FC<Props> = ({ id }) => {
       {isBigScreen ? (
         <SheetDesktop character={character} skills={skills} />
       ) : (
-        <SheetMobile skills={skills} character={character} />
+        <SheetMobile character={character} skills={skills} />
       )}
     </div>
   )

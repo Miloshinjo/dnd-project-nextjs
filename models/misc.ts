@@ -1,1 +1,6 @@
-export type ActiveKey = 'spells' | 'stats' | 'settings' | 'class' | 'inventory'
+export type ActiveCharacterScreen =
+  | 'spells'
+  | 'stats'
+  | 'settings'
+  | 'class'
+  | 'inventory'
